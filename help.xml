@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+  Short S.23 Empire flying boat.
+
+  Copyright (C) 2008 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license v2 or later.
+-->
+<PropertyList>
+
+ <title>Short S.23 'C-class' Empire flying boat</title>
+ <!-- Specific keys -->
+ <!-- Handling instructions. -->
+ <text>
+ __________________Engine Start___________________
+ 1. Propeller pitch FINE (N).
+ 2. Mixture rich.
+ 3. Magnetos BOTH.
+ 4. Start one engine at a time.
+
+ ____________________Take Off_____________________
+ 1. Flaps 1/4
+ 2. Propeller pitch FINE (N).
+ 3. Take care to make the take off run straight.
+ 4. Minimum getting off speed 78 mph.
+
+ ____________________Landing______________________
+ 1. Flaps 1/4 - full as required
+ 2. Propeller pitch FINE (N).
+ 3. Approach speed 115 mph.
+
+ <!-- Real data -->
+ ____________________Real data____________________
+ Maximum speed            : 174 kt (200 mph)
+ Cruise speed               : 143 kt (165 mph)
+ Stall speed (no flaps)    :  63 kt  (73 mph)
+ Approach speed           : 100 kt (115 mph)
+ Minimum getting off speed:  68 kt  (78 mph)
+
+ C.G. Range (aft of hull datum point; Assumed to be 7.75m behind the nose)
+     Maximum Forward      55.5 in (360.62 in)
+     Maximum Aft             66.8 in (371.92 in)
+ 
+ Maximum weight: 40 500 lb
+
+ __________________Engine Limits__________________
+         Maximum RPM   Boost.   Cylinder temp.   Oil temp.deg.C.
+ Take off     2475      +4 1/4   235 for 15 min.      90
+ Climbing     2250      +2 1/2   235                     80
+ Cruising     2250      +2         190                     70
+ All out       2600      +2         235                     90
+ Oil pressure maximum 80 lb./sq. in. 5 minutes
+                  minimum 5 lb./sq. in.
+ </text>
+</PropertyList>

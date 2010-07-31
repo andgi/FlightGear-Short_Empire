@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<!--
+  Short S.23 Empire flying boat for FlightGear.
+
+  Copyright (C) 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- Overlay this to set the fuel tank. -->
+ <params>
+  <tank-content-lbs>consumables/fuel/tank[0]/level-lbs</tank-content-lbs>
+  <indicated-content-lbs>instrumentation/fuel-gauge[0]/indicated-content-lbs</indicated-content-lbs>
+  <serviceable>instrumentation/fuel-gauge[0]/serviceable</serviceable>
+ </params>
+
+ <path>televel_fuel_gauge.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.000 </x-m>
+  <y-m> 0.000 </y-m>
+  <z-m> 0.000 </z-m>
+ </offsets>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>scale</object-name>
+  <property alias="../../params/indicated-content-lbs"/>
+  <interpolation> 
+   <entry><ind>0</ind><dep>0</dep></entry>
+   <entry><ind>2525</ind><dep>350</dep></entry>
+  </interpolation>
+  <condition>
+   <property alias="../../../params/serviceable"/>
+  </condition>
+  <center>
+   <x-m> 0.000 </x-m>
+   <y-m> 0.000 </y-m>
+   <z-m> 0.000 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation> 
+  <type>rotate</type>
+  <object-name>handle</object-name>
+  <property alias="../../params/indicated-content-lbs"/>
+  <interpolation> 
+   <entry><ind>0</ind><dep>0</dep></entry>
+   <entry><ind>2525</ind><dep>-525</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.000 </x-m>
+   <y-m> 0.000 </y-m>
+   <z-m> 0.000 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <!-- animation> 
+  <type>material</type>
+  <emission> 
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation -->
+
+ <animation>
+  <type>pick</type>
+  <object-name>handle</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.05</interval-sec>
+   <binding>
+    <condition>
+     <less-than>
+      <property alias="../../../../../../params/indicated-content-lbs"/>
+      <value>2525</value>
+     </less-than>
+    </condition>
+    <command>property-adjust</command>
+    <property alias="../../../../params/indicated-content-lbs"/>
+    <step type="double">2.0</step>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.05</interval-sec>
+   <binding>
+    <condition>
+     <or>
+      <greater-than>
+       <property alias="../../../../../../../params/indicated-content-lbs"/>
+       <property alias="../../../../../../../params/tank-content-lbs"/>
+      </greater-than>
+      <not>
+       <property alias="../../../../../../../params/serviceable"/>
+      </not>
+     </or>
+    </condition>
+    <command>property-adjust</command>
+    <property alias="../../../../params/indicated-content-lbs"/>
+    <step type="double">-2.0</step>
+   </binding>
+  </action>
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <condition>
+     <or>
+      <greater-than>
+       <property alias="../../../../../../../params/indicated-content-lbs"/>
+       <property alias="../../../../../../../params/tank-content-lbs"/>
+      </greater-than>
+      <not>
+       <property alias="../../../../../../../params/serviceable"/>
+      </not>
+     </or>
+    </condition>
+    <command>property-adjust</command>
+    <property alias="../../../../params/indicated-content-lbs"/>
+    <step type="double">-2.0</step>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <condition>
+     <less-than>
+      <property alias="../../../../../../params/indicated-content-lbs"/>
+      <value>2525</value>
+     </less-than>
+    </condition>
+    <command>property-adjust</command>
+    <property alias="../../../../params/indicated-content-lbs"/>
+    <step type="double">2.0</step>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

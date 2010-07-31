@@ -1,0 +1,41 @@
+Anders Gidenstam  (anders(at)gidenstam.org)
+  - Short S.23 FlightGear configuration
+  - Short S.23 Flight Dynamics Model configuration
+  - Short S.23 3d model
+  - Short S.23 DATCOM config
+
+Ron Jensen
+  - Pegasus Xc engine config for JSBSim
+  - Short S.23 DATCOM config
+
+The model borrows content from the following authors' contributions
+to FlightGear:
+
+AJ MacLeod
+  - British WWII era photo textured instruments. (From spitfireIX)
+
+Emmanuel BARANGER
+  - The engine 3d model. (From Lockheed-Vega)
+
+Anonymous
+  - Propeller 3d models. (From Boeing 314)
+  - Some hydrodynamic coefficient tables.
+
+
+http://spitfirespares.com
+  - Source of engine rev counter scale texture.
+
+
+Dependencies:
+
+Aircraft/Boeing314      (Sounds/engine_running.wav,Sounds/engine_idle.wav)
+
+Aircraft/spitfireIX     (Models/Instruments/magneto.ac,
+                         Models/Instruments/altimeter.ac,
+                         Models/Instruments/attitude.xml,
+                         Models/Instruments/turn.ac,
+                         Models/Instruments/vsi.xm)
+
+Aircraft/Spitfire       (Models/clock.xml)
+
+Aircraft/ZLT-NT         (DualControl/)

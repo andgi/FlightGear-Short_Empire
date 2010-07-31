@@ -1,0 +1,544 @@
+<?xml version="1.0"?>
+<!--
+  Short S.23 Empire flying boat for FlightGear.
+
+  Copyright (C) 2008 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+
+<PropertyList>
+
+ <!--
+   x/y/z == back/left/up
+   Coordinate system origin at the 3d model origin, i.e. at the FDM origin.
+ -->
+ 
+ <fx>
+
+  <!-- ========================================================================
+    Engine 1. (Port outer)
+  -->
+  <crank>
+   <name>engstart1</name>
+   <path>Sounds/engstart.wav</path>
+   <condition>
+    <property>engines/engine[0]/cranking</property>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.31 </x>
+    <y>  7.96 </y>
+    <z>  2.91 </z>
+   </position>
+   <volume>
+    <offset>0.1</offset>
+    <max>0.01</max>
+   </volume>
+  </crank>
+
+  <crank>
+   <name>crank1</name>
+   <mode>looped</mode>
+   <path>Sounds/cranking.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[0]/cranking</property>
+     <not>
+      <property>engines/engine[0]/running</property>
+     </not>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.31 </x>
+    <y>  7.96 </y>
+    <z>  2.91 </z>
+   </position>
+   <volume>
+    <offset>0.5</offset>
+   </volume>
+  </crank>
+
+  <crank>
+   <name>cough1</name>
+   <path>Sounds/coughing.wav</path>
+   <condition>
+    <property>engines/engine[0]/running</property>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.31 </x>
+    <y>  7.96 </y>
+    <z>  2.91 </z>
+   </position>
+   <volume>
+    <offset>0.3</offset>
+   </volume>
+  </crank>
+
+  <engine>
+   <name>engine1 external</name>
+   <mode>looped</mode>
+   <path>Aircraft/Boeing314/Sounds/engine_running.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[0]/running</property>
+     <greater-than-equals>
+      <property>engines/engine[0]/mp-inhg</property>
+      <value>6.0</value>
+     </greater-than-equals>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.31 </x>
+    <y>  7.96 </y>
+    <z>  2.91 </z>
+   </position>
+   <volume>
+    <property>engines/engine[0]/mp-inhg</property>
+    <factor>0.0095</factor>
+    <min>0.02</min>
+    <max>0.30</max>
+    <offset>0.07</offset>
+   </volume>
+   <pitch>
+    <property>engines/engine[0]/rpm</property>
+    <factor>0.0004</factor>
+    <min>0.1</min>
+    <max>2.0</max>
+    <offset>0.3</offset>
+   </pitch>
+  </engine>
+
+  <engine>
+   <name>idle1 external</name>
+   <mode>looped</mode>
+   <path>Aircraft/Boeing314/Sounds/engine_idle.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[0]/running</property>
+     <less-than>
+      <property>engines/engine[0]/mp-inhg</property>
+      <value>6.2</value>
+     </less-than>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.31 </x>
+    <y>  7.96 </y>
+    <z>  2.91 </z>
+   </position>
+   <volume>
+    <property>engines/engine[0]/mp-inhg</property>
+    <factor>0.0095</factor>
+    <min>0.01</min>
+    <max>0.04</max>
+    <offset>0.05</offset>
+   </volume>
+   <pitch>
+    <property>engines/engine[0]/rpm</property>
+    <factor>0.0004</factor>
+    <min>0.1</min>
+    <max>2.0</max>
+    <offset>0.3</offset>
+   </pitch>
+  </engine>
+
+  <!-- ========================================================================
+    Engine 2. (Port inner)
+  -->
+  <crank>
+   <name>engstart2</name>
+   <path>Sounds/engstart.wav</path>
+   <condition>
+    <property>engines/engine[1]/cranking</property>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.02 </x>
+    <y>  3.97 </y>
+    <z>  2.69 </z>
+   </position>
+   <volume>
+    <offset>0.1</offset>
+    <max>0.01</max>
+   </volume>
+  </crank>
+
+  <crank>
+   <name>crank2</name>
+   <mode>looped</mode>
+   <path>Sounds/cranking.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[1]/cranking</property>
+     <not>
+      <property>engines/engine[1]/running</property>
+     </not>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.02 </x>
+    <y>  3.97 </y>
+    <z>  2.69 </z>
+   </position>
+   <volume>
+    <offset>0.5</offset>
+   </volume>
+  </crank>
+
+  <crank>
+   <name>cough2</name>
+   <path>Sounds/coughing.wav</path>
+   <condition>
+    <property>engines/engine[1]/running</property>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.02 </x>
+    <y>  3.97 </y>
+    <z>  2.69 </z>
+   </position>
+   <volume>
+    <offset>0.3</offset>
+   </volume>
+  </crank>
+
+  <engine>
+   <name>engine2 external</name>
+   <mode>looped</mode>
+   <path>Aircraft/Boeing314/Sounds/engine_running.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[1]/running</property>
+     <greater-than-equals>
+      <property>engines/engine[1]/mp-inhg</property>
+      <value>6.0</value>
+     </greater-than-equals>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.02 </x>
+    <y>  3.97 </y>
+    <z>  2.69 </z>
+   </position>
+   <volume>
+    <property>engines/engine[1]/mp-inhg</property>
+    <factor>0.0095</factor>
+    <min>0.02</min>
+    <max>0.30</max>
+    <offset>0.07</offset>
+   </volume>
+   <pitch>
+    <property>engines/engine[1]/rpm</property>
+    <factor>0.0004</factor>
+    <min>0.1</min>
+    <max>2.0</max>
+    <offset>0.3</offset>
+   </pitch>
+  </engine>
+
+  <engine>
+   <name>idle2 external</name>
+   <mode>looped</mode>
+   <path>Aircraft/Boeing314/Sounds/engine_idle.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[1]/running</property>
+     <less-than>
+      <property>engines/engine[1]/mp-inhg</property>
+      <value>6.2</value>
+     </less-than>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.02 </x>
+    <y>  3.97 </y>
+    <z>  2.69 </z>
+   </position>
+   <volume>
+    <property>engines/engine[1]/mp-inhg</property>
+    <factor>0.0095</factor>
+    <min>0.01</min>
+    <max>0.04</max>
+    <offset>0.05</offset>
+   </volume>
+   <pitch>
+    <property>engines/engine[1]/rpm</property>
+    <factor>0.0004</factor>
+    <min>0.1</min>
+    <max>2.0</max>
+    <offset>0.3</offset>
+   </pitch>
+  </engine>
+
+  <!-- ========================================================================
+    Engine 3. (Starboard inner)
+  -->
+  <crank>
+   <name>engstart3</name>
+   <path>Sounds/engstart.wav</path>
+   <condition>
+    <property>engines/engine[2]/cranking</property>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.02 </x>
+    <y> -3.97 </y>
+    <z>  2.69 </z>
+   </position>
+   <volume>
+    <offset>0.1</offset>
+    <max>0.01</max>
+   </volume>
+  </crank>
+
+  <crank>
+   <name>crank3</name>
+   <mode>looped</mode>
+   <path>Sounds/cranking.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[2]/cranking</property>
+     <not>
+      <property>engines/engine[2]/running</property>
+     </not>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.02 </x>
+    <y> -3.97 </y>
+    <z>  2.69 </z>
+   </position>
+   <volume>
+    <offset>0.5</offset>
+   </volume>
+  </crank>
+
+  <crank>
+   <name>cough3</name>
+   <path>Sounds/coughing.wav</path>
+   <condition>
+    <property>engines/engine[2]/running</property>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.02 </x>
+    <y> -3.97 </y>
+    <z>  2.69 </z>
+   </position>
+   <volume>
+    <offset>0.3</offset>
+   </volume>
+  </crank>
+
+  <engine>
+   <name>engine3 external</name>
+   <mode>looped</mode>
+   <path>Aircraft/Boeing314/Sounds/engine_running.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[2]/running</property>
+     <greater-than-equals>
+      <property>engines/engine[2]/mp-inhg</property>
+      <value>6.0</value>
+     </greater-than-equals>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.02 </x>
+    <y> -3.97 </y>
+    <z>  2.69 </z>
+   </position>
+   <volume>
+    <property>engines/engine[2]/mp-inhg</property>
+    <factor>0.0095</factor>
+    <min>0.02</min>
+    <max>0.30</max>
+    <offset>0.07</offset>
+   </volume>
+   <pitch>
+    <property>engines/engine[2]/rpm</property>
+    <factor>0.0004</factor>
+    <min>0.1</min>
+    <max>2.0</max>
+    <offset>0.3</offset>
+   </pitch>
+  </engine>
+
+  <engine>
+   <name>idle3 external</name>
+   <mode>looped</mode>
+   <path>Aircraft/Boeing314/Sounds/engine_idle.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[2]/running</property>
+     <less-than>
+      <property>engines/engine[2]/mp-inhg</property>
+      <value>6.2</value>
+     </less-than>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.02 </x>
+    <y> -3.97 </y>
+    <z>  2.69 </z>
+   </position>
+   <volume>
+    <property>engines/engine[2]/mp-inhg</property>
+    <factor>0.0095</factor>
+    <min>0.01</min>
+    <max>0.04</max>
+    <offset>0.05</offset>
+   </volume>
+   <pitch>
+    <property>engines/engine[2]/rpm</property>
+    <factor>0.0004</factor>
+    <min>0.1</min>
+    <max>2.0</max>
+    <offset>0.3</offset>
+   </pitch>
+  </engine>
+
+  <!-- ========================================================================
+    Engine 4. (Starboard outer)
+  -->
+  <crank>
+   <name>engstart4</name>
+   <path>Sounds/engstart.wav</path>
+   <condition>
+    <property>engines/engine[3]/cranking</property>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.31 </x>
+    <y> -7.96 </y>
+    <z>  2.91 </z>
+   </position>
+   <volume>
+    <offset>0.1</offset>
+    <max>0.01</max>
+   </volume>
+  </crank>
+
+  <crank>
+   <name>crank4</name>
+   <mode>looped</mode>
+   <path>Sounds/cranking.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[3]/cranking</property>
+     <not>
+      <property>engines/engine[3]/running</property>
+     </not>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.31 </x>
+    <y> -7.96 </y>
+    <z>  2.91 </z>
+   </position>
+   <volume>
+    <offset>0.5</offset>
+   </volume>
+  </crank>
+
+  <crank>
+   <name>cough4</name>
+   <path>Sounds/coughing.wav</path>
+   <condition>
+    <property>engines/engine[3]/running</property>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.31 </x>
+    <y> -7.96 </y>
+    <z>  2.91 </z>
+   </position>
+   <volume>
+    <offset>0.3</offset>
+   </volume>
+  </crank>
+
+  <engine>
+   <name>engine4 external</name>
+   <mode>looped</mode>
+   <path>Aircraft/Boeing314/Sounds/engine_running.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[3]/running</property>
+     <greater-than-equals>
+      <property>engines/engine[3]/mp-inhg</property>
+      <value>6.0</value>
+     </greater-than-equals>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.31 </x>
+    <y> -7.96 </y>
+    <z>  2.91 </z>
+   </position>
+   <volume>
+    <property>engines/engine[3]/mp-inhg</property>
+    <factor>0.0095</factor>
+    <min>0.02</min>
+    <max>0.30</max>
+    <offset>0.07</offset>
+   </volume>
+   <pitch>
+    <property>engines/engine[3]/rpm</property>
+    <factor>0.0004</factor>
+    <min>0.1</min>
+    <max>2.0</max>
+    <offset>0.3</offset>
+   </pitch>
+  </engine>
+
+  <engine>
+   <name>idle4 external</name>
+   <mode>looped</mode>
+   <path>Aircraft/Boeing314/Sounds/engine_idle.wav</path>
+   <condition>
+    <and>
+     <property>engines/engine[3]/running</property>
+     <less-than>
+      <property>engines/engine[3]/mp-inhg</property>
+      <value>6.2</value>
+     </less-than>
+    </and>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  6.31 </x>
+    <y> -7.96 </y>
+    <z>  2.91 </z>
+   </position>
+   <volume>
+    <property>engines/engine[3]/mp-inhg</property>
+    <factor>0.0095</factor>
+    <min>0.01</min>
+    <max>0.04</max>
+    <offset>0.05</offset>
+   </volume>
+   <pitch>
+    <property>engines/engine[3]/rpm</property>
+    <factor>0.0004</factor>
+    <min>0.1</min>
+    <max>2.0</max>
+    <offset>0.3</offset>
+   </pitch>
+  </engine>
+
+ </fx>
+
+</PropertyList>

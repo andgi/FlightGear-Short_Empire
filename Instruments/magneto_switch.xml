@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Short S.23 Empire flying boat for FlightGear.
+
+  Copyright (C) 2008 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license.
+-->
+<PropertyList>
+
+ <!-- Overlay these for the second etc engine. -->
+ <params>
+  <magnetos>controls/engines/engine[0]/magnetos</magnetos>
+ </params>
+
+ <path>../../spitfireIX/Models/Instruments/magneto.ac</path>
+ <texture-path>../../spitfireIX/Models/Instruments/</texture-path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.000 </x-m>
+  <y-m> 0.000 </y-m>
+  <z-m> 0.013 </z-m>
+ </offsets>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>sw_left</object-name>
+  <property alias="../../params/magnetos"/>
+  <interpolation> 
+   <entry><ind>0</ind><dep>-25</dep></entry>
+   <entry><ind>1</ind><dep>25</dep></entry>
+   <entry><ind>2</ind><dep>-25</dep></entry>
+   <entry><ind>3</ind><dep>25</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.000 </x-m>
+   <y-m> 0.000 </y-m>
+   <z-m>-0.013 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>sw_right</object-name>
+  <property alias="../../params/magnetos"/>
+  <interpolation> 
+   <entry><ind>0</ind><dep>-25</dep></entry>
+   <entry><ind>1</ind><dep>-25</dep></entry>
+   <entry><ind>2</ind><dep>25</dep></entry>
+   <entry><ind>3</ind><dep>25</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.000 </x-m>
+   <y-m> 0.000 </y-m>
+   <z-m>-0.013 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation> 
+  <type>material</type>
+  <emission> 
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation>
+
+ <animation> 
+  <type>pick</type>
+  <object-name>sw_left</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <condition>
+     <less-than-equals>
+      <property alias="../../../../../../params/magnetos"/>
+      <value type="int">1</value>
+     </less-than-equals>
+    </condition>
+    <command>property-cycle</command>
+    <property alias="../../../../params/magnetos"/>
+    <value type="int">0</value>
+    <value type="int">1</value>
+   </binding>
+   <binding>
+    <condition>
+     <greater-than-equals>
+      <property alias="../../../../../../params/magnetos"/>
+      <value type="int">2</value>
+     </greater-than-equals>
+    </condition>
+    <command>property-cycle</command>
+    <property alias="../../../../params/magnetos"/>
+    <value type="int">2</value>
+    <value type="int">3</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation> 
+  <type>pick</type>
+  <object-name>sw_right</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <condition>
+     <or>
+      <equals>
+       <property alias="../../../../../../../params/magnetos"/>
+       <value type="int">0</value>
+      </equals>
+      <equals>
+       <property alias="../../../../../../../params/magnetos"/>
+       <value type="int">2</value>
+      </equals>
+     </or>
+    </condition>
+    <command>property-cycle</command>
+    <property alias="../../../../params/magnetos"/>
+    <value type="int">0</value>
+    <value type="int">2</value>
+   </binding>
+   <binding>
+    <condition>
+     <or>
+      <equals>
+       <property alias="../../../../../../../params/magnetos"/>
+       <value type="int">1</value>
+      </equals>
+      <equals>
+       <property alias="../../../../../../../params/magnetos"/>
+       <value type="int">3</value>
+      </equals>
+     </or>
+    </condition>
+    <command>property-cycle</command>
+    <property alias="../../../../params/magnetos"/>
+    <value type="int">1</value>
+    <value type="int">3</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

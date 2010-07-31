@@ -1,0 +1,561 @@
+<?xml version="1.0"?>
+<!--
+  Short S.23 Empire flying boat for FlightGear.
+
+  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <path>Short_Empire.ac</path>
+ <offsets>
+  <!-- x/y/z == forward/left/up due to the heading offset. -->
+  <heading-deg>180</heading-deg>
+  <x-m> 0.00 </x-m>
+  <z-m> 0.00 </z-m>
+ </offsets>
+
+ <!-- Livery selection =====================================================-->
+ <animation>
+  <type>material</type>
+  <object-name>Fuselage</object-name>
+  <property-base>sim/model/livery</property-base>
+  <texture-prop>texture</texture-prop>
+  <texture>Canopus-fuselage.png</texture>
+ </animation>
+
+ <!-- Interior. -->
+ <model>
+  <name>Interior</name>
+  <path>Aircraft/Short_Empire/Models/Interior/interior.xml</path>
+ </model>
+
+ <!-- Engines and Propellers. -->
+ <model>
+  <name>Port Outer Propeller</name>
+  <path>Aircraft/Short_Empire/Models/propeller.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.31 </x-m>
+   <y-m>  7.96 </y-m>
+   <z-m>  2.91 </z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <engine-rpm type="string">engines/engine[0]/rpm</engine-rpm>
+   </params>
+  </overlay>
+ </model>
+ <model>
+  <name>Port Outer Engine</name>
+  <path>Aircraft/Short_Empire/Models/PegasusXc/PegasusXc.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.31 </x-m>
+   <y-m>  7.96 </y-m>
+   <z-m>  2.91 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Port Inner Propeller</name>
+  <path>Aircraft/Short_Empire/Models/propeller.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.02 </x-m>
+   <y-m>  3.97 </y-m>
+   <z-m>  2.69 </z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <engine-rpm type="string">engines/engine[1]/rpm</engine-rpm>
+   </params>
+  </overlay>
+ </model>
+ <model>
+  <name>Port Inner Engine</name>
+  <path>Aircraft/Short_Empire/Models/PegasusXc/PegasusXc.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.02 </x-m>
+   <y-m>  3.97 </y-m>
+   <z-m>  2.69 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Starboard Inner Propeller</name>
+  <path>Aircraft/Short_Empire/Models/propeller.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.02 </x-m>
+   <y-m> -3.97 </y-m>
+   <z-m>  2.69 </z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <engine-rpm type="string">engines/engine[2]/rpm</engine-rpm>
+   </params>
+  </overlay>
+ </model>
+ <model>
+  <name>Starboard Inner Engine</name>
+  <path>Aircraft/Short_Empire/Models/PegasusXc/PegasusXc.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.02 </x-m>
+   <y-m> -3.97 </y-m>
+   <z-m>  2.69 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Starboard Outer Propeller</name>
+  <path>Aircraft/Short_Empire/Models/propeller.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.31 </x-m>
+   <y-m> -7.96 </y-m>
+   <z-m>  2.91 </z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <engine-rpm type="string">engines/engine[3]/rpm</engine-rpm>
+   </params>
+  </overlay>
+ </model>
+ <model>
+  <name>Starboard Outer Engine</name>
+  <path>Aircraft/Short_Empire/Models/PegasusXc/PegasusXc.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.31 </x-m>
+   <y-m> -7.96 </y-m>
+   <z-m>  2.91 </z-m>
+  </offsets>
+ </model>
+
+
+ <!-- Flight control surface animations ====================================-->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>elevators</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>18.0</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-18.0</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m> -24.94 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  3.28 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>rudder</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>-22.5</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>22.5</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m> -24.88 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.00 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 0.0 </y>
+   <z> 1.0 </z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>left_aileron</object-name>
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>19.5</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-19.5</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x1-m> -11.20 </x1-m>
+   <y1-m>   9.66 </y1-m>
+   <z1-m>   2.58 </z1-m>
+   <x2-m> -10.955 </x2-m>
+   <y2-m>  13.340 </y2-m>
+   <z2-m>   2.823 </z2-m>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>right_aileron</object-name>
+  <property>surface-positions/right-aileron-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>19.5</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-19.5</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x1-m> -11.20 </x1-m>
+   <y1-m>  -9.66 </y1-m>
+   <z1-m>   2.58 </z1-m>
+   <x2-m> -10.955 </x2-m>
+   <y2-m> -13.340 </y2-m>
+   <z2-m>   2.823 </z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>left_flap</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>25.0</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x1-m> -12.33 </x1-m>
+   <y1-m>   9.52 </y1-m>
+   <z1-m>   0.72 </z1-m>
+   <x2-m> -12.89 </x2-m>
+   <y2-m>   1.58 </y2-m>
+   <z2-m>  -0.47 </z2-m>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>right_flap</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>25.0</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x1-m> -12.89 </x1-m>
+   <y1-m>  -1.58 </y1-m>
+   <z1-m>  -0.47 </z1-m>
+   <x2-m> -12.33 </x2-m>
+   <y2-m>  -9.52 </y2-m>
+   <z2-m>   0.72 </z2-m>
+  </axis>
+ </animation>
+
+ <!-- Shaders -->
+ <!-- animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>chrome2.png</texture>
+  <object-name>wing</object-name>
+  <object-name>Fuselage</object-name>
+ </animation -->
+
+ <!-- Particle effects -->
+ <model>
+  <name>Step 1</name>
+  <overlay>
+   <particlesystem>
+    <condition>
+     <greater-than>
+      <property>fdm/jsbsim/hydro/coefficients/C_Delta</property>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <shooter>
+     <phi-min-deg>90.0</phi-min-deg>
+     <phi-max-deg>90.0</phi-max-deg>
+    </shooter>
+    <particle>
+     <end>
+      <size>
+       <value>0.50</value>
+       <spread>0.2</spread>
+      </size>
+     </end>
+     <life-sec>
+      <value>10</value>
+     </life-sec>
+    </particle>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/Short_Empire/Models/Effects/wake.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <x-m>  -9.80 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m>  -1.84 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Step 2</name>
+  <overlay>
+   <particlesystem>
+    <condition>
+     <greater-than>
+      <property>fdm/jsbsim/hydro/coefficients/C_Delta</property>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <shooter>
+     <phi-min-deg>-90.0</phi-min-deg>
+     <phi-max-deg>-90.0</phi-max-deg>
+    </shooter>
+    <particle>
+     <end>
+      <size>
+       <value>0.50</value>
+       <spread>0.2</spread>
+      </size>
+     </end>
+     <life-sec>
+      <value>10</value>
+     </life-sec>
+    </particle>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/Short_Empire/Models/Effects/wake.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <x-m>  -9.80 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m>  -1.84 </z-m>
+  </offsets>
+ </model>
+
+ <animation>
+  <type>translate</type>
+  <object-name>Step 1</object-name>
+  <object-name>Step 2</object-name>
+  <property>fdm/jsbsim/hydro/height-agl-ft</property>
+  <factor>-0.3048</factor>
+  <offset-m>2.10</offset-m>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <model>
+  <name>Left float 1</name>
+  <overlay>
+   <particlesystem>
+    <condition>
+     <greater-than>
+      <property>fdm/jsbsim/hydro/left-float-submersion-ft</property>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <shooter>
+     <phi-min-deg>90.0</phi-min-deg>
+     <phi-max-deg>90.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/Short_Empire/Models/Effects/wake.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -8.76 </x-m>
+   <y-m>  9.79 </y-m>
+   <z-m> -0.20 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Left float 2</name>
+  <overlay>
+   <particlesystem>
+    <condition>
+     <greater-than>
+      <property>fdm/jsbsim/hydro/left-float-submersion-ft</property>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <shooter>
+     <phi-min-deg>-90.0</phi-min-deg>
+     <phi-max-deg>-90.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/Short_Empire/Models/Effects/wake.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -8.76 </x-m>
+   <y-m>  9.79 </y-m>
+   <z-m> -0.20 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Right float 1</name>
+  <overlay>
+   <particlesystem>
+    <condition>
+     <greater-than>
+      <property>fdm/jsbsim/hydro/right-float-submersion-ft</property>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <shooter>
+     <phi-min-deg>90.0</phi-min-deg>
+     <phi-max-deg>90.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/Short_Empire/Models/Effects/wake.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -8.76 </x-m>
+   <y-m> -9.79 </y-m>
+   <z-m> -0.20 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Right float 2</name>
+  <overlay>
+   <particlesystem>
+    <condition>
+     <greater-than>
+      <property>fdm/jsbsim/hydro/right-float-submersion-ft</property>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <shooter>
+     <phi-min-deg>-90.0</phi-min-deg>
+     <phi-max-deg>-90.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/Short_Empire/Models/Effects/wake.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -8.76 </x-m>
+   <y-m> -9.79 </y-m>
+   <z-m> -0.20 </z-m>
+  </offsets>
+ </model>
+
+ <!-- LOD for the model as a whole =========================================-->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>15000</max-m>
+ </animation>
+
+ <nasal>
+  <load>
+##############################################################################
+# The on-load Nasal is not executed when this file is loaded as the user
+# aircraft.
+##############################################################################
+var rplayer = cmdarg();
+print("LOAD Short_Empire", rplayer.getPath());
+
+# Set up property aliases for animations.
+rplayer.getNode("fdm/jsbsim/hydro/coefficients/C_Delta", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[0]"));
+rplayer.getNode("fdm/jsbsim/hydro/height-agl-ft", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[1]"));
+rplayer.getNode("fdm/jsbsim/hydro/left-float-submersion-ft", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[2]"));
+rplayer.getNode("fdm/jsbsim/hydro/right-float-submersion-ft", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[3]"));
+
+# Set up livery support.
+var livery_update =
+  aircraft.livery_update.new("Aircraft/Short_Empire/Models/Liveries", 10);
+
+##############################################################################
+  </load>
+  <unload>
+##############################################################################
+var rplayer = cmdarg();
+print("UNLOAD Short_Empire ", rplayer.getPath());
+# Stop the livery support.
+livery_update.stop();
+##############################################################################
+  </unload>
+ </nasal>
+
+
+</PropertyList>

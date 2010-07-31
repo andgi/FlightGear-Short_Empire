@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<!-- air speed indicator 400 kts.
+  Copyright (C) 2008  AJ MacLeod.
+  Calibrated by Anders Gidenstam.
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- Overlay these for the second ASI etc. -->
+ <params>
+  <indicated-speed-kt>instrumentation/airspeed-indicator/indicated-speed-kt</indicated-speed-kt>
+ </params>
+
+ <path>asi.ac</path>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>asi-Needle1</object-name>
+  <property alias="../../params/indicated-speed-kt"/>
+  <interpolation>
+   <entry><ind>0.0</ind><dep>0.0</dep></entry>      <!--   0 mph -->
+   <entry><ind>10.0</ind><dep>0.0</dep></entry>     <!-- slow start -->
+   <entry><ind>52.14</ind><dep>26.0</dep></entry>   <!--  60 mph -->
+   <entry><ind>69.52</ind><dep>44.0</dep></entry>   <!--  80 mph -->
+   <entry><ind>86.90</ind><dep>67.0</dep></entry>   <!-- 100 mph -->
+   <entry><ind>104.28</ind><dep>98.0</dep></entry>  <!-- 120 mph -->
+   <entry><ind>121.66</ind><dep>134.0</dep></entry> <!-- 140 mph -->
+   <entry><ind>139.04</ind><dep>172.0</dep></entry> <!-- 160 mph -->
+   <entry><ind>156.41</ind><dep>210.0</dep></entry> <!-- 180 mph -->
+   <entry><ind>173.79</ind><dep>255.0</dep></entry> <!-- 200 mph -->
+   <entry><ind>191.17</ind><dep>300.0</dep></entry> <!-- 220 mph -->
+   <entry><ind>208.55</ind><dep>344.0</dep></entry> <!-- 240 mph -->
+   <entry><ind>225.93</ind><dep>386.0</dep></entry> <!-- 260 mph -->
+   <entry><ind>243.31</ind><dep>421.0</dep></entry> <!-- 280 mph -->
+   <entry><ind>260.69</ind><dep>454.0</dep></entry> <!-- 300 mph -->
+   <entry><ind>278.07</ind><dep>481.0</dep></entry> <!-- 320 mph -->
+   <entry><ind>295.45</ind><dep>508.0</dep></entry> <!-- 340 mph -->
+   <entry><ind>312.83</ind><dep>533.0</dep></entry> <!-- 360 mph -->
+   <entry><ind>330.21</ind><dep>557.0</dep></entry> <!-- 380 mph -->
+   <entry><ind>347.59</ind><dep>583.0</dep></entry> <!-- 400 mph -->
+   <entry><ind>434.50</ind><dep>684.0</dep></entry> <!-- 500 mph uncalibrated. -->
+  </interpolation>
+  <center>
+   <x-m>0</x-m>
+   <y-m>0</y-m>
+   <z-m>0</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation> 
+  <type>material</type>
+  <emission> 
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+ 
+</PropertyList>

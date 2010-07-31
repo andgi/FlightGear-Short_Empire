@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+  Short Empire flying boat for FlightGear.
+
+  Copyright (C) 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+ <!-- FlightGear systems configuration. -->
+
+ <!-- Temporary. -->
+ <electrical>
+  <name>electrical</name>
+  <number>0</number>
+  <path>Aircraft/Generic/generic-electrical.xml</path>
+ </electrical>
+
+ <!-- The S.23 had 2 pitots and one static port. [Short:RN-3-1-37]  -->
+ <pitot>
+  <name>pitot</name>
+  <number>0</number>
+ </pitot>
+ <pitot>
+  <name>pitot</name>
+  <number>1</number>
+ </pitot>
+
+ <static>
+  <name>static</name>
+  <number>0</number>
+  <tau>1</tau>
+ </static>
+
+ <!-- According to [Short:RN-3-1-37] there was a vacuum pump on each
+      of the starboard engines. 
+ -->
+ <vacuum>
+  <name>vacuum</name>
+  <number>0</number>
+  <rpm>/engines/engine[2]/rpm</rpm>
+  <scale>1.0</scale>
+ </vacuum>
+
+ <vacuum>
+  <name>vacuum</name>
+  <number>1</number>
+  <rpm>/engines/engine[3]/rpm</rpm>
+  <scale>1.0</scale>
+ </vacuum>
+
+</PropertyList>

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+  Short S.23 Empire flying boat for FlightGear.
+
+  Models and animations are borrowed from the Boeing 314.
+
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+ 
+ <params>
+  <engine-rpm type="string">engines/engine[0]/rpm</engine-rpm>
+ </params>
+
+ <path>propeller.ac</path>
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m>  0.00 </x-m>
+  <y-m>  0.00 </y-m>
+  <z-m>  0.00 </z-m>
+ </offsets>
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>PropellerDisc</object-name>
+ </animation>
+
+
+ <!-- Assumes 1/2 gear ratio -->
+ <animation>
+  <type>spin</type>
+  <object-name>PropellerDisc</object-name>
+  <object-name>PropellerShaft</object-name>
+  <object-name>Propeller</object-name>
+  <property alias="../../params/engine-rpm"/>
+  <factor>0.50</factor>
+  <center>
+   <x-m> 0.0 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </center>
+  <axis>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <animation> 
+  <type>blend</type>
+  <object-name>PropellerDisc</object-name>
+  <property alias="../../params/engine-rpm"/>
+  <factor>0.00015</factor>
+  <offset>-0.5</offset>
+  <min>0.0</min>
+  <max>0.5</max>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Propeller</object-name>
+  <condition>
+   <less-than>
+    <property alias="../../../../params/engine-rpm"/>
+    <value>1800</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>PropellerShaft</object-name>
+  <object-name>PropellerDisc</object-name>
+  <condition>
+   <greater-than-equals>
+    <property alias="../../../../params/engine-rpm"/>
+    <value>1800</value>
+   </greater-than-equals>
+  </condition>
+ </animation>
+
+</PropertyList>

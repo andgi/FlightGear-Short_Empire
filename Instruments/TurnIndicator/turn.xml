@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!-- turn and slip indicator.
+  Copyright (C) 2008  AJ MacLeod.
+  Copyright (C) 2010  Anders Gidenstam.
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList> 
+
+ <!-- Overlay these for the second turn indicator etc. -->
+ <params>
+  <indicated-turn-rate>instrumentation/turn-indicator/indicated-turn-rate</indicated-turn-rate>
+  <indicated-slip-skid>instrumentation/slip-skid-ball/indicated-slip-skid</indicated-slip-skid>
+ </params>
+
+ <path>../../../spitfireIX/Models/Instruments/turn.ac</path>
+ <texture-path>../../../spitfireIX/Models/Instruments/</texture-path>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>Needle1</object-name>
+  <property alias="../../params/indicated-slip-skid"/>
+  <interpolation> 
+   <entry> 
+    <ind>-3</ind>
+    <dep>-30</dep>
+   </entry>
+   <entry> 
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry> 
+    <ind>3</ind>
+    <dep>30</dep>
+   </entry>
+  </interpolation>
+  <axis> 
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation> 
+  <type>rotate</type>
+  <object-name>Needle2</object-name>
+  <property alias="../../params/indicated-turn-rate"/>
+  <interpolation> 
+   <entry> 
+    <ind>-4</ind>
+    <dep>-60</dep>
+   </entry>
+   <entry> 
+    <ind>-3</ind>
+    <dep>-45</dep>
+   </entry>
+   <entry> 
+    <ind>-2</ind>
+    <dep>-30</dep>
+   </entry>
+   <entry> 
+    <ind>-1</ind>
+    <dep>-15</dep>
+   </entry>
+   <entry> 
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry> 
+    <ind>1</ind>
+    <dep>15</dep>
+   </entry>
+   <entry> 
+    <ind>2</ind>
+    <dep>30</dep>
+   </entry>
+   <entry> 
+    <ind>3</ind>
+    <dep>45</dep>
+   </entry>
+   <entry> 
+    <ind>4</ind>
+    <dep>60</dep>
+   </entry>
+  </interpolation>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation> 
+  <type>material</type>
+  <emission> 
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation>
+ <animation> 
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

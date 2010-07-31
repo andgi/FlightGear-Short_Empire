@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!-- compass / directional indicator.
+  Copyright (C) 2008  AJ MacLeod
+  Copyright (C) 2008 - 2010  Anders Gidenstam.
+  Converted to gyro driven directional indicator by Anders Gidenstam.
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList> 
+
+ <!-- Overlay these for the second directional gyro etc. -->
+ <params>
+  <indicated-heading-deg>instrumentation/heading-indicator/indicated-heading-deg</indicated-heading-deg>
+  <offset-deg>instrumentation/heading-indicator/offset-deg</offset-deg>
+ </params>
+
+
+ <path>directional_indicator.ac</path>
+ <animation> 
+  <type>rotate</type>
+  <object-name>Compass_scale</object-name>
+  <property alias="../../params/indicated-heading-deg"/>
+  <center> 
+   <x-m>-0.02725</x-m>
+   <y-m>0</y-m>
+   <z-m>0</z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+ <animation> 
+  <type>material</type>
+  <emission> 
+   <factor-prop>/controls/lighting/panel-norm</factor-prop>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>knob</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/offset-deg"/>
+    <step>1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/offset-deg"/>
+    <step>-1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/offset-deg"/>
+    <step>-1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/offset-deg"/>
+    <step>1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>

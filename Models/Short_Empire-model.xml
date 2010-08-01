@@ -151,6 +151,45 @@
   </offsets>
  </model>
 
+ <!-- Doors and hatches animations =========================================-->
+ <animation> 
+  <type>pick</type>
+  <object-name>astro_hatch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>nasal</command>
+    <script>
+      ShortEmpire.astro_hatch.toggle();
+    </script>
+   </binding>
+  </action>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>astro_hatch</object-name>
+  <property>sim/model/doors/astro-hatch/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-125.0</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x1-m> -3.20 </x1-m>
+   <y1-m> -0.62 </y1-m>
+   <z1-m>  2.46 </z1-m>
+   <x2-m> -2.92 </x2-m>
+   <y2-m> -0.62 </y2-m>
+   <z2-m>  2.41 </z2-m>
+  </axis>
+ </animation>
+
 
  <!-- Flight control surface animations ====================================-->
 

@@ -1,0 +1,60 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<!--
+  Short Empire flying boat for FlightGear.
+
+  Copyright (C) 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license v2 or later.
+-->
+<PropertyList>
+
+ <weight>
+  <name type="string">Pilot (left)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">300.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Pilot (right)</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">300.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Steward</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">300.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Flight Clerk</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">300.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">W/T Operator</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">300.0</max-lb>
+ </weight>
+
+ <weight>
+  <name type="string">Spar Mail Compartment</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[5]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">5000.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Forward Mail Compartment</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[6]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">5000.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Rear Freight Compartment</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[7]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">5000.0</max-lb>
+ </weight>
+
+</PropertyList>

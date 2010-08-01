@@ -1,5 +1,5 @@
 ###############################################################################
-## $Id: short-empire.nas,v 1.6 2010-07-31 19:29:37 anders Exp $
+## $Id: short-empire.nas,v 1.8 2010-08-01 21:14:00 anders Exp $
 ##
 ## Short S.23 'C'-class Empire flying boat
 ##
@@ -8,6 +8,9 @@
 ##
 ###############################################################################
 
+###############################################################################
+
+var astro_hatch = aircraft.door.new("sim/model/doors/astro-hatch", 10.0);
 
 ###############################################################################
 var ground = func {
@@ -41,6 +44,7 @@ setlistener("/sim/signals/fdm-initialized", func {
         getNode("/fdm/jsbsim/fcs/outer-engines-cutoff-cmd-norm").
             setDoubleValue(0.0);
 });
+
 
 
 ###############################################################################
@@ -111,7 +115,7 @@ setlistener("/sim/signals/fdm-initialized", func {
     view.manager.register(4, debug_display_view_handler);
     view.manager.register(5, debug_display_view_handler);
     view.manager.register(6, debug_display_view_handler);
-    view.manager.register("Copilot View", debug_display_view_handler);
+    #view.manager.register("Copilot View", debug_display_view_handler);
     print("Debug instrumentation ... check");
 });
 

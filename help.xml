@@ -7,8 +7,25 @@
 -->
 <PropertyList>
 
- <title>Short S.23 'C-class' Empire flying boat</title>
+ <title>Short S.23 'C'-class Empire flying boat</title>
  <!-- Specific keys -->
+ <key>
+  <name>w</name>
+  <desc>In walk views: walk forwards, +shift to run.</desc>
+ </key>
+ <key>
+  <name>s</name>
+  <desc>In walk views: walk backwards.</desc>
+ </key>
+ <key>
+  <name>a</name>
+  <desc>In walk views: side step left, +shift to run.</desc>
+ </key>
+ <key>
+  <name>d</name>
+  <desc>In walk views: side step right, +shift to run.</desc>
+ </key>
+
  <!-- Handling instructions. -->
  <text>
  __________________Engine Start___________________

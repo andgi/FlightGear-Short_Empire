@@ -1,8 +1,8 @@
-<!-- $Id: RAF_Mk9_bubble_sextant.xml,v 1.10 2008-11-22 16:24:16 anders Exp $ -->
+<?xml version="1.0"?>
 <!--
   RAF Mk9 bubble sextant.
 
-  Copyright (C) 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2008 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -80,6 +80,15 @@
    <z-m>  0.000 </z-m>
   </center>
  </animation> 
+
+ <!-- If the bubble is gone the instrument is unserviceable. -->
+ <animation>
+  <type>select</type>
+  <object-name>bubble</object-name>
+  <condition>
+   <property>instrumentation/sextant/serviceable</property>
+  </condition>
+ </animation>
 
  <!-- ===================================================================== -->
  <!-- 10 deg setting knob -->

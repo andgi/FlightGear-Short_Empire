@@ -2,7 +2,7 @@
 ##
 ##  RAF mk9 bubble sextant.
 ##
-##  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license version 2 or later.
 ##
 ###############################################################################
@@ -31,7 +31,7 @@ var pick_up = func {
     handling.toggle();
     if (handling.enabled) {
         handling.view_angle.setValue(-90.0);
-        handling.view_distance.setValue(VIEW_DISTANCE);
+        handling.view_distance.setValue(2.0*VIEW_DISTANCE);
     }
 }
 
@@ -104,8 +104,8 @@ var sextant = {
         me.setting_deg10.setDoubleValue(0);
         me.bubble = me.base.getNode("bubble-norm", 1);
         me.bubble.setDoubleValue(0);
-        me.servicable = me.base.getNode("servicable", 1);
-        me.servicable.setBoolValue(1);
+        me.serviceable = me.base.getNode("serviceable", 1);
+        me.serviceable.setBoolValue(1);
 
         ## The instrument's orientation in the aircraft frame
         ## and position offset relative its initial position.
@@ -250,7 +250,7 @@ var sextant = {
 };
 
 ###############################################################################
-## Single ton class for handling (i.e. moving / rotating) a sextant.
+## Singleton class for handling (i.e. moving / rotating) a sextant.
 var handling = {
     ##################################################
     init : func (n=0) {
@@ -274,7 +274,7 @@ var handling = {
                      z: src.getNode("y-offset-m").getValue()};
 
         me.view_distance = me.base.getNode("view-distance-m", 1);
-        me.view_distance.setDoubleValue(VIEW_DISTANCE);
+        me.view_distance.setDoubleValue(2.0*VIEW_DISTANCE);
         me.view_angle = me.base.getNode("view-angle-deg", 1);
         me.view_angle.setDoubleValue(0.0);
 
@@ -329,8 +329,8 @@ var handling = {
             setprop("/sim/current-view/field-of-view",
                     me.old_view.getChild("field-of-view").getValue());
 #            view.point.restore();            
-            handling.view_angle.setValue(-90.0);
-            handling.view_distance.setValue(VIEW_DISTANCE);
+            me.view_angle.setValue(-90.0);
+            me.view_distance.setValue(2.0*VIEW_DISTANCE);
         }
     },
     ##################################################

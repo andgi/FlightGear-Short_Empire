@@ -12,7 +12,7 @@
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.29 2010-08-01 20:27:29 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.30 2010-08-02 20:18:25 anders Exp $</aircraft-version>
 
   <flight-model>jsb</flight-model>
   <aero>Short_S23</aero>
@@ -158,6 +158,18 @@
   <engine-rpm-indicator n="1">
    <serviceable type="bool">1</serviceable>
   </engine-rpm-indicator>
+  <altimeter n="1">
+   <serviceable type="bool">1</serviceable>
+  </altimeter>
+  <airspeed-indicator n="1">
+   <serviceable type="bool">1</serviceable>
+  </airspeed-indicator>
+  <turn-indicator n="1">
+   <serviceable type="bool">1</serviceable>
+  </turn-indicator>
+  <slip-skid-ball n="1">
+   <serviceable type="bool">1</serviceable>
+  </slip-skid-ball>
  </instrumentation>
 
  <!-- Map FlightGear control properties to JSBSim control properties. -->
@@ -228,6 +240,29 @@
 
  <input>
   <keyboard include="Systems/keys.xml"/>
+  <!-- Install the sextant controls in mouse mode 0. -->
+  <mice n="0">
+   <mouse n="0">
+    <mode n="0">
+     <x-axis>
+      <binding>
+       <command>nasal</command>
+       <script>
+         RAFmk9sextant.mouseX();
+       </script>
+      </binding>
+     </x-axis>
+     <y-axis>
+      <binding>
+       <command>nasal</command>
+       <script>
+         RAFmk9sextant.mouseY();
+       </script>
+      </binding>
+     </y-axis>
+    </mode>
+   </mouse>
+  </mice>
  </input>
 
 </PropertyList>

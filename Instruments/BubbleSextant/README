@@ -30,7 +30,7 @@ Part 0 - Installing the tools: 3d bubble sextant model for FlightGear
   - The bubble sextant 3d model RAF_Mk9_bubble_sextant.xml need to be
     loaded from the aircraft 3d model file and placed at the center of
     the view it is intended to be used from. For example for a view located
-    100 meter behind and 21 meter above the aircraft origin:
+    2.5 meter behind and 2.0 meter above the aircraft origin:
     (Note that any offsets of the main 3d model needs to be accounted for
     in translating the view position to a 3d model position and that the
     axes order differs.)
@@ -40,9 +40,9 @@ Part 0 - Installing the tools: 3d bubble sextant model for FlightGear
   <name>Bubble_sextant</name>
   <path>Aircraft/Short_Empire/Instruments/BubbleSextant/RAF_Mk9_bubble_sextant.xml</path>
   <offsets>
-   <x-m> 100.00 </x-m>
-   <y-m>   0.00 </y-m>
-   <z-m>  21.00 </z-m>
+   <x-m> 2.50 </x-m>
+   <y-m> 0.50 </y-m>
+   <z-m> 2.00 </z-m>
   </offsets>
  </model>
 
@@ -67,14 +67,41 @@ Part 0 - Installing the tools: 3d bubble sextant model for FlightGear
   </RAFmk9sextant>
  </nasal>
 
-  - To allow fine control of the sextant using the mouse apply mice.xml.diff
-    to data/mice.xml.
+  - To allow fine control of the sextant using the mouse add the following
+    XML snippet to the aircraft's -set file.
     It binds moves movements in mode 0/pointer mode to the sextant.
     alt + move mouse         - precision movement of view direction.
     alt + shift + move mouse - up/down changes the altitude setting of the
                                sextant.
                              - left/right tilts the sextant to align with
                                the horizon.
+
+ <input>
+  <!-- Install the sextant controls in mouse mode 0. -->
+  <mice n="0">
+   <mouse n="0">
+    <mode n="0">
+     <x-axis>
+      <binding>
+       <command>nasal</command>
+       <script>
+         RAFmk9sextant.mouseX();
+       </script>
+      </binding>
+     </x-axis>
+     <y-axis>
+      <binding>
+       <command>nasal</command>
+       <script>
+         RAFmk9sextant.mouseY();
+       </script>
+      </binding>
+     </y-axis>
+    </mode>
+   </mouse>
+  </mice>
+ </input>
+
 
   To correctly measure the altitude of a heavenly body the instrument
   must be level, i.e. the bubble must be centered.

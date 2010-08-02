@@ -7,7 +7,7 @@
 ##
 ###############################################################################
 
-## NOTE: This module SHOULD be loaded as RAFmk9sextant;
+## NOTE: This module MUST be loaded as RAFmk9sextant;
 
 ## You can override these parameters when loading this file.
 #   Field of view when looking through the sextant
@@ -40,9 +40,10 @@ var toggle_look_through = func {
 }
 
 ###############################################################################
-# Bind mouseX() and mouseY() to your mode 0 mouse axes in mice.xml. 
-
+# Bindings for mouse X and Y movements. Install these to the appropriate
+# mouse mode and axes, e.g. in the -set file.
 var mouseX = func {
+    if (!handling.enabled) return;
     if(__kbd.alt.getValue()) {
         var delta = 3*cmdarg().getNode("offset").getValue();
         if(__kbd.shift.getValue() and handling.enabled) {
@@ -63,6 +64,7 @@ var mouseX = func {
 }
 
 var mouseY = func {
+    if (!handling.enabled) return;
     if(__kbd.alt.getValue()) {
         var delta = 3*cmdarg().getNode("offset").getValue();
         if(__kbd.shift.getValue() and handling.enabled) {
@@ -382,6 +384,7 @@ var handling = {
 ###############################################################################
 setlistener("/sim/signals/fdm-initialized", func {
     handling.init();
+    install_mouse_bindings();
 });
 
 ###############################################################################

@@ -9,7 +9,7 @@
  <!-- FlightGear instrumentation configuration. -->
 
  <!-- Air data and gyro instruments according to [Short:RN-3-1-37]. -->
- <!-- The autopilot instruments are not included. -->
+ <!-- The autopilot instruments are not included yet. -->
  <airspeed-indicator>
   <name>airspeed-indicator</name>
   <number>0</number>
@@ -72,7 +72,8 @@
  <heading-indicator>
   <name>heading-indicator</name>
   <number>0</number>
-  <suction>/systems/vacuum/suction-inhg</suction>
+  <suction>/systems/vacuum[0]/suction-inhg</suction>
+  <suction>/systems/vacuum[1]/suction-inhg</suction>
  </heading-indicator>
 
  <magnetic-compass>

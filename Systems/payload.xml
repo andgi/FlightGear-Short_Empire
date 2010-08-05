@@ -57,4 +57,29 @@
   <max-lb type="double">5000.0</max-lb>
  </weight>
 
+ <weight>
+  <name type="string">Passengers in the Forward Cabin</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[8]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">1400.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Passengers in the Spar Cabin</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[9]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">600.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Passengers in the Promenade Cabin</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[10]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">1600.0</max-lb>
+ </weight>
+ <weight>
+  <name type="string">Passengers in the Rear Cabin</name>
+  <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[11]"/>
+  <min-lb type="double">0.0</min-lb>
+  <max-lb type="double">1200.0</max-lb>
+ </weight>
+
 </PropertyList>

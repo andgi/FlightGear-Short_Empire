@@ -12,7 +12,7 @@
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.30 2010-08-02 20:18:25 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.31 2010-08-05 21:54:36 anders Exp $</aircraft-version>
 
   <flight-model>jsb</flight-model>
   <aero>Short_S23</aero>
@@ -31,6 +31,7 @@
    <livery>
     <file type="string">Canopus</file>
    </livery>
+   <mark type="int"/>
   </model>
 
   <!-- Aircraft specific help. -->
@@ -151,6 +152,30 @@
   <fuel-gauge n="1">
    <serviceable type="bool">1</serviceable>
    <indicated-content-lbs type="double">2525</indicated-content-lbs>
+  </fuel-gauge>
+  <fuel-gauge n="2">
+   <serviceable type="bool">1</serviceable>
+   <indicated-content-lbs type="double">1442</indicated-content-lbs>
+  </fuel-gauge>
+  <fuel-gauge n="3">
+   <serviceable type="bool">1</serviceable>
+   <indicated-content-lbs type="double">1442</indicated-content-lbs>
+  </fuel-gauge>
+  <fuel-gauge n="4">
+   <serviceable type="bool">1</serviceable>
+   <indicated-content-lbs type="double">2525</indicated-content-lbs>
+  </fuel-gauge>
+  <fuel-gauge n="5">
+   <serviceable type="bool">1</serviceable>
+   <indicated-content-lbs type="double">2525</indicated-content-lbs>
+  </fuel-gauge>
+  <fuel-gauge n="6">
+   <serviceable type="bool">1</serviceable>
+   <indicated-content-lbs type="double">2246</indicated-content-lbs>
+  </fuel-gauge>
+  <fuel-gauge n="7">
+   <serviceable type="bool">1</serviceable>
+   <indicated-content-lbs type="double">2246</indicated-content-lbs>
   </fuel-gauge>
   <engine-rpm-indicator n="0">
    <serviceable type="bool">1</serviceable>

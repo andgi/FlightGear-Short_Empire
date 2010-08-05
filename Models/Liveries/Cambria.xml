@@ -9,18 +9,18 @@
  <sim>
   <model>
    <livery>
-    <name type="string">Canopus</name>
-    <index type="int">0</index>
-    <texture>Liveries/Canopus-fuselage.png</texture>
+    <name type="string">Cambria</name>
+    <index type="int">2</index>
+    <texture>Liveries/Cambria-fuselage.png</texture>
    </livery>
-   <mark type="int">1</mark>
+   <mark type="int">3</mark>
   </model>
  </sim>
  <fdm>
   <jsbsim>
    <fcs>
     <fuel-system>
-     <mark type="double">1.0</mark>
+     <mark type="double">3.0</mark>
     </fuel-system>
    </fcs>
   </jsbsim>

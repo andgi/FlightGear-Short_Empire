@@ -17,8 +17,9 @@
   <z-m> 0.0 </z-m>
  </offsets>
 
+ <!-- Middle wing tank gauges. Available for Mark I, II and III. -->
  <model>
-  <name>Left tank gauge</name>
+  <name>Left middle wing tank gauge</name>
   <path>Aircraft/Short_Empire/Instruments/TelevelFuelGauge/televel_fuel_gauge.xml</path>
   <offsets>
    <x-m> 0.100</x-m>
@@ -34,7 +35,7 @@
   </overlay>
  </model>
  <model>
-  <name>Right tank gauge</name>
+  <name>Right middle wing tank gauge</name>
   <path>Aircraft/Short_Empire/Instruments/TelevelFuelGauge/televel_fuel_gauge.xml</path>
   <offsets>
    <x-m> 0.100</x-m>
@@ -49,6 +50,186 @@
    </params>
   </overlay>
  </model>
+
+ <!-- Outboard wing tank gauges. Available for Mark II and III. -->
+ <model>
+  <name>Left outboard wing tank gauge</name>
+  <path>Aircraft/Short_Empire/Instruments/TelevelFuelGauge/televel_fuel_gauge.xml</path>
+  <offsets>
+   <x-m> 0.100</x-m>
+   <y-m>-0.150</y-m>
+   <z-m> 1.650</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <tank-content-lbs>consumables/fuel/tank[2]/level-lbs</tank-content-lbs>
+    <indicated-content-lbs>instrumentation/fuel-gauge[2]/indicated-content-lbs</indicated-content-lbs>
+    <serviceable>instrumentation/fuel-gauge[2]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+ <model>
+  <name>Right outboard wing tank gauge</name>
+  <path>Aircraft/Short_Empire/Instruments/TelevelFuelGauge/televel_fuel_gauge.xml</path>
+  <offsets>
+   <x-m> 0.100</x-m>
+   <y-m>-0.570</y-m>
+   <z-m> 1.650</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <tank-content-lbs>consumables/fuel/tank[3]/level-lbs</tank-content-lbs>
+    <indicated-content-lbs>instrumentation/fuel-gauge[3]/indicated-content-lbs</indicated-content-lbs>
+    <serviceable>instrumentation/fuel-gauge[3]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <!-- Inboard wing tank gauges. Available for Mark III. -->
+ <model>
+  <name>Left inboard wing tank gauge</name>
+  <path>Aircraft/Short_Empire/Instruments/TelevelFuelGauge/televel_fuel_gauge.xml</path>
+  <offsets>
+   <x-m> 0.100</x-m>
+   <y-m>-0.175</y-m>
+   <z-m> 1.650</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <tank-content-lbs>consumables/fuel/tank[4]/level-lbs</tank-content-lbs>
+    <indicated-content-lbs>instrumentation/fuel-gauge[4]/indicated-content-lbs</indicated-content-lbs>
+    <serviceable>instrumentation/fuel-gauge[4]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+ <model>
+  <name>Right inboard wing tank gauge</name>
+  <path>Aircraft/Short_Empire/Instruments/TelevelFuelGauge/televel_fuel_gauge.xml</path>
+  <offsets>
+   <x-m> 0.100</x-m>
+   <y-m>-0.545</y-m>
+   <z-m> 1.650</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <tank-content-lbs>consumables/fuel/tank[5]/level-lbs</tank-content-lbs>
+    <indicated-content-lbs>instrumentation/fuel-gauge[5]/indicated-content-lbs</indicated-content-lbs>
+    <serviceable>instrumentation/fuel-gauge[5]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <!-- Fuselage tank gauges. Available for Mark III. -->
+ <model>
+  <name>Left fuselage tank gauge</name>
+  <path>Aircraft/Short_Empire/Instruments/TelevelFuelGauge/televel_fuel_gauge.xml</path>
+  <offsets>
+   <x-m> 0.100</x-m>
+   <y-m>-0.285</y-m>
+   <z-m> 1.650</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <tank-content-lbs>consumables/fuel/tank[6]/level-lbs</tank-content-lbs>
+    <indicated-content-lbs>instrumentation/fuel-gauge[6]/indicated-content-lbs</indicated-content-lbs>
+    <serviceable>instrumentation/fuel-gauge[6]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+ <model>
+  <name>Right fuselage tank gauge</name>
+  <path>Aircraft/Short_Empire/Instruments/TelevelFuelGauge/televel_fuel_gauge.xml</path>
+  <offsets>
+   <x-m> 0.100</x-m>
+   <y-m>-0.435</y-m>
+   <z-m> 1.650</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <tank-content-lbs>consumables/fuel/tank[7]/level-lbs</tank-content-lbs>
+    <indicated-content-lbs>instrumentation/fuel-gauge[7]/indicated-content-lbs</indicated-content-lbs>
+    <serviceable>instrumentation/fuel-gauge[7]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+
+ <animation>
+  <type>select</type>
+  <object-name>Left outboard wing tank gauge</object-name>
+  <object-name>Right outboard wing tank gauge</object-name>
+  <condition>
+   <greater-than>
+    <property>sim/model/mark</property>
+    <value type="int">1</value>
+   </greater-than>     
+  </condition>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>Left outboard wing tank gauge</object-name>
+  <object-name>Left middle wing tank gauge</object-name>
+  <property>sim/model/mark</property>
+  <interpolation>
+   <entry>
+    <ind>1</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>2</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>3</ind>
+    <dep>0.195</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>translate</type>
+  <object-name>Right outboard wing tank gauge</object-name>
+  <object-name>Right middle wing tank gauge</object-name>
+  <property>sim/model/mark</property>
+  <interpolation>
+   <entry>
+    <ind>1</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>2</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>3</ind>
+    <dep>-0.195</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Left inboard wing tank gauge</object-name>
+  <object-name>Right inboard wing tank gauge</object-name>
+  <object-name>Left fuselage tank gauge</object-name>
+  <object-name>Right fuselage tank gauge</object-name>
+  <condition>
+   <greater-than>
+    <property>sim/model/mark</property>
+    <value type="int">2</value>
+   </greater-than>     
+  </condition>
+ </animation>
 
  <animation> 
   <type>range</type>

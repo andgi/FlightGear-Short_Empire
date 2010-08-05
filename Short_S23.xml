@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate> 2008-11-05 </filecreationdate>
-  <version>$Id: Short_S23.xml,v 1.27 2010-07-31 11:51:36 anders Exp $</version>
+  <version>$Id: Short_S23.xml,v 1.28 2010-08-05 21:54:36 anders Exp $</version>
 
   <description> Models a Short S.23 flying boat. </description>
 
@@ -101,13 +101,13 @@
 
 -->
 
- <!--
+ <documentation>
   The origin of the structural frame is at the nose of the aircraft.
   The coordinate system is aligned with the hull datum line.
   "The line of the keel from Frame 10 aft to Frames 20/21 formed the
    hull datum line." [Cassidy:2004:FE]
   Cf. also the 3d model coordinate system in the model XML file.
- -->
+ </documentation>
 
  <metrics>
   <!-- Numbers from DATCOM. Appears to be the theoretical values where not
@@ -150,9 +150,9 @@
  <mass_balance>
   <documentation>
    The inertia was estimated by Aeromatic.
-   CG location X-coordinate based on [Short:RN-3-1-37].
+   CG location X-coordinate is based on [Short:RN-3-1-37].
    However, the document is not very clear. My assumption is that the
-   datum marker plate is located on the bulkhead of frame 15.
+   datum marker plate is located on the bulkhead of frame 15/16.
    Empty weight (incl. oil) according to [Cassidy:2004:FE] p.121.
   </documentation>
   <ixx unit="SLUG*FT2">    251174 </ixx>
@@ -174,7 +174,7 @@
    <location unit="M">
     <x>  2.44 </x>
     <y> -0.5 </y>
-    <z>  1.0 </z>
+    <z>  1.5 </z>
    </location>
   </pointmass>
   <pointmass name="Copilot">
@@ -182,7 +182,7 @@
    <location unit="M">
     <x>  2.44 </x>
     <y>  0.5 </y>
-    <z>  1.0 </z>
+    <z>  1.5 </z>
    </location>
   </pointmass>
   <pointmass name="Steward">
@@ -206,7 +206,7 @@
    <location unit="M">
     <x>  3.2 </x>
     <y> -0.5 </y>
-    <z>  1.0 </z>
+    <z>  1.5 </z>
    </location>
   </pointmass>
 
@@ -216,7 +216,7 @@
    <location unit="M">
     <x>  9.3 </x>
     <y>  0.0 </y>
-    <z>  0.0 </z>
+    <z>  1.5 </z>
    </location>
   </pointmass>
   <pointmass name="Forward mail compartment">
@@ -224,19 +224,51 @@
    <location unit="M">
     <x>  6.2 </x>
     <y>  0.0 </y>
-    <z>  0.0 </z>
+    <z>  1.5 </z>
    </location>
   </pointmass>
   <pointmass name="Rear freight compartment">
-   <weight unit="KG"> 150.0 </weight> <!-- To get CG within the range. -->
+   <weight unit="KG"> 200.0 </weight> <!-- To get CG within the range. -->
    <location unit="M">
     <x> 19.1 </x>
+    <y>  0.0 </y>
+    <z>  1.5 </z>
+   </location>
+  </pointmass>
+
+  <!-- Passengers. -->
+  <pointmass name="Passengers in the Forward Cabin (max 7)">
+   <weight unit="KG"> 0.0 </weight>
+   <location unit="M">
+    <x>  4.2 </x>
+    <y>  0.0 </y>
+    <z> -0.5 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Passengers in the Spar Cabin (max 3)">
+   <weight unit="KG"> 0.0 </weight>
+   <location unit="M">
+    <x>  9.5 </x>
     <y>  0.0 </y>
     <z>  0.0 </z>
    </location>
   </pointmass>
-
-  <!-- Passengers. Skipped for now. -->
+  <pointmass name="Passengers in the Promenade Cabin (max 8)">
+   <weight unit="KG"> 0.0 </weight>
+   <location unit="M">
+    <x> 12.5 </x>
+    <y>  0.0 </y>
+    <z>  0.0 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Passengers in the Rear Cabin (max 6)">
+   <weight unit="KG"> 0.0 </weight>
+   <location unit="M">
+    <x> 15.9 </x>
+    <y>  0.0 </y>
+    <z>  0.0 </z>
+   </location>
+  </pointmass>
 
   <!-- Fixed weights included in tare weight according to [Short:RN-3-1-37]. -->
   <pointmass name="Radio equipment">
@@ -360,6 +392,12 @@
    </orient>
    <feed>0</feed>
    <feed>1</feed>
+   <feed>2</feed>
+   <feed>3</feed>
+   <feed>4</feed>
+   <feed>5</feed>
+   <feed>6</feed>
+   <feed>7</feed>
    <thruster file="prop_deHavilland5000">
     <location unit="M">
      <x>  6.30 </x>
@@ -387,6 +425,12 @@
    </orient>
    <feed>0</feed>
    <feed>1</feed>
+   <feed>2</feed>
+   <feed>3</feed>
+   <feed>4</feed>
+   <feed>5</feed>
+   <feed>6</feed>
+   <feed>7</feed>
    <thruster file="prop_deHavilland5000">
     <location unit="M">
      <x>  6.00 </x>
@@ -414,6 +458,12 @@
    </orient>
    <feed>0</feed>
    <feed>1</feed>
+   <feed>2</feed>
+   <feed>3</feed>
+   <feed>4</feed>
+   <feed>5</feed>
+   <feed>6</feed>
+   <feed>7</feed>
    <thruster file="prop_deHavilland5000">
     <location unit="M">
      <x>  6.00 </x>
@@ -441,6 +491,12 @@
    </orient>
    <feed>0</feed>
    <feed>1</feed>
+   <feed>2</feed>
+   <feed>3</feed>
+   <feed>4</feed>
+   <feed>5</feed>
+   <feed>6</feed>
+   <feed>7</feed>
    <thruster file="prop_deHavilland5000">
     <location unit="M">
      <x>  6.30 </x>
@@ -455,15 +511,35 @@
    </thruster>
   </engine>
 
+  <documentation>
+    The S.23 'boats as delivered (with a few exceptions) came with one of
+    3 different fuel system types. [Cassidy:2004:FE]
+    
+    1D (mk.I standard):
+      one 326 gallon tank in each wing.
+    1A/1C (mk.II Cavalier, Centarus):
+      one 179 and one 326 gallon tank in each wing.
+    1B (mk.III Cambria, Caledonia):
+      one 179, one 326 and one 380 gallon tank in each wing.
+      two 280 gallon tanks between the spar frames in the hull.
+
+    [Cassidy:2004:FE] gives the sizes and capacities of the respective tanks as:
+      Inboard  380 gals. 65.5in. diam., 31.5in. ht.
+      Middle   326 gals. 64in. diam., 28in. ht.
+      Outboard 179 gals. 56.5in. long, 41.75in. wide, 19.5in. ht.
+
+  </documentation>
+
+  <!-- Middle tanks. Present in all 3 fuel systems. -->
   <tank type="FUEL" number="0">
    <location unit="M">
     <x>  9.21 </x>
     <y> -5.35 </y>
     <z>  2.50 </z>
    </location>
-   <radius unit="M"> 1.626 </radius>
-   <capacity unit="LBS"> 2352.00 </capacity>
-   <contents unit="LBS"> 2352.00 </contents>
+   <radius unit="IN"> 32.0 </radius>
+   <capacity unit="LBS"> 2352.0 </capacity>
+   <contents unit="LBS"> 2352.0 </contents>
   </tank>
 
   <tank type="FUEL" number="1">
@@ -472,9 +548,78 @@
     <y>  5.35 </y>
     <z>  2.50 </z>
    </location>
-   <radius unit="M"> 1.626 </radius>
-   <capacity unit="LBS"> 2352.00 </capacity>
-   <contents unit="LBS"> 2352.00 </contents>
+   <radius unit="IN"> 32.0 </radius>
+   <capacity unit="LBS"> 2352.0 </capacity>
+   <contents unit="LBS"> 2352.0 </contents>
+  </tank>
+
+  <!-- Outboard tanks. Present in the 1A/1C and 1B fuel systems. -->
+  <tank type="FUEL" number="2">
+   <location unit="M">
+    <x>  9.21 </x>
+    <y> -6.85 </y>
+    <z>  2.55 </z>
+   </location>
+   <radius unit="IN"> 24.6 </radius>
+   <capacity unit="LBS"> 1291.4 </capacity>
+   <contents unit="LBS"> 0.00 </contents>
+  </tank>
+
+  <tank type="FUEL" number="3">
+   <location unit="M">
+    <x>  9.21 </x>
+    <y>  6.85 </y>
+    <z>  2.55 </z>
+   </location>
+   <radius unit="IN"> 24.6 </radius>
+   <capacity unit="LBS"> 1291.4 </capacity>
+   <contents unit="LBS"> 0.00 </contents>
+  </tank>
+
+  <!-- Inboard tanks. Present in the 1B fuel system. -->
+  <tank type="FUEL" number="4">
+   <location unit="M">
+    <x>  9.21 </x>
+    <y> -2.45 </y>
+    <z>  2.40 </z>
+   </location>
+   <radius unit="IN"> 32.75 </radius>
+   <capacity unit="LBS"> 2741.6 </capacity>
+   <contents unit="LBS"> 0.00 </contents>
+  </tank>
+
+  <tank type="FUEL" number="5">
+   <location unit="M">
+    <x>  9.21 </x>
+    <y>  2.45 </y>
+    <z>  2.40 </z>
+   </location>
+   <radius unit="IN"> 32.75 </radius>
+   <capacity unit="LBS"> 2741.6 </capacity>
+   <contents unit="LBS"> 0.00 </contents>
+  </tank>
+
+  <!-- Fuselage tanks. Present in the 1B fuel system. -->
+  <tank type="FUEL" number="6">
+   <location unit="M">
+    <x>  9.21 </x>
+    <y> -0.72 </y>
+    <z>  2.40 </z>
+   </location>
+   <radius unit="IN"> 34.0 </radius>
+   <capacity unit="LBS"> 2020.1 </capacity>
+   <contents unit="LBS"> 0.00 </contents>
+  </tank>
+
+  <tank type="FUEL" number="7">
+   <location unit="M">
+    <x>  9.21 </x>
+    <y>  0.72 </y>
+    <z>  2.40 </z>
+   </location>
+   <radius unit="IN"> 34.0 </radius>
+   <capacity unit="LBS"> 2020.1 </capacity>
+   <contents unit="LBS"> 0.00 </contents>
   </tank>
 
  </propulsion>
@@ -866,6 +1011,7 @@
 
  <!-- Engine controls. -->
  <system file="engines"/>
+ <system file="fuel-system"/>
 
  <system file="alpha_buffet"/>
  <!-- aerodynamics file="Systems/aeromatic_aero.xml"/ -->

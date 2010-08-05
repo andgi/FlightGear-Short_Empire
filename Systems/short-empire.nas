@@ -27,11 +27,35 @@ setlistener("/sim/signals/fdm-initialized", func {
     copilot.init();
 
     # Force the type and initial value of the aliased control properties.
+    # Unfortunately JSBSim does not write default values to properties that it
+    # finds already exist even though they are of undefined type, as e.g. when
+    # created by aliases.
     props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm").
+        getNode("/fdm/jsbsim/fcs/fuel-system/mark").
             setDoubleValue(1.0);
     props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm").
+        getNode("/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm[0]").
+            setDoubleValue(1.0);
+    props.globals.
+        getNode("/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm[1]").
+            setDoubleValue(1.0);
+    props.globals.
+        getNode("/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm[2]").
+            setDoubleValue(1.0);
+    props.globals.
+        getNode("/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm[3]").
+            setDoubleValue(1.0);
+    props.globals.
+        getNode("/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[0]").
+            setDoubleValue(1.0);
+    props.globals.
+        getNode("/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[1]").
+            setDoubleValue(1.0);
+    props.globals.
+        getNode("/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[2]").
+            setDoubleValue(1.0);
+    props.globals.
+        getNode("/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[3]").
             setDoubleValue(1.0);
     props.globals.
         getNode("/fdm/jsbsim/fcs/fuel-system/balance-cock-cmd-norm").
@@ -108,8 +132,12 @@ var debug_display_view_handler = {
 # Install the debug display for some views.
 setlistener("/sim/signals/fdm-initialized", func {
     view.manager.register(0, debug_display_view_handler);
-    # Do not install it for the copilot as that will override the
-    # WalkView view manager.
+    view.manager.register(1, debug_display_view_handler);
+    view.manager.register(2, debug_display_view_handler);
+    view.manager.register(3, debug_display_view_handler);
+    view.manager.register(4, debug_display_view_handler);
+    view.manager.register(5, debug_display_view_handler);
+    view.manager.register(6, debug_display_view_handler);
     #view.manager.register("Copilot View", debug_display_view_handler);
     print("Debug instrumentation ... check");
 });
@@ -120,8 +148,7 @@ var copilot = {
     init : func {
         me.UPDATE_INTERVAL = 1.73;
         me.loopid = 0;
-        me.alt_agl_prop =
-            props.globals.getNode("fdm/jsbsim/hydro/height-agl-ft");
+        me.alt_agl_prop = props.globals.getNode("/position/altitude-agl-ft");
         me.ground_contact_prop =
             props.globals.getNode("fdm/jsbsim/hydro/coefficients/C_Delta");
         me.alt_agl        = me.alt_agl_prop.getValue();

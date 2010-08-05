@@ -38,12 +38,6 @@
       Has the positions ON and OFF.
     - fcs/inner-engines-cutoff-cmd-norm
     - fcs/outer-engines-cutoff-cmd-norm
-  - Fuel cocks
-    - One for the left tank, one for the right tank and one for balancing.
-    - Positions are OFF and ON.
-    - fcs/fuel-system/left-tank-cock-cmd-norm
-    - fcs/fuel-system/right-tank-cock-cmd-norm
-    - fcs/fuel-system/balance-cock-cmd-norm
  </documentation>
 
  <property value="0.0">fcs/throttle-cmd-norm[0]</property>
@@ -63,10 +57,6 @@
 
  <property value="0.0">fcs/inner-engines-cutoff-cmd-norm</property>
  <property value="0.0">fcs/outer-engines-cutoff-cmd-norm</property>
-
- <property value="1.0">fcs/fuel-system/left-tank-cock-cmd-norm</property>
- <property value="1.0">fcs/fuel-system/right-tank-cock-cmd-norm</property>
- <property value="1.0">fcs/fuel-system/balance-cock-cmd-norm</property>
 
  <channel name="Throttle">
 
@@ -250,26 +240,6 @@
      fcs/advance-cmd-norm[3] GT 0.5
    </test>
    <output>propulsion/engine[3]/blade-angle</output>
-  </switch>
-
- </channel>
-
- <channel name="Fuel system">
-
-  <switch name="fcs/fuel-system/left-tank-cock-pos-norm">
-   <default value="0.0"/>
-   <test value="1.0">
-     fcs/fuel-system/left-tank-cock-cmd-norm GT 0.5
-   </test>
-   <output>propulsion/tank[0]/priority</output>
-  </switch>
-
-  <switch name="fcs/fuel-system/right-tank-cock-pos-norm">
-   <default value="0.0"/>
-   <test value="1.0">
-     fcs/fuel-system/right-tank-cock-cmd-norm GT 0.5
-   </test>
-   <output>propulsion/tank[1]/priority</output>
   </switch>
 
  </channel>

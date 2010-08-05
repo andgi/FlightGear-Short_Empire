@@ -254,11 +254,11 @@ var sextant = {
 ###############################################################################
 ## Singleton class for handling (i.e. moving / rotating) a sextant.
 var handling = {
+    enabled : 0,
     ##################################################
     init : func (n=0) {
         me.UPDATE_INTERVAL = 0.0;
         me.loopid = 0;
-        me.enabled = 0;
         me.lookthrough = 0;
 
         me.base =

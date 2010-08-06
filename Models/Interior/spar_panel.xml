@@ -17,9 +17,9 @@
   <z-m> 0.0 </z-m>
  </offsets>
 
- <!-- Middle wing tank gauges. Available for Mark I, II and III. -->
+ <!-- Centre wing tank gauges. Available for Mark I, II and III. -->
  <model>
-  <name>Left middle wing tank gauge</name>
+  <name>Left centre wing tank gauge</name>
   <path>Aircraft/Short_Empire/Instruments/TelevelFuelGauge/televel_fuel_gauge.xml</path>
   <offsets>
    <x-m> 0.100</x-m>
@@ -35,7 +35,7 @@
   </overlay>
  </model>
  <model>
-  <name>Right middle wing tank gauge</name>
+  <name>Right centre wing tank gauge</name>
   <path>Aircraft/Short_Empire/Instruments/TelevelFuelGauge/televel_fuel_gauge.xml</path>
   <offsets>
    <x-m> 0.100</x-m>
@@ -169,7 +169,7 @@
  <animation>
   <type>translate</type>
   <object-name>Left outboard wing tank gauge</object-name>
-  <object-name>Left middle wing tank gauge</object-name>
+  <object-name>Left centre wing tank gauge</object-name>
   <property>sim/model/mark</property>
   <interpolation>
    <entry>
@@ -194,7 +194,7 @@
  <animation>
   <type>translate</type>
   <object-name>Right outboard wing tank gauge</object-name>
-  <object-name>Right middle wing tank gauge</object-name>
+  <object-name>Right centre wing tank gauge</object-name>
   <property>sim/model/mark</property>
   <interpolation>
    <entry>

@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate> 2008-11-05 </filecreationdate>
-  <version>$Id: Short_S23.xml,v 1.28 2010-08-05 21:54:36 anders Exp $</version>
+  <version>$Id: Short_S23.xml,v 1.29 2010-08-06 22:23:41 anders Exp $</version>
 
   <description> Models a Short S.23 flying boat. </description>
 
@@ -280,6 +280,43 @@
    </location>
   </pointmass>
 
+  <!--
+     Oil tank contents. One mass per engine.
+     These will be controlled by the engine model.
+  -->
+  <pointmass name="Oil Port Outer">
+   <weight unit="LBS"> 117.3 </weight>
+   <location unit="M">
+    <x>  7.6 </x>
+    <y> -8.0 </y>
+    <z>  2.8 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Oil Port Inner">
+   <weight unit="LBS"> 117.3 </weight>
+   <location unit="M">
+    <x>  7.3 </x>
+    <y> -4.0 </y>
+    <z>  2.6 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Oil Starboard Inner">
+   <weight unit="LBS"> 117.3 </weight>
+   <location unit="M">
+    <x>  7.3 </x>
+    <y>  4.0 </y>
+    <z>  2.6 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Oil Starboard Outer">
+   <weight unit="LBS"> 117.3 </weight>
+   <location unit="M">
+    <x>  7.6 </x>
+    <y>  8.0 </y>
+    <z>  2.8 </z>
+   </location>
+  </pointmass>
+
  </mass_balance>
 
  <ground_reactions>
@@ -515,22 +552,26 @@
     The S.23 'boats as delivered (with a few exceptions) came with one of
     3 different fuel system types. [Cassidy:2004:FE]
     
-    1D (mk.I standard):
+    Mk.I (1D) standard:
       one 326 gallon tank in each wing.
-    1A/1C (mk.II Cavalier, Centarus):
+    Mk.II (1A/1C) Cavalier, Centarus:
       one 179 and one 326 gallon tank in each wing.
-    1B (mk.III Cambria, Caledonia):
+    Mk.III (1B) Cambria, Caledonia:
       one 179, one 326 and one 380 gallon tank in each wing.
       two 280 gallon tanks between the spar frames in the hull.
 
     [Cassidy:2004:FE] gives the sizes and capacities of the respective tanks as:
       Inboard  380 gals. 65.5in. diam., 31.5in. ht.
-      Middle   326 gals. 64in. diam., 28in. ht.
+      Centre   326 gals. 64in. diam., 28in. ht.
       Outboard 179 gals. 56.5in. long, 41.75in. wide, 19.5in. ht.
 
+    Oil tanks where placed in the nacelles aft of the firewall[Cassidy:2004:FE].
+      Mk.I   four  13 1/2 gals.
+      Mk.II  four  22 gals.
+      Mk.III eight 18 gals.
   </documentation>
 
-  <!-- Middle tanks. Present in all 3 fuel systems. -->
+  <!-- Centre tanks. Present in all 3 fuel systems. -->
   <tank type="FUEL" number="0">
    <location unit="M">
     <x>  9.21 </x>
@@ -553,7 +594,7 @@
    <contents unit="LBS"> 2352.0 </contents>
   </tank>
 
-  <!-- Outboard tanks. Present in the 1A/1C and 1B fuel systems. -->
+  <!-- Outboard tanks. Present in the Mark II and Mark III fuel systems. -->
   <tank type="FUEL" number="2">
    <location unit="M">
     <x>  9.21 </x>
@@ -576,7 +617,7 @@
    <contents unit="LBS"> 0.00 </contents>
   </tank>
 
-  <!-- Inboard tanks. Present in the 1B fuel system. -->
+  <!-- Inboard tanks. Present in the Mark III fuel system. -->
   <tank type="FUEL" number="4">
    <location unit="M">
     <x>  9.21 </x>
@@ -599,7 +640,7 @@
    <contents unit="LBS"> 0.00 </contents>
   </tank>
 
-  <!-- Fuselage tanks. Present in the 1B fuel system. -->
+  <!-- Fuselage tanks. Present in the Mark III fuel system. -->
   <tank type="FUEL" number="6">
    <location unit="M">
     <x>  9.21 </x>

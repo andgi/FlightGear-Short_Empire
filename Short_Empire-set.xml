@@ -12,7 +12,7 @@
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.31 2010-08-05 21:54:36 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.32 2010-08-06 22:23:41 anders Exp $</aircraft-version>
 
   <flight-model>jsb</flight-model>
   <aero>Short_S23</aero>
@@ -224,8 +224,27 @@
    <outer-cutoff alias="/fdm/jsbsim/fcs/outer-engines-cutoff-cmd-norm"/>
   </engines>
   <fuel>
-   <left-tank-cock alias="/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm"/>
-   <right-tank-cock alias="/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm"/>
+   <!-- Centre wing tanks -->
+   <left-tank-cock n="0"
+       alias="/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm"/>
+   <right-tank-cock n="0"
+       alias="/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm"/>
+   <!-- Outboard wing tanks -->
+   <left-tank-cock n="1"
+       alias="/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm[1]"/>
+   <right-tank-cock n="1"
+       alias="/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[1]"/>
+   <!-- Inboard wing tanks -->
+   <left-tank-cock n="2"
+       alias="/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm[2]"/>
+   <right-tank-cock n="2"
+       alias="/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[2]"/>
+   <!-- Fuselage tanks -->
+   <left-tank-cock n="3"
+       alias="/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm[3]"/>
+   <right-tank-cock n="3"
+       alias="/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[3]"/>
+
    <balance-cock alias="/fdm/jsbsim/fcs/fuel-system/balance-cock-cmd-norm"/>
   </fuel>
  </controls>

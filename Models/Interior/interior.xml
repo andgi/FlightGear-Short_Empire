@@ -958,11 +958,11 @@
   </axis>
  </animation>
 
- <!-- Animations for the fuel cock levers. -->
+ <!-- Animations for the fuel cock levers present in all fuel systems. -->
  <animation> 
   <type>pick</type>
-  <object-name>fuel_lever_knob_L</object-name>
-  <object-name>fuel_lever_arm_L</object-name>
+  <object-name>fuel_lever_knob_PC</object-name>
+  <object-name>fuel_lever_arm_PC</object-name>
   <action>
    <button>0</button>
    <repeatable>false</repeatable>
@@ -976,8 +976,10 @@
  </animation>
  <animation> 
   <type>pick</type>
-  <object-name>fuel_lever_knob_M</object-name>
-  <object-name>fuel_lever_arm_M</object-name>
+  <object-name>fuel_lever_knob_B</object-name>
+  <object-name>fuel_lever_arm_B</object-name>
+  <object-name>fuel_lever_knob_B2</object-name>
+  <object-name>fuel_lever_arm_B2</object-name>
   <action>
    <button>0</button>
    <repeatable>false</repeatable>
@@ -991,8 +993,8 @@
  </animation>
  <animation> 
   <type>pick</type>
-  <object-name>fuel_lever_knob_R</object-name>
-  <object-name>fuel_lever_arm_R</object-name>
+  <object-name>fuel_lever_knob_SC</object-name>
+  <object-name>fuel_lever_arm_SC</object-name>
   <action>
    <button>0</button>
    <repeatable>false</repeatable>
@@ -1007,8 +1009,8 @@
 
  <animation>
   <type>rotate</type>
-  <object-name>fuel_lever_knob_L</object-name>
-  <object-name>fuel_lever_arm_L</object-name>
+  <object-name>fuel_lever_knob_PC</object-name>
+  <object-name>fuel_lever_arm_PC</object-name>
   <property>controls/fuel/left-tank-cock</property>
   <factor>90.0</factor>
   <offset-deg>0.0</offset-deg>
@@ -1025,8 +1027,8 @@
  </animation>
  <animation>
   <type>rotate</type>
-  <object-name>fuel_lever_knob_M</object-name>
-  <object-name>fuel_lever_arm_M</object-name>
+  <object-name>fuel_lever_knob_B</object-name>
+  <object-name>fuel_lever_arm_B</object-name>
   <property>controls/fuel/balance-cock</property>
   <factor>90.0</factor>
   <offset-deg>0.0</offset-deg>
@@ -1043,8 +1045,8 @@
  </animation>
  <animation>
   <type>rotate</type>
-  <object-name>fuel_lever_knob_R</object-name>
-  <object-name>fuel_lever_arm_R</object-name>
+  <object-name>fuel_lever_knob_SC</object-name>
+  <object-name>fuel_lever_arm_SC</object-name>
   <property>controls/fuel/right-tank-cock</property>
   <factor>90.0</factor>
   <offset-deg>0.0</offset-deg>
@@ -1060,6 +1062,290 @@
   </axis>
  </animation>
 
+ <!-- Animations for the fuel cock levers present in the Mark II and III
+      fuel systems.
+ -->
+ <animation> 
+  <type>pick</type>
+  <object-name>fuel_lever_knob_PO</object-name>
+  <object-name>fuel_lever_arm_PO</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-cycle</command>
+    <property>controls/fuel/left-tank-cock[1]</property>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
+   </binding>
+  </action>
+ </animation>
+ <animation> 
+  <type>pick</type>
+  <object-name>fuel_lever_knob_SO</object-name>
+  <object-name>fuel_lever_arm_SO</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-cycle</command>
+    <property>controls/fuel/right-tank-cock[1]</property>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>fuel_lever_knob_PO</object-name>
+  <object-name>fuel_lever_arm_PO</object-name>
+  <property>controls/fuel/left-tank-cock[1]</property>
+  <factor>90.0</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> -7.90 </x-m>
+   <y-m> -0.90 </y-m>
+   <z-m>  2.89 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>fuel_lever_knob_SO</object-name>
+  <object-name>fuel_lever_arm_SO</object-name>
+  <property>controls/fuel/right-tank-cock[1]</property>
+  <factor>90.0</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> -7.90 </x-m>
+   <y-m> -0.90 </y-m>
+   <z-m>  2.89 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <!-- Animations for the fuel cock levers present in the Mark III
+      fuel system.
+ -->
+ <animation> 
+  <type>pick</type>
+  <object-name>fuel_lever_knob_PI</object-name>
+  <object-name>fuel_lever_arm_PI</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-cycle</command>
+    <property>controls/fuel/left-tank-cock[2]</property>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
+   </binding>
+  </action>
+ </animation>
+ <animation> 
+  <type>pick</type>
+  <object-name>fuel_lever_knob_SI</object-name>
+  <object-name>fuel_lever_arm_SI</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-cycle</command>
+    <property>controls/fuel/right-tank-cock[2]</property>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
+   </binding>
+  </action>
+ </animation>
+ <animation> 
+  <type>pick</type>
+  <object-name>fuel_lever_knob_PF</object-name>
+  <object-name>fuel_lever_arm_PF</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-cycle</command>
+    <property>controls/fuel/left-tank-cock[3]</property>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
+   </binding>
+  </action>
+ </animation>
+ <animation> 
+  <type>pick</type>
+  <object-name>fuel_lever_knob_SF</object-name>
+  <object-name>fuel_lever_arm_SF</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-cycle</command>
+    <property>controls/fuel/right-tank-cock[3]</property>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>fuel_lever_knob_SI</object-name>
+  <object-name>fuel_lever_arm_SI</object-name>
+  <property>controls/fuel/right-tank-cock[2]</property>
+  <factor>90.0</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> -7.90 </x-m>
+   <y-m> -0.90 </y-m>
+   <z-m>  2.89 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>fuel_lever_knob_PI</object-name>
+  <object-name>fuel_lever_arm_PI</object-name>
+  <property>controls/fuel/left-tank-cock[2]</property>
+  <factor>90.0</factor>
+  <offset-deg>-45.0</offset-deg>
+  <center>
+   <x-m> -8.20 </x-m>
+   <y-m> -0.40 </y-m>
+   <z-m>  2.40 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>fuel_lever_knob_PF</object-name>
+  <object-name>fuel_lever_arm_PF</object-name>
+  <property>controls/fuel/left-tank-cock[3]</property>
+  <factor>90.0</factor>
+  <offset-deg>-45.0</offset-deg>
+  <center>
+   <x-m> -8.20 </x-m>
+   <y-m> -0.40 </y-m>
+   <z-m>  2.40 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>fuel_lever_knob_B2</object-name>
+  <object-name>fuel_lever_arm_B2</object-name>
+  <property>controls/fuel/balance-cock</property>
+  <factor>90.0</factor>
+  <offset-deg>-45.0</offset-deg>
+  <center>
+   <x-m> -8.20 </x-m>
+   <y-m> -0.40 </y-m>
+   <z-m>  2.40 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>fuel_lever_knob_SF</object-name>
+  <object-name>fuel_lever_arm_SF</object-name>
+  <property>controls/fuel/right-tank-cock[3]</property>
+  <factor>90.0</factor>
+  <offset-deg>-45.0</offset-deg>
+  <center>
+   <x-m> -8.20 </x-m>
+   <y-m> -0.40 </y-m>
+   <z-m>  2.40 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+
+ <!-- Select animations for fuel system dependent items. -->
+ <animation>
+  <type>select</type>
+  <object-name>fuel_selector_box_mk1</object-name>
+  <condition>
+   <less-than>
+    <property>sim/model/mark</property>
+    <value type="int">2</value>
+   </less-than>     
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>fuel_selector_box_mk2</object-name>
+  <object-name>fuel_lever_knob_PO</object-name>
+  <object-name>fuel_lever_knob_SO</object-name>
+  <object-name>fuel_lever_arm_PO</object-name>
+  <object-name>fuel_lever_arm_SO</object-name>
+  <condition>
+   <greater-than>
+    <property>sim/model/mark</property>
+    <value type="int">1</value>
+   </greater-than>     
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>fuel_lever_knob_B</object-name>
+  <object-name>fuel_lever_arm_B</object-name>
+  <condition>
+   <less-than>
+    <property>sim/model/mark</property>
+    <value type="int">3</value>
+   </less-than>     
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>fuel_selector_box_mk3</object-name>
+  <object-name>fuel_lever_knob_PI</object-name>
+  <object-name>fuel_lever_knob_PF</object-name>
+  <object-name>fuel_lever_knob_SI</object-name>
+  <object-name>fuel_lever_knob_SF</object-name>
+  <object-name>fuel_lever_arm_PI</object-name>
+  <object-name>fuel_lever_arm_PF</object-name>
+  <object-name>fuel_lever_arm_SI</object-name>
+  <object-name>fuel_lever_arm_SF</object-name>
+  <object-name>fuel_lever_knob_B2</object-name>
+  <object-name>fuel_lever_arm_B2</object-name>
+  <condition>
+   <greater-than>
+    <property>sim/model/mark</property>
+    <value type="int">2</value>
+   </greater-than>     
+  </condition>
+ </animation>
 
  <!-- LOD -->
  <animation> 

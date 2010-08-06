@@ -26,20 +26,20 @@
    The S.23 'boats as delivered (with a few exceptions) came with one of
    3 different fuel system types. [Cassidy:2004:FE]
     
-   1D (Mk.I standard):
-     one 326 gallon tank in each wing.
-   1A/1C (Mk.II Cavalier, Centarus):
-     one 179 and one 326 gallon tank in each wing.
-   1B (Mk.III Cambria, Caledonia):
-     one 179, one 326 and one 380 gallon tank in each wing.
-     two 280 gallon tanks between the spar frames in the hull.
+    Mk.I (1D) standard:
+      one 326 gallon tank in each wing.
+    Mk.II (1A/1C) Cavalier, Centarus:
+      one 179 and one 326 gallon tank in each wing.
+    Mk.III (1B) Cambria, Caledonia:
+      one 179, one 326 and one 380 gallon tank in each wing.
+      two 280 gallon tanks between the spar frames in the hull.
  </documentation>
 
  <property value="1.0">fcs/fuel-system/mark</property>
- <!-- 1, 2 or 3 for Mark I, Mark II and Mark III. -->
+ <!-- 1, 2 or 3 for Mark I, Mark II or Mark III. -->
 
  <documentation>
-   - Fuel cocks for fuel system 1D:
+   - Fuel cocks for Mark I fuel system:
      - One for the left tank, one for the right tank and one for balancing.
      - Positions are OFF and ON.
      - fcs/fuel-system/left-tank-cock-cmd-norm
@@ -62,7 +62,7 @@
  <property value="1.0">fcs/fuel-system/left-tank-cock-cmd-norm[3]</property>
  <property value="1.0">fcs/fuel-system/right-tank-cock-cmd-norm[3]</property>
 
- <channel name="Middle wing tanks">
+ <channel name="Centre wing tanks">
 
   <switch name="fcs/fuel-system/left-tank-cock-pos-norm">
    <default value="0.0"/>

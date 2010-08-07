@@ -219,47 +219,70 @@
     "The First Officer's compass was of a similar type and in a
     similar position to the Captain's compass." [Cassidy:2004:FE](pp.72)
  -->
-<!-- These are NOT RPM indicators. Most likely they are oil pressure gauges.
+
  <model>
-  <name>RPM Indicator 1</name>
-  <path>Aircraft/Short_Empire/Instruments/rpm1.xml</path>
+  <name>Oil Pressure Port Outer</name>
+  <path>Aircraft/Short_Empire/Instruments/OilPressure/oil_pressure.xml</path>
   <offsets>
-   <x-m> 0.010</x-m>
+   <x-m> 0.000</x-m>
    <y-m> 0.250</y-m>
    <z-m> 0.380</z-m>
   </offsets>
+  <overlay>
+   <params>
+    <pressure-psi>engines/engine[0]/oil-pressure-psi</pressure-psi>
+    <serviceable>instrumentation/oil-pressure-gauge[0]/serviceable</serviceable>
+   </params>
+  </overlay>
  </model>
 
  <model>
-  <name>RPM Indicator 2</name>
-  <path>Aircraft/Short_Empire/Instruments/rpm2.xml</path>
+  <name>Oil Pressure Port Inner</name>
+  <path>Aircraft/Short_Empire/Instruments/OilPressure/oil_pressure.xml</path>
   <offsets>
-   <x-m> 0.010</x-m>
+   <x-m> 0.000</x-m>
    <y-m> 0.320</y-m>
    <z-m> 0.380</z-m>
   </offsets>
+  <overlay>
+   <params>
+    <pressure-psi>engines/engine[1]/oil-pressure-psi</pressure-psi>
+    <serviceable>instrumentation/oil-pressure-gauge[1]/serviceable</serviceable>
+   </params>
+  </overlay>
  </model>
 
  <model>
-  <name>RPM Indicator 3</name>
-  <path>Aircraft/Short_Empire/Instruments/rpm3.xml</path>
+  <name>Oil Pressure Starboard Inner</name>
+  <path>Aircraft/Short_Empire/Instruments/OilPressure/oil_pressure.xml</path>
   <offsets>
-   <x-m> 0.010</x-m>
+   <x-m> 0.000</x-m>
    <y-m> 0.390</y-m>
    <z-m> 0.380</z-m>
   </offsets>
+  <overlay>
+   <params>
+    <pressure-psi>engines/engine[2]/oil-pressure-psi</pressure-psi>
+    <serviceable>instrumentation/oil-pressure-gauge[2]/serviceable</serviceable>
+   </params>
+  </overlay>
  </model>
 
  <model>
-  <name>RPM Indicator 4</name>
-  <path>Aircraft/Short_Empire/Instruments/rpm4.xml</path>
+  <name>Oil Pressure Starboard Outer</name>
+  <path>Aircraft/Short_Empire/Instruments/OilPressure/oil_pressure.xml</path>
   <offsets>
-   <x-m> 0.010</x-m>
+   <x-m> 0.000</x-m>
    <y-m> 0.460</y-m>
    <z-m> 0.380</z-m>
   </offsets>
+  <overlay>
+   <params>
+    <pressure-psi>engines/engine[3]/oil-pressure-psi</pressure-psi>
+    <serviceable>instrumentation/oil-pressure-gauge[3]/serviceable</serviceable>
+   </params>
+  </overlay>
  </model>
--->
 
  <model>
   <name>Port RPM Indicator</name>
@@ -338,6 +361,70 @@
    <params>
     <indicated-altitude-ft>instrumentation/altimeter[1]/indicated-altitude-ft</indicated-altitude-ft>
     <setting-inhg>instrumentation/altimeter[1]/setting-inhg</setting-inhg>
+   </params>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Boost Port Outer</name>
+  <path>Aircraft/Short_Empire/Instruments/BoostGauge/boost_gauge.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m> 0.260</y-m>
+   <z-m> 0.100</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <boost-psi>fdm/jsbsim/propulsion/engine[0]/boost-psi</boost-psi>
+    <serviceable>instrumentation/boost-gauge[0]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Boost Port Inner</name>
+  <path>Aircraft/Short_Empire/Instruments/BoostGauge/boost_gauge.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m> 0.320</y-m>
+   <z-m> 0.150</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <boost-psi>fdm/jsbsim/propulsion/engine[1]/boost-psi</boost-psi>
+    <serviceable>instrumentation/boost-gauge[1]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Boost Starboard Inner</name>
+  <path>Aircraft/Short_Empire/Instruments/BoostGauge/boost_gauge.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m> 0.390</y-m>
+   <z-m> 0.150</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <boost-psi>fdm/jsbsim/propulsion/engine[2]/boost-psi</boost-psi>
+    <serviceable>instrumentation/boost-gauge[2]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Boost Starboard Outer</name>
+  <path>Aircraft/Short_Empire/Instruments/BoostGauge/boost_gauge.xml</path>
+  <offsets>
+   <x-m> 0.000</x-m>
+   <y-m> 0.450</y-m>
+   <z-m> 0.100</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <boost-psi>fdm/jsbsim/propulsion/engine[3]/boost-psi</boost-psi>
+    <serviceable>instrumentation/boost-gauge[3]/serviceable</serviceable>
    </params>
   </overlay>
  </model>

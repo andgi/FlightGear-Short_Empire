@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+  Short S.23 Empire flying boat for FlightGear.
+
+  Copyright (C) 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- Overlay these to set the source. -->
+ <params>
+  <temperature-degf>engines/engine[0]/oil-temperature-degf</temperature-degf>
+  <serviceable>instrumentation/oil-temperature-gauge[0]/serviceable</serviceable>
+ </params>
+
+ <path>oil_temperature_gauge.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.000 </x-m>
+  <y-m> 0.000 </y-m>
+  <z-m> 0.000 </z-m>
+ </offsets>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>Needle</object-name>
+  <property alias="../../params/temperature-degf"/>
+  <interpolation> 
+   <entry><ind>32</ind><dep>150</dep></entry>
+   <entry><ind>212</ind><dep>-150</dep></entry>
+  </interpolation>
+  <condition>
+   <property alias="../../../params/serviceable"/>
+  </condition>
+  <center>
+   <x-m> 0.000 </x-m>
+   <y-m> 0.000 </y-m>
+   <z-m> 0.000 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <!-- animation> 
+  <type>material</type>
+  <emission> 
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation -->
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

@@ -41,6 +41,20 @@
   </offsets>
  </model>
 
+ <!-- Engine instrument panel ==============================================-->
+ <model>
+  <name>Engine instrument panel</name>
+  <path>Aircraft/Short_Empire/Models/Interior/engine_panel.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -3.100 </x-m>
+   <y-m> -1.080 </y-m>
+   <z-m>  1.100 </z-m>
+   <heading-deg>99.0</heading-deg>
+   <pitch-deg>2.0</pitch-deg>
+  </offsets>
+ </model>
+
  <!-- Spar panel ===========================================================-->
  <model>
   <name>Instruments at the spar bulkhead</name>

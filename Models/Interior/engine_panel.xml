@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<!--
+  Short S.23 Empire flying boat for FlightGear.
+
+  Copyright (C) 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- No main model. -->
+ <!-- The origin is at floor level in the middle of the engine panel. -->
+ <path>../../../../Models/Geometry/null.ac</path>
+ <offsets>
+  <!-- x/y/z == out of panel/right/up when facing the panel -->
+  <x-m> 0.0 </x-m>
+  <y-m> 0.0 </y-m>
+  <z-m> 0.0 </z-m>
+ </offsets>
+
+ <!--
+    According to [Cassidy:2004:FE] this panel carried the following
+    instruments for Pegasus engined aircraft with Sperry automatic
+    pilots: 
+    - Weston Pyrometer Model 602 HJ 509 engine cylinder-head
+      temperature indicator 0 to 350 deg. C - with a Weston four-way
+      rotary switch. ...
+    - Four 2.12 in. (54 mm.) oil temperature gauges - one for each engine.
+    - Four 2.12 in. (54 mm.) carburettor air intake thermometers - one for
+      each engine.
+    - Vacuum distributor, gauge, adjuster and control cocks
+      for the Sperry automatic pilot connected to the Romec vacuum pumps
+      on the two starboard engines.
+ -->
+
+ <!-- Cylinder head temperature gauges. -->
+ <model>
+  <name>CHT Port Outer</name>
+  <path>Aircraft/Short_Empire/Instruments/CHT/cht_gauge.xml</path>
+  <offsets>
+   <x-m>  0.020</x-m>
+   <y-m> -0.150</y-m>
+   <z-m>  0.700</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <temperature-degf>engines/engine[0]/cht-degf</temperature-degf>
+    <serviceable>instrumentation/cht-gauge[0]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <model>
+  <name>CHT Port Inner</name>
+  <path>Aircraft/Short_Empire/Instruments/CHT/cht_gauge.xml</path>
+  <offsets>
+   <x-m>  0.020</x-m>
+   <y-m> -0.050</y-m>
+   <z-m>  0.700</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <temperature-degf>engines/engine[1]/cht-degf</temperature-degf>
+    <serviceable>instrumentation/cht-gauge[1]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <model>
+  <name>CHT Starboard Inner</name>
+  <path>Aircraft/Short_Empire/Instruments/CHT/cht_gauge.xml</path>
+  <offsets>
+   <x-m>  0.020</x-m>
+   <y-m>  0.050</y-m>
+   <z-m>  0.700</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <temperature-degf>engines/engine[2]/cht-degf</temperature-degf>
+    <serviceable>instrumentation/cht-gauge[2]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <model>
+  <name>CHT Starboard Outer</name>
+  <path>Aircraft/Short_Empire/Instruments/CHT/cht_gauge.xml</path>
+  <offsets>
+   <x-m>  0.020</x-m>
+   <y-m>  0.150</y-m>
+   <z-m>  0.700</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <temperature-degf>engines/engine[3]/cht-degf</temperature-degf>
+    <serviceable>instrumentation/cht-gauge[3]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <!-- Oil temperature gauges. -->
+ <model>
+  <name>Oil Temperature Port Outer</name>
+  <path>Aircraft/Short_Empire/Instruments/OilTemperatureGauge/oil_temperature_gauge.xml</path>
+  <offsets>
+   <x-m>  0.020</x-m>
+   <y-m> -0.150</y-m>
+   <z-m>  0.600</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <temperature-degf>engines/engine[0]/oil-temperature-degf</temperature-degf>
+    <serviceable>instrumentation/oil-temperature-gauge[0]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Oil Temperature Port Inner</name>
+  <path>Aircraft/Short_Empire/Instruments/OilTemperatureGauge/oil_temperature_gauge.xml</path>
+  <offsets>
+   <x-m>  0.020</x-m>
+   <y-m> -0.050</y-m>
+   <z-m>  0.600</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <temperature-degf>engines/engine[1]/oil-temperature-degf</temperature-degf>
+    <serviceable>instrumentation/oil-temperature-gauge[1]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Oil Temperature Starboard Inner</name>
+  <path>Aircraft/Short_Empire/Instruments/OilTemperatureGauge/oil_temperature_gauge.xml</path>
+  <offsets>
+   <x-m>  0.020</x-m>
+   <y-m>  0.050</y-m>
+   <z-m>  0.600</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <temperature-degf>engines/engine[2]/oil-temperature-degf</temperature-degf>
+    <serviceable>instrumentation/oil-temperature-gauge[2]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <model>
+  <name>Oil Temperature Starboard Outer</name>
+  <path>Aircraft/Short_Empire/Instruments/OilTemperatureGauge/oil_temperature_gauge.xml</path>
+  <offsets>
+   <x-m>  0.020</x-m>
+   <y-m>  0.150</y-m>
+   <z-m>  0.600</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <temperature-degf>engines/engine[3]/oil-temperature-degf</temperature-degf>
+    <serviceable>instrumentation/oil-temperature-gauge[3]/serviceable</serviceable>
+   </params>
+  </overlay>
+ </model>
+
+ <animation> 
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>10</max-m>
+ </animation>
+
+</PropertyList>

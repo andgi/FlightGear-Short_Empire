@@ -9,6 +9,29 @@
 
  <!-- Keyboard commands -->
 
+ <!-- Mooring commands ======================================= -->
+ <key n="98">
+  <name>b</name>
+  <desc>Attach mooring rope.</desc>
+  <binding>
+   <command>nasal</command>
+   <script>
+     ShortEmpire.mooring.pick_up_mooring();
+   </script>
+  </binding>
+ </key>
+
+ <key n="66">
+  <name>B</name>
+  <desc>Release mooring.</desc>
+  <binding>
+   <command>nasal</command>
+   <script>
+     ShortEmpire.mooring.release_mooring();
+   </script>
+  </binding>
+ </key>
+
  <!-- Walkview commands ======================================== -->
  <key n="87">
   <name>W</name>

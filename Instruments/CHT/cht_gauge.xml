@@ -30,7 +30,7 @@
    <entry><ind>32</ind><dep>60</dep></entry>
    <!-- entry><ind>662</ind><dep>-60</dep></entry -->
    <!-- Fudge the range to get a sensible indication. -->
-   <entry><ind>1324</ind><dep>-60</dep></entry>
+   <entry><ind>993</ind><dep>-60</dep></entry>
   </interpolation>
   <condition>
    <property alias="../../../params/serviceable"/>

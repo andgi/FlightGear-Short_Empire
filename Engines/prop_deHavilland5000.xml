@@ -43,10 +43,10 @@
      m_b is the mass of a blade and
      d is the diameter.
 
-   2/3 of the total propeller weight is assumed to be in the blades.
+   1/2 of the total propeller weight is assumed to be in the blades.
  </documentation>
 
- <ixx>307.36632</ixx>
+ <ixx unit="SLUG*FT2">230.52474</ixx>
  <diameter unit="IN">153.0 </diameter>
  <numblades> 3 </numblades>
  <gearratio>2.0 </gearratio>

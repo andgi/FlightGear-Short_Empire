@@ -23,6 +23,7 @@
   <z-m> 0.000 </z-m>
  </offsets>
 
+ <!-- Range according to [Cassidy:2004:FE] 500 - 3 000 rpm. -->
  <animation> 
   <type>rotate</type>
   <object-name>left_pointer</object-name>

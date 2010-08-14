@@ -71,6 +71,12 @@
     Officer. For each engine in turn, he moved the mixture control
     lever back from NORMAL to RICH -. + 1 lb. sq. in, then through the
     gate to +3 lb. sq. in. and back to NORMAL."
+
+   [Cassidy:2004:FE]: Fuel consumption for "normal" operation varied
+   between 107.5 gal. per hour and 118.8 gal. per hour. A good average
+   was 115 gal. per hour. Over 141 gal. per hour was considered excessive.
+   [Cassidy:2004:FE]: Oil consumption normally varied between
+   8 pints to 3 1/2 gallons per hour for a Pegasus engine.
   </documentation>
 
   <switch name="fcs/boost/throttle-pos-norm[0]">

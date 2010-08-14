@@ -1007,6 +1007,7 @@
     <product>
      <property>hydro/yaw-tweak-factor</property>
      <property>velocities/psidot-rad_sec</property>
+     <value>0.5</value>
      <table>
       <independentVar lookup="row">hydro/coefficients/C_Delta</independentVar>
       <tableData>

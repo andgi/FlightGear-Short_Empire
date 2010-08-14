@@ -12,7 +12,7 @@
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.34 2010-08-08 19:22:29 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.36 2010-08-15 17:23:58 anders Exp $</aircraft-version>
 
   <flight-model>jsb</flight-model>
   <aero>Short_S23</aero>
@@ -300,12 +300,13 @@
  <payload include="Systems/payload.xml"/>
 
  <limits>
-  <vne>174.0</vne>
+  <vne>209.0</vne>
  </limits>
 
  <nasal>
   <ShortEmpire>
    <file>Aircraft/Short_Empire/Systems/short-empire.nas</file>
+   <file>Aircraft/Short_Empire/Systems/mooring.nas</file>
   </ShortEmpire>
   <limits>
    <file>Aircraft/Generic/limits.nas</file>
@@ -328,6 +329,10 @@
                  };
    </script>
   </RAFmk9sextant>
+  <!-- Dual control. -->
+  <dual_control_tools>
+   <file>Aircraft/ZLT-NT/DualControl/dual-control-tools.nas</file>
+  </dual_control_tools>
  </nasal>
 
  <input>

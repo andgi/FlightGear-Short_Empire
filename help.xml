@@ -10,6 +10,11 @@
  <title>Short S.23 'C'-class Empire flying boat</title>
  <!-- Specific keys -->
  <key>
+  <name>b/B</name>
+  <desc>Pick up mooring / Slip mooring.</desc>
+ </key>
+
+ <key>
   <name>w</name>
   <desc>In walk views: walk forwards, +shift to run.</desc>
  </key>

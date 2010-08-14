@@ -12,7 +12,7 @@
   <magnetos>controls/engines/engine[0]/magnetos</magnetos>
  </params>
 
- <path>../../spitfireIX/Models/Instruments/magneto.ac</path>
+ <path>Aircraft/spitfireIX/Models/Instruments/magneto.ac</path>
  <texture-path>../../spitfireIX/Models/Instruments/</texture-path>
 
  <offsets>

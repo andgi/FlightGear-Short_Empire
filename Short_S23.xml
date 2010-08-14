@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate> 2008-11-05 </filecreationdate>
-  <version>$Id: Short_S23.xml,v 1.29 2010-08-06 22:23:41 anders Exp $</version>
+  <version>$Id: Short_S23.xml,v 1.32 2010-08-15 21:38:20 anders Exp $</version>
 
   <description> Models a Short S.23 flying boat. </description>
 
@@ -153,6 +153,12 @@
    CG location X-coordinate is based on [Short:RN-3-1-37].
    However, the document is not very clear. My assumption is that the
    datum marker plate is located on the bulkhead of frame 15/16.
+   "C.G. is 4.56ft aft of datum point measured parallel to hull datum."
+   "Datum plate in spar compartment is 19.65 in. aft of datum point measured
+    parallel to hull datum.".
+   Based on the drawings the frame 15/16 bulkhead is 8.25 meters behind the
+   origin of the FDM structural frame.
+
    Empty weight (incl. oil) according to [Cassidy:2004:FE] p.121.
   </documentation>
   <ixx unit="SLUG*FT2">    251174 </ixx>
@@ -194,9 +200,12 @@
    </location>
   </pointmass>
   <pointmass name="Flight Clerk">
+   <!-- Originally the Flight Clerk's office was located on the aft end of the
+        flight deck, but it was soon was moved down into the forward cabin.
+   -->
    <weight unit="KG"> 85 </weight>
    <location unit="M">
-    <x>  7.0 </x>
+    <x>  5.4 </x>
     <y>  0.0 </y>
     <z>  0.0 </z>
    </location>
@@ -219,7 +228,7 @@
     <z>  1.5 </z>
    </location>
   </pointmass>
-  <pointmass name="Forward mail compartment">
+  <pointmass name="Forward upper mail compartment">
    <weight unit="KG"> 0.0 </weight>
    <location unit="M">
     <x>  6.2 </x>
@@ -228,16 +237,16 @@
    </location>
   </pointmass>
   <pointmass name="Rear freight compartment">
-   <weight unit="KG"> 200.0 </weight> <!-- To get CG within the range. -->
+   <weight unit="KG"> 250.0 </weight> <!-- To get CG within the range. -->
    <location unit="M">
     <x> 19.1 </x>
     <y>  0.0 </y>
     <z>  1.5 </z>
    </location>
   </pointmass>
-
-  <!-- Passengers. -->
-  <pointmass name="Passengers in the Forward Cabin (max 7)">
+  <pointmass name="Freight in the Forward Cabin">
+   <!-- Originally there were space for 7 passengers here but the cabin was
+        soon converted to contain freight and the Flight Clerk's office. -->
    <weight unit="KG"> 0.0 </weight>
    <location unit="M">
     <x>  4.2 </x>
@@ -245,6 +254,16 @@
     <z> -0.5 </z>
    </location>
   </pointmass>
+  <pointmass name="Bullion locker">
+   <weight unit="KG"> 0.0 </weight>
+   <location unit="M">
+    <x>  9.5 </x>
+    <y>  0.0 </y>
+    <z> -1.0 </z>
+   </location>
+  </pointmass>
+
+  <!-- Passengers. -->
   <pointmass name="Passengers in the Spar Cabin (max 3)">
    <weight unit="KG"> 0.0 </weight>
    <location unit="M">
@@ -801,8 +820,8 @@
       <input>fcs/copilot/rudder-cmd-norm</input>
       <input>fcs/yaw-trim-cmd-norm</input>
       <clipto>
-        <min> -0.3927 </min>
-        <max>  0.3927 </max>
+        <min> -1.0 </min>
+        <max>  1.0 </max>
       </clipto>
    </summer>
 
@@ -917,7 +936,7 @@
   </force>
 
   <force name="hydro-pitch[0]" frame="BODY">
-   <location unit="">
+   <location unit="M">
     <x> 8.68 </x>
     <y> 0.00 </y>
     <z>-0.3048 </z>
@@ -942,7 +961,7 @@
   </force>
 
   <force name="hydro-yaw[0]" frame="BODY">
-   <location unit="">
+   <location unit="M">
     <x> 8.68 </x>
     <y> -0.3048 </y>
     <z> 0.00 </z>
@@ -968,7 +987,7 @@
 
 
   <force name="hydro-roll[0]" frame="BODY">
-   <location unit="">
+   <location unit="M">
     <x> 8.68 </x>
     <y> 0.00 </y>
     <z>-0.3048 </z>
@@ -1043,9 +1062,56 @@
    </direction>
   </force>
 
+  <force name="mooring-north" frame="LOCAL">
+   <location unit="FT">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="mooring-east" frame="LOCAL">
+   <location unit="FT">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 1.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="mooring-down" frame="LOCAL">
+   <location unit="FT">
+     <x> 0.0 </x>
+     <y> 0.0 </y>
+     <z> 1.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+
  </external_reactions>
 
  <system file="hydrodynamics"/>
+
+ <!-- system file="fgfs4jsbsim" -->
+ <system file="mooring-jsbsim">    <!-- Mooring setup for FlightGear. -->
+  <!-- Configuration -->
+  <!--  Mooring rope -->
+  <property value="250.0"> mooring/rope-spring-coeff-lbs_ft </property>
+  <property value="10000.0"> mooring/max-rope-force-lbs </property>
+  <property value="20.0"> mooring/rope-length-ft </property>
+
+ </system>
 
  <!-- Autopilot for JSBSim/standalone. -->
  <system file="take-off-ap"/>

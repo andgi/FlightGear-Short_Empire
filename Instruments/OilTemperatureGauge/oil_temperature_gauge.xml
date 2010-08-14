@@ -28,7 +28,9 @@
   <property alias="../../params/temperature-degf"/>
   <interpolation> 
    <entry><ind>32</ind><dep>150</dep></entry>
-   <entry><ind>212</ind><dep>-150</dep></entry>
+   <!-- entry><ind>212</ind><dep>-150</dep></entry -->
+   <!-- Fudge the range to get a sensible indication. -->
+   <entry><ind>302</ind><dep>-150</dep></entry>
   </interpolation>
   <condition>
    <property alias="../../../params/serviceable"/>

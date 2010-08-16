@@ -84,5 +84,6 @@ var flightdeckConstraint =
 # Create the view manager.
 var copilot_walker =
     walkview.walker.new("Copilot View",
-                        flightdeckConstraint);
+                        flightdeckConstraint,
+                        [walkview.JSBSimPointmass.new(1)]);
 

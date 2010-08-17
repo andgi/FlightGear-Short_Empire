@@ -13,7 +13,7 @@
  </params>
 
  <path>Aircraft/spitfireIX/Models/Instruments/magneto.ac</path>
- <texture-path>../../spitfireIX/Models/Instruments/</texture-path>
+ <texture-path>Aircraft/spitfireIX/Models/Instruments/</texture-path>
 
  <offsets>
   <!-- x/y/z == back/right/up -->

@@ -12,8 +12,8 @@
   <setting-inhg>instrumentation/altimeter/setting-inhg</setting-inhg>
  </params>
 
- <path>../../../spitfireIX/Models/Instruments/altimeter.ac</path>
- <texture-path>../../../spitfireIX/Models/Instruments/</texture-path>
+ <path>Aircraft/spitfireIX/Models/Instruments/altimeter.ac</path>
+ <texture-path>Aircraft/spitfireIX/Models/Instruments/</texture-path>
   
  <!-- altimeter -->
    

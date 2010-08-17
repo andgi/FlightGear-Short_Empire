@@ -9,13 +9,7 @@
 
  <!-- No main model. -->
  <!-- The origin is at floor level in the middle of the engine panel. -->
- <path>../../../../Models/Geometry/null.ac</path>
- <offsets>
-  <!-- x/y/z == out of panel/right/up when facing the panel -->
-  <x-m> 0.0 </x-m>
-  <y-m> 0.0 </y-m>
-  <z-m> 0.0 </z-m>
- </offsets>
+ <!-- x/y/z == out of panel/right/up when facing the panel -->
 
  <!--
     According to [Cassidy:2004:FE] this panel carried the following

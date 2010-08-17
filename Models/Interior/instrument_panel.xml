@@ -9,13 +9,7 @@
 
  <!-- No main model. -->
  <!-- The origin is in the middle of the lower edge of the panel. -->
- <path>../../../../Models/Geometry/null.ac</path>
- <offsets>
-  <!-- x/y/z == back/right/up -->
-  <x-m> 0.0 </x-m>
-  <y-m> 0.0 </y-m>
-  <z-m> 0.0 </z-m>
- </offsets>
+ <!-- x/y/z == back/right/up -->
 
  <!-- Preliminary pilot instruments. Top-bottom, left-right  -->
  <!--

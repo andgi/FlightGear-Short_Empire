@@ -12,8 +12,8 @@
   <indicated-slip-skid>instrumentation/slip-skid-ball/indicated-slip-skid</indicated-slip-skid>
  </params>
 
- <path>../../../spitfireIX/Models/Instruments/turn.ac</path>
- <texture-path>../../../spitfireIX/Models/Instruments/</texture-path>
+ <path>Aircraft/spitfireIX/Models/Instruments/turn.ac</path>
+ <texture-path>Aircraft/spitfireIX/Models/Instruments/</texture-path>
 
  <animation> 
   <type>rotate</type>

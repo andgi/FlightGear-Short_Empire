@@ -22,7 +22,10 @@ var init = func(reinit=0) {
             mooring.pick_up_mooring();
 
             # Add the predefined moorings.
-            foreach (var m; EAMS_MOORINGS_EUROPE ~ EAMS_MOORINGS_EAST) {
+            foreach (var m; EAMS_MOORINGS_EUROPE ~
+                            EAMS_MOORINGS_EAST ~
+                            EAMS_MOORINGS_SOUTH ~
+                            BERMUDA_NEWYORK) {
                 var pos = geo.Coord.new().set_latlon(m[1], m[2]);
                 mooring.add_fixed_mooring(pos, 0.0, m[0]);
             }
@@ -274,4 +277,27 @@ var EAMS_MOORINGS_EAST =
      ["Gladstone",            -23.828888,  151.252084],
      ["Brisbane",             -27.427547,  153.128225],
      ["Sydney",               -33.859204,  151.225412]
+    ];
+var EAMS_MOORINGS_SOUTH =
+    [
+     ["Durban",               -29.8727,     31.0325],
+     # - Lourenco Morques, ?
+     ["Beira",                -19.8265,     34.8316],
+     ["Mozambique",           -15.038182,   40.704099],
+     ["Lindi",                -10.001025,   39.721466],
+     ["Dar-es-Salaam",         -6.8222,     39.2922],
+     ["Mombasa",               -4.0524,     39.6799],
+     ["Kisumu",                -0.0901,     34.7481],
+     ["Kampala/Port Bell",      0.287703,   32.652279],
+     ["Laropi",                 3.54863,    31.812716],
+     ["Juba",                   4.834845,   31.617494],
+     ["Malakal",                9.5281,     31.6483],
+     ["Khartoum",              15.615081,   32.537642],
+     ["Wadi Halfa",            21.970768,   31.305134],
+     ["Luxor",                 25.7011,     32.6365],
+    ];
+var BERMUDA_NEWYORK =
+    [
+     ["New York/Port Washington", 40.832081, -73.719479],
+     ["Bermuda/Darrel's Island",  32.273495, -64.81824]
     ];

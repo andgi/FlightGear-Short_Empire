@@ -640,7 +640,7 @@
    <function>
     <description>Drag due to left float</description>
     <product>
-     <value> 1.0 </value>
+     <value> 2.0 </value>
      <property>hydro/float-beam-ft3</property>
      <property>hydro/drag-tweak-factor</property>
      <!-- From Boeing314A: Hull_resistance (beta=0) -->
@@ -696,7 +696,7 @@
    <function>
     <description>Drag due to right float</description>
     <product>
-     <value> 1.0 </value>
+     <value> 2.0 </value>
      <property>hydro/float-beam-ft3</property>
      <property>hydro/drag-tweak-factor</property>
      <!-- From Boeing314A: Hull_resistance (beta=0) -->
@@ -980,14 +980,14 @@
      <property>hydro/qbar-psf</property>
      <property>hydro/hull-beam-ft3</property>
      <property>hydro/beta-rad</property>
-     <value>-0.10</value>
+     <value>-0.025</value>
      <table>
       <independentVar lookup="row">hydro/pitch-deg</independentVar>
       <independentVar lookup="column">hydro/height-agl-ft</independentVar>
       <tableData breakpoint="">
                0.0    3.0    4.0    6.0    7.0
         0.0   -0.10   0.10   0.10   0.10   0.0
-        1.0   -0.105  0.075  0.75  -0.05   0.0
+        1.0   -0.105  0.075  0.30  -0.05   0.0
         2.0   -0.11  -0.05   0.05  -0.10   0.0
         3.0   -0.12  -0.10   0.00  -0.12   0.0
         4.0   -0.13  -0.13  -0.10  -0.13   0.0
@@ -1007,7 +1007,7 @@
     <product>
      <property>hydro/yaw-tweak-factor</property>
      <property>velocities/psidot-rad_sec</property>
-     <value>0.5</value>
+     <value>0.15</value>
      <table>
       <independentVar lookup="row">hydro/coefficients/C_Delta</independentVar>
       <tableData>

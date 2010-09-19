@@ -64,6 +64,16 @@
   </offsets>
  </model>
 
+ <model>
+  <name>Pilot Fore and Aft Level</name>
+  <path>Aircraft/Short_Empire/Instruments/SmithForeAftLevel/smith_fore_aft_level.xml</path>
+  <offsets>
+   <x-m> 0.005</x-m>
+   <y-m>-0.250</y-m>
+   <z-m> 0.310</z-m>
+  </offsets>
+ </model>
+
  <!-- Second row according to drawing.
       Canopus had the first three instruments aligned with the above row.
  -->

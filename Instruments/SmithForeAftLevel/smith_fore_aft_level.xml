@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+  Short S.23 Empire flying boat for FlightGear.
+
+  Copyright (C) 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- Overlay these to set the inclination source etc. -->
+ <params>
+  <indicated-inclination-deg>orientation/pitch-deg</indicated-inclination-deg>
+  <serviceable>instrumentation/fore-aft-level[0]/serviceable</serviceable>
+ </params>
+
+ <path>smith_fore_aft_level.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.000 </x-m>
+  <y-m> 0.000 </y-m>
+  <z-m> 0.000 </z-m>
+ </offsets>
+
+ <animation> 
+  <type>scale</type>
+  <object-name>spirit_column</object-name>
+  <property alias="../../params/indicated-inclination-deg"/>
+  <x-factor>0.0</x-factor>
+  <x-offset>1.0</x-offset>
+  <y-factor>0.0</y-factor>
+  <y-offset>1.0</y-offset>
+  <z-factor>0.045</z-factor>
+  <z-offset>1.0</z-offset>
+  <z-min>0.01</z-min>
+  <z-max>2.01</z-max>
+  <center>
+   <x-m> 0.000 </x-m>
+   <y-m> 0.000 </y-m>
+   <z-m>-0.056 </z-m>
+  </center>
+ </animation>
+
+ <!-- animation> 
+  <type>material</type>
+  <emission> 
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation -->
+
+ <animation>
+  <type>select</type>
+  <object-name>spirit_column</object-name>
+  <object-name>spirit_bottom</object-name>
+  <condition>
+   <property alias="../../../params/serviceable"/>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

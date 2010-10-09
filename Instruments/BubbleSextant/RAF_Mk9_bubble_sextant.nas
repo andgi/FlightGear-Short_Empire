@@ -214,12 +214,12 @@ var sextant = {
         ##    The sextant frame is assumed to coincide with the view frame
         ##    except that it is pitched down altitude deg around its local
         ##    Y axis.
-        T_bs =  mulMM(mulMM(mulMM(mulMM(
-                    T_ac,
-                    rotateZ(yaw_v)),
-                    rotateY(pitch_v)),
-                    rotateX(roll_v)),
-                    rotateY(-me.get_altitude() * RAD));
+        var T_bs =  mulMM(mulMM(mulMM(mulMM(
+                      T_ac,
+                      rotateZ(yaw_v)),
+                      rotateY(pitch_v)),
+                      rotateX(roll_v)),
+                      rotateY(-me.get_altitude() * RAD));
 
         var X_bs = mulMv(T_bs, X);
         var Y_bs = mulMv(T_bs, Y);

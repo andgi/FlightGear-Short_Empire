@@ -240,6 +240,7 @@ var EAMS_MOORINGS_EUROPE =
     [
      ["Hythe 1",               50.87221,    -1.39083],
      ["Hythe 2",               50.872349,   -1.387512],
+     ["Bordeaux/Biscarosse",   44.383172,   -1.184227],
      ["Marseille/Marignane",   43.446937,    5.18541],
      ["Rome/Lake Bracciano",   42.113768,   12.187239],
      ["Brindisi",              40.651017,   17.961636],

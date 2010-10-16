@@ -32,8 +32,8 @@
   </condition>
   <property alias="../../params/rpm-left"/>
   <interpolation> 
-   <entry><ind>1400</ind><dep>43.0</dep></entry>
-   <entry><ind>2800</ind><dep>-49.0</dep></entry>
+   <entry><ind>500</ind><dep>50.0</dep></entry>
+   <entry><ind>3000</ind><dep>-50.0</dep></entry>
   </interpolation>
   <center>
    <x-m>-0.070 </x-m>
@@ -55,8 +55,8 @@
   </condition>
   <property alias="../../params/rpm-right"/>
   <interpolation> 
-   <entry><ind>1400</ind><dep>43.0</dep></entry>
-   <entry><ind>2800</ind><dep>-49.0</dep></entry>
+   <entry><ind>500</ind><dep>50.0</dep></entry>
+   <entry><ind>3000</ind><dep>-50.0</dep></entry>
   </interpolation>
   <center>
    <x-m>-0.070 </x-m>

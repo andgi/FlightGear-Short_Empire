@@ -238,20 +238,23 @@ var mooring = {
 ##   [[name, lat, lon]]
 var EAMS_MOORINGS_EUROPE =
     [
-     ["Hythe 1",               50.87221,    -1.39083],
+     ["Hythe 1",               50.872210,   -1.390830],
      ["Hythe 2",               50.872349,   -1.387512],
      ["Bordeaux/Biscarosse",   44.383172,   -1.184227],
-     ["Marseille/Marignane",   43.446937,    5.18541],
+     ["Marseille/Marignane",   43.446937,    5.185410],
      ["Rome/Lake Bracciano",   42.113768,   12.187239],
      ["Brindisi",              40.651017,   17.961636],
-     ["Athens/Phaleron Bay",   37.939527,   23.66623],
+     ["Corfu",                 39.614731,   19.929714],
+     ["Athens/Phaleron Bay",   37.939527,   23.666230],
+     ["Heraklion, Crete",      35.344386,   25.140345],
+     ["Mirabella Bay, Crete",  35.200427,   25.723003],
      ["Alexandria",            31.206525,   29.893992]
     ];
 var EAMS_MOORINGS_EAST =
     [
      ["Tiberias",              32.804203,   35.545287],
      ["Lake Habbaniyeh",       33.34625,    43.547359],
-     ["Margil/Basra",          30.5203,     47.8455],
+     ["Basra/Margil",          30.5203,     47.8455],
      ["Kuwait",                29.354583,   47.934932],
      ["Bahrein",               26.201731,   50.695789],
      ["Sharjah",               25.376378,   55.388442],
@@ -277,7 +280,7 @@ var EAMS_MOORINGS_EAST =
      ["Townsville",           -19.248107,  146.826745],
      ["Gladstone",            -23.828888,  151.252084],
      ["Brisbane",             -27.427547,  153.128225],
-     ["Sydney",               -33.859204,  151.225412]
+     ["Sydney/Rose Bay",      -33.868387,  151.263121]
     ];
 var EAMS_MOORINGS_SOUTH =
     [

@@ -98,10 +98,10 @@ var debug_display_view_handler = {
         me.right.add("/fdm/jsbsim/propulsion/engine[1]/boost-psi");
         me.right.add("/fdm/jsbsim/propulsion/engine[2]/boost-psi");
         me.right.add("/fdm/jsbsim/propulsion/engine[3]/boost-psi");
-        me.right.add("/fdm/jsbsim/propulsion/engine[0]/propeller-rpm");
-        me.right.add("/fdm/jsbsim/propulsion/engine[1]/propeller-rpm");
-        me.right.add("/fdm/jsbsim/propulsion/engine[2]/propeller-rpm");
-        me.right.add("/fdm/jsbsim/propulsion/engine[3]/propeller-rpm");
+        me.right.add("/engines/engine[0]/rpm");
+        me.right.add("/engines/engine[1]/rpm");
+        me.right.add("/engines/engine[2]/rpm");
+        me.right.add("/engines/engine[3]/rpm");
         me.right.add("/fdm/jsbsim/propulsion/engine[0]/power-hp");
         me.right.add("/fdm/jsbsim/propulsion/engine[1]/power-hp");
         me.right.add("/fdm/jsbsim/propulsion/engine[2]/power-hp");
@@ -144,16 +144,26 @@ var copilot = {
     init : func {
         me.UPDATE_INTERVAL = 1.73;
         me.loopid = 0;
+        # Landing callouts        
         me.alt_agl_prop =
             props.globals.getNode("fdm/jsbsim/hydro/height-agl-ft");
         me.ground_contact_prop =
             props.globals.getNode("fdm/jsbsim/hydro/coefficients/C_Delta");
         me.alt_agl        = me.alt_agl_prop.getValue();
         me.ground_contact = me.ground_contact_prop.getValue() > 0;
+        # Engine monitoring
+        me.rpm_prop  = {};
+        me.rpm_limit = 2600;
+        foreach (var i; [0, 1, 2, 3]) {
+            me.rpm_prop[i] =
+                props.globals.getNode("/engines/engine[" ~ i ~ "]/rpm");
+        }
+
         me.reset();
         print("Short Empire Crew ... Present and accounted for.");
     },
     update : func {
+        # Landing callouts
         var on_ground = me.ground_contact_prop.getValue() > 0;
         if (!me.ground_contact and on_ground) {
             me.announce("Water contact!");
@@ -171,6 +181,17 @@ var copilot = {
             }
         }
         me.alt_agl = alt;
+
+        # RPM check.
+        var trouble = 0;
+        foreach (var i; keys(me.rpm_prop)) {
+            if (me.rpm_prop[i].getValue() > me.rpm_limit) {
+                trouble = 1;
+            }
+        }
+        if (trouble) {
+            me.announce("Engine RPM");
+        }
     },
     announce : func(msg) {
         setprop("/sim/messages/copilot", msg);

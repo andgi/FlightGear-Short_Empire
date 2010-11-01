@@ -13,8 +13,8 @@ var flightdeckConstraint =
     walkview.makeUnionConstraint(
         [
          # Right hand seat. Sit down when entering.
-         walkview.actionConstraint.new
-             (walkview.slopingYAlignedPlane.new([  2.3, 0.25, 1.15], 
+         walkview.ActionConstraint.new
+             (walkview.SlopingYAlignedPlane.new([  2.3, 0.25, 1.15], 
                                                 [  2.6, 0.70, 1.15]),
               func {
                   #print("Seated!");
@@ -24,8 +24,8 @@ var flightdeckConstraint =
                   # Nothing.
               }),
          # Between the pilots.
-         walkview.actionConstraint.new
-             (walkview.slopingYAlignedPlane.new([  2.1, -0.25, 0.90], 
+         walkview.ActionConstraint.new
+             (walkview.SlopingYAlignedPlane.new([  2.1, -0.25, 0.90], 
                                                 [  2.9,  0.25, 0.90]),
               func {
                   #print("Crouching!");
@@ -35,8 +35,8 @@ var flightdeckConstraint =
                   # Nothing.
               }),
          # Forward flight-deck area.
-         walkview.actionConstraint.new
-             (walkview.slopingYAlignedPlane.new([  2.9,  0.0, 1.10], 
+         walkview.ActionConstraint.new
+             (walkview.SlopingYAlignedPlane.new([  2.9,  0.0, 1.10], 
                                                 [  5.0,  0.4, 1.10]),
               func {
                   #print("Crouching!");
@@ -46,8 +46,8 @@ var flightdeckConstraint =
                   # Nothing.
               }),
          # Astro-hatch area.
-         walkview.actionConstraint.new
-             (walkview.slopingYAlignedPlane.new([  3.00,  0.25, 1.10], 
+         walkview.ActionConstraint.new
+             (walkview.SlopingYAlignedPlane.new([  3.00,  0.25, 1.10], 
                                                 [  3.20,  0.50, 1.10]),
               func {
                   #print("Standing!");
@@ -59,17 +59,17 @@ var flightdeckConstraint =
                   # Nothing.
               }),
          # Aft flight-deck area.
-         walkview.actionConstraint.new
+         walkview.ActionConstraint.new
              (walkview.makeUnionConstraint(
                   [
                    # Aft flight-deck area.
-                   walkview.slopingYAlignedPlane.new([  5.0,  0.0, 1.10],
+                   walkview.SlopingYAlignedPlane.new([  5.0,  0.0, 1.10],
                                                      [  7.9,  0.4, 1.10]),
                    # Mail storage area.
-                   walkview.slopingYAlignedPlane.new([  5.0, -0.4, 1.10],
+                   walkview.SlopingYAlignedPlane.new([  5.0, -0.4, 1.10],
                                                      [  8.0, -0.2, 1.10]),
                    # Doorway.
-                   walkview.slopingYAlignedPlane.new([  6.2, -0.2, 1.10],
+                   walkview.SlopingYAlignedPlane.new([  6.2, -0.2, 1.10],
                                                      [  6.9,  0.0, 1.10])
                   ]),
               func {
@@ -83,7 +83,7 @@ var flightdeckConstraint =
 
 # Create the view manager.
 var copilot_walker =
-    walkview.walker.new("Copilot View",
+    walkview.Walker.new("Copilot View",
                         flightdeckConstraint,
                         [walkview.JSBSimPointmass.new(1)]);
 

@@ -65,7 +65,7 @@ Flight Magazine November 12, 1936:
  <cylinders>                  9.0  </cylinders>
  <cycles>                     4.0  </cycles>
 
- <maxhp unit="HP">          920.0 </maxhp> <!-- Boosted. -->
+ <maxhp unit="HP">          920.0 </maxhp> <!-- At take-off boost. -->
  <!-- bsfc unit="LBS/HP/HR"> 0.52 </bsfc -->  <!-- From Wikipedia. Pegasus XVIII. -->
  <!-- volumetric_efficiency> <volumetric_efficiency -->
  <idlerpm>      600.0 </idlerpm>
@@ -75,7 +75,7 @@ Flight Magazine November 12, 1936:
  <boostoverride>  0 </boostoverride>
 
  <ratedboost1 unit="PSI">      2.50 </ratedboost1>
- <ratedpower1 unit="HP">     900.00 </ratedpower1>
+ <ratedpower1 unit="HP">     815.00 </ratedpower1>
  <ratedrpm1>                2250.00 </ratedrpm1>
  <ratedaltitude1 unit="FT"> 3500.00 </ratedaltitude1>
 

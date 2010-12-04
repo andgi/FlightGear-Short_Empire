@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+  Sperry A-2 Gyropilot for FlightGear.
+
+  Copyright (C) 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+ <!--
+  Include this file in the -set file as follows:
+
+  <instrumentation>
+   <sperry-autopilot n="0" include=".../Sperry_A-2-instrumentation.xml"/>
+  </instrumentation>
+
+  Set up the required back-end instruments to be rooted in the
+  /instrumentation/sperry-autopilot[0]/ property subtree by adding the
+  following instruments:
+
+   <slip-skid-ball>
+    <name>sperry-autopilot/slip-skid-ball</name>
+    <number>0</number>
+   </slip-skid-ball>
+   <attitude-indicator>
+    <name>sperry-autopilot/attitude-indicator</name>
+    <number>0</number>
+    <suction>/systems/vacuum[0]/suction-inhg</suction>
+    <suction>/systems/vacuum[1]/suction-inhg</suction>
+   </attitude-indicator>
+   <heading-indicator>
+    <name>sperry-autopilot/heading-indicator</name>
+    <number>0</number>
+    <suction>/systems/vacuum[0]/suction-inhg</suction>
+    <suction>/systems/vacuum[1]/suction-inhg</suction>
+   </heading-indicator>
+
+ -->
+
+ <serviceable type="bool">1</serviceable>
+ <!-- Represents the serviceability of user interface.
+      Other components may malfunction independently.
+ -->
+
+ <settings>
+  <engaged-norm    alias="/fdm/jsbsim/sperry-autopilot/enabled-cmd-norm"/>
+
+  <heading-bug-deg alias="/fdm/jsbsim/sperry-autopilot/heading-reference-deg"/>
+  <pitch-bug-deg   alias="/fdm/jsbsim/sperry-autopilot/pitch-reference-deg"/>
+  <roll-bug-deg    alias="/fdm/jsbsim/sperry-autopilot/roll-reference-deg"/>
+
+  <!--
+  <heading-speed-valve-norm alias="/fdm/jsbsim/sperry-autopilot/heading-speed-valve-cmd-norm"/>
+  <pitch-speed-valve-norm   alias="/fdm/jsbsim/sperry-autopilot/pitch-speed-valve-cmd-norm"/>
+  <roll-speed-valve-norm    alias="/fdm/jsbsim/sperry-autopilot/roll-speed-valve-cmd-norm"/>
+  -->
+ </settings>
+
+ <vacuum-suction-inhg alias="../../../systems/vacuum/suction-inhg"/>
+ <!-- NOTE: This does not yet take multiple vacuum sources and the
+            distribution system into account. -->
+
+ <heading-indicator>
+  <serviceable type="bool">1</serviceable>
+  <heading-bug-deg alias="../../settings/heading-bug-deg"/>
+  <caged type="bool">0</caged>
+ </heading-indicator>
+
+ <slip-skid-ball>
+  <serviceable type="bool">1</serviceable>
+ </slip-skid-ball>
+
+ <attitude-indicator>
+  <serviceable type="bool">1</serviceable>
+ </attitude-indicator>
+
+ <vacuum-indicator>
+  <serviceable type="bool">1</serviceable>
+ </vacuum-indicator>
+
+</PropertyList>

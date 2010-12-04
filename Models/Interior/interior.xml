@@ -950,16 +950,16 @@
    <repeatable>false</repeatable>
    <binding>
     <command>property-cycle</command>
-    <property>controls/autoflight/autopilot/engage</property>
-    <value type="int">0</value>
-    <value type="int">1</value>
+    <property>instrumentation/sperry-autopilot[0]/settings/engaged-norm</property>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
    </binding>
   </action>
  </animation>
  <animation>
   <type>rotate</type>
   <object-name>AP_engage_lever</object-name>
-  <property>controls/autoflight/autopilot/engage</property>
+    <property>instrumentation/sperry-autopilot[0]/settings/engaged-norm</property>
   <factor>120.0</factor>
   <offset-deg>-60.0</offset-deg>
   <axis>

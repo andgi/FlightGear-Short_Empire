@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate> 2008-11-05 </filecreationdate>
-  <version>$Id: Short_S23.xml,v 1.32 2010-08-15 21:38:20 anders Exp $</version>
+  <version>$Id: Short_S23.xml,v 1.33 2010-12-04 13:02:39 anders Exp $</version>
 
   <description> Models a Short S.23 flying boat. </description>
 
@@ -700,15 +700,21 @@
 
   <!-- FlightGear multiplayer dual control properties. -->
   <!-- Also used by the take-off autopilot. -->
-  <property>fcs/copilot/aileron-cmd-norm</property>
-  <property>fcs/copilot/elevator-cmd-norm</property>
-  <property>fcs/copilot/rudder-cmd-norm</property>
+  <property value="0.0">fcs/copilot/aileron-cmd-norm</property>
+  <property value="0.0">fcs/copilot/elevator-cmd-norm</property>
+  <property value="0.0">fcs/copilot/rudder-cmd-norm</property>
+
+  <!-- The output from the Sperry autopilot actuators. -->
+  <property value="0.0">sperry-autopilot/aileron-cmd-norm</property>
+  <property value="0.0">sperry-autopilot/elevator-cmd-norm</property>
+  <property value="0.0">sperry-autopilot/rudder-cmd-norm</property>
 
   <channel name="Elevator">
 
    <summer name="Pitch Trim Sum">
       <input>fcs/elevator-cmd-norm</input>
       <input>fcs/copilot/elevator-cmd-norm</input>
+      <input>sperry-autopilot/elevator-cmd-norm</input>
       <input>fcs/pitch-trim-cmd-norm</input>
       <clipto>
         <min> -1 </min>
@@ -750,6 +756,7 @@
    <summer name="Roll Trim Sum">
       <input>fcs/aileron-cmd-norm</input>
       <input>fcs/copilot/aileron-cmd-norm</input>
+      <input>sperry-autopilot/aileron-cmd-norm</input>
       <input>fcs/roll-trim-cmd-norm</input>
       <clipto>
         <min> -1 </min>
@@ -818,6 +825,7 @@
    <summer name="Rudder Command Sum">
       <input>fcs/rudder-cmd-norm</input>
       <input>fcs/copilot/rudder-cmd-norm</input>
+      <input>sperry-autopilot/rudder-cmd-norm</input>
       <input>fcs/yaw-trim-cmd-norm</input>
       <clipto>
         <min> -1.0 </min>
@@ -1112,6 +1120,9 @@
   <property value="20.0"> mooring/rope-length-ft </property>
 
  </system>
+
+ <!-- Sperry A-2 autopilot. -->
+ <system file="sperry-autopilot"/>
 
  <!-- Autopilot for JSBSim/standalone. -->
  <system file="take-off-ap"/>

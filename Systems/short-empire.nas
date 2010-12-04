@@ -66,6 +66,18 @@ setlistener("/sim/signals/fdm-initialized", func {
     props.globals.
         getNode("/fdm/jsbsim/fcs/outer-engines-cutoff-cmd-norm").
             setDoubleValue(0.0);
+    props.globals.
+        getNode("/fdm/jsbsim/sperry-autopilot/enabled-cmd-norm").
+            setDoubleValue(0.0);
+    props.globals.
+        getNode("/fdm/jsbsim/sperry-autopilot/heading-reference-deg").
+            setDoubleValue(0.0);
+    props.globals.
+        getNode("/fdm/jsbsim/sperry-autopilot/pitch-reference-deg").
+            setDoubleValue(0.0);
+    props.globals.
+        getNode("/fdm/jsbsim/sperry-autopilot/roll-reference-deg").
+            setDoubleValue(0.0);
 });
 
 

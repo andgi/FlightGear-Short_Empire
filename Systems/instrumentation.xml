@@ -90,6 +90,24 @@
   <number>0</number>
  </clock>
 
+ <!-- Back-end instruments for the Sperry A-2 Gyropilot. -->
+ <slip-skid-ball>
+  <name>sperry-autopilot/slip-skid-ball</name>
+  <number>0</number>
+ </slip-skid-ball>
+ <attitude-indicator>
+  <name>sperry-autopilot/attitude-indicator</name>
+  <number>0</number>
+  <suction>/systems/vacuum[0]/suction-inhg</suction>
+  <suction>/systems/vacuum[1]/suction-inhg</suction>
+ </attitude-indicator>
+ <heading-indicator>
+  <name>sperry-autopilot/heading-indicator</name>
+  <number>0</number>
+  <suction>/systems/vacuum[0]/suction-inhg</suction>
+  <suction>/systems/vacuum[1]/suction-inhg</suction>
+ </heading-indicator>
+
  <!-- Radio set. Not entirely historic. -->
  <adf>
   <name>adf</name>

@@ -205,6 +205,20 @@
   </overlay>
  </model>
 
+ <model>
+  <name>Sperry A-2 Gyropilot</name>
+  <path>Aircraft/Short_Empire/Instruments/SperryA-2Gyropilot/Sperry_A-2.xml</path>
+  <offsets>
+   <x-m>-0.030</x-m>
+   <y-m> 0.000</y-m>
+   <z-m> 0.150</z-m>
+  </offsets>
+  <overlay>
+   <params>
+   </params>
+  </overlay>
+ </model>
+
  <!-- Preliminary copilot instruments. Top-bottom, left-right  -->
  <!--
     "The starboard side panel of the dashboard on the First Officer's

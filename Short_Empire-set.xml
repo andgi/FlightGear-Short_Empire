@@ -12,7 +12,7 @@
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.37 2010-10-10 18:14:44 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.38 2010-12-04 13:02:39 anders Exp $</aircraft-version>
 
   <flight-model>jsb</flight-model>
   <aero>Short_S23</aero>
@@ -246,6 +246,7 @@
   <fore-aft-level>
    <serviceable type="bool">1</serviceable>
   </fore-aft-level>
+  <sperry-autopilot n="0" include="Instruments/SperryA-2Gyropilot/Sperry_A-2-instrumentation.xml"/>
  </instrumentation>
 
  <!-- Map FlightGear control properties to JSBSim control properties. -->
@@ -364,5 +365,22 @@
    </mouse>
   </mice>
  </input>
+
+ <fdm>
+  <jsbsim>
+   <sperry-autopilot>
+    <sensors>
+     <heading-deg alias="/instrumentation/sperry-autopilot[0]/heading-indicator/indicated-heading-deg"/>
+     <pitch-deg   alias="/instrumentation/sperry-autopilot[0]/attitude-indicator/indicated-pitch-deg"/>
+     <roll-deg    alias="/instrumentation/sperry-autopilot[0]/attitude-indicator/indicated-roll-deg"/>
+    </sensors>
+   </sperry-autopilot>
+  </jsbsim>
+ </fdm>
+ <autopilot>
+  <settings>
+   <heading-bug-deg alias="/instrumentation/sperry-autopilot[0]/settings/heading-bug-deg"/>
+  </settings>
+ </autopilot>
 
 </PropertyList>

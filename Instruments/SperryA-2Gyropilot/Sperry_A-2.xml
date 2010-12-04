@@ -1,0 +1,474 @@
+<?xml version="1.0"?>
+<!--
+  Sperry A-2 Gyropilot for FlightGear.
+
+  Copyright (C) 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- Overlay these to set the source properties etc. -->
+ <params>
+  <serviceable>instrumentation/sperry-autopilot[0]/serviceable</serviceable>
+
+  <!-- Available vacuum -->
+  <vacuum-suction-inhg>instrumentation/sperry-autopilot[0]/vacuum-suction-inhg</vacuum-suction-inhg>
+
+  <!-- Directional control -->
+  <heading-bug-deg>instrumentation/sperry-autopilot[0]/settings/heading-bug-deg</heading-bug-deg>
+  <indicated-heading-deg>instrumentation/sperry-autopilot[0]/heading-indicator/indicated-heading-deg</indicated-heading-deg>
+  <heading-offset-deg>instrumentation/sperry-autopilot[0]/heading-indicator/offset-deg</heading-offset-deg>
+  <dg-caged>instrumentation/sperry-autopilot[0]/heading-indicator/caged</dg-caged>
+  <!-- Slip-skid ball -->
+  <indicated-slip-skid>instrumentation/sperry-autopilot[0]/slip-skid-ball/indicated-slip-skid</indicated-slip-skid>
+
+  <!-- Attitude control -->
+  <pitch-bug-deg>instrumentation/sperry-autopilot[0]/settings/pitch-bug-deg</pitch-bug-deg>
+  <indicated-pitch-deg>instrumentation/sperry-autopilot[0]/attitude-indicator/indicated-pitch-deg</indicated-pitch-deg>
+  <ai-caged>instrumentation/sperry-autopilot[0]/attitude-indicator/caged</ai-caged>
+
+  <!-- Roll control -->
+  <roll-bug-deg>instrumentation/sperry-autopilot[0]/settings/roll-bug-deg</roll-bug-deg>
+  <indicated-roll-deg>instrumentation/sperry-autopilot[0]/attitude-indicator/indicated-roll-deg</indicated-roll-deg>
+ </params>
+
+ <path>Sperry_A-2.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.000 </x-m>
+  <y-m> 0.000 </y-m>
+  <z-m> 0.000 </z-m>
+ </offsets>
+
+ <!-- Vacuum gauge. -->
+ <animation>
+  <type>rotate</type>
+  <object-name>vacuum_gauge_pointer</object-name>
+  <property alias="../../params/vacuum-suction-inhg"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>60</dep></entry>
+   <entry><ind>8.0</ind><dep>-60</dep></entry>
+  </interpolation>
+  <condition>
+   <property alias="../../../params/serviceable"/>
+  </condition>
+  <center>
+   <x-m>  0.016 </x-m>
+   <y-m> -0.011 </y-m>
+   <z-m>  0.178 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <!-- Heading indicator. -->
+ <animation>
+  <type>rotate</type>
+  <object-name>DG_rudder_card</object-name>
+  <property alias="../../params/heading-bug-deg"/>
+  <factor type="double">1.0</factor>
+  <condition>
+   <property alias="../../../params/serviceable"/>
+  </condition>
+  <center>
+   <x-m> -0.025 </x-m>
+   <y-m> -0.111 </y-m>
+   <z-m>  0.116 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>DG_heading_card</object-name>
+  <property alias="../../params/indicated-heading-deg"/>
+  <factor type="double">1.0</factor>
+  <center>
+   <x-m> -0.025 </x-m>
+   <y-m> -0.111 </y-m>
+   <z-m>  0.116 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>rudder_knob</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-bug-deg"/>
+    <step>1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-bug-deg"/>
+    <step>-1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-bug-deg"/>
+    <step>-1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-bug-deg"/>
+    <step>1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>DG_set_knob</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-offset-deg"/>
+    <step>1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-offset-deg"/>
+    <step>-1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-offset-deg"/>
+    <step>-1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-offset-deg"/>
+    <step>1</step>
+    <min>0</min>
+    <max>360</max>
+    <wrap>1</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>DG_caging_knob</object-name>
+  <property alias="../../params/dg-caged"/>
+  <factor>-0.01</factor>
+  <offset-m>0.01</offset-m>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>pick</type>
+  <object-name>DG_caging_knob</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-toggle</command>
+    <property alias="../../../../params/dg-caged"/>
+   </binding>
+  </action>  
+ </animation>
+
+ <!-- Slip-skid ball. -->
+ <animation>
+  <type>rotate</type>
+  <object-name>DG_slip_ball</object-name>
+  <property alias="../../params/indicated-slip-skid"/>
+  <factor>-5.729</factor>
+  <min-deg>-20</min-deg>
+  <max-deg>20</max-deg>
+  <center>
+   <x-m>  0.019 </x-m>
+   <y-m> -0.111 </y-m>
+   <z-m>  0.210 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <!-- Attitude indicator -->
+ <animation>
+  <type>rotate</type>
+  <object-name>AI_aileron_index</object-name>
+  <property alias="../../params/roll-bug-deg"/>
+  <factor type="double">1.0</factor>
+  <condition>
+   <property alias="../../../params/serviceable"/>
+  </condition>
+  <center>
+   <x-m> 0.005 </x-m>
+   <y-m> 0.047 </y-m>
+   <z-m> 0.105 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>AI_elevator_index</object-name>
+  <property alias="../../params/pitch-bug-deg"/>
+  <factor type="double">-1.0</factor>
+  <condition>
+   <property alias="../../../params/serviceable"/>
+  </condition>
+  <center>
+   <x-m>-0.087 </x-m>
+   <y-m> 0.047 </y-m>
+   <z-m> 0.105 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>AI_roll_card</object-name>
+  <property alias="../../params/indicated-roll-deg"/>
+  <factor type="double">1.0</factor>
+  <center>
+   <x-m> 0.005 </x-m>
+   <y-m> 0.047 </y-m>
+   <z-m> 0.105 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>AI_aircraft_bar</object-name>
+  <property alias="../../params/indicated-pitch-deg"/>
+  <factor type="double">-1.0</factor>
+  <center>
+   <x-m>-0.087 </x-m>
+   <y-m> 0.047 </y-m>
+   <z-m> 0.105 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>elevator_knob</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/pitch-bug-deg"/>
+    <step>0.5</step>
+    <min>-12</min>
+    <max>12</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/pitch-bug-deg"/>
+    <step>-0.5</step>
+    <min>-12</min>
+    <max>12</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/pitch-bug-deg"/>
+    <step>-0.5</step>
+    <min>-12</min>
+    <max>12</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/pitch-bug-deg"/>
+    <step>0.5</step>
+    <min>-12</min>
+    <max>12</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>aileron_knob</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/roll-bug-deg"/>
+    <step>1</step>
+    <min>-60</min>
+    <max>60</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/roll-bug-deg"/>
+    <step>-1</step>
+    <min>-60</min>
+    <max>60</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/roll-bug-deg"/>
+    <step>-1</step>
+    <min>-60</min>
+    <max>60</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/roll-bug-deg"/>
+    <step>1</step>
+    <min>-60</min>
+    <max>60</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>AI_caging_knob</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-toggle</command>
+    <property alias="../../../../params/ai-caged"/>
+   </binding>
+  </action>  
+ </animation>
+
+
+ <!-- animation> 
+  <type>material</type>
+  <emission> 
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation -->
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

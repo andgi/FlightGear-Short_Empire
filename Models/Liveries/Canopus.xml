@@ -25,4 +25,10 @@
    </fcs>
   </jsbsim>
  </fdm>
+ <limits>
+  <mass-and-balance>
+   <maximum-takeoff-mass-lbs type="double">40500</maximum-takeoff-mass-lbs>
+   <maximum-landing-mass-lbs type="double">40500</maximum-landing-mass-lbs>
+  </mass-and-balance>
+ </limits>
 </PropertyList>

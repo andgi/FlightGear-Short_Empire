@@ -26,13 +26,13 @@
    xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
  <fileheader>
-  <author> Anders Gidenstam / DATCOM+ / Aeromatic v 0.9 </author>
+  <author>Anders Gidenstam / DATCOM+ / Aeromatic v 0.9</author>
   <email>anders at gidenstam dot org</email>
 
-  <filecreationdate> 2008-11-05 </filecreationdate>
+  <filecreationdate>2008-11-05</filecreationdate>
   <version>$Id: Short_S23.xml,v 1.33 2010-12-04 13:02:39 anders Exp $</version>
 
-  <description> Models a Short S.23 flying boat. </description>
+  <description>Models a Short S.23 flying boat.</description>
 
   <license>
    <licenseName>GPL</licenseName>
@@ -70,7 +70,7 @@
   <reference refID="Dawson:1934:Clipper"
              author="John R. Dawson"
              title="A complete tank test of the hull of the Sikorsky S-40 flying boat - American Clipper Class;  NACA Thechnical Notes #512"
-             date="1934"/>  
+             date="1934"/>
 
  </fileheader>
 

@@ -340,7 +340,7 @@
   </RAFmk9sextant>
   <!-- Dual control. -->
   <dual_control_tools>
-   <file>Aircraft/ZLT-NT/DualControl/dual-control-tools.nas</file>
+   <file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
   </dual_control_tools>
  </nasal>
 

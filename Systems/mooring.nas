@@ -25,7 +25,8 @@ var init = func(reinit=0) {
             foreach (var m; EAMS_MOORINGS_EUROPE ~
                             EAMS_MOORINGS_EAST ~
                             EAMS_MOORINGS_SOUTH ~
-                            BERMUDA_NEWYORK) {
+                            BERMUDA_NEWYORK ~
+                            TEAL) {
                 var pos = geo.Coord.new().set_latlon(m[1], m[2]);
                 mooring.add_fixed_mooring(pos, 0.0, m[0]);
             }
@@ -246,8 +247,8 @@ var EAMS_MOORINGS_EUROPE =
      ["Brindisi",              40.651017,   17.961636],
      ["Corfu",                 39.614731,   19.929714],
      ["Athens/Phaleron Bay",   37.939527,   23.666230],
-     ["Heraklion, Crete",      35.344386,   25.140345],
-     ["Mirabella Bay, Crete",  35.200427,   25.723003],
+     ["Heraklion",             35.344386,   25.140345],
+     ["Mirabella Bay",         35.200427,   25.723003],
      ["Alexandria",            31.206525,   29.893992]
     ];
 var EAMS_MOORINGS_EAST =
@@ -309,4 +310,9 @@ var BERMUDA_NEWYORK =
     [
      ["New York/Port Washington", 40.832081, -73.719479],
      ["Bermuda/Darrel's Island",  32.273495, -64.81824]
+    ];
+var TEAL =
+    [
+     ["Auckland/Mechanics Bay",  -36.8440,   174.7942],
+     ["Wellington/Evans Bay",    -41.3142,   174.8065]
     ];

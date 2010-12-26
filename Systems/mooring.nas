@@ -241,7 +241,9 @@ var EAMS_MOORINGS_EUROPE =
     [
      ["Hythe 1",               50.872210,   -1.390830],
      ["Hythe 2",               50.872349,   -1.387512],
+     ["Saint-Nazaire",         47.297423,   -2.134309],
      ["Bordeaux/Biscarosse",   44.383172,   -1.184227],
+     ["Macon",                 46.290932,    4.831000],
      ["Marseille/Marignane",   43.446937,    5.185410],
      ["Rome/Lake Bracciano",   42.113768,   12.187239],
      ["Brindisi",              40.651017,   17.961636],
@@ -303,6 +305,7 @@ var EAMS_MOORINGS_SOUTH =
      ["Lindi",                -10.001025,   39.721466],
      ["Mozambique",           -15.038182,   40.704099],
      ["Beira",                -19.8265,     34.8316],
+     ["Inhambane",            -23.8687,     35.3722],
      # - Lourenco Morques, ?
      ["Durban",               -29.8727,     31.0325]
     ];

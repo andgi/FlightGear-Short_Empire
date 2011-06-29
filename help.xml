@@ -2,7 +2,7 @@
 <!--
   Short S.23 Empire flying boat.
 
-  Copyright (C) 2008 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2008 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license v2 or later.
 -->
 <PropertyList>
@@ -62,7 +62,7 @@
      Maximum Forward      55.5 in (360.62 in)
      Maximum Aft             66.8 in (371.92 in)
  
- Maximum weight: 40 500 lb
+ Maximum weight: 40 500 lb (45 000 lb for the long range Mark III 'boats)
 
  __________________Engine Limits__________________
          Maximum RPM   Boost.   Cylinder temp.   Oil temp.deg.C.

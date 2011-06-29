@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.43 2011-05-26 18:45:28 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.44 2011-06-29 21:27:40 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -308,6 +308,14 @@
        alias="/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[3]"/>
 
    <balance-cock alias="/fdm/jsbsim/fcs/fuel-system/balance-cock-cmd-norm"/>
+
+   <!-- Test cocks -->
+   <left-test-cock
+       alias="/fdm/jsbsim/fcs/fuel-system/left-test-cock-cmd-norm"/>
+   <right-test-cock
+       alias="/fdm/jsbsim/fcs/fuel-system/right-test-cock-cmd-norm"/>
+   <center-test-cock
+       alias="/fdm/jsbsim/fcs/fuel-system/center-test-cock-cmd-norm"/>
   </fuel>
  </controls>
 

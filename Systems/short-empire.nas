@@ -61,6 +61,15 @@ setlistener("/sim/signals/fdm-initialized", func {
         getNode("/fdm/jsbsim/fcs/fuel-system/balance-cock-cmd-norm").
             setDoubleValue(0.0);
     props.globals.
+        getNode("/fdm/jsbsim/fcs/fuel-system/left-test-cock-cmd-norm").
+            setDoubleValue(1.0);
+    props.globals.
+        getNode("/fdm/jsbsim/fcs/fuel-system/right-test-cock-cmd-norm").
+            setDoubleValue(1.0);
+    props.globals.
+        getNode("/fdm/jsbsim/fcs/fuel-system/center-test-cock-cmd-norm").
+            setDoubleValue(1.0);
+    props.globals.
         getNode("/fdm/jsbsim/fcs/inner-engines-cutoff-cmd-norm").
             setDoubleValue(0.0);
     props.globals.

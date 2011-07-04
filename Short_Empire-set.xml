@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.44 2011-06-29 21:27:40 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.45 2011/07/04 21:46:22 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -253,6 +253,9 @@
   <slip-skid-ball n="1">
    <serviceable type="bool">1</serviceable>
   </slip-skid-ball>
+  <magnetic-compass n="1">
+   <serviceable type="bool">1</serviceable>
+  </magnetic-compass>
   <fore-aft-level>
    <serviceable type="bool">1</serviceable>
   </fore-aft-level>

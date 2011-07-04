@@ -14,16 +14,15 @@ to FlightGear:
 AJ MacLeod
   - British WWII era photo textured instruments. (From spitfireIX)
 
-Emmanuel BARANGER
-  - The engine 3d model. (From Lockheed-Vega)
-
 Anonymous
   - Propeller 3d models. (From Boeing 314)
   - Some hydrodynamic coefficient tables.
 
+Emmanuel BARANGER
+  - The engine 3d model. (From Lockheed-Vega)
 
-http://spitfirespares.com
-  - Source of engine rev counter scale texture.
+Vivian Meazza
+  - Instruments from the Spitfire IIa.
 
 
 Dependencies:
@@ -36,6 +35,5 @@ Aircraft/spitfireIX     (Models/Instruments/magneto.ac,
                          Models/Instruments/turn.ac,
                          Models/Instruments/vsi.xm)
 
-Aircraft/Spitfire       (Models/clock.xml)
-
-Aircraft/ZLT-NT         (DualControl/)
+Aircraft/Spitfire       (Models/clock.xml
+                         Models/compass-p11.xml)

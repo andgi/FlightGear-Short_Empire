@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.45 2011/07/04 21:46:22 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.46 2011/07/07 21:41:45 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -265,26 +265,42 @@
  <!-- Map FlightGear control properties to JSBSim control properties. -->
  <controls>
   <engines>
-   <!-- engine n="0">
-    <throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[0]"/>
+   <engine n="0">
+    <!-- throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[0]"/>
     <mixture  n="0" alias="/fdm/jsbsim/fcs/mixture-cmd-norm[0]"/>
-    <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[0]"/>
+    <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[0]"/ -->
+    <faults>
+     <fuel-pump-serviceable
+         alias="/fdm/jsbsim/propulsion/engine[0]/fuel-pump-serviceable"/>
+    </faults>
    </engine>
    <engine n="1">
-    <throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[1]"/>
+    <!-- throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[1]"/>
     <mixture  n="0" alias="/fdm/jsbsim/fcs/mixture-cmd-norm[1]"/>
-    <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[1]"/>
+    <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[1]"/ -->
+    <faults>
+     <fuel-pump-serviceable
+         alias="/fdm/jsbsim/propulsion/engine[1]/fuel-pump-serviceable"/>
+    </faults>
    </engine>
    <engine n="2">
-    <throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[2]"/>
+    <!-- throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[2]"/>
     <mixture  n="0" alias="/fdm/jsbsim/fcs/mixture-cmd-norm[2]"/>
-    <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[2]"/>
+    <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[2]"/ -->
+    <faults>
+     <fuel-pump-serviceable
+         alias="/fdm/jsbsim/propulsion/engine[2]/fuel-pump-serviceable"/>
+    </faults>
    </engine>
    <engine n="3">
-    <throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[3]"/>
+    <!-- throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[3]"/>
     <mixture  n="0" alias="/fdm/jsbsim/fcs/mixture-cmd-norm[3]"/>
-    <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[3]"/>
-   </engine -->
+    <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[3]"/ -->
+    <faults>
+     <fuel-pump-serviceable
+         alias="/fdm/jsbsim/propulsion/engine[3]/fuel-pump-serviceable"/>
+    </faults>
+   </engine>
    <inner-cutoff alias="/fdm/jsbsim/fcs/inner-engines-cutoff-cmd-norm"/>
    <outer-cutoff alias="/fdm/jsbsim/fcs/outer-engines-cutoff-cmd-norm"/>
   </engines>
@@ -392,8 +408,23 @@
   </mice>
  </input>
 
+ <!-- Initialize aliased FDM properties. JSBSim will not do so. -->
  <fdm>
   <jsbsim>
+   <propulsion>
+    <engine n="0">
+     <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
+    </engine>
+    <engine n="1">
+     <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
+    </engine>
+    <engine n="2">
+     <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
+    </engine>
+    <engine n="3">
+     <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
+    </engine>
+   </propulsion>
    <sperry-autopilot>
     <sensors>
      <heading-deg alias="/instrumentation/sperry-autopilot[0]/heading-indicator/indicated-heading-deg"/>

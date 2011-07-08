@@ -25,68 +25,6 @@ setlistener("/sim/signals/fdm-initialized", func {
     settimer(ground, 0.0);
     print("Hydrodynamics initialized.");
     copilot.init();
-
-    # Force the type and initial value of the aliased control properties.
-    # Unfortunately JSBSim does not write default values to properties that it
-    # finds already exist even though they are of undefined type, as e.g. when
-    # created by aliases.
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/mark").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm[0]").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm[1]").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm[2]").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/left-tank-cock-cmd-norm[3]").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[0]").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[1]").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[2]").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/right-tank-cock-cmd-norm[3]").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/balance-cock-cmd-norm").
-            setDoubleValue(0.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/left-test-cock-cmd-norm").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/right-test-cock-cmd-norm").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/fuel-system/center-test-cock-cmd-norm").
-            setDoubleValue(1.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/inner-engines-cutoff-cmd-norm").
-            setDoubleValue(0.0);
-    props.globals.
-        getNode("/fdm/jsbsim/fcs/outer-engines-cutoff-cmd-norm").
-            setDoubleValue(0.0);
-    props.globals.
-        getNode("/fdm/jsbsim/sperry-autopilot/enabled-cmd-norm").
-            setDoubleValue(0.0);
-    props.globals.
-        getNode("/fdm/jsbsim/sperry-autopilot/heading-reference-deg").
-            setDoubleValue(0.0);
-    props.globals.
-        getNode("/fdm/jsbsim/sperry-autopilot/pitch-reference-deg").
-            setDoubleValue(0.0);
-    props.globals.
-        getNode("/fdm/jsbsim/sperry-autopilot/roll-reference-deg").
-            setDoubleValue(0.0);
 });
 
 

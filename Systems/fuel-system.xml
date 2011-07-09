@@ -130,11 +130,71 @@
  <property value="1.0">propulsion/engine[3]/fuel-pump-capacity-pps</property>
 
  <channel name="Extra fuel tank properties">
-  <!-- TODO: Extend these to consider bank and acceleration. -->
 
+  <switch name="propulsion/tank[0]/empty">
+   <default value="1.0"/>
+   <test value="0.0" logic="AND">
+     propulsion/tank[0]/contents-lbs GT 0.0
+   </test>
+  </switch>
+
+  <switch name="propulsion/tank[1]/empty">
+   <default value="1.0"/>
+   <test value="0.0" logic="AND">
+     propulsion/tank[1]/contents-lbs GT 0.0
+   </test>
+  </switch>
+
+  <switch name="propulsion/tank[2]/empty">
+   <default value="1.0"/>
+   <test value="0.0" logic="AND">
+     propulsion/tank[2]/contents-lbs GT 0.0
+   </test>
+  </switch>
+
+  <switch name="propulsion/tank[3]/empty">
+   <default value="1.0"/>
+   <test value="0.0" logic="AND">
+     propulsion/tank[3]/contents-lbs GT 0.0
+   </test>
+  </switch>
+
+  <switch name="propulsion/tank[4]/empty">
+   <default value="1.0"/>
+   <test value="0.0" logic="AND">
+     propulsion/tank[4]/contents-lbs GT 0.0
+   </test>
+  </switch>
+
+  <switch name="propulsion/tank[5]/empty">
+   <default value="1.0"/>
+   <test value="0.0" logic="AND">
+     propulsion/tank[5]/contents-lbs GT 0.0
+   </test>
+  </switch>
+
+  <switch name="propulsion/tank[6]/empty">
+   <default value="1.0"/>
+   <test value="0.0" logic="AND">
+     propulsion/tank[6]/contents-lbs GT 0.0
+   </test>
+  </switch>
+
+  <switch name="propulsion/tank[7]/empty">
+   <default value="1.0"/>
+   <test value="0.0" logic="AND">
+     propulsion/tank[7]/contents-lbs GT 0.0
+   </test>
+  </switch>
+
+  <!-- TODO: Extend these to consider acceleration. -->
   <fcs_function name="propulsion/tank[0]/relative-level-ft">
    <function>
     <sum>
+     <product>
+      <property>propulsion/tank[0]/empty</property>
+      <value>-1000.0</value>
+     </product>
      <property>propulsion/tank[0]/position-z-ft</property>
      <product>
       <value>-1.0</value>
@@ -157,6 +217,10 @@
   <fcs_function name="propulsion/tank[1]/relative-level-ft">
    <function>
     <sum>
+     <product>
+      <property>propulsion/tank[1]/empty</property>
+      <value>-1000.0</value>
+     </product>
      <property>propulsion/tank[1]/position-z-ft</property>
      <product>
       <value>-1.0</value>
@@ -179,6 +243,10 @@
   <fcs_function name="propulsion/tank[2]/relative-level-ft">
    <function>
     <sum>
+     <product>
+      <property>propulsion/tank[2]/empty</property>
+      <value>-1000.0</value>
+     </product>
      <property>propulsion/tank[2]/position-z-ft</property>
      <product>
       <value>-1.0</value>
@@ -201,6 +269,10 @@
   <fcs_function name="propulsion/tank[3]/relative-level-ft">
    <function>
     <sum>
+     <product>
+      <property>propulsion/tank[3]/empty</property>
+      <value>-1000.0</value>
+     </product>
      <property>propulsion/tank[3]/position-z-ft</property>
      <product>
       <value>-1.0</value>
@@ -223,6 +295,10 @@
   <fcs_function name="propulsion/tank[4]/relative-level-ft">
    <function>
     <sum>
+     <product>
+      <property>propulsion/tank[4]/empty</property>
+      <value>-1000.0</value>
+     </product>
      <property>propulsion/tank[4]/position-z-ft</property>
      <product>
       <property>propulsion/tank[4]/position-y-ft</property>
@@ -245,6 +321,10 @@
   <fcs_function name="propulsion/tank[5]/relative-level-ft">
    <function>
     <sum>
+     <product>
+      <property>propulsion/tank[5]/empty</property>
+      <value>-1000.0</value>
+     </product>
      <property>propulsion/tank[5]/position-z-ft</property>
      <product>
       <value>-1.0</value>
@@ -267,6 +347,10 @@
   <fcs_function name="propulsion/tank[6]/relative-level-ft">
    <function>
     <sum>
+     <product>
+      <property>propulsion/tank[6]/empty</property>
+      <value>-1000.0</value>
+     </product>
      <property>propulsion/tank[6]/position-z-ft</property>
      <product>
       <value>-1.0</value>
@@ -289,6 +373,10 @@
   <fcs_function name="propulsion/tank[7]/relative-level-ft">
    <function>
     <sum>
+     <product>
+      <property>propulsion/tank[7]/empty</property>
+      <value>-1000.0</value>
+     </product>
      <property>propulsion/tank[7]/position-z-ft</property>
      <product>
       <value>-1.0</value>
@@ -1170,8 +1258,8 @@
 
  <channel name="Supply consumption">
 
-  <!-- Note: This is simplified a bit too far.
-       The test cocks are assumed to be open.
+  <!-- FIXME: This is simplified a bit too far.
+              The test cocks are assumed to be open.
   -->
 
   <fcs_function name="fcs/fuel-system/feed-line/total-backfeed-pps">
@@ -1193,45 +1281,28 @@
    </function>
   </fcs_function>
 
-  <!-- fcs_function name="fcs/fuel-system/feed-line/left-backfeed-pps">
-   <function>
-    <property>fcs/fuel-system/supply/left-supply-available</property>
-    <difference>
-     <sum>
-      <property>propulsion/engine[0]/fuel-pump-flow-pps</property>
-      <property>propulsion/engine[1]/fuel-pump-flow-pps</property>
-     </sum>
-     <sum>
-      <property>fcs/fuel-system/feed-line/carburettor-flow-pps[0]</property>
-      <property>fcs/fuel-system/feed-line/carburettor-flow-pps[1]</property>
-     </sum>
-    </difference>
-   </function>
-  </fcs_function>
-
-  <fcs_function name="fcs/fuel-system/feed-line/right-backfeed-pps">
-   <function>
-    <property>fcs/fuel-system/supply/right-supply-available</property>
-    <difference>
-     <sum>
-      <property>propulsion/engine[2]/fuel-pump-flow-pps</property>
-      <property>propulsion/engine[3]/fuel-pump-flow-pps</property>
-     </sum>
-     <sum>
-      <property>fcs/fuel-system/feed-line/carburettor-flow-pps[2]</property>
-      <property>fcs/fuel-system/feed-line/carburettor-flow-pps[3]</property>
-     </sum>
-    </difference>
-   </function>
-  </fcs_function -->
-
   <fcs_function name="fcs/fuel-system/feed-line/total-consumption-pps">
    <function>
     <difference>
-     <property>fcs/fuel-system/feed-line/total-available-pps</property>
+     <sum>
+      <property>fcs/fuel-system/feed-line/total-available-pps</property>
+      <property>fcs/fuel-system/feed-line/left-wing-available-pps</property>
+      <property>fcs/fuel-system/feed-line/right-wing-available-pps</property>
+      <property>fcs/fuel-system/feed-line/center-available-pps</property>
+      <property>fcs/fuel-system/feed-line/left-center-available-pps</property>
+      <property>fcs/fuel-system/feed-line/right-center-available-pps</property>
+      <property>fcs/fuel-system/feed-line/left-outer-available-pps</property>
+      <property>fcs/fuel-system/feed-line/left-inner-available-pps</property>
+      <property>fcs/fuel-system/feed-line/right-inner-available-pps</property>
+      <property>fcs/fuel-system/feed-line/right-outer-available-pps</property>
+     </sum>
      <property>fcs/fuel-system/feed-line/total-backfeed-pps</property>
     </difference>
    </function>
+   <clipto>
+    <min>0.0</min>
+    <max>1000.0</max>
+   </clipto>
   </fcs_function>
 
   <fcs_function name="fcs/fuel-system/supply/tank-flow-pps[0]">

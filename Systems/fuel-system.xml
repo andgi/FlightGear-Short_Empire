@@ -1042,25 +1042,25 @@
   <switch name="fcs/fuel-system/feed-line/carburettor-float-open[0]">
    <default value="0.0"/>
    <test value="1.0">
-     propulsion/tank[8]/contents-lbs LT 0.2
+     propulsion/tank[8]/contents-lbs LT 0.1
    </test>
   </switch>
   <switch name="fcs/fuel-system/feed-line/carburettor-float-open[1]">
    <default value="0.0"/>
    <test value="1.0">
-     propulsion/tank[9]/contents-lbs LT 0.2
+     propulsion/tank[9]/contents-lbs LT 0.1
    </test>
   </switch>
   <switch name="fcs/fuel-system/feed-line/carburettor-float-open[2]">
    <default value="0.0"/>
    <test value="1.0">
-     propulsion/tank[10]/contents-lbs LT 0.2
+     propulsion/tank[10]/contents-lbs LT 0.1
    </test>
   </switch>
   <switch name="fcs/fuel-system/feed-line/carburettor-float-open[3]">
    <default value="0.0"/>
    <test value="1.0">
-     propulsion/tank[11]/contents-lbs LT 0.2
+     propulsion/tank[11]/contents-lbs LT 0.1
    </test>
   </switch>
 
@@ -1487,6 +1487,46 @@
     </product>
    </function>
    <output>propulsion/tank[7]/external-flow-rate-pps</output>
+  </fcs_function>
+
+ </channel>
+
+ <channel name="Debug">
+
+  <fcs_function name="fcs/fuel-system/debug/total-engine-fuel-consumption-pps">
+   <function>
+    <sum>
+     <property>propulsion/engine[0]/fuel-flow-rate-pps</property>
+     <property>propulsion/engine[1]/fuel-flow-rate-pps</property>
+     <property>propulsion/engine[2]/fuel-flow-rate-pps</property>
+     <property>propulsion/engine[3]/fuel-flow-rate-pps</property>
+    </sum>
+   </function>
+  </fcs_function>
+  
+  <integrator name="fcs/fuel-system/debug/total-engine-fuel-consumed-lbs">
+   <input>fcs/fuel-system/debug/total-engine-fuel-consumption-pps</input>
+   <c1>1.00</c1>
+  </integrator>
+
+  <integrator name="fcs/fuel-system/debug/total-fuel-supply-consumed-lbs">
+   <input>fcs/fuel-system/feed-line/total-consumption-pps</input>
+   <c1>1.00</c1>
+  </integrator>
+
+  <fcs_function name="fcs/fuel-system/debug/consumption-error-lbs">
+   <function>
+    <difference>
+     <property>fcs/fuel-system/debug/total-fuel-supply-consumed-lbs</property>
+     <sum>
+      <property>fcs/fuel-system/debug/total-engine-fuel-consumed-lbs</property>
+      <property>propulsion/tank[8]/contents-lbs</property>
+      <property>propulsion/tank[9]/contents-lbs</property>
+      <property>propulsion/tank[10]/contents-lbs</property>
+      <property>propulsion/tank[11]/contents-lbs</property>
+     </sum>
+    </difference>
+   </function>
   </fcs_function>
 
  </channel>

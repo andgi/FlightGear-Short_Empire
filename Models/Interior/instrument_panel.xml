@@ -11,6 +11,92 @@
  <!-- The origin is in the middle of the lower edge of the panel. -->
  <!-- x/y/z == back/right/up -->
 
+ <!-- Starter buttons. -->
+ <model>
+  <name>Starter Port Outer</name>
+  <path>Aircraft/Short_Empire/Instruments/RotaxN5EBStarterButton/starter_button.xml</path>
+  <offsets>
+   <pitch-deg>-60.0</pitch-deg>
+   <x-m>-0.043</x-m>
+   <y-m>-0.105</y-m>
+   <z-m> 0.490</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <button-pressed-norm type="string">controls/engines/engine[0]/starter</button-pressed-norm>
+    <pick-action-script    n="0" type="string">
+      setprop("controls/engines/engine[0]/starter", 1);
+    </pick-action-script>
+    <release-action-script n="0" type="string">
+      setprop("controls/engines/engine[0]/starter", 0);
+    </release-action-script>
+   </params>
+  </overlay>
+ </model>
+ <model>
+  <name>Starter Port Inner</name>
+  <path>Aircraft/Short_Empire/Instruments/RotaxN5EBStarterButton/starter_button.xml</path>
+  <offsets>
+   <pitch-deg>-60.0</pitch-deg>
+   <x-m>-0.043</x-m>
+   <y-m>-0.035</y-m>
+   <z-m> 0.490</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <button-pressed-norm type="string">controls/engines/engine[1]/starter</button-pressed-norm>
+    <pick-action-script    n="0" type="string">
+      setprop("controls/engines/engine[1]/starter", 1);
+    </pick-action-script>
+    <release-action-script n="0" type="string">
+      setprop("controls/engines/engine[1]/starter", 0);
+    </release-action-script>
+   </params>
+  </overlay>
+ </model>
+ <model>
+  <name>Starter Starboard Inner</name>
+  <path>Aircraft/Short_Empire/Instruments/RotaxN5EBStarterButton/starter_button.xml</path>
+  <offsets>
+   <pitch-deg>-60.0</pitch-deg>
+   <x-m>-0.043</x-m>
+   <y-m> 0.035</y-m>
+   <z-m> 0.490</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <button-pressed-norm type="string">controls/engines/engine[2]/starter</button-pressed-norm>
+    <pick-action-script    n="0" type="string">
+      setprop("controls/engines/engine[2]/starter", 1);
+    </pick-action-script>
+    <release-action-script n="0" type="string">
+      setprop("controls/engines/engine[2]/starter", 0);
+    </release-action-script>
+   </params>
+  </overlay>
+ </model>
+ <model>
+  <name>Starter Starboard Outer</name>
+  <path>Aircraft/Short_Empire/Instruments/RotaxN5EBStarterButton/starter_button.xml</path>
+  <offsets>
+   <pitch-deg>-60.0</pitch-deg>
+   <x-m>-0.043</x-m>
+   <y-m> 0.105</y-m>
+   <z-m> 0.490</z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <button-pressed-norm type="string">controls/engines/engine[3]/starter</button-pressed-norm>
+    <pick-action-script    n="0" type="string">
+      setprop("controls/engines/engine[3]/starter", 1);
+    </pick-action-script>
+    <release-action-script n="0" type="string">
+      setprop("controls/engines/engine[3]/starter", 0);
+    </release-action-script>
+   </params>
+  </overlay>
+ </model>
+
  <!-- Preliminary pilot instruments. Top-bottom, left-right  -->
  <!--
     "The port side panel of the dashboard on the Captain's side,
@@ -155,7 +241,7 @@
   <path>Aircraft/Short_Empire/Instruments/magneto_switch.xml</path>
   <offsets>
    <x-m>-0.019</x-m>
-   <y-m>-0.138</y-m>
+   <y-m>-0.114</y-m>
    <z-m> 0.417</z-m>
   </offsets>
  </model>
@@ -195,7 +281,7 @@
   <path>Aircraft/Short_Empire/Instruments/magneto_switch.xml</path>
   <offsets>
    <x-m>-0.019</x-m>
-   <y-m> 0.138</y-m>
+   <y-m> 0.114</y-m>
    <z-m> 0.417</z-m>
   </offsets>
   <overlay>

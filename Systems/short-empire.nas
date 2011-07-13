@@ -65,10 +65,11 @@ var debug_display_view_handler = {
         me.right.add("/fdm/jsbsim/propulsion/engine[1]/power-hp");
         me.right.add("/fdm/jsbsim/propulsion/engine[2]/power-hp");
         me.right.add("/fdm/jsbsim/propulsion/engine[3]/power-hp");
-        me.right.add("/fdm/jsbsim/propulsion/engine[0]/thrust-lbs");
-        me.right.add("/fdm/jsbsim/propulsion/engine[1]/thrust-lbs");
-        me.right.add("/fdm/jsbsim/propulsion/engine[2]/thrust-lbs");
-        me.right.add("/fdm/jsbsim/propulsion/engine[3]/thrust-lbs");
+        me.right.add("/fdm/jsbsim/propulsion/engine[0]/egt-degF");
+        me.right.add("/fdm/jsbsim/propulsion/engine[1]/egt-degF");
+        me.right.add("/fdm/jsbsim/propulsion/engine[2]/egt-degF");
+        me.right.add("/fdm/jsbsim/propulsion/engine[3]/egt-degF");
+        me.right.add("/fdm/jsbsim/fcs/fuel-system/debug/consumption-error-lbs");
         me.shown = 1;
         me.stop();
     },

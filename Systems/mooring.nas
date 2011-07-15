@@ -239,19 +239,19 @@ var mooring = {
 ##   [[name, lat, lon]]
 var EAMS_MOORINGS_EUROPE =
     [
-     ["Hythe 1",               50.872210,   -1.390830],
-     ["Hythe 2",               50.872349,   -1.387512],
-     ["Saint-Nazaire",         47.297423,   -2.134309],
-     ["Bordeaux/Biscarosse",   44.383172,   -1.184227],
-     ["Macon",                 46.290932,    4.831000],
-     ["Marseille/Marignane",   43.446937,    5.185410],
-     ["Rome/Lake Bracciano",   42.113768,   12.187239],
-     ["Brindisi",              40.651017,   17.961636],
-     ["Corfu",                 39.614731,   19.929714],
-     ["Athens/Phaleron Bay",   37.939527,   23.666230],
-     ["Heraklion",             35.344386,   25.140345],
-     ["Mirabella Bay",         35.200427,   25.723003],
-     ["Alexandria",            31.206525,   29.893992]
+     ["Hythe 1",                 50.872210,   -1.390830],
+     ["Hythe 2",                 50.872349,   -1.387512],
+     ["Saint-Nazaire",           47.297423,   -2.134309],
+     ["Bordeaux/Biscarosse",     44.383172,   -1.184227],
+     ["Macon",                   46.290932,    4.831000],
+     ["Marseille/Marignane",     43.446937,    5.185410],
+     ["Rome/Lake Bracciano",     42.113768,   12.187239],
+     ["Brindisi",                40.651017,   17.961636],
+     ["Corfu",                   39.614731,   19.929714],
+     ["Athens/Phaleron Bay",     37.939527,   23.666230],
+     ["Heraklion",               35.344386,   25.140345],
+     ["Mirabella Bay",           35.200427,   25.723003],
+     ["Alexandria/East Harbour", 31.196233,   29.872788]
     ];
 var EAMS_MOORINGS_EAST =
     [

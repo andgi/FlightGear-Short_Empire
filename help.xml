@@ -52,11 +52,12 @@
 
  <!-- Real data -->
  ____________________Real data____________________
- Maximum speed            : 174 kt (200 mph)
- Cruise speed               : 143 kt (165 mph)
- Stall speed (no flaps)    :  63 kt  (73 mph)
- Approach speed           : 100 kt (115 mph)
- Minimum getting off speed:  68 kt  (78 mph)
+ Never exceed speed        : 240 mph (209 kt)
+ Maximum level speed       : 200 mph (174 kt)
+ Cruise speed                   : 165 mph (143 kt)
+ Stall speed (no flaps)       :   73 mph   (63 kt)
+ Approach speed              : 115 mph (100 kt)
+ Minimum getting off speed:   78 mph   (68 kt)
 
  C.G. Range (aft of hull datum point; Assumed to be 7.75m behind the nose)
      Maximum Forward      55.5 in (360.62 in)

@@ -397,10 +397,16 @@
   <overlay>
    <particlesystem>
     <condition>
-     <greater-than>
-      <property>fdm/jsbsim/hydro/coefficients/C_Delta</property>
-      <value>0.0</value>
-     </greater-than>
+     <and>
+      <greater-than>
+       <property>fdm/jsbsim/hydro/coefficients/C_Delta</property>
+       <value>0.0</value>
+      </greater-than>
+      <greater-than>
+       <property>velocities/groundspeed-kt</property>
+       <value>3.0</value>
+      </greater-than>
+     </and>
     </condition>
     <shooter>
      <phi-min-deg>90.0</phi-min-deg>
@@ -433,10 +439,16 @@
   <overlay>
    <particlesystem>
     <condition>
-     <greater-than>
-      <property>fdm/jsbsim/hydro/coefficients/C_Delta</property>
-      <value>0.0</value>
-     </greater-than>
+     <and>
+      <greater-than>
+       <property>fdm/jsbsim/hydro/coefficients/C_Delta</property>
+       <value>0.0</value>
+      </greater-than>
+      <greater-than>
+       <property>velocities/groundspeed-kt</property>
+       <value>3.0</value>
+      </greater-than>
+     </and>
     </condition>
     <shooter>
      <phi-min-deg>-90.0</phi-min-deg>
@@ -484,10 +496,16 @@
   <overlay>
    <particlesystem>
     <condition>
-     <greater-than>
-      <property>fdm/jsbsim/hydro/left-float-submersion-ft</property>
-      <value>0.0</value>
-     </greater-than>
+     <and>
+      <greater-than>
+       <property>fdm/jsbsim/hydro/left-float-submersion-ft</property>
+       <value>0.0</value>
+      </greater-than>
+      <greater-than>
+       <property>velocities/groundspeed-kt</property>
+       <value>3.0</value>
+      </greater-than>
+     </and>
     </condition>
     <shooter>
      <phi-min-deg>90.0</phi-min-deg>
@@ -509,10 +527,16 @@
   <overlay>
    <particlesystem>
     <condition>
-     <greater-than>
-      <property>fdm/jsbsim/hydro/left-float-submersion-ft</property>
-      <value>0.0</value>
-     </greater-than>
+     <and>
+      <greater-than>
+       <property>fdm/jsbsim/hydro/left-float-submersion-ft</property>
+       <value>0.0</value>
+      </greater-than>
+      <greater-than>
+       <property>velocities/groundspeed-kt</property>
+       <value>3.0</value>
+      </greater-than>
+     </and>
     </condition>
     <shooter>
      <phi-min-deg>-90.0</phi-min-deg>
@@ -535,10 +559,16 @@
   <overlay>
    <particlesystem>
     <condition>
-     <greater-than>
-      <property>fdm/jsbsim/hydro/right-float-submersion-ft</property>
-      <value>0.0</value>
-     </greater-than>
+     <and>
+      <greater-than>
+       <property>fdm/jsbsim/hydro/right-float-submersion-ft</property>
+       <value>0.0</value>
+      </greater-than>
+      <greater-than>
+       <property>velocities/groundspeed-kt</property>
+       <value>3.0</value>
+      </greater-than>
+     </and>
     </condition>
     <shooter>
      <phi-min-deg>90.0</phi-min-deg>
@@ -560,10 +590,16 @@
   <overlay>
    <particlesystem>
     <condition>
-     <greater-than>
-      <property>fdm/jsbsim/hydro/right-float-submersion-ft</property>
-      <value>0.0</value>
-     </greater-than>
+     <and>
+      <greater-than>
+       <property>fdm/jsbsim/hydro/right-float-submersion-ft</property>
+       <value>0.0</value>
+      </greater-than>
+      <greater-than>
+       <property>velocities/groundspeed-kt</property>
+       <value>3.0</value>
+      </greater-than>
+     </and>
     </condition>
     <shooter>
      <phi-min-deg>-90.0</phi-min-deg>
@@ -606,6 +642,8 @@ rplayer.getNode("fdm/jsbsim/hydro/left-float-submersion-ft", 1).
   alias(rplayer.getNode("sim/multiplay/generic/float[2]"));
 rplayer.getNode("fdm/jsbsim/hydro/right-float-submersion-ft", 1).
   alias(rplayer.getNode("sim/multiplay/generic/float[3]"));
+rplayer.getNode("velocities/groundspeed-kt", 1).
+  alias(rplayer.getNode("velocities/true-airspeed-kt"));
 
 # Set up livery support.
 var livery_update =

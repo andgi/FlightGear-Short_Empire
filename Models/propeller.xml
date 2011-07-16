@@ -2,37 +2,35 @@
 <!--
   Short S.23 Empire flying boat for FlightGear.
 
-  Models and animations are borrowed from the Boeing 314.
-
+  Copyright (C) 2011  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
- 
- <params>
-  <engine-rpm type="string">engines/engine[0]/rpm</engine-rpm>
- </params>
 
+ <parameters>
+  <engine-rpm>engines/engine[0]/rpm</engine-rpm>
+ </parameters>
+
+ <!--
+  The propeller. Model and animations based on the B-25 propeller
+  by Emmanuel BARANGER.
+ -->
  <path>propeller.ac</path>
  <offsets>
   <!-- x/y/z == back/right/up -->
-  <x-m>  0.00 </x-m>
-  <y-m>  0.00 </y-m>
-  <z-m>  0.00 </z-m>
+  <x-m> 0.0 </x-m>
+  <y-m> 0.0 </y-m>
+  <z-m> 0.0 </z-m>
  </offsets>
-
- <animation>
-  <type>noshadow</type>
-  <object-name>PropellerDisc</object-name>
- </animation>
-
 
  <!-- Assumes 1/2 gear ratio -->
  <animation>
   <type>spin</type>
-  <object-name>PropellerDisc</object-name>
-  <object-name>PropellerShaft</object-name>
-  <object-name>Propeller</object-name>
-  <property alias="../../params/engine-rpm"/>
+  <object-name>bolD</object-name>
+  <object-name>heliceD</object-name>
+  <object-name>propdiscD</object-name>
+  <object-name>propblurD</object-name>
+  <property alias="../../parameters/engine-rpm"/>
   <factor>0.50</factor>
   <center>
    <x-m> 0.0 </x-m>
@@ -45,37 +43,40 @@
    <z> 0.0 </z>
   </axis>
  </animation>
-
- <animation> 
-  <type>blend</type>
-  <object-name>PropellerDisc</object-name>
-  <property alias="../../params/engine-rpm"/>
-  <factor>0.00015</factor>
-  <offset>-0.5</offset>
-  <min>0.0</min>
-  <max>0.5</max>
- </animation>
-
  <animation>
   <type>select</type>
-  <object-name>Propeller</object-name>
+  <object-name>heliceD</object-name>
   <condition>
    <less-than>
-    <property alias="../../../../params/engine-rpm"/>
-    <value>1800</value>
+    <property alias="../../../../parameters/engine-rpm"/>
+    <value>675.00</value>
    </less-than>
   </condition>
  </animation>
-
  <animation>
   <type>select</type>
-  <object-name>PropellerShaft</object-name>
-  <object-name>PropellerDisc</object-name>
+  <object-name>propblurD</object-name>
   <condition>
-   <greater-than-equals>
-    <property alias="../../../../params/engine-rpm"/>
-    <value>1800</value>
-   </greater-than-equals>
+   <and>
+    <greater-than>
+     <property alias="../../../../../parameters/engine-rpm"/>
+     <value>225.00</value>
+    </greater-than>
+    <less-than>
+     <property alias="../../../../../parameters/engine-rpm"/>
+     <value>675.01</value>
+    </less-than>
+   </and>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>propdiscD</object-name>
+  <condition>
+   <greater-than>
+    <property alias="../../../../parameters/engine-rpm"/>
+    <value>675.00</value>
+   </greater-than>
   </condition>
  </animation>
 

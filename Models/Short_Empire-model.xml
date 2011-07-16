@@ -70,9 +70,9 @@
    <z-m>  2.91 </z-m>
   </offsets>
   <overlay>
-   <params>
+   <parameters>
     <engine-rpm type="string">engines/engine[0]/rpm</engine-rpm>
-   </params>
+   </parameters>
   </overlay>
  </model>
  <model>
@@ -100,9 +100,9 @@
    <z-m>  2.69 </z-m>
   </offsets>
   <overlay>
-   <params>
+   <parameters>
     <engine-rpm type="string">engines/engine[1]/rpm</engine-rpm>
-   </params>
+   </parameters>
   </overlay>
  </model>
  <model>
@@ -130,9 +130,9 @@
    <z-m>  2.69 </z-m>
   </offsets>
   <overlay>
-   <params>
+   <parameters>
     <engine-rpm type="string">engines/engine[2]/rpm</engine-rpm>
-   </params>
+   </parameters>
   </overlay>
  </model>
  <model>
@@ -160,9 +160,9 @@
    <z-m>  2.91 </z-m>
   </offsets>
   <overlay>
-   <params>
+   <parameters>
     <engine-rpm type="string">engines/engine[3]/rpm</engine-rpm>
-   </params>
+   </parameters>
   </overlay>
  </model>
  <model>

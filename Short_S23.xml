@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate>2008-11-05</filecreationdate>
-  <version>$Id: Short_S23.xml,v 1.35 2011-06-29 21:27:40 anders Exp $</version>
+  <version>$Id: Short_S23.xml,v 1.36 2011/07/21 16:44:40 anders Exp $</version>
 
   <description>Models a Short S.23 flying boat.</description>
 
@@ -717,7 +717,6 @@
      Elevator : +/-18 deg
      Rudder   : +/-22.5 deg
 
-   There is no autopilot yet.
   </documentation>
 
   <!-- FlightGear multiplayer dual control properties. -->
@@ -733,193 +732,198 @@
 
   <channel name="Elevator">
 
-   <summer name="Pitch Trim Sum">
-      <input>fcs/elevator-cmd-norm</input>
-      <input>fcs/copilot/elevator-cmd-norm</input>
-      <input>sperry-autopilot/elevator-cmd-norm</input>
-      <input>fcs/pitch-trim-cmd-norm</input>
-      <clipto>
-        <min> -1 </min>
-        <max>  1 </max>
-      </clipto>
+   <summer name="fcs/elevator/cmd-sum-norm">
+    <input>fcs/elevator-cmd-norm</input>
+    <input>fcs/copilot/elevator-cmd-norm</input>
+    <input>sperry-autopilot/elevator-cmd-norm</input>
+    <input>fcs/pitch-trim-cmd-norm</input>
+    <clipto>
+     <min> -1 </min>
+     <max>  1 </max>
+    </clipto>
    </summer>
 
-   <aerosurface_scale name="Elevator Control rad">
-      <input>fcs/pitch-trim-sum</input>
-      <range>
-        <min> -0.3142 </min>
-        <max>  0.3142 </max>
-      </range>
-      <output>fcs/elevator-pos-rad</output>
+   <aerosurface_scale name="fcs/elevator/pos-rad">
+    <input>fcs/elevator/cmd-sum-norm</input>
+    <range>
+     <min> -0.3142 </min>
+     <max>  0.3142 </max>
+    </range>
+    <output>fcs/elevator-pos-rad</output>
    </aerosurface_scale>
-   <pure_gain name="Elevator Control Deg">
-      <input>fcs/elevator-pos-rad</input>
-      <gain> 57.29578 </gain>
-      <output>fcs/elevator-pos-deg</output>
+
+   <pure_gain name="fcs/elevator/pos-deg">
+    <input>fcs/elevator/pos-rad</input>
+    <gain> 57.29578 </gain>
+    <output>fcs/elevator-pos-deg</output>
    </pure_gain>
 
-   <aerosurface_scale name="elevator normalization">
-      <input>fcs/elevator-pos-rad</input>
-      <domain>
-        <min> -0.3142 </min>
-        <max>  0.3142 </max>
-      </domain>
-      <range>
-        <min> -1 </min>
-        <max>  1 </max>
-      </range>
-      <output>fcs/elevator-pos-norm</output>
+   <aerosurface_scale name="fcs/elevator/pos-norm">
+    <input>fcs/elevator/pos-rad</input>
+    <domain>
+     <min> -0.3142 </min>
+     <max>  0.3142 </max>
+    </domain>
+    <range>
+     <min> -1 </min>
+     <max>  1 </max>
+    </range>
+    <output>fcs/elevator-pos-norm</output>
    </aerosurface_scale>
 
   </channel>
 
   <channel name="Aileron">
 
-   <summer name="Roll Trim Sum">
-      <input>fcs/aileron-cmd-norm</input>
-      <input>fcs/copilot/aileron-cmd-norm</input>
-      <input>sperry-autopilot/aileron-cmd-norm</input>
-      <input>fcs/roll-trim-cmd-norm</input>
-      <clipto>
-        <min> -1 </min>
-        <max>  1 </max>
-      </clipto>
+   <summer name="fcs/aileron/cmd-sum-norm">
+    <input>fcs/aileron-cmd-norm</input>
+    <input>fcs/copilot/aileron-cmd-norm</input>
+    <input>sperry-autopilot/aileron-cmd-norm</input>
+    <input>fcs/roll-trim-cmd-norm</input>
+    <clipto>
+     <min> -1 </min>
+     <max>  1 </max>
+    </clipto>
    </summer>
 
-   <aerosurface_scale name="Left Aileron Control rad">
-      <input>fcs/roll-trim-sum</input>
-      <range>
-        <min> -0.3403 </min>
-        <max>  0.3403 </max>
-      </range>
-      <output>fcs/left-aileron-pos-rad</output>
+   <aerosurface_scale name="fcs/aileron/left-pos-rad">
+    <input>fcs/aileron/cmd-sum-norm</input>
+    <range>
+     <min> -0.3403 </min>
+     <max>  0.3403 </max>
+    </range>
+    <output>fcs/left-aileron-pos-rad</output>
    </aerosurface_scale>
-   <pure_gain name="Left Aileron Control Deg">
-      <input>fcs/left-aileron-pos-rad</input>
-      <gain> 57.29578 </gain>
-      <output>fcs/left-aileron-pos-deg</output>
+
+   <pure_gain name="fcs/aileron/left-pos-deg">
+    <input>fcs/aileron/left-pos-rad</input>
+    <gain> 57.29578 </gain>
+    <output>fcs/left-aileron-pos-deg</output>
    </pure_gain>
 
-   <aerosurface_scale name="Right Aileron Control rad">
-      <input>fcs/roll-trim-sum</input>
-      <range>
-        <min> -0.3403 </min>
-        <max>  0.3403 </max>
-      </range>
-      <output>fcs/right-aileron-pos-rad</output>
+   <aerosurface_scale name="fcs/aileron/left-pos-norm">
+    <input>fcs/aileron/left-pos-rad</input>
+    <domain>
+     <min> -0.3403 </min>
+     <max>  0.3403 </max>
+    </domain>
+    <range>
+     <min> -1 </min>
+     <max>  1 </max>
+    </range>
+    <output>fcs/left-aileron-pos-norm</output>
    </aerosurface_scale>
-   <pure_gain name="Right Aileron Control Deg">
-      <input>fcs/right-aileron-pos-rad</input>
-      <gain> 57.29578 </gain>
-      <output>fcs/right-aileron-pos-deg</output>
+
+
+   <aerosurface_scale name="fcs/aileron/right-pos-rad">
+    <input>fcs/aileron/cmd-sum-norm</input>
+    <range>
+     <min> -0.3403 </min>
+     <max>  0.3403 </max>
+    </range>
+    <output>fcs/right-aileron-pos-rad</output>
+   </aerosurface_scale>
+
+   <pure_gain name="fcs/aileron/right-pos-deg">
+    <input>fcs/aileron/right-pos-rad</input>
+    <gain> 57.29578 </gain>
+    <output>fcs/right-aileron-pos-deg</output>
    </pure_gain>
 
-   <aerosurface_scale name="left aileron normalization">
-      <input>fcs/left-aileron-pos-rad</input>
-      <domain>
-        <min> -0.3403 </min>
-        <max>  0.3403 </max>
-      </domain>
-      <range>
-        <min> -1 </min>
-        <max>  1 </max>
-      </range>
-      <output>fcs/left-aileron-pos-norm</output>
-   </aerosurface_scale>
-
-   <aerosurface_scale name="right aileron normalization">
-      <input>fcs/right-aileron-pos-rad</input>
-      <domain>
-        <min> -0.3403 </min>
-        <max>  0.3403 </max>
-      </domain>
-      <range>
-        <min> -1 </min>
-        <max>  1 </max>
-      </range>
-      <output>fcs/right-aileron-pos-norm</output>
+   <aerosurface_scale name="fcs/aileron/right-pos-norm">
+    <input>fcs/aileron/right-pos-rad</input>
+    <domain>
+     <min> -0.3403 </min>
+     <max>  0.3403 </max>
+    </domain>
+    <range>
+     <min> -1 </min>
+     <max>  1 </max>
+    </range>
+    <output>fcs/right-aileron-pos-norm</output>
    </aerosurface_scale>
 
   </channel>
 
   <channel name="Rudder">
 
-   <summer name="Rudder Command Sum">
-      <input>fcs/rudder-cmd-norm</input>
-      <input>fcs/copilot/rudder-cmd-norm</input>
-      <input>sperry-autopilot/rudder-cmd-norm</input>
-      <input>fcs/yaw-trim-cmd-norm</input>
-      <clipto>
-        <min> -1.0 </min>
-        <max>  1.0 </max>
-      </clipto>
+   <summer name="fcs/rudder/cmd-sum-norm">
+    <input>fcs/rudder-cmd-norm</input>
+    <input>fcs/copilot/rudder-cmd-norm</input>
+    <input>sperry-autopilot/rudder-cmd-norm</input>
+    <input>fcs/yaw-trim-cmd-norm</input>
+    <clipto>
+     <min> -1.0 </min>
+     <max>  1.0 </max>
+    </clipto>
    </summer>
-
-   <aerosurface_scale name="Rudder Control rad">
-      <input>fcs/rudder-command-sum</input>
-      <range>
-        <min> -0.3927 </min>
-        <max>  0.3927 </max>
-      </range>
-      <output>fcs/rudder-pos-rad</output>
+   
+   <aerosurface_scale name="fcs/rudder/pos-rad">
+    <input>fcs/rudder/cmd-sum-norm</input>
+    <range>
+     <min> -0.3927 </min>
+     <max>  0.3927 </max>
+    </range>
+    <output>fcs/rudder-pos-rad</output>
    </aerosurface_scale>
-   <pure_gain name="Rudder Control Deg">
-      <input>fcs/rudder-pos-rad</input>
-      <gain> 57.29578 </gain>
-      <output>fcs/rudder-pos-deg</output>
+
+   <pure_gain name="fcs/rudder/pos-deg">
+    <input>fcs/rudder/pos-rad</input>
+    <gain> 57.29578 </gain>
+    <output>fcs/rudder-pos-deg</output>
    </pure_gain>
 
-   <aerosurface_scale name="rudder normalization">
-      <input>fcs/rudder-pos-rad</input>
-      <domain>
-        <min> -0.393 </min>
-        <max>  0.393 </max>
-      </domain>
-      <range>
-        <min> -1 </min>
-        <max>  1 </max>
-      </range>
-      <output>fcs/rudder-pos-norm</output>
+   <aerosurface_scale name="fcs/rudder/pos-norm">
+    <input>fcs/rudder/pos-rad</input>
+    <domain>
+     <min> -0.393 </min>
+     <max>  0.393 </max>
+    </domain>
+    <range>
+     <min> -1 </min>
+     <max>  1 </max>
+    </range>
+    <output>fcs/rudder-pos-norm</output>
    </aerosurface_scale>
 
   </channel>
 
   <channel name="Flaps">
 
-   <kinematic name="Flaps Control">
-     <input>fcs/flap-cmd-norm</input>
-     <traverse>
-       <setting>
-          <position>  0 </position>
-          <time>      0 </time>
-       </setting>
-       <setting>
-          <position> 8.33 </position>
-          <time>     20 </time>
-       </setting>
-       <setting>
-          <position> 16.67 </position>
-          <time>     40 </time>
-       </setting>
-       <setting>
-          <position> 25 </position>
-          <time>     60 </time>
-       </setting>
-     </traverse>
-     <output>fcs/flap-pos-deg</output>
+   <kinematic name="fcs/flap/pos-deg">
+    <input>fcs/flap-cmd-norm</input>
+    <traverse>
+     <setting>
+      <position>  0 </position>
+      <time>      0 </time>
+     </setting>
+     <setting>
+      <position> 8.33 </position>
+      <time>     20 </time>
+     </setting>
+     <setting>
+      <position> 16.67 </position>
+      <time>     40 </time>
+     </setting>
+     <setting>
+      <position> 25 </position>
+      <time>     60 </time>
+     </setting>
+    </traverse>
+    <output>fcs/flap-pos-deg</output>
    </kinematic>
 
-   <aerosurface_scale name="flap normalization">
-      <input>fcs/flap-pos-deg</input>
-      <domain>
-        <min>  0 </min>
-        <max> 25 </max>
-      </domain>
-      <range>
-        <min> 0 </min>
-        <max> 1 </max>
-      </range>
-      <output>fcs/flap-pos-norm</output>
+   <aerosurface_scale name="fcs/flap/pos-norm">
+    <input>fcs/flap-pos-deg</input>
+    <domain>
+     <min>  0 </min>
+     <max> 25 </max>
+    </domain>
+    <range>
+     <min> 0 </min>
+     <max> 1 </max>
+    </range>
+    <output>fcs/flap-pos-norm</output>
    </aerosurface_scale>
 
   </channel>

@@ -52,8 +52,8 @@
  <property value="0.0">sperry-autopilot/roll-reference-deg</property>
 
  <property value="0.15">sperry-autopilot/heading-speed-valve-cmd-norm</property>
- <property value="0.15">sperry-autopilot/pitch-speed-valve-cmd-norm</property>
- <property value="0.30">sperry-autopilot/roll-speed-valve-cmd-norm</property>
+ <property value="0.07">sperry-autopilot/pitch-speed-valve-cmd-norm</property>
+ <property value="0.15">sperry-autopilot/roll-speed-valve-cmd-norm</property>
 
  <!-- Sensor inputs -->
  <property>sperry-autopilot/sensors/heading-deg</property>

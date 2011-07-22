@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.47 2011/07/08 13:49:14 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.48 2011/07/23 23:06:53 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -303,6 +303,8 @@
    </engine>
    <inner-cutoff alias="/fdm/jsbsim/fcs/inner-engines-cutoff-cmd-norm"/>
    <outer-cutoff alias="/fdm/jsbsim/fcs/outer-engines-cutoff-cmd-norm"/>
+   <cowling-gills type="float">0.0</cowling-gills>
+   <cowling-gills type="float">0.0</cowling-gills>
   </engines>
   <fuel>
    <!-- Centre wing tanks -->

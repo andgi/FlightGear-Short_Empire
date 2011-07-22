@@ -15,6 +15,7 @@
   <z-m> 0.00 </z-m>
  </offsets>
 
+ <!-- Shader effects -->
  <effect>
   <inherits-from>Effects/reflect</inherits-from>
   <object-name>Fuselage</object-name>
@@ -87,6 +88,23 @@
    <z-m>  2.91 </z-m>
   </offsets>
  </model>
+ <model>
+  <name>Port Outer Cowling Gills</name>
+  <path>Aircraft/Short_Empire/Models/Exterior/cowling_gills.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.31 </x-m>
+   <y-m>  7.96 </y-m>
+   <z-m>  2.91 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <position-norm type="string">controls/engines/engine[0]/cowl-flaps-norm</position-norm>
+   </parameters>
+  </overlay>
+ </model>
 
  <model>
   <name>Port Inner Propeller</name>
@@ -116,6 +134,23 @@
    <y-m>  3.97 </y-m>
    <z-m>  2.69 </z-m>
   </offsets>
+ </model>
+ <model>
+  <name>Port Inner Cowling Gills</name>
+  <path>Aircraft/Short_Empire/Models/Exterior/cowling_gills.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.02 </x-m>
+   <y-m>  3.97 </y-m>
+   <z-m>  2.69 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <position-norm type="string">controls/engines/engine[1]/cowl-flaps-norm</position-norm>
+   </parameters>
+  </overlay>
  </model>
 
  <model>
@@ -147,6 +182,23 @@
    <z-m>  2.69 </z-m>
   </offsets>
  </model>
+ <model>
+  <name>Starboard Inner Cowling Gills</name>
+  <path>Aircraft/Short_Empire/Models/Exterior/cowling_gills.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.02 </x-m>
+   <y-m> -3.97 </y-m>
+   <z-m>  2.69 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <position-norm type="string">controls/engines/engine[2]/cowl-flaps-norm</position-norm>
+   </parameters>
+  </overlay>
+ </model>
 
  <model>
   <name>Starboard Outer Propeller</name>
@@ -176,6 +228,23 @@
    <y-m> -7.96 </y-m>
    <z-m>  2.91 </z-m>
   </offsets>
+ </model>
+ <model>
+  <name>Port Outer Cowling Gills</name>
+  <path>Aircraft/Short_Empire/Models/Exterior/cowling_gills.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == forward/left/up -->
+   <pitch-deg>4.0</pitch-deg>
+   <x-m> -6.31 </x-m>
+   <y-m> -7.96 </y-m>
+   <z-m>  2.91 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <position-norm type="string">controls/engines/engine[3]/cowl-flaps-norm</position-norm>
+   </parameters>
+  </overlay>
  </model>
 
  <!-- Doors and hatches animations =========================================-->
@@ -381,15 +450,6 @@
    <z2-m>   0.72 </z2-m>
   </axis>
  </animation>
-
- <!-- Shaders -->
- <!-- animation>
-  <type>shader</type>
-  <shader>chrome</shader>
-  <texture>chrome2.png</texture>
-  <object-name>wing</object-name>
-  <object-name>Fuselage</object-name>
- </animation -->
 
  <!-- Particle effects -->
  <model>

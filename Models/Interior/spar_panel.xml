@@ -259,6 +259,74 @@
   </offsets>
  </model>
 
+ <!-- Port cowling gills control. -->
+ <model>
+  <name>Port cowling gills control</name>
+  <path>Aircraft/Short_Empire/Models/Interior/cowling_gills.xml</path>
+  <offsets>
+   <heading-deg>90.0</heading-deg>
+   <pitch-deg>15.0</pitch-deg>
+   <x-m> 0.450</x-m>
+   <y-m>-1.450</y-m>
+   <z-m> 1.500</z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <pos-norm type="string">controls/engines/cowling-gills[0]</pos-norm>
+    <inc-action-script type="string">
+      var v = math.min(getprop("/controls/engines/cowling-gills[0]") +
+                       0.002,
+                       1.0);
+      setprop("/controls/engines/cowling-gills[0]", v);
+      setprop("/controls/engines/engine[0]/cowl-flaps-norm", v);
+      setprop("/controls/engines/engine[1]/cowl-flaps-norm", v);
+    </inc-action-script>
+    <dec-action-script type="string">
+      var v = math.max(getprop("/controls/engines/cowling-gills[0]") -
+                       0.002,
+                       0.0);
+      setprop("/controls/engines/cowling-gills[0]", v);
+      setprop("/controls/engines/engine[0]/cowl-flaps-norm", v);
+      setprop("/controls/engines/engine[1]/cowl-flaps-norm", v);
+    </dec-action-script>
+   </parameters>
+  </overlay>
+ </model>
+
+ <!-- Starboard cowling gills control. -->
+ <model>
+  <name>Starboard cowling gills control</name>
+  <path>Aircraft/Short_Empire/Models/Interior/cowling_gills.xml</path>
+  <offsets>
+   <heading-deg>-90.0</heading-deg>
+   <pitch-deg>15.0</pitch-deg>
+   <x-m> 0.450</x-m>
+   <y-m> 1.450</y-m>
+   <z-m> 1.500</z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <pos-norm type="string">controls/engines/cowling-gills[1]</pos-norm>
+    <inc-action-script type="string">
+      var v = math.min(getprop("/controls/engines/cowling-gills[1]") +
+                       0.002,
+                       1.0);
+      setprop("/controls/engines/cowling-gills[1]", v);
+      setprop("/controls/engines/engine[2]/cowl-flaps-norm", v);
+      setprop("/controls/engines/engine[3]/cowl-flaps-norm", v);
+    </inc-action-script>
+    <dec-action-script type="string">
+      var v = math.max(getprop("/controls/engines/cowling-gills[1]") -
+                       0.002,
+                       0.0);
+      setprop("/controls/engines/cowling-gills[1]", v);
+      setprop("/controls/engines/engine[2]/cowl-flaps-norm", v);
+      setprop("/controls/engines/engine[3]/cowl-flaps-norm", v);
+    </dec-action-script>
+   </parameters>
+  </overlay>
+ </model>
+
  <animation> 
   <type>range</type>
   <min-m>0</min-m>

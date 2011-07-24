@@ -472,4 +472,9 @@
   </settings>
  </autopilot>
 
+ <constants>
+  <one  type="float">1.0</one>
+  <true type="bool">1</true>
+ </constants>
+
 </PropertyList>

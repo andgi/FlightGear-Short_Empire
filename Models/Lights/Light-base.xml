@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <parameters>
+  <enabled-norm type="string"/>
+ </parameters>
+
+
+ <path type="string"/>
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>Light</object-name>
+ </animation>
+
+ <animation>
+  <type>alpha-test</type>
+  <alpha-factor>0.01</alpha-factor>
+ </animation>
+
+ <animation>
+  <type>billboard</type>
+  <object-name>Light</object-name>
+  <spherical type="bool">true</spherical>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Light</object-name>
+  <condition>
+   <property alias="../../../parameters/enabled-norm"/>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>dist-scale</type>
+  <object-name>Light</object-name>
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>0.1</dep>
+   </entry>
+   <entry>
+    <ind>300</ind>
+    <dep>0.4</dep>
+   </entry>
+   <entry>
+    <ind>1500</ind>
+    <dep>0.8</dep>
+   </entry>
+   <entry>
+    <ind>6000</ind>
+    <dep>1.2</dep>
+   </entry>
+  </interpolation>
+ </animation>
+
+</PropertyList>

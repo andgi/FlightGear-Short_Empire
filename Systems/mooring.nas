@@ -2,7 +2,7 @@
 ##
 ## Short S.23 'C'-class Empire flying boat
 ##
-##  Copyright (C) 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2010 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
@@ -14,26 +14,29 @@ var init = func(reinit=0) {
     mooring.init(reinit);
     if (getprop("/sim/presets/onground")) {
         settimer(func {
-            # Set up an initial mooring location.
-            mooring.add_fixed_mooring(geo.aircraft_position(), 0.0);
-        }, 0.4);
-        # We need the FDM to run in between.
-        settimer(func {
-            mooring.pick_up_mooring();
-
-            # Add the predefined moorings.
-            foreach (var m; EAMS_MOORINGS_EUROPE ~
-                            EAMS_MOORINGS_EAST ~
-                            EAMS_MOORINGS_SOUTH ~
-                            BERMUDA_NEWYORK ~
-                            TEAL) {
-                var pos = geo.Coord.new().set_latlon(m[1], m[2]);
-                mooring.add_fixed_mooring(pos, 0.0, m[0]);
+            if (!mooring.pick_up_mooring()) {
+                # No mooring available, set up a local mooring.
+                mooring.add_fixed_mooring(geo.aircraft_position(), 0.0);
             }
-        }, 0.5);
+            # We need the FDM to run in between.
+            settimer(func {
+                mooring.pick_up_mooring();
+            }, 0.5);
+        }, 0.4);
     }
 
-    # Enable Alt+Click to place the mooring mast
+    # Add the predefined moorings.
+    foreach (var m; EAMS_MOORINGS_EUROPE ~
+             EAMS_MOORINGS_EAST ~
+             EAMS_MOORINGS_SOUTH ~
+             BERMUDA_NEWYORK ~
+             TEAL) {
+        var pos = geo.Coord.new().set_latlon(m[1], m[2]);
+        mooring.add_fixed_mooring(pos, 0.0, m[0]);
+    }
+
+
+    # Enable Alt+Click to place the mooring
     if (!reinit) {
         setlistener("/sim/signals/click", func {
             var click_pos = geo.click_position();
@@ -68,7 +71,8 @@ var mooring = {
         ##   AI    {base : <node>, alt_offset : <m>}
         me.moorings = {};
         me.active_mooring = props.globals.getNode("/fdm/jsbsim/mooring");
-        me.model = {local : nil};
+        me.mooring_model  = {local : nil};
+        me.fairway_model  = {local : nil};
         me.selected = "";
         me.reset();
         print("Short Empire Mooring ... Standing by.");
@@ -89,15 +93,34 @@ var mooring = {
                                 me.moorings[name].position.lon());
         if (geo_info == nil) return;
         me.moorings[name].position.set_alt(geo_info[0]);
-        # Put a mooring buoy model here. Note the model specific offset.
-        if (me.model[name] != nil) me.model[name].remove();
-        me.model[name] =
+        # Put a mooring buoy model here.
+        if (me.mooring_model[name] != nil) me.mooring_model[name].remove();
+        me.mooring_model[name] =
             geo.put_model("Aircraft/Short_Empire/Models/Moorings/buoy.xml",
                           me.moorings[name].position);
+        # Display the associated fairway, if any.
+        if (FAIRWAY[name] != nil) {
+            if (me.fairway_model[name] != nil) me.fairway_model[name].remove();
+            if (FAIRWAY[name][3] == 0.0) {
+                me.fairway_model[name] =
+                    geo.put_model
+                    ("Aircraft/Short_Empire/Models/Moorings/flare_path.xml",
+                     FAIRWAY[name][1], FAIRWAY[name][2],
+                     nil,
+                     -getprop("/environment/wind-from-heading-deg"));
+            } else {
+                me.fairway_model[name] =
+                    geo.put_model
+                    ("Aircraft/Short_Empire/Models/Moorings/flare_path.xml",
+                     FAIRWAY[name][1], FAIRWAY[name][2],
+                     nil,
+                     FAIRWAY[name][3]);                
+            }
+        }
     },
     ##################################################
     remove_fixed_mooring : func(name) {
-        if (me.model[name] != nil) me.model[name].remove();
+        if (me.mooring_model[name] != nil) me.mooring_model[name].remove();
         delete(me.moorings, name);
     },
     ##################################################
@@ -129,8 +152,10 @@ var mooring = {
         if (dist < rope_length/FT2M) {
             me.active_mooring.getNode("mooring-connected").setValue(1.0);
             copilot.announce("We picked up the mooring.");
+            return 1;
         } else {
             copilot.announce("We are too far from the buoy.");
+            return 0;
         }
     },
     ##################################################
@@ -196,7 +221,7 @@ var mooring = {
                 me.display_mooring(cur_name);
             }
 
-             # The position might be new, so update active mooring.
+            # The position might be new, so update active mooring.
             me.active_mooring.getNode("latitude-deg").setValue(cur_pos.lat());
             me.active_mooring.getNode("longitude-deg").setValue(cur_pos.lon());
             # First check if the offset is fixed or a AI/MP property.
@@ -212,7 +237,7 @@ var mooring = {
                 setValue(M2FT * (cur_pos.alt() + offset));
         }
 
-        # Announce local mooring mast.
+        # Announce local mooring.
         var now = systime();
         if (now > me.last_mp_announce + me.MP_ANNOUNCE_INTERVAL) {
             #announce_fixed_mooring(me.moorings["local"].position,
@@ -234,7 +259,7 @@ var mooring = {
 };
 
 ###############################################################################
-## Hash containing EAMS mooring locations. See also ROUTES.txt.
+## Lists containing EAMS mooring locations. See also ROUTES.txt.
 ## Format:
 ##   [[name, lat, lon]]
 var EAMS_MOORINGS_EUROPE =
@@ -243,10 +268,10 @@ var EAMS_MOORINGS_EUROPE =
      ["Hythe 2",                 50.872349,   -1.387512],
      ["Saint-Nazaire",           47.297423,   -2.134309],
      ["Bordeaux/Biscarosse",     44.383172,   -1.184227],
-     ["Macon",                   46.290932,    4.831000],
+     ["Macon",                   46.290932,    4.830000],
      ["Marseille/Marignane",     43.446937,    5.185410],
      ["Rome/Lake Bracciano",     42.113768,   12.187239],
-     ["Brindisi",                40.651017,   17.961636],
+     ["Brindisi",                40.652277,   17.959625],
      ["Corfu",                   39.614731,   19.929714],
      ["Athens/Phaleron Bay",     37.939527,   23.666230],
      ["Heraklion",               35.344386,   25.140345],
@@ -319,3 +344,21 @@ var TEAL =
      ["Auckland/Mechanics Bay",  -36.8440,   174.7942],
      ["Wellington/Evans Bay",    -41.3142,   174.8065]
     ];
+
+###############################################################################
+## Hash containing fairway locations. See also ROUTES.txt.
+## Format:
+##   {"mooring : [name, lat, lon, heading]}
+var FAIRWAY = {
+    "Hythe 1":                 ["Netley",        50.873,   -1.365, 0.0],
+    "Hythe 2":                 ["Netley",        50.873,   -1.365, 0.0],
+    "Saint-Nazaire":           ["",              47.289,   -2.152, 0.0],
+    "Bordeaux/Biscarosse":     ["",              44.379,   -1.186, 0.0],
+    "Macon":                   ["",              46.291,    4.831, 5.0],
+    "Marseille/Marignane":     ["",              43.452,    5.181, 0.0],
+    "Rome/Lake Bracciano":     ["",              42.119,   12.196, 0.0],
+    "Brindisi":                ["",              40.651,   17.962, 0.0],
+    "Athens/Phaleron Bay":     ["",              37.930,   23.673, 0.0],
+    "Mirabella Bay":           ["",              35.210,   25.740, 0.0],
+    "Alexandria/East Harbour": ["",              31.193,   29.874, 0.0],
+};

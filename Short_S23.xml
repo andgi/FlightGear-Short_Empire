@@ -133,7 +133,7 @@
    <location name="AERORP" unit="M">
      <x> 8.68 </x>
      <y> 0.00 </y>
-     <z> 1.00 </z>
+     <z> 2.35 </z>
    </location>
    <location name="EYEPOINT" unit="M">
      <x> 2.05 </x>
@@ -155,20 +155,30 @@
    datum marker plate is located on the bulkhead of frame 15/16.
    "C.G. is 4.56ft aft of datum point measured parallel to hull datum."
    "Datum plate in spar compartment is 19.65 in. aft of datum point measured
-    parallel to hull datum.".
+    parallel to hull datum. Permissible CG limits 55.5" to 66.8" aft of
+    datum point measured parallel to hull datum." ([Short:RN-3-1-37])
+
    Based on the drawings the frame 15/16 bulkhead is 8.25 meters behind the
    origin of the FDM structural frame.
 
-   Empty weight (incl. oil) according to [Cassidy:2004:FE] p.121.
+   Revised datum location based on 1:48 GA drawing: 7.728 meters behind the
+   origin of the FDM structural frame.
+   The resulting permissible range for the CG x coordinate is
+   359.75in to 371.05in in the structural frame.
+
+   Empty weight (incl. oil) according to [Cassidy:2004:FE] p.121: 23451 lbs.
+
+   Tare weight according to [Short:RN-3-1-37]: 27845 lbs
+   (including passenger compartments and some equipment.
   </documentation>
   <ixx unit="SLUG*FT2">    251174 </ixx>
   <iyy unit="SLUG*FT2">    180055 </iyy>
   <izz unit="SLUG*FT2">    426351 </izz>
-  <emptywt unit="LBS" >     23451 </emptywt>
+  <emptywt unit="LBS" >     27528 </emptywt>
   <location name="CG" unit="M">
-   <x> 9.14 </x>
+   <x> 9.12 </x>
    <y> 0.00 </y>
-   <z> 1.00 </z>
+   <z> 1.10 </z>
   </location>
 
   <documentation>
@@ -291,7 +301,7 @@
 
   <!-- Fixed weights included in tare weight according to [Short:RN-3-1-37]. -->
   <pointmass name="Radio equipment">
-   <weight unit="LBS"> 217.0 </weight>
+   <weight unit="LBS"> 317.0 </weight>
    <location unit="M">
     <x> 3.8 </x>
     <y> 0.0 </y>
@@ -432,7 +442,8 @@
    Propeller location from the plans by [Cassidy:2004:FE].
    Fuel tank location and capacity according to [Cassidy:2004:FE].
 
-   Mainplane incidence to thrust line: 1 deg 52 min. [Short:RN-3-1-37]
+   Mainplane incidence to thrust line:     1 deg 52 min. [Short:RN-3-1-37]
+   Mainplane incidence to hull datum line: 3 deg.        [Short:RN-3-1-37]
   </documentation>
 
   <engine file="eng_PegasusXc">

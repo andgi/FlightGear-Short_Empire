@@ -266,7 +266,7 @@
     Best trim angles
              At rest  15kt  25kt  30kt  78kt
       C_V    0.0      1.41  2.35  2.82  7.34
-      S.23   4.25      7.0  10.0  13.0  12.0
+      S.23   4.08      7.0  10.0  13.0  12.0
       S-40   3.00      6.5   7.1   6.2   4.0
 
     Note: "Arthur Gouge quoted a minimum 9 deg. positive angle from
@@ -278,7 +278,7 @@
      <independentVar lookup="row">hydro/coefficients/C_V</independentVar>
      <independentVar lookup="column">hydro/pitch-deg</independentVar>
      <tableData>
-              -10.0  4.25  6.50  8.00  10.0  11.0  20.0
+              -10.0  4.08  6.50  8.00  10.0  11.0  20.0
        0.0    -10.0   3.0   6.5   8.0  10.0  11.0  20.0 
        1.41   -10.0   3.0   6.5   8.0   9.0  11.0  20.0
        2.35   -10.0   3.0   6.0   7.1   8.0  10.0  20.0
@@ -991,7 +991,7 @@
      <property>hydro/qbar-psf</property>
      <property>hydro/hull-beam-ft3</property>
      <property>hydro/beta-rad</property>
-     <value>-0.025</value>
+     <value>-0.02</value>
      <table>
       <independentVar lookup="row">hydro/pitch-deg</independentVar>
       <independentVar lookup="column">hydro/height-agl-ft</independentVar>

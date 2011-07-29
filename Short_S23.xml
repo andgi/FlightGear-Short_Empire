@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate>2008-11-05</filecreationdate>
-  <version>$Id: Short_S23.xml,v 1.36 2011/07/21 16:44:40 anders Exp $</version>
+  <version>$Id: Short_S23.xml,v 1.38 2011/07/29 22:02:52 anders Exp $</version>
 
   <description>Models a Short S.23 flying boat.</description>
 
@@ -247,7 +247,7 @@
    </location>
   </pointmass>
   <pointmass name="Rear freight compartment">
-   <weight unit="KG"> 250.0 </weight> <!-- To get CG within the range. -->
+   <weight unit="KG"> 345.6 </weight> <!-- To get CG within the range. -->
    <location unit="M">
     <x> 19.1 </x>
     <y>  0.0 </y>

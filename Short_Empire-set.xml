@@ -11,11 +11,11 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.48 2011/07/23 23:06:53 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.50 2011/07/29 22:02:52 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
-   <FDM type="int">2</FDM>
+   <FDM type="int">3</FDM>
    <systems type="int">2</systems>
    <cockpit type="int">3</cockpit>
    <model type="int">3</model>

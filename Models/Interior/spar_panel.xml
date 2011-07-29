@@ -264,10 +264,10 @@
   <name>Port cowling gills control</name>
   <path>Aircraft/Short_Empire/Models/Interior/cowling_gills.xml</path>
   <offsets>
-   <heading-deg>90.0</heading-deg>
+   <heading-deg>-90.0</heading-deg>
    <pitch-deg>15.0</pitch-deg>
    <x-m> 0.450</x-m>
-   <y-m>-1.450</y-m>
+   <y-m> 1.450</y-m>
    <z-m> 1.500</z-m>
   </offsets>
   <overlay>
@@ -298,10 +298,10 @@
   <name>Starboard cowling gills control</name>
   <path>Aircraft/Short_Empire/Models/Interior/cowling_gills.xml</path>
   <offsets>
-   <heading-deg>-90.0</heading-deg>
+   <heading-deg>90.0</heading-deg>
    <pitch-deg>15.0</pitch-deg>
    <x-m> 0.450</x-m>
-   <y-m> 1.450</y-m>
+   <y-m>-1.450</y-m>
    <z-m> 1.500</z-m>
   </offsets>
   <overlay>

@@ -247,6 +247,57 @@
   </overlay>
  </model>
 
+ <!-- External lights ======================================================-->
+ <model>
+  <name>Port navigation light</name>
+  <!-- Horizontal arc of visiblity 135 deg. -->
+  <path>Aircraft/Short_Empire/Models/Lights/RedLight.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -8.48 </x-m>
+   <y-m> 16.10 </y-m>
+   <z-m>  3.14 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <enabled-property>/controls/lighting/nav-lights</enabled-property>
+   </parameters>
+  </overlay>
+ </model>
+ <model>
+  <name>Starboard navigation light</name>
+  <!-- Horizontal arc of visiblity 135 deg. -->
+  <path>Aircraft/Short_Empire/Models/Lights/GreenLight.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m>  -8.48 </x-m>
+   <y-m> -16.10 </y-m>
+   <z-m>   3.14 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <enabled-property>/controls/lighting/nav-lights</enabled-property>
+   </parameters>
+  </overlay>
+ </model>
+ <model>
+  <name>Tail light</name>
+  <!-- Horizontal arc of visiblity 135 deg. -->
+  <path>Aircraft/Short_Empire/Models/Lights/WhiteLight.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -26.85 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m>   3.26 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <enabled-property>/controls/lighting/nav-lights</enabled-property>
+   </parameters>
+  </overlay>
+ </model>
+
+
  <!-- Doors and hatches animations =========================================-->
  <animation> 
   <type>pick</type>

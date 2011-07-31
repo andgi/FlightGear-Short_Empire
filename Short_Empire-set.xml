@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.50 2011/07/29 22:02:52 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.51 2011/07/31 19:38:22 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -471,10 +471,5 @@
    <heading-bug-deg alias="/instrumentation/sperry-autopilot[0]/settings/heading-bug-deg"/>
   </settings>
  </autopilot>
-
- <constants>
-  <one  type="float">1.0</one>
-  <true type="bool">1</true>
- </constants>
 
 </PropertyList>

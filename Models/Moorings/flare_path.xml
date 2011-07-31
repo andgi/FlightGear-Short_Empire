@@ -37,7 +37,6 @@
   </offsets>
   <overlay>
    <parameters>
-    <enabled-norm>/constants/true</enabled-norm>
    </parameters>
   </overlay>
  </model>
@@ -52,7 +51,6 @@
   </offsets>
   <overlay>
    <parameters>
-    <enabled-norm>/constants/true</enabled-norm>
    </parameters>
   </overlay>
  </model>
@@ -68,7 +66,6 @@
   </offsets>
   <overlay>
    <parameters>
-    <enabled-norm>/constants/true</enabled-norm>
    </parameters>
   </overlay>
  </model>
@@ -84,7 +81,6 @@
   </offsets>
   <overlay>
    <parameters>
-    <enabled-norm>/constants/true</enabled-norm>
    </parameters>
   </overlay>
  </model>
@@ -100,7 +96,6 @@
   </offsets>
   <overlay>
    <parameters>
-    <enabled-norm>/constants/true</enabled-norm>
    </parameters>
   </overlay>
  </model>
@@ -116,7 +111,6 @@
   </offsets>
   <overlay>
    <parameters>
-    <enabled-norm>/constants/true</enabled-norm>
    </parameters>
   </overlay>
  </model>
@@ -132,7 +126,6 @@
   </offsets>
   <overlay>
    <parameters>
-    <enabled-norm>/constants/true</enabled-norm>
    </parameters>
   </overlay>
  </model>
@@ -147,7 +140,6 @@
   </offsets>
   <overlay>
    <parameters>
-    <enabled-norm>/constants/true</enabled-norm>
    </parameters>
   </overlay>
  </model>

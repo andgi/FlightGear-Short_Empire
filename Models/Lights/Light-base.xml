@@ -3,7 +3,8 @@
 <PropertyList>
 
  <parameters>
-  <enabled-norm type="string"/>
+  <enabled-property type="string">/sim/model-hz</enabled-property>
+  <!-- The default is true. -->
  </parameters>
 
 
@@ -29,7 +30,7 @@
   <type>select</type>
   <object-name>Light</object-name>
   <condition>
-   <property alias="../../../parameters/enabled-norm"/>
+   <property alias="../../../parameters/enabled-property"/>
   </condition>
  </animation>
 
@@ -39,11 +40,11 @@
   <interpolation>
    <entry>
     <ind>0</ind>
-    <dep>0.1</dep>
+    <dep>0.01</dep>
    </entry>
    <entry>
     <ind>300</ind>
-    <dep>0.4</dep>
+    <dep>0.2</dep>
    </entry>
    <entry>
     <ind>1500</ind>

@@ -1,0 +1,30 @@
+AC3Db
+MATERIAL "WhiteLight" rgb 0 0 0  amb 0 0 0  emis 1 1 1  spec 0 0 0  shi 64  trans 0
+OBJECT world
+kids 1
+OBJECT poly
+name "Light"
+data 8
+Mesh.001
+texture "light.png"
+texrep 1 1
+crease 30.000000
+numvert 4
+-5.0 5.0 0
+5.0 -5.0 0
+-5.0 -5.0 0
+5.0 5.0 0
+numsurf 2
+SURF 0x30
+mat 0
+refs 3
+0 1.0 1.0
+1 0.0 0.0
+2 1.0 0.0
+SURF 0x30
+mat 0
+refs 3
+1 0.0 0.0
+0 1.0 1.0
+3 0.0 1.0
+kids 0

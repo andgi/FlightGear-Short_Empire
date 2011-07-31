@@ -20,7 +20,7 @@
   <inherits-from>Effects/reflect</inherits-from>
   <object-name>Fuselage</object-name>
   <object-name>astro_hatch</object-name>
-  <object-name>wing_base.002_0</object-name>
+  <object-name>wing</object-name>
   <object-name>hstab</object-name>
   <object-name>vstab</object-name>
   <object-name>elevators</object-name>

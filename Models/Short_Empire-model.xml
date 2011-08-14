@@ -359,9 +359,9 @@
    </entry>
   </interpolation>
   <center>
-   <x-m> -24.94 </x-m>
-   <y-m>  0.00 </y-m>
-   <z-m>  3.28 </z-m>
+   <x-m> -25.15 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m>   3.30 </z-m>
   </center>
   <axis>
    <x> 0.0 </x>
@@ -388,15 +388,13 @@
     <dep>22.5</dep>
    </entry>
   </interpolation>
-  <center>
-   <x-m> -24.88 </x-m>
-   <y-m>  0.00 </y-m>
-   <z-m>  0.00 </z-m>
-  </center>
   <axis>
-   <x> 0.0 </x>
-   <y> 0.0 </y>
-   <z> 1.0 </z>
+   <x1-m> -25.02 </x1-m>
+   <y1-m>   0.00 </y1-m>
+   <z1-m>   3.74 </z1-m>
+   <x2-m> -25.15 </x2-m>
+   <y2-m>   0.00 </y2-m>
+   <z2-m>   7.05 </z2-m>
   </axis>
  </animation>
 
@@ -419,12 +417,12 @@
    </entry>
   </interpolation>
   <axis>
-   <x1-m> -11.20 </x1-m>
+   <x1-m> -11.31 </x1-m>
    <y1-m>   9.66 </y1-m>
-   <z1-m>   2.58 </z1-m>
-   <x2-m> -10.955 </x2-m>
-   <y2-m>  13.340 </y2-m>
-   <z2-m>   2.823 </z2-m>
+   <z1-m>   2.52 </z1-m>
+   <x2-m> -10.76 </x2-m>
+   <y2-m>  15.20 </y2-m>
+   <z2-m>   2.88 </z2-m>
   </axis>
  </animation>
  <animation>
@@ -446,12 +444,12 @@
    </entry>
   </interpolation>
   <axis>
-   <x1-m> -11.20 </x1-m>
+   <x1-m> -11.31 </x1-m>
    <y1-m>  -9.66 </y1-m>
-   <z1-m>   2.58 </z1-m>
-   <x2-m> -10.955 </x2-m>
-   <y2-m> -13.340 </y2-m>
-   <z2-m>   2.823 </z2-m>
+   <z1-m>   2.52 </z1-m>
+   <x2-m> -10.76 </x2-m>
+   <y2-m> -15.20 </y2-m>
+   <z2-m>   2.88 </z2-m>
   </axis>
  </animation>
 
@@ -470,12 +468,12 @@
    </entry>
   </interpolation>
   <axis>
-   <x1-m> -12.33 </x1-m>
-   <y1-m>   9.52 </y1-m>
-   <z1-m>   0.72 </z1-m>
-   <x2-m> -12.89 </x2-m>
-   <y2-m>   1.58 </y2-m>
-   <z2-m>  -0.47 </z2-m>
+   <x1-m> -11.44 </x1-m>
+   <y1-m>   9.47 </y1-m>
+   <z1-m>   0.92 </z1-m>
+   <x2-m> -12.41 </x2-m>
+   <y2-m>   1.57 </y2-m>
+   <z2-m>  -0.31 </z2-m>
   </axis>
  </animation>
  <animation>
@@ -493,12 +491,12 @@
    </entry>
   </interpolation>
   <axis>
-   <x1-m> -12.89 </x1-m>
-   <y1-m>  -1.58 </y1-m>
-   <z1-m>  -0.47 </z1-m>
-   <x2-m> -12.33 </x2-m>
-   <y2-m>  -9.52 </y2-m>
-   <z2-m>   0.72 </z2-m>
+   <x1-m> -12.41 </x1-m>
+   <y1-m>  -1.57 </y1-m>
+   <z1-m>  -0.31 </z1-m>
+   <x2-m> -11.44 </x2-m>
+   <y2-m>  -9.47 </y2-m>
+   <z2-m>   0.92 </z2-m>
   </axis>
  </animation>
 

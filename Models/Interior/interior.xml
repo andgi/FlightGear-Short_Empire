@@ -116,7 +116,7 @@
  <!-- Star observer's instruments -->
  <model>
   <name>Bubble_sextant</name>
-  <path>Aircraft/Short_Empire/Instruments/BubbleSextant/RAF_Mk9_bubble_sextant.xml</path>
+  <path>Aircraft/Instruments-3d/RAF_Mk9_bubble_sextant/RAF_Mk9_bubble_sextant.xml</path>
   <offsets>
    <heading-deg>180</heading-deg>
    <x-m> -2.50 </x-m>

@@ -459,6 +459,7 @@
    </orient>
    <feed>8</feed>
    <thruster file="prop_deHavilland5000">
+    <sense>-1</sense>
     <location unit="M">
      <x>  6.30 </x>
      <y> -7.50 </y>
@@ -485,6 +486,7 @@
    </orient>
    <feed>9</feed>
    <thruster file="prop_deHavilland5000">
+    <sense>-1</sense>
     <location unit="M">
      <x>  6.00 </x>
      <y> -3.98 </y>
@@ -511,6 +513,7 @@
    </orient>
    <feed>10</feed>
    <thruster file="prop_deHavilland5000">
+    <sense>-1</sense>
     <location unit="M">
      <x>  6.00 </x>
      <y>  3.98 </y>
@@ -537,6 +540,7 @@
    </orient>
    <feed>11</feed>
    <thruster file="prop_deHavilland5000">
+    <sense>-1</sense>
     <location unit="M">
      <x>  6.30 </x>
      <y>  7.50 </y>

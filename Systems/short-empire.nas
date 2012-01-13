@@ -2,7 +2,7 @@
 ##
 ## Short S.23 'C'-class Empire flying boat
 ##
-##  Copyright (C) 2008- 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
@@ -36,6 +36,20 @@ setlistener("/sim/signals/fdm-initialized", func {
 controls.adjPropeller = func (d) {
     controls.adjEngControl("propeller-pitch", (d > 0 ? 10000.0 : -10000.0));
 }
+
+var flap_control_p = "controls/flight/flap-motor";
+
+# The flap control is moves the control switch towards in or out.
+controls.flapsDown = func(step) {
+    if (!step) return;
+    var v = getprop(flap_control_p);
+    if (step < 0) v -= 1;
+    if (step > 0) v += 1;
+    if (v < -1) v = -1;
+    if (v > 1)  v = 1;
+    setprop(flap_control_p, v);
+}
+
 
 ###############################################################################
 # Debug display - stand in instrumentation.

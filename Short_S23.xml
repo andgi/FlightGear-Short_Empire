@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate>2008-11-05</filecreationdate>
-  <version>$Id: Short_S23.xml,v 1.38 2011/07/29 22:02:52 anders Exp $</version>
+  <version>$Id: Short_S23.xml,v 1.40 2012/01/13 23:01:57 anders Exp $</version>
 
   <description>Models a Short S.23 flying boat.</description>
 
@@ -903,46 +903,6 @@
 
   </channel>
 
-  <channel name="Flaps">
-
-   <kinematic name="fcs/flap/pos-deg">
-    <input>fcs/flap-cmd-norm</input>
-    <traverse>
-     <setting>
-      <position>  0 </position>
-      <time>      0 </time>
-     </setting>
-     <setting>
-      <position> 8.33 </position>
-      <time>     20 </time>
-     </setting>
-     <setting>
-      <position> 16.67 </position>
-      <time>     40 </time>
-     </setting>
-     <setting>
-      <position> 25 </position>
-      <time>     60 </time>
-     </setting>
-    </traverse>
-    <output>fcs/flap-pos-deg</output>
-   </kinematic>
-
-   <aerosurface_scale name="fcs/flap/pos-norm">
-    <input>fcs/flap-pos-deg</input>
-    <domain>
-     <min>  0 </min>
-     <max> 25 </max>
-    </domain>
-    <range>
-     <min> 0 </min>
-     <max> 1 </max>
-    </range>
-    <output>fcs/flap-pos-norm</output>
-   </aerosurface_scale>
-
-  </channel>
-
  </flight_control>
 
  <external_reactions>
@@ -1167,6 +1127,9 @@
 
  <!-- Autopilot for JSBSim/standalone. -->
  <system file="take-off-ap"/>
+
+ <!-- Control system for the flaps. -->
+ <system file="flaps"/>
 
  <!-- Engine controls. -->
  <system file="engines"/>

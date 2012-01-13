@@ -113,7 +113,21 @@
   </overlay>
  </model> 
 
- <!-- Star observer's instruments -->
+ <!-- Coupe panel ==========================================================-->
+ <model>
+  <name>Coupe panel</name>
+  <path>Aircraft/Short_Empire/Models/Interior/flap_panel.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -1.900 </x-m>
+   <y-m>  0.000 </y-m>
+   <z-m>  2.270 </z-m>
+   <heading-deg>180.0</heading-deg>
+   <pitch-deg>20.0</pitch-deg>
+  </offsets>
+ </model>
+
+ <!-- Star observer's instruments ==========================================-->
  <model>
   <name>Bubble_sextant</name>
   <path>Aircraft/Instruments-3d/RAF_Mk9_bubble_sextant/RAF_Mk9_bubble_sextant.xml</path>

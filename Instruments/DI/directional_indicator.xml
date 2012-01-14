@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- compass / directional indicator.
   Copyright (C) 2008  AJ MacLeod
-  Copyright (C) 2008 - 2010  Anders Gidenstam.
+  Copyright (C) 2008 - 2012  Anders Gidenstam.
   Converted to gyro driven directional indicator by Anders Gidenstam.
   This file is licensed under the GPL license version 2 or later.
 -->
@@ -13,8 +13,8 @@
   <offset-deg>instrumentation/heading-indicator/offset-deg</offset-deg>
  </params>
 
-
  <path>directional_indicator.ac</path>
+
  <animation> 
   <type>rotate</type>
   <object-name>Compass_scale</object-name>
@@ -29,15 +29,6 @@
    <y>0</y>
    <z>1</z>
   </axis>
- </animation>
- <animation> 
-  <type>material</type>
-  <emission> 
-   <factor-prop>/controls/lighting/panel-norm</factor-prop>
-   <red>0.75</red>
-   <green>0.25</green>
-   <blue>0.25</blue>
-  </emission>
  </animation>
 
  <animation>
@@ -93,6 +84,23 @@
     <wrap>1</wrap>
    </binding>
   </action>
+ </animation>
+
+ <animation> 
+  <type>material</type>
+  <object-name>Compass_scale</object-name>
+  <object-name>knob</object-name>
+  <object-name>disk</object-name>
+  <emission> 
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
  </animation>
 
 </PropertyList>

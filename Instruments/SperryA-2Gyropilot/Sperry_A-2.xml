@@ -2,7 +2,7 @@
 <!--
   Sperry A-2 Gyropilot for FlightGear.
 
-  Copyright (C) 2010 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2010 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -456,16 +456,31 @@
   </action>  
  </animation>
 
-
- <!-- animation> 
+ <animation>
   <type>material</type>
+  <object-name>AI_caging_knob_base</object-name>
+  <object-name>DG_caging_knob_base</object-name>
+  <object-name>aileron_knob_base</object-name>
+  <object-name>elevator_knob_base</object-name>
+  <object-name>level_knob_base</object-name>
+  <object-name>rudder_knob_base</object-name>
+  <object-name>DG_course_line</object-name>
+  <object-name>DG_heading_card</object-name>
+  <object-name>DG_rudder_card</object-name>
+  <object-name>DG_slip_tube_back</object-name>
+  <object-name>AI_roll_card</object-name>
+  <object-name>AI_aircraft_bar</object-name>
+  <object-name>AI_aileron_index</object-name>
+  <object-name>AI_elevator_index</object-name>
+  <object-name>vacuum_gauge_scale</object-name>
+  <object-name>vacuum_gauge_pointer</object-name>
   <emission> 
    <factor-prop>controls/lighting/panel-norm</factor-prop>
    <red>0.75</red>
    <green>0.25</green>
    <blue>0.25</blue>
   </emission>
- </animation -->
+ </animation>
 
  <animation>
   <type>noshadow</type>

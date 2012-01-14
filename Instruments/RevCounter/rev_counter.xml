@@ -2,7 +2,7 @@
 <!--
   Short S.23 Empire flying boat for FlightGear.
 
-  Copyright (C) 2008 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -23,7 +23,8 @@
   <z-m> 0.000 </z-m>
  </offsets>
 
- <!-- Range according to [Cassidy:2004:FE] 500 - 3 000 rpm. -->
+ <!-- Range according to [Cassidy:2004:FE] 500 - 3 000 rpm.   -->
+ <!-- Range according to "Cockpit J180.tif" 1400 - 2800 rpm.  -->
  <animation> 
   <type>rotate</type>
   <object-name>left_pointer</object-name>
@@ -70,15 +71,19 @@
   </axis>
  </animation>
 
- <!-- animation> 
+ <animation> 
   <type>material</type>
+  <object-name>left_scale</object-name>
+  <object-name>right_scale</object-name>
+  <object-name>left_pointer</object-name>
+  <object-name>right_pointer</object-name>
   <emission> 
    <factor-prop>controls/lighting/panel-norm</factor-prop>
    <red>0.75</red>
    <green>0.25</green>
    <blue>0.25</blue>
   </emission>
- </animation -->
+ </animation>
 
  <animation>
   <type>noshadow</type>

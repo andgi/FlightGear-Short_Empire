@@ -26,7 +26,7 @@
   The flap control system consists of a
   - power switch
     - TBD
-  - an operating switch (values -1.0, 0.0, 1.0)
+  - an operating switch (values -1.0/IN, 0.0/STOP, 1.0/OUT)
     - fcs/flap-motor-cmd-norm
 
   "The flaps on standard S. 23 'boats were moved by a single small
@@ -63,7 +63,7 @@
 
   <integrator name="fcs/flap/pos-norm">
    <input>fcs/flap/motor-speed-norm</input>
-   <c1>0.00065</c1>
+   <c1>0.016667</c1>
    <clipto>
     <min>0.0</min>
     <max>1.0</max>
@@ -72,7 +72,7 @@
   </integrator>
 
   <aerosurface_scale name="fcs/flap/pos-deg">
-   <input>fcs/flap-pos-norm</input>
+   <input>fcs/flap/pos-norm</input>
    <domain>
     <min> 0 </min>
     <max> 1 </max>
@@ -81,7 +81,7 @@
     <min>  0 </min>
     <max> 25 </max>
    </range>
-   <output>fcs/flap-pos-norm</output>
+   <output>fcs/flap-pos-deg</output>
   </aerosurface_scale>
 
  </channel>

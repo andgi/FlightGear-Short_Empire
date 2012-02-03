@@ -12,7 +12,7 @@
   <serviceable>instrumentation/sperry-autopilot[0]/serviceable</serviceable>
 
   <!-- Available vacuum -->
-  <vacuum-suction-inhg>instrumentation/sperry-autopilot[0]/vacuum-suction-inhg</vacuum-suction-inhg>
+  <vacuum-suction-inhg>instrumentation/sperry-autopilot[0]/vacuum-indicator/suction-inhg</vacuum-suction-inhg>
 
   <!-- Directional control -->
   <heading-bug-deg>instrumentation/sperry-autopilot[0]/settings/heading-bug-deg</heading-bug-deg>

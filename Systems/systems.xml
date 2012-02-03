@@ -48,4 +48,14 @@
   <scale>1.0</scale>
  </vacuum>
 
+ <!-- According to [Short:RN-3-1-37] there was an oil pump
+      for the Sperry autopilot on the port inner engine. 
+ -->
+ <vacuum>
+  <name>servo-oil</name>
+  <number>0</number>
+  <rpm>/engines/engine[1]/rpm</rpm>
+  <scale>1.0</scale>
+ </vacuum>
+
 </PropertyList>

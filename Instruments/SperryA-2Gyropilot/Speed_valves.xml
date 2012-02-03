@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+<!--
+  Sperry A-2 Gyropilot for FlightGear.
+
+  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- Overlay these to set the source properties etc. -->
+ <params>
+  <indicator-serviceable>instrumentation/sperry-autopilot[0]/oil-pressure-indicator/serviceable</indicator-serviceable>
+
+  <!-- Available oil pressure -->
+  <oil-pressure-psi>instrumentation/sperry-autopilot[0]/oil-pressure-indicator/pressure-psi</oil-pressure-psi>
+
+  <heading-speed-valve-norm>instrumentation/sperry-autopilot[0]/settings/heading-speed-valve-norm</heading-speed-valve-norm>
+  <pitch-speed-valve-norm>instrumentation/sperry-autopilot[0]/settings/pitch-speed-valve-norm</pitch-speed-valve-norm>
+  <roll-speed-valve-norm>instrumentation/sperry-autopilot[0]/settings/roll-speed-valve-norm</roll-speed-valve-norm>
+ </params>
+
+ <path>Speed_valves.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.000 </x-m>
+  <y-m> 0.000 </y-m>
+  <z-m> 0.000 </z-m>
+ </offsets>
+
+ <!-- Oil pressure gauge. -->
+ <animation>
+  <type>rotate</type>
+  <object-name>oil_pressure_pointer</object-name>
+  <property alias="../../params/oil-pressure-psi"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>0</dep></entry>
+   <entry><ind>7.5</ind><dep>-270</dep></entry> <!-- To get a decent range. -->
+   <!-- entry><ind>300.0</ind><dep>-270</dep></entry -->
+  </interpolation>
+  <condition>
+   <property alias="../../../params/indicator-serviceable"/>
+  </condition>
+  <center>
+   <x-m> -0.050 </x-m>
+   <y-m>  0.000 </y-m>
+   <z-m>  0.140 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <!-- Speed valves. -->
+ <animation>
+  <type>rotate</type>
+  <object-name>speed_valve_scale.1</object-name>
+  <property alias="../../params/heading-speed-valve-norm"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>0</dep></entry>
+   <entry><ind>0.1</ind><dep>-45</dep></entry>
+   <entry><ind>0.2</ind><dep>-90</dep></entry>
+   <entry><ind>0.4</ind><dep>-135</dep></entry>
+   <entry><ind>0.6</ind><dep>-180</dep></entry>
+   <entry><ind>0.8</ind><dep>-225</dep></entry>
+   <entry><ind>1.0</ind><dep>-270</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>  0.000 </x-m>
+   <y-m> -0.070 </y-m>
+   <z-m>  0.050 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>speed_valve_scale.2</object-name>
+  <property alias="../../params/roll-speed-valve-norm"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>0</dep></entry>
+   <entry><ind>0.1</ind><dep>-45</dep></entry>
+   <entry><ind>0.2</ind><dep>-90</dep></entry>
+   <entry><ind>0.4</ind><dep>-135</dep></entry>
+   <entry><ind>0.6</ind><dep>-180</dep></entry>
+   <entry><ind>0.8</ind><dep>-225</dep></entry>
+   <entry><ind>1.0</ind><dep>-270</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>  0.000 </x-m>
+   <y-m>  0.000 </y-m>
+   <z-m>  0.050 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>speed_valve_scale.3</object-name>
+  <property alias="../../params/pitch-speed-valve-norm"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>0</dep></entry>
+   <entry><ind>0.1</ind><dep>-45</dep></entry>
+   <entry><ind>0.2</ind><dep>-90</dep></entry>
+   <entry><ind>0.4</ind><dep>-135</dep></entry>
+   <entry><ind>0.6</ind><dep>-180</dep></entry>
+   <entry><ind>0.8</ind><dep>-225</dep></entry>
+   <entry><ind>1.0</ind><dep>-270</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>  0.000 </x-m>
+   <y-m>  0.070 </y-m>
+   <z-m>  0.050 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>speed_valve_knob.1</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-speed-valve-norm"/>
+    <step>0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-speed-valve-norm"/>
+    <step>-0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-speed-valve-norm"/>
+    <step>-0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-speed-valve-norm"/>
+    <step>0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>speed_valve_knob.2</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/roll-speed-valve-norm"/>
+    <step>0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/roll-speed-valve-norm"/>
+    <step>-0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/roll-speed-valve-norm"/>
+    <step>-0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/roll-speed-valve-norm"/>
+    <step>0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>speed_valve_knob.3</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/pitch-speed-valve-norm"/>
+    <step>0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/pitch-speed-valve-norm"/>
+    <step>-0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>  
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/pitch-speed-valve-norm"/>
+    <step>-0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/pitch-speed-valve-norm"/>
+    <step>0.01</step>
+    <min>0.0</min>
+    <max>1.0</max>
+    <wrap>0</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>speed_valve_base</object-name>
+  <object-name>oil_pressure_face</object-name>
+  <object-name>oil_pressure_pointer</object-name>
+  <object-name>speed_valve_index</object-name>
+  <object-name>speed_valve_scale.1</object-name>
+  <object-name>speed_valve_scale.2</object-name>
+  <object-name>speed_valve_scale.3</object-name>
+  <emission> 
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

@@ -48,16 +48,13 @@
   <pitch-bug-deg   alias="/fdm/jsbsim/sperry-autopilot/pitch-reference-deg"/>
   <roll-bug-deg    alias="/fdm/jsbsim/sperry-autopilot/roll-reference-deg"/>
 
-  <!--
-  <heading-speed-valve-norm alias="/fdm/jsbsim/sperry-autopilot/heading-speed-valve-cmd-norm"/>
-  <pitch-speed-valve-norm   alias="/fdm/jsbsim/sperry-autopilot/pitch-speed-valve-cmd-norm"/>
-  <roll-speed-valve-norm    alias="/fdm/jsbsim/sperry-autopilot/roll-speed-valve-cmd-norm"/>
-  -->
+  <heading-speed-valve-norm
+      alias="/fdm/jsbsim/sperry-autopilot/heading-speed-valve-cmd-norm"/>
+  <pitch-speed-valve-norm
+      alias="/fdm/jsbsim/sperry-autopilot/pitch-speed-valve-cmd-norm"/>
+  <roll-speed-valve-norm
+      alias="/fdm/jsbsim/sperry-autopilot/roll-speed-valve-cmd-norm"/>
  </settings>
-
- <vacuum-suction-inhg alias="../../../systems/vacuum/suction-inhg"/>
- <!-- NOTE: This does not yet take multiple vacuum sources and the
-            distribution system into account. -->
 
  <heading-indicator>
   <serviceable type="bool">1</serviceable>
@@ -75,6 +72,23 @@
 
  <vacuum-indicator>
   <serviceable type="bool">1</serviceable>
+  <suction-inhg alias="../../../../systems/vacuum/suction-inhg"/>
+  <!-- NOTE: This does not yet take multiple vacuum sources and the
+             distribution system into account. -->
  </vacuum-indicator>
+
+ <oil-pressure-indicator>
+  <serviceable type="bool">1</serviceable>
+  <pressure-psi alias="../../../../systems/servo-oil/suction-inhg"/>
+  <!-- NOTE: This currently abuses a vacuum system component.
+             Add it to the systems file:
+             <vacuum>
+              <name>servo-oil</name>
+              <number>0</number>
+              <rpm>/engines/engine[1]/rpm</rpm>
+              <scale>1.0</scale>
+             </vacuum>
+  -->
+ </oil-pressure-indicator>
 
 </PropertyList>

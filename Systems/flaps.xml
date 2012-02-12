@@ -45,13 +45,48 @@
   ([Cassidy:2004:FE], pp.170)
  </documentation>
 
+ <!-- The flaps operating switch. -->
  <property value="0.0">fcs/flap-motor-cmd-norm</property>
+
+ <channel name="Flap motor">
+
+  <switch name="electrical/flap-motor/voltage-V">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/fuses/flap-motor-voltage-V">
+    fcs/flap-motor-cmd-norm GE 0.10
+    fcs/flap-pos-norm LT 1.00
+   </test>
+   <test logic="AND" value="electrical/fuses/flap-motor-voltage-V">
+    fcs/flap-motor-cmd-norm LE -0.10
+    fcs/flap-pos-norm GT 0.0
+   </test>
+  </switch>
+
+  <fcs_function name="electrical/flap-motor/current-A">
+   <function>
+    <quotient>
+     <property>electrical/flap-motor/voltage-V</property>
+     <value>1.545</value> <!-- Resistance of motor, derived from max power. -->
+    </quotient>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/flap-motor/power-W">
+   <function>
+    <product>
+     <property>electrical/flap-motor/voltage-V</property>
+     <property>electrical/flap-motor/current-A</property>
+    </product>
+   </function>
+  </fcs_function>
+
+ </channel>
 
  <channel name="Flaps">
 
-  <switch name="fcs/flap/motor-speed-norm">
+  <switch name="fcs/flap/motor-load-inv-norm">
    <default value="0.0"/>
-   <test logic="AND" value="1.00">
+   <test logic="AND" value="1.0">
     fcs/flap-motor-cmd-norm GE 0.10
     fcs/flap-pos-norm LT 1.00
    </test>
@@ -60,6 +95,18 @@
     fcs/flap-pos-norm GT 0.0
    </test>
   </switch>
+
+  <fcs_function name="fcs/flap/motor-speed-norm">
+   <function>
+    <product>
+     <property>fcs/flap/motor-load-inv-norm</property>
+     <quotient>     
+      <property>electrical/flap-motor/power-W</property>
+      <value>372.8</value> <!-- Max power of the motor. -->
+     </quotient>
+    </product>
+   </function>
+  </fcs_function>
 
   <integrator name="fcs/flap/pos-norm">
    <input>fcs/flap/motor-speed-norm</input>

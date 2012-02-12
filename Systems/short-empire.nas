@@ -15,6 +15,17 @@ var astro_hatch = aircraft.door.new("sim/model/doors/astro-hatch", 10.0);
 var ground = func {
     setprop("/fdm/jsbsim/hydro/water-level-ft",
             getprop("/position/ground-elev-ft"));
+
+    # Temporary and ugly starter handling.
+    setprop("/controls/engines/engine[0]/starter",
+            getprop("/fdm/jsbsim/propulsion/engine[0]/starter-norm"));
+    setprop("/controls/engines/engine[1]/starter",
+            getprop("/fdm/jsbsim/propulsion/engine[1]/starter-norm"));
+    setprop("/controls/engines/engine[2]/starter",
+            getprop("/fdm/jsbsim/propulsion/engine[2]/starter-norm"));
+    setprop("/controls/engines/engine[3]/starter",
+            getprop("/fdm/jsbsim/propulsion/engine[3]/starter-norm"));
+
     settimer(ground, 0.0);
 }
 
@@ -50,6 +61,20 @@ controls.flapsDown = func(step) {
     setprop(flap_control_p, v);
 }
 
+controls.startEngine = func(v = 1, which...) {
+    if (!v and !size(which))
+        return props.setAll("/controls/engines/engine", "starter-cmd", 0);
+    if(size(which)) {
+        foreach(var i; which)
+            foreach(var e; controls.engines)
+                if(e.index == i)
+                    e.controls.getNode("starter-cmd").setBoolValue(v);
+    } else {
+        foreach(var e; controls.engines)
+            if(e.selected.getValue())
+                e.controls.getNode("starter-cmd").setBoolValue(v);
+    }
+}
 
 ###############################################################################
 # Debug display - stand in instrumentation.
@@ -66,6 +91,14 @@ var debug_display_view_handler = {
         me.left.add("/fdm/jsbsim/hydro/coefficients/C_R");
         me.left.add("/fdm/jsbsim/hydro/coefficients/C_M");
         me.left.add("/fdm/jsbsim/inertia/cg-x-in");
+
+        me.left.add("/fdm/jsbsim/electrical/bus[0]/voltage-V");
+        me.left.add("/fdm/jsbsim/electrical/bus[0]/current-A");
+        me.left.add("/fdm/jsbsim/electrical/bus[1]/voltage-V");
+        me.left.add("/fdm/jsbsim/electrical/bus[1]/current-A");
+        me.left.add("/fdm/jsbsim/electrical/battery/total-current-A");
+        me.left.add("/fdm/jsbsim/electrical/voltage-regulators/current-A[0]");
+        me.left.add("/fdm/jsbsim/electrical/voltage-regulators/current-A[1]");
 
         me.right.add("/fdm/jsbsim/propulsion/engine[0]/boost-psi");
         me.right.add("/fdm/jsbsim/propulsion/engine[1]/boost-psi");

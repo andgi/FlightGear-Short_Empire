@@ -2,10 +2,9 @@
 <!--
   Short S.23 Empire flying boat for FlightGear.
 
-  Copyright (C) 2008 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
-
 <PropertyList>
 
  <!--
@@ -57,6 +56,13 @@
    <volume>
     <offset>0.5</offset>
    </volume>
+   <pitch>
+    <property>engines/engine[0]/starter-norm</property>
+    <factor>1.0</factor>
+    <min>0.5</min>
+    <max>1.0</max>
+    <offset>0.0</offset>
+   </pitch>
   </crank>
 
   <crank>
@@ -188,6 +194,13 @@
    <volume>
     <offset>0.5</offset>
    </volume>
+   <pitch>
+    <property>engines/engine[1]/starter-norm</property>
+    <factor>1.0</factor>
+    <min>0.5</min>
+    <max>1.0</max>
+    <offset>0.0</offset>
+   </pitch>
   </crank>
 
   <crank>
@@ -319,6 +332,13 @@
    <volume>
     <offset>0.5</offset>
    </volume>
+   <pitch>
+    <property>engines/engine[2]/starter-norm</property>
+    <factor>1.0</factor>
+    <min>0.5</min>
+    <max>1.0</max>
+    <offset>0.0</offset>
+   </pitch>
   </crank>
 
   <crank>
@@ -450,6 +470,13 @@
    <volume>
     <offset>0.5</offset>
    </volume>
+   <pitch>
+    <property>engines/engine[3]/starter-norm</property>
+    <factor>1.0</factor>
+    <min>0.5</min>
+    <max>1.0</max>
+    <offset>0.0</offset>
+   </pitch>
   </crank>
 
   <crank>

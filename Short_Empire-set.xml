@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.54 2012/02/03 21:35:57 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.55 2012/02/12 21:50:41 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -275,36 +275,52 @@
     <!-- throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[0]"/>
     <mixture  n="0" alias="/fdm/jsbsim/fcs/mixture-cmd-norm[0]"/>
     <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[0]"/ -->
+    <starter-cmd  alias="/fdm/jsbsim/fcs/starter-cmd-norm[0]"/>
     <faults>
      <fuel-pump-serviceable
          alias="/fdm/jsbsim/propulsion/engine[0]/fuel-pump-serviceable"/>
+     <starter-serviceable
+         alias="/fdm/jsbsim/propulsion/engine[0]/starter-serviceable"/>
     </faults>
    </engine>
    <engine n="1">
     <!-- throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[1]"/>
     <mixture  n="0" alias="/fdm/jsbsim/fcs/mixture-cmd-norm[1]"/>
     <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[1]"/ -->
+    <starter-cmd alias="/fdm/jsbsim/fcs/starter-cmd-norm[1]"/>
     <faults>
      <fuel-pump-serviceable
          alias="/fdm/jsbsim/propulsion/engine[1]/fuel-pump-serviceable"/>
+     <starter-serviceable
+         alias="/fdm/jsbsim/propulsion/engine[1]/starter-serviceable"/>
+     <generator-serviceable
+         alias="/fdm/jsbsim/propulsion/engine[1]/generator-serviceable"/>
     </faults>
    </engine>
    <engine n="2">
     <!-- throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[2]"/>
     <mixture  n="0" alias="/fdm/jsbsim/fcs/mixture-cmd-norm[2]"/>
     <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[2]"/ -->
+    <starter-cmd alias="/fdm/jsbsim/fcs/starter-cmd-norm[2]"/>
     <faults>
      <fuel-pump-serviceable
          alias="/fdm/jsbsim/propulsion/engine[2]/fuel-pump-serviceable"/>
+     <starter-serviceable
+         alias="/fdm/jsbsim/propulsion/engine[2]/starter-serviceable"/>
+     <generator-serviceable
+         alias="/fdm/jsbsim/propulsion/engine[2]/generator-serviceable"/>
     </faults>
    </engine>
    <engine n="3">
     <!-- throttle n="0" alias="/fdm/jsbsim/fcs/throttle-cmd-norm[3]"/>
     <mixture  n="0" alias="/fdm/jsbsim/fcs/mixture-cmd-norm[3]"/>
     <propeller-pitch n="0" alias="/fdm/jsbsim/fcs/advance-cmd-norm[3]"/ -->
+    <starter-cmd alias="/fdm/jsbsim/fcs/starter-cmd-norm[3]"/>
     <faults>
      <fuel-pump-serviceable
          alias="/fdm/jsbsim/propulsion/engine[3]/fuel-pump-serviceable"/>
+     <starter-serviceable
+         alias="/fdm/jsbsim/propulsion/engine[3]/starter-serviceable"/>
     </faults>
    </engine>
    <inner-cutoff alias="/fdm/jsbsim/fcs/inner-engines-cutoff-cmd-norm"/>
@@ -430,6 +446,10 @@
   <jsbsim>
    <fcs>
     <flap-motor-cmd-norm type="double">0.0</flap-motor-cmd-norm>
+    <starter-cmd-norm n="0" type="double">0.0</starter-cmd-norm>
+    <starter-cmd-norm n="1" type="double">0.0</starter-cmd-norm>
+    <starter-cmd-norm n="2" type="double">0.0</starter-cmd-norm>
+    <starter-cmd-norm n="3" type="double">0.0</starter-cmd-norm>
     <fuel-system>
      <mark type="double">1.0</mark>
      <left-tank-cock-cmd-norm  n="0" type="double">1.0</left-tank-cock-cmd-norm>
@@ -450,16 +470,26 @@
    </fcs>
    <propulsion>
     <engine n="0">
+     <!-- starter-norm alias="/controls/engines/engine[0]/starter"/ -->
+     <starter-serviceable type="double">1.0</starter-serviceable>
      <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
     </engine>
     <engine n="1">
+     <!-- starter-norm alias="/controls/engines/engine[1]/starter"/ -->
+     <starter-serviceable type="double">1.0</starter-serviceable>
      <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
     </engine>
     <engine n="2">
+     <!-- starter-norm alias="/controls/engines/engine[2]/starter"/ -->
+     <starter-serviceable type="double">1.0</starter-serviceable>
      <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
+     <generator-serviceable type="double">1.0</generator-serviceable>
     </engine>
     <engine n="3">
+     <!-- starter-norm alias="/controls/engines/engine[3]/starter"/ -->
+     <starter-serviceable type="double">1.0</starter-serviceable>
      <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
+     <generator-serviceable type="double">1.0</generator-serviceable>
     </engine>
    </propulsion>
    <sperry-autopilot>

@@ -2,7 +2,7 @@
 <!--
   Short S.23 Empire flying boat for FlightGear.
 
-  Copyright (C) 2008 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -23,12 +23,12 @@
   </offsets>
   <overlay>
    <params>
-    <button-pressed-norm type="string">controls/engines/engine[0]/starter</button-pressed-norm>
+    <button-pressed-norm type="string">controls/engines/engine[0]/starter-cmd</button-pressed-norm>
     <pick-action-script    n="0" type="string">
-      setprop("controls/engines/engine[0]/starter", 1);
+      setprop("controls/engines/engine[0]/starter-cmd", 1);
     </pick-action-script>
     <release-action-script n="0" type="string">
-      setprop("controls/engines/engine[0]/starter", 0);
+      setprop("controls/engines/engine[0]/starter-cmd", 0);
     </release-action-script>
    </params>
   </overlay>
@@ -44,12 +44,12 @@
   </offsets>
   <overlay>
    <params>
-    <button-pressed-norm type="string">controls/engines/engine[1]/starter</button-pressed-norm>
+    <button-pressed-norm type="string">controls/engines/engine[1]/starter-cmd</button-pressed-norm>
     <pick-action-script    n="0" type="string">
-      setprop("controls/engines/engine[1]/starter", 1);
+      setprop("controls/engines/engine[1]/starter-cmd", 1);
     </pick-action-script>
     <release-action-script n="0" type="string">
-      setprop("controls/engines/engine[1]/starter", 0);
+      setprop("controls/engines/engine[1]/starter-cmd", 0);
     </release-action-script>
    </params>
   </overlay>
@@ -65,12 +65,12 @@
   </offsets>
   <overlay>
    <params>
-    <button-pressed-norm type="string">controls/engines/engine[2]/starter</button-pressed-norm>
+    <button-pressed-norm type="string">controls/engines/engine[2]/starter-cmd</button-pressed-norm>
     <pick-action-script    n="0" type="string">
-      setprop("controls/engines/engine[2]/starter", 1);
+      setprop("controls/engines/engine[2]/starter-cmd", 1);
     </pick-action-script>
     <release-action-script n="0" type="string">
-      setprop("controls/engines/engine[2]/starter", 0);
+      setprop("controls/engines/engine[2]/starter-cmd", 0);
     </release-action-script>
    </params>
   </overlay>
@@ -86,12 +86,12 @@
   </offsets>
   <overlay>
    <params>
-    <button-pressed-norm type="string">controls/engines/engine[3]/starter</button-pressed-norm>
+    <button-pressed-norm type="string">controls/engines/engine[3]/starter-cmd</button-pressed-norm>
     <pick-action-script    n="0" type="string">
-      setprop("controls/engines/engine[3]/starter", 1);
+      setprop("controls/engines/engine[3]/starter-cmd", 1);
     </pick-action-script>
     <release-action-script n="0" type="string">
-      setprop("controls/engines/engine[3]/starter", 0);
+      setprop("controls/engines/engine[3]/starter-cmd", 0);
     </release-action-script>
    </params>
   </overlay>

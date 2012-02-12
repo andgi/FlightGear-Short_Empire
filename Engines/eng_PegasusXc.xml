@@ -30,6 +30,10 @@ Brian Cassidy, Queens Parade Press, 1996-2004. ISBN 0-9529298-2-1
   crankshaft speed, through Farman type reduction gearing."
   (pp.91) 
 
+  "The starters were Rotax-Eclipse E 160R direct-cranking starters, capable
+  of turning the crankshaft over at 25 to 30 rev. per min."
+  (pp.92)
+
   "The engines originally fitted to all the Mark I S.23 'boats, one
   of the S.30s and both the S.33 'boats were poppet valved Bristol
   Pegasus XCs. The engines developed 820/900 bhp. (589/611 kW.) at
@@ -98,7 +102,7 @@ Flight Magazine November 12, 1936:
 
  <sparkfaildrop>              0.10 </sparkfaildrop>
 
- <minmp unit="INHG">          6.00 </minmp> <!-- Deprecated -->
+ <minmp unit="INHG">         10.00 </minmp> <!-- Deprecated -->
  <maxmp unit="INHG">         38.57 </maxmp>
  <maxthrottle>                1.00 </maxthrottle>
  <minthrottle>                0.05 </minthrottle>

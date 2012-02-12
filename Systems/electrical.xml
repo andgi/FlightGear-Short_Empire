@@ -1,0 +1,527 @@
+<?xml version="1.0"?>
+<!--
+
+  Short S.23 flying boat flight model for JSBSim.
+
+    Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+  
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+  
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  
+-->
+<system name="electrical">
+
+ <documentation>
+  Electrical services according to [Short:RN-3-1-37]:
+    24 volts
+      Navigation lights
+      Landing searchlights (240W and 500W)
+      W/T power supply
+      Internal lighting
+      Steward's call signals
+      Power for flap motor
+    12 volts
+      Instrument lighting
+      Engine starting
+
+ </documentation>
+
+ <documentation>
+  Fuse circuits according to [Short:RN-3-1-37]:
+    Control panel
+      Switch No  Fuse No  Volt. Power  What
+        1                 24V          Voltmeter
+        2         1  8A   12V    48W   Instruments
+        2         2  8A   12V    48W   Instruments
+                  3  4A   24V    20W   Anchor and Steaming lights
+                  4  4A   24V    12W   Identification light
+                  5  4A   24V    24W   Steward's call signals
+        3         6  4A   24V    18W   Cockpit and wireless lights
+        4         7  8A   24V   108W   Corridor fwd and centre cabin
+        4         8  8A   24V    72W   Promenade and aft cabin
+        4         9  4A   24V    48W   Chart table, mail room, ...
+        5        10 12A   24V   126W   Fwd and centre cabin roof, mooring comp.
+        5        11 12A   24V   204W   Prom. and aft cabin and freight room roof
+        6        12  4A   24V    20W   Port navigation light 
+        6        13  4A   24V    30W   Tail and Starboard navigation light
+                 14  4A   24V    30W   Signalling lamp
+                 F   4A                Dynamo field
+                 F   4A                Dynamo field
+
+  Additional fuses on the main switch board according to [Cassidy:2004:FE]:
+    Type          Fuse    What
+    Rotax N5 EB   15A     Engine starting (solenoid)
+    Rotax N5       4A     Flap indicator
+    Rotax N5 EB   15A     Flap motor changeover switch
+    Rotax N5 DN   50A     Flap motor (motor power 0.5hp [Short:RN-3-1-37])
+    Rotax N5 EB   20A     Bow searchlight
+    Rotax N5 EB   50A     Wing searchlight
+    Rotax N5 EB   15A     Searchlight solenoid
+    Rotax N5 EB   15A     Instrument heaters
+ </documentation>
+
+ <!-- ======================================================================
+      Switches
+ -->
+ <!-- On the main switchboard switchbox -->
+ <property value="0.0">electrical/main-switchbox/switch-cmd[0]</property>
+ <property value="0.0">electrical/main-switchbox/switch-cmd[1]</property>
+ <property value="0.0">electrical/main-switchbox/switch-cmd[2]</property>
+ <property value="0.0">electrical/main-switchbox/switch-cmd[3]</property>
+ <property value="0.0">electrical/main-switchbox/switch-cmd[4]</property>
+ <property value="0.0">electrical/main-switchbox/switch-cmd[5]</property>
+
+ <!-- ======================================================================
+      Fuses
+ -->
+ <channel name="Fuses">
+
+  <fcs_function name="electrical/fuses/flap-motor-voltage-V">
+   <function>
+    <property>electrical/bus[0]/voltage-V</property>
+   </function>
+  </fcs_function>
+
+ </channel>
+
+ <!-- ======================================================================
+      Battery
+ -->
+ <documentation>
+  "The battery was a 24 volt 18 cell NiFe alkaline battery with a
+  capacity of 55 ampere hours." ([Short:RN-3-1-37],[Cassidy:2004:FE])
+ </documentation>
+
+ <!-- Battery inputs. -->
+ <property value="0.0">electrical/battery/current-A[0]</property> <!-- 24V -->
+ <property value="0.0">electrical/battery/current-A[1]</property> <!-- 12V -->
+
+ <!-- Battery properties. -->
+ <property value="50.0">electrical/battery/initial-capacity-Ah</property>
+ <property value="55.0">electrical/battery/max-capacity-Ah</property>
+ <property value="0.015">electrical/battery/internal-resistance-ohm</property>
+ <channel name="Battery">
+
+  <fcs_function name="electrical/battery/capacity-Ah">
+   <function>
+    <difference>
+     <property>electrical/battery/initial-capacity-Ah</property>
+     <property>electrical/battery/consumed-Ah</property>
+    </difference>
+   </function>
+   <clipto>
+    <min>0.0</min>
+    <max>electrical/battery/max-capacity-Ah</max>
+   </clipto>
+  </fcs_function>
+
+  <fcs_function name="electrical/battery/open-circuit-voltage-V">
+   <function>
+    <product>
+     <table>
+      <independentVar lookup="row">electrical/battery/capacity-Ah</independentVar>
+      <tableData> <!-- Guessed. -->
+        0.0  0.0
+        2.0 12.0
+       20.0 20.0
+       55.0 24.0
+      </tableData>
+     </table>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/battery/voltage-V">
+   <function>
+    <difference>
+     <property>electrical/battery/open-circuit-voltage-V</property>
+     <sum>
+      <product>
+       <property>electrical/battery/internal-resistance-ohm</property>
+       <max>
+        <value>0.0</value>
+        <property>electrical/battery/current-A[0]</property>
+       </max>
+      </product>
+      <product>
+       <value>0.5</value>
+       <property>electrical/battery/internal-resistance-ohm</property>
+       <max>
+        <value>0.0</value>
+        <property>electrical/battery/current-A[1]</property>
+       </max>
+      </product>
+     </sum>
+    </difference>
+   </function>
+   <clipto>
+    <min>0.0</min>
+    <max>48.0</max>
+   </clipto>
+  </fcs_function>
+
+  <summer name="electrical/battery/total-current-A">
+   <input>electrical/battery/current-A[0]</input>
+   <input>electrical/battery/current-A[1]</input>
+  </summer>
+
+  <integrator name="electrical/battery/consumed-Ah">
+   <input>electrical/battery/total-current-A</input>
+   <c1>0.0002778</c1>
+   <!-- clipto>
+    <min>0.0</min>
+    <max>electrical/battery/max-capacity-Ah</max>
+   </clipto -->
+  </integrator>
+
+ </channel>
+
+ <!-- ======================================================================
+      Supply buses
+ -->
+ <channel name="Supply">
+
+  <!-- The 24V bus. This bus is powered by the battery and the generators. -->
+  <fcs_function name="electrical/bus[0]/voltage-V">
+   <function>
+    <max>
+     <property>electrical/battery/voltage-V</property>
+     <property>propulsion/engine[1]/generator-voltage-V</property>
+     <property>propulsion/engine[2]/generator-voltage-V</property>
+    </max>
+   </function>
+   <clipto>
+    <min>0.0</min>
+    <max>48.0</max>
+   </clipto>
+  </fcs_function>
+
+  <!-- The 12V bus. This bus is powered only by the battery. -->
+  <fcs_function name="electrical/bus[1]/voltage-V">
+   <function>
+    <product>
+     <value>0.5</value>
+     <property>electrical/battery/voltage-V</property>
+    </product>
+   </function>
+   <clipto>
+    <min>0.0</min>
+    <max>48.0</max>
+   </clipto>
+  </fcs_function>
+
+ </channel>
+
+ <!-- ======================================================================
+      Navigation lights
+ -->
+ <channel name="Navigation lights">
+
+  <fcs_function name="electrical/lamps/navigation/port-current-A">
+   <function>
+    <quotient>
+     <property>electrical/bus[0]/voltage-V</property>
+     <value>28.8</value>
+    </quotient>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/navigation/starboard-current-A">
+   <function>
+    <quotient>
+     <property>electrical/bus[0]/voltage-V</property>
+     <value>28.8</value>
+    </quotient>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/navigation/tail-current-A">
+   <function>
+    <quotient>
+     <property>electrical/bus[0]/voltage-V</property>
+     <value>57.6</value>
+    </quotient>
+   </function>
+  </fcs_function>
+
+ </channel>
+
+ <!-- ======================================================================
+      Engine starters.
+ -->
+ <channel name="Engine starters">
+
+  <fcs_function name="propulsion/engine[0]/starter-current-A">
+   <function>
+    <product>
+     <gt>
+      <property>fcs/starter-cmd-norm[0]</property>
+      <value>0.5</value>
+     </gt>
+     <quotient>
+      <property>electrical/bus[1]/voltage-V</property>
+      <value>0.040</value> <!-- Guess: makes the starter draw 300A. -->
+     </quotient>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine[1]/starter-current-A">
+   <function>
+    <product>
+     <gt>
+      <property>fcs/starter-cmd-norm[1]</property>
+      <value>0.5</value>
+     </gt>
+     <quotient>
+      <property>electrical/bus[1]/voltage-V</property>
+      <value>0.040</value> <!-- Guess: makes the starter draw 300A. -->
+     </quotient>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine[2]/starter-current-A">
+   <function>
+    <product>
+     <gt>
+      <property>fcs/starter-cmd-norm[2]</property>
+      <value>0.5</value>
+     </gt>
+     <quotient>
+      <property>electrical/bus[1]/voltage-V</property>
+      <value>0.040</value> <!-- Guess: makes the starter draw 300A. -->
+     </quotient>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine[3]/starter-current-A">
+   <function>
+    <product>
+     <gt>
+      <property>fcs/starter-cmd-norm[3]</property>
+      <value>0.5</value>
+     </gt>
+     <quotient>
+      <property>electrical/bus[1]/voltage-V</property>
+      <value>0.040</value> <!-- Guess: makes the starter draw 300A. -->
+     </quotient>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine[0]/starter-norm">
+   <function>
+    <product>
+     <property>propulsion/engine[0]/starter-serviceable</property>
+     <value>0.01</value>
+     <max>
+      <value>0.0</value>
+      <difference>
+       <property>propulsion/engine[0]/starter-current-A</property>
+       <value>200.0</value>
+      </difference>
+     </max>
+    </product>
+   </function>
+   <output>/engines/engine[0]/starter-norm</output>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine[1]/starter-norm">
+   <function>
+    <product>
+     <property>propulsion/engine[1]/starter-serviceable</property>
+     <value>0.01</value>
+     <max>
+      <value>0.0</value>
+      <difference>
+       <property>propulsion/engine[1]/starter-current-A</property>
+       <value>200.0</value>
+      </difference>
+     </max>
+    </product>
+   </function>
+   <output>/engines/engine[1]/starter-norm</output>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine[2]/starter-norm">
+   <function>
+    <product>
+     <property>propulsion/engine[2]/starter-serviceable</property>
+     <value>0.01</value>
+     <max>
+      <value>0.0</value>
+      <difference>
+       <property>propulsion/engine[2]/starter-current-A</property>
+       <value>200.0</value>
+      </difference>
+     </max>
+    </product>
+   </function>
+   <output>/engines/engine[2]/starter-norm</output>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine[3]/starter-norm">
+   <function>
+    <product>
+     <property>propulsion/engine[3]/starter-serviceable</property>
+     <value>0.01</value>
+     <max>
+      <value>0.0</value>
+      <difference>
+       <property>propulsion/engine[3]/starter-current-A</property>
+       <value>200.0</value>
+      </difference>
+     </max>
+    </product>
+   </function>
+   <output>/engines/engine[3]/starter-norm</output>
+  </fcs_function>
+
+ </channel>
+
+ <channel name="Bus currents">
+
+  <summer name="electrical/bus[0]/current-A">
+   <input>electrical/lamps/navigation/port-current-A</input>
+   <input>electrical/lamps/navigation/starboard-current-A</input>
+   <input>electrical/lamps/navigation/tail-current-A</input>
+   <input>electrical/flap-motor/current-A</input>
+  </summer>
+
+  <summer name="electrical/bus[1]/current-A">
+   <input>propulsion/engine[0]/starter-current-A</input>
+   <input>propulsion/engine[1]/starter-current-A</input>
+   <input>propulsion/engine[2]/starter-current-A</input>
+   <input>propulsion/engine[3]/starter-current-A</input>
+   <output>electrical/battery/current-A[1]</output>
+  </summer>
+
+ </channel>
+
+ <!-- ======================================================================
+      Generators and voltage regulators
+ -->
+ <channel name="Voltage regulators">
+
+  <switch name="electrical/voltage-regulators/online[0]">
+   <default value="0.0"/>
+   <test logic="AND" value="1.0">
+     propulsion/engine[1]/generator-voltage-V GT 20.0
+     propulsion/engine[1]/generator-voltage-V GE electrical/bus[0]/voltage-V
+   </test>
+  </switch>
+
+  <switch name="electrical/voltage-regulators/online[1]">
+   <default value="0.0"/>
+   <test logic="AND" value="1.0">
+     propulsion/engine[2]/generator-voltage-V GT 20.0
+     propulsion/engine[2]/generator-voltage-V GE electrical/bus[0]/voltage-V
+   </test>
+  </switch>
+
+  <fcs_function name="electrical/voltage-regulators/current-available-A">
+   <function>
+    <sum>
+     <product>
+      <property>electrical/voltage-regulators/online[0]</property>
+      <property>propulsion/engine[1]/generator-max-current-A</property>
+     </product>
+     <product>
+      <property>electrical/voltage-regulators/online[1]</property>
+      <property>propulsion/engine[2]/generator-max-current-A</property>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/voltage-regulators/battery-current-A">
+   <function>
+    <sum>
+     <!-- Charging. -->
+     <product>
+      <value>-0.01</value> <!-- Reverse current when charging. -->
+      <lt>
+       <property>electrical/bus[0]/current-A</property>
+       <property>electrical/voltage-regulators/current-available-A</property>
+      </lt>
+      <max>
+       <value>0.001</value> <!-- Trickle charge. -->
+       <quotient>
+        <difference>
+         <property>electrical/bus[0]/voltage-V</property>
+         <property>electrical/battery/open-circuit-voltage-V</property>
+        </difference>
+        <property>electrical/battery/internal-resistance-ohm</property>
+       </quotient>
+      </max>
+     </product>
+     <!-- No charging. -->
+     <product>
+      <ge>
+       <property>electrical/bus[0]/current-A</property>
+       <property>electrical/voltage-regulators/current-available-A</property>
+      </ge>
+      <difference>
+       <property>electrical/bus[0]/current-A</property>
+       <property>electrical/voltage-regulators/current-available-A</property>
+      </difference>
+     </product>
+    </sum>
+   </function>
+   <output>electrical/battery/current-A[0]</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/voltage-regulators/current-A[0]">
+   <function>
+    <product>
+     <property>electrical/voltage-regulators/online[0]</property>
+     <difference>
+      <property>electrical/bus[0]/current-A</property>
+      <property>electrical/voltage-regulators/battery-current-A</property>
+     </difference>
+     <difference>
+      <value>1.0</value>
+      <product>
+       <value>0.5</value>
+       <property>electrical/voltage-regulators/online[1]</property>
+      </product>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/voltage-regulators/current-A[1]">
+   <function>
+    <product>
+     <property>electrical/voltage-regulators/online[1]</property>
+     <difference>
+      <property>electrical/bus[0]/current-A</property>
+      <property>electrical/voltage-regulators/battery-current-A</property>
+     </difference>
+     <difference>
+      <value>1.0</value>
+      <product>
+       <value>0.5</value>
+       <property>electrical/voltage-regulators/online[0]</property>
+      </product>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+
+ </channel>
+
+</system>

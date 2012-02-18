@@ -85,6 +85,22 @@
  <!-- ======================================================================
       Fuses
  -->
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[0]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[1]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[2]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[3]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[4]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[5]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[6]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[7]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[8]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[9]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[10]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[11]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[12]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[13]</property>
+ <property value="1.0">electrical/main-switchbox/fuse-serviceable[14]</property>
+
  <channel name="Fuses">
 
   <fcs_function name="electrical/fuses/flap-motor-voltage-V">
@@ -224,36 +240,116 @@
  </channel>
 
  <!-- ======================================================================
-      Navigation lights
+      Main switchbox switch 1 - Voltmeter.
+ -->
+ <channel name="Voltmeter">
+
+  <switch name="electrical/main-switchbox/switch-voltage-V[0]">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[0]/voltage-V">
+     electrical/main-switchbox/switch-cmd[0] GT 0.5
+   </test>
+  </switch>
+
+ </channel>
+
+ <!-- ======================================================================
+      Main switchbox switch 2 circuits - Instrument lights
+ -->
+ <channel name="Instrument lights">
+
+  <switch name="electrical/main-switchbox/switch-voltage-V[1]">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[1]/voltage-V">
+     electrical/main-switchbox/switch-cmd[1] GT 0.5
+   </test>
+  </switch>
+
+ </channel>
+
+ <!-- ======================================================================
+      Main switchbox switch 6 circuits - Navigation lights
  -->
  <channel name="Navigation lights">
 
+  <switch name="electrical/main-switchbox/switch-voltage-V[5]">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[0]/voltage-V">
+     electrical/main-switchbox/switch-cmd[5] GT 0.5
+   </test>
+  </switch>
+
   <fcs_function name="electrical/lamps/navigation/port-current-A">
    <function>
-    <quotient>
-     <property>electrical/bus[0]/voltage-V</property>
-     <value>28.8</value>
-    </quotient>
+    <product>
+     <property>electrical/main-switchbox/fuse-serviceable[11]</property>
+     <quotient>
+      <property>electrical/main-switchbox/switch-voltage-V[5]</property>
+      <value>28.8</value>
+     </quotient>
+    </product>
    </function>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/navigation/port-power-W">
+   <function>
+    <product>
+     <property>electrical/main-switchbox/switch-voltage-V[5]</property>
+     <property>electrical/lamps/navigation/port-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/navigation/port-power-W</output>
   </fcs_function>
 
   <fcs_function name="electrical/lamps/navigation/starboard-current-A">
    <function>
-    <quotient>
-     <property>electrical/bus[0]/voltage-V</property>
-     <value>28.8</value>
-    </quotient>
+    <product>
+     <property>electrical/main-switchbox/fuse-serviceable[12]</property>
+     <quotient>
+      <property>electrical/main-switchbox/switch-voltage-V[5]</property>
+      <value>28.8</value>
+     </quotient>
+    </product>
    </function>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/navigation/starboard-power-W">
+   <function>
+    <product>
+     <property>electrical/main-switchbox/switch-voltage-V[5]</property>
+     <property>electrical/lamps/navigation/starboard-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/navigation/starboard-power-W</output>
   </fcs_function>
 
   <fcs_function name="electrical/lamps/navigation/tail-current-A">
    <function>
-    <quotient>
-     <property>electrical/bus[0]/voltage-V</property>
-     <value>57.6</value>
-    </quotient>
+    <product>
+     <property>electrical/main-switchbox/fuse-serviceable[12]</property>
+     <quotient>
+      <property>electrical/main-switchbox/switch-voltage-V[5]</property>
+      <value>57.6</value>
+     </quotient>
+    </product>
    </function>
   </fcs_function>
+  <fcs_function name="electrical/lamps/navigation/tail-power-W">
+   <function>
+    <product>
+     <property>electrical/main-switchbox/switch-voltage-V[5]</property>
+     <property>electrical/lamps/navigation/tail-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/navigation/tail-power-W</output>
+  </fcs_function>
+
+  <summer name="electrical/main-switchbox/fuse-current-A[11]">
+   <input>electrical/lamps/navigation/port-current-A</input>
+  </summer>
+
+  <summer name="electrical/main-switchbox/fuse-current-A[12]">
+   <input>electrical/lamps/navigation/starboard-current-A</input>
+   <input>electrical/lamps/navigation/tail-current-A</input>
+  </summer>
 
  </channel>
 
@@ -395,9 +491,8 @@
  <channel name="Bus currents">
 
   <summer name="electrical/bus[0]/current-A">
-   <input>electrical/lamps/navigation/port-current-A</input>
-   <input>electrical/lamps/navigation/starboard-current-A</input>
-   <input>electrical/lamps/navigation/tail-current-A</input>
+   <input>electrical/main-switchbox/fuse-current-A[11]</input>
+   <input>electrical/main-switchbox/fuse-current-A[12]</input>
    <input>electrical/flap-motor/current-A</input>
   </summer>
 
@@ -458,7 +553,7 @@
        <property>electrical/voltage-regulators/current-available-A</property>
       </lt>
       <max>
-       <value>0.001</value> <!-- Trickle charge. -->
+       <value>0.1</value> <!-- Trickle charge. -->
        <quotient>
         <difference>
          <property>electrical/bus[0]/voltage-V</property>

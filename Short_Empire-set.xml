@@ -374,7 +374,8 @@
        alias="/fdm/jsbsim/fcs/fuel-system/center-test-cock-cmd-norm"/>
   </fuel>
   <lighting>
-   <nav-lights alias="/fdm/jsbsim/electrical/main-switchbox/switch-cmd[5]"/>
+   <nav-lights
+       alias="/fdm/jsbsim/electrical/main-switchbox/switch-cmd-norm[5]"/>
   </lighting>
  </controls>
 
@@ -521,7 +522,7 @@
    </sperry-autopilot>
    <electrical>
     <main-switchbox>
-     <switch-cmd n="5" type="double">1.0</switch-cmd>
+     <switch-cmd-norm n="5" type="double">1.0</switch-cmd-norm>
     </main-switchbox>
    </electrical>
   </jsbsim>

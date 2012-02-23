@@ -34,7 +34,18 @@
     12 volts
       Instrument lighting
       Engine starting
+ </documentation>
 
+ <documentation>
+  Drawings and other important information in [Short:RN-3-1-37]:
+    page
+     124   Instrument lighting circuits.
+     127   Fig. 18 Wireless power supply circuit diagram.
+     142   Fig. 33 Cabin heating and ventilating.
+     148   Fig. 38 Wireless short and medium wave.
+     168   Fig. 53 Wiring for forward cabin.
+     169   Fig. 54 Instruments and pitot heater circuit diagram.
+     176   Fig. 20 Lighting services circuit diagram.
  </documentation>
 
  <documentation>
@@ -47,7 +58,8 @@
                   3  4A   24V    20W   Anchor and Steaming lights
                   4  4A   24V    12W   Identification light
                   5  4A   24V    24W   Steward's call signals
-        3         6  4A   24V    18W   Cockpit and wireless lights
+ One or 3         6  4A   24V    18W   Cockpit and wireless lights(wiring diag.)
+  both? 3         6 12A   24V     ?W   Instrument heater (Fig 54, page 169)
         4         7  8A   24V   108W   Corridor fwd and centre cabin
         4         8  8A   24V    72W   Promenade and aft cabin
         4         9  4A   24V    48W   Chart table, mail room, ...
@@ -69,18 +81,30 @@
     Rotax N5 EB   50A     Wing searchlight
     Rotax N5 EB   15A     Searchlight solenoid
     Rotax N5 EB   15A     Instrument heaters
+    Rotax N4 EB    4A     Thermo-electric control of cabin heating. (fr. Fig.33)
  </documentation>
 
  <!-- ======================================================================
       Switches
  -->
- <!-- On the main switchboard switchbox -->
- <property value="0.0">electrical/main-switchbox/switch-cmd[0]</property>
- <property value="0.0">electrical/main-switchbox/switch-cmd[1]</property>
- <property value="0.0">electrical/main-switchbox/switch-cmd[2]</property>
- <property value="0.0">electrical/main-switchbox/switch-cmd[3]</property>
- <property value="0.0">electrical/main-switchbox/switch-cmd[4]</property>
- <property value="0.0">electrical/main-switchbox/switch-cmd[5]</property>
+ <!-- On the main switchboard switchbox. Range: 0 and 1. -->
+ <property value="0.0">electrical/main-switchbox/switch-cmd-norm[0]</property>
+ <property value="0.0">electrical/main-switchbox/switch-cmd-norm[1]</property>
+ <property value="0.0">electrical/main-switchbox/switch-cmd-norm[2]</property>
+ <property value="0.0">electrical/main-switchbox/switch-cmd-norm[3]</property>
+ <property value="0.0">electrical/main-switchbox/switch-cmd-norm[4]</property>
+ <property value="0.0">electrical/main-switchbox/switch-cmd-norm[5]</property>
+
+ <!-- Rheostats on the instrument lighting panel. Range: 0 to 1. -->
+ <property value="0.0">electrical/instrument-lights/switch-cmd-norm[0]</property>
+ <property value="0.0">electrical/instrument-lights/switch-cmd-norm[1]</property>
+ <property value="0.0">electrical/instrument-lights/switch-cmd-norm[2]</property>
+ <property value="0.0">electrical/instrument-lights/switch-cmd-norm[3]</property>
+ <property value="0.0">electrical/instrument-lights/switch-cmd-norm[4]</property>
+ <property value="0.0">electrical/instrument-lights/switch-cmd-norm[5]</property>
+ <property value="0.0">electrical/instrument-lights/switch-cmd-norm[6]</property>
+ <property value="0.0">electrical/instrument-lights/switch-cmd-norm[7]</property>
+ <property value="0.0">electrical/instrument-lights/switch-cmd-norm[8]</property>
 
  <!-- ======================================================================
       Fuses
@@ -247,7 +271,7 @@
   <switch name="electrical/main-switchbox/switch-voltage-V[0]">
    <default value="0.0"/>
    <test logic="AND" value="electrical/bus[0]/voltage-V">
-     electrical/main-switchbox/switch-cmd[0] GT 0.5
+     electrical/main-switchbox/switch-cmd-norm[0] GT 0.5
    </test>
   </switch>
 
@@ -256,14 +280,549 @@
  <!-- ======================================================================
       Main switchbox switch 2 circuits - Instrument lights
  -->
+ <documentation>
+  Instrument lighting circuits from [Short:RN-3-1-37] page 124:
+    Rheostat #bulbs Fuse What
+      1       3      1     Captain's altimeter, DG, AI
+      2       2      1     Captain's ASI, turn indicator, clock
+      3       1      1     Captain's VSI, fore-aft lever
+      4       2      2     Engine speed indicators
+      5       2      2     First officer's ASI, turn indicator, oil pressure
+      6       2      2     Boost gauges, First officer's altimeter
+      7       4      1     First officer's compass (+ 15.4 ohm resistor)
+      8       4      2     Captain's compass       (+ 15.4 ohm resistor)
+      9       2      1     Autopilot
+
+  Assumptions:
+    The "typical" light bulb is a 4W 12V one (internal resistance 36 ohm).
+    All light bulbs are connected in parallel.
+    The rheostats are linear.
+ </documentation>
  <channel name="Instrument lights">
 
   <switch name="electrical/main-switchbox/switch-voltage-V[1]">
    <default value="0.0"/>
    <test logic="AND" value="electrical/bus[1]/voltage-V">
-     electrical/main-switchbox/switch-cmd[1] GT 0.5
+     electrical/main-switchbox/switch-cmd-norm[1] GT 0.5
    </test>
   </switch>
+
+  <fcs_function name="electrical/main-switchbox/fuse-voltage-V[0]">
+   <function>
+    <product>
+     <property>electrical/main-switchbox/fuse-serviceable[0]</property>
+     <property>electrical/main-switchbox/switch-voltage-V[1]</property>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/main-switchbox/fuse-voltage-V[1]">
+   <function>
+    <product>
+     <property>electrical/main-switchbox/fuse-serviceable[1]</property>
+     <property>electrical/main-switchbox/switch-voltage-V[1]</property>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[0]">
+   <function>
+    <product>
+     <value>300.0</value>
+     <difference>
+      <value>1.0</value>
+      <property>electrical/instrument-lights/switch-cmd-norm[0]</property>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[1]">
+   <function>
+    <product>
+     <value>300.0</value>
+     <difference>
+      <value>1.0</value>
+      <property>electrical/instrument-lights/switch-cmd-norm[1]</property>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[2]">
+   <function>
+    <product>
+     <value>300.0</value>
+     <difference>
+      <value>1.0</value>
+      <property>electrical/instrument-lights/switch-cmd-norm[2]</property>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[3]">
+   <function>
+    <product>
+     <value>300.0</value>
+     <difference>
+      <value>1.0</value>
+      <property>electrical/instrument-lights/switch-cmd-norm[3]</property>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[4]">
+   <function>
+    <product>
+     <value>300.0</value>
+     <difference>
+      <value>1.0</value>
+      <property>electrical/instrument-lights/switch-cmd-norm[4]</property>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[5]">
+   <function>
+    <product>
+     <value>300.0</value>
+     <difference>
+      <value>1.0</value>
+      <property>electrical/instrument-lights/switch-cmd-norm[5]</property>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[6]">
+   <function>
+    <product>
+     <value>300.0</value>
+     <difference>
+      <value>1.0</value>
+      <property>electrical/instrument-lights/switch-cmd-norm[6]</property>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[7]">
+   <function>
+    <product>
+     <value>300.0</value>
+     <difference>
+      <value>1.0</value>
+      <property>electrical/instrument-lights/switch-cmd-norm[7]</property>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[8]">
+   <function>
+    <product>
+     <value>300.0</value>
+     <difference>
+      <value>1.0</value>
+      <property>electrical/instrument-lights/switch-cmd-norm[8]</property>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/switch-current-A[0]">
+   <function>
+    <quotient>
+     <property>electrical/main-switchbox/fuse-voltage-V[0]</property>
+     <sum>
+      <property>electrical/instrument-lights/switch-resistance-ohm[0]</property>
+      <value>12.0</value> <!-- 3 bulbs in parallel. -->
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-current-A[1]">
+   <function>
+    <quotient>
+     <property>electrical/main-switchbox/fuse-voltage-V[0]</property>
+     <sum>
+      <property>electrical/instrument-lights/switch-resistance-ohm[1]</property>
+      <value>18.0</value> <!-- 2 bulbs in parallel. -->
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-current-A[2]">
+   <function>
+    <quotient>
+     <property>electrical/main-switchbox/fuse-voltage-V[0]</property>
+     <sum>
+      <property>electrical/instrument-lights/switch-resistance-ohm[2]</property>
+      <value>36.0</value> <!-- 1 bulbs in parallel. -->
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-current-A[3]">
+   <function>
+    <quotient>
+     <property>electrical/main-switchbox/fuse-voltage-V[1]</property>
+     <sum>
+      <property>electrical/instrument-lights/switch-resistance-ohm[3]</property>
+      <value>18.0</value> <!-- 2 bulbs in parallel. -->
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-current-A[4]">
+   <function>
+    <quotient>
+     <property>electrical/main-switchbox/fuse-voltage-V[1]</property>
+     <sum>
+      <property>electrical/instrument-lights/switch-resistance-ohm[4]</property>
+      <value>18.0</value> <!-- 2 bulbs in parallel. -->
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-current-A[5]">
+   <function>
+    <quotient>
+     <property>electrical/main-switchbox/fuse-voltage-V[1]</property>
+     <sum>
+      <property>electrical/instrument-lights/switch-resistance-ohm[5]</property>
+      <value>18.0</value> <!-- 2 bulbs in parallel. -->
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-current-A[6]">
+   <function>
+    <quotient>
+     <property>electrical/main-switchbox/fuse-voltage-V[0]</property>
+     <sum>
+      <property>electrical/instrument-lights/switch-resistance-ohm[6]</property>
+      <value>9.0</value> <!-- 4 bulbs in parallel. -->
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-current-A[7]">
+   <function>
+    <quotient>
+     <property>electrical/main-switchbox/fuse-voltage-V[1]</property>
+     <sum>
+      <property>electrical/instrument-lights/switch-resistance-ohm[7]</property>
+      <value>9.0</value> <!-- 4 bulbs in parallel. -->
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/switch-current-A[8]">
+   <function>
+    <quotient>
+     <property>electrical/main-switchbox/fuse-voltage-V[0]</property>
+     <sum>
+      <property>electrical/instrument-lights/switch-resistance-ohm[8]</property>
+      <value>18.0</value> <!-- 2 bulbs in parallel. -->
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/switch-power-W[0]">
+   <function>
+    <product>
+     <property>electrical/instrument-lights/switch-current-A[0]</property>
+     <difference>
+      <property>electrical/main-switchbox/fuse-voltage-V[0]</property>
+      <product>
+       <property>electrical/instrument-lights/switch-current-A[0]</property>
+       <property>electrical/instrument-lights/switch-resistance-ohm[0]</property>
+      </product>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/altimeter-power-W[0]">
+   <function>
+    <product>
+     <value>0.333333</value>
+     <property>electrical/instrument-lights/switch-power-W[0]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/altimeter-power-W[0]</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/directional-power-W">
+   <function>
+    <product>
+     <value>0.333333</value>
+     <property>electrical/instrument-lights/switch-power-W[0]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/directional-power-W</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/attitude-power-W">
+   <function>
+    <product>
+     <value>0.333333</value>
+     <property>electrical/instrument-lights/switch-power-W[0]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/attitude-power-W</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/switch-power-W[1]">
+   <function>
+    <product>
+     <property>electrical/instrument-lights/switch-current-A[1]</property>
+     <difference>
+      <property>electrical/main-switchbox/fuse-voltage-V[0]</property>
+      <product>
+       <property>electrical/instrument-lights/switch-current-A[1]</property>
+       <property>electrical/instrument-lights/switch-resistance-ohm[1]</property>
+      </product>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/asi-power-W">
+   <function>
+    <product>
+     <value>0.5</value>
+     <property>electrical/instrument-lights/switch-power-W[1]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/asi-power-W</output>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/turn-power-W[0]">
+   <function>
+    <product>
+     <value>0.5</value>
+     <property>electrical/instrument-lights/switch-power-W[1]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/turn-power-W[0]</output>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/clock-power-W">
+   <function>
+    <product>
+     <value>0.5</value>
+     <property>electrical/instrument-lights/switch-power-W[1]</property>
+    </product>
+    <output>/systems/electrical/lamps/instruments/clock-power-W</output>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/switch-power-W[2]">
+   <function>
+    <product>
+     <property>electrical/instrument-lights/switch-current-A[2]</property>
+     <difference>
+      <property>electrical/main-switchbox/fuse-voltage-V[0]</property>
+      <product>
+       <property>electrical/instrument-lights/switch-current-A[2]</property>
+       <property>electrical/instrument-lights/switch-resistance-ohm[2]</property>
+      </product>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/vsi-power-W">
+   <function>
+    <property>electrical/instrument-lights/switch-power-W[2]</property>
+   </function>
+   <output>/systems/electrical/lamps/instruments/vsi-power-W</output>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/fore-aft-lever-power-W">
+   <function>
+    <property>electrical/instrument-lights/switch-power-W[2]</property>
+   </function>
+   <output>/systems/electrical/lamps/instruments/fore-aft-level-power-W</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/switch-power-W[3]">
+   <function>
+    <product>
+     <property>electrical/instrument-lights/switch-current-A[3]</property>
+     <difference>
+      <property>electrical/main-switchbox/fuse-voltage-V[1]</property>
+      <product>
+       <property>electrical/instrument-lights/switch-current-A[3]</property>
+       <property>electrical/instrument-lights/switch-resistance-ohm[3]</property>
+      </product>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/engine-speed-power-W[0]">
+   <function>
+    <product>
+     <value>0.5</value>
+     <property>electrical/instrument-lights/switch-power-W[3]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/engine-speed-power-W[0]</output>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/engine-speed-power-W[1]">
+   <function>
+    <product>
+     <value>0.5</value>
+     <property>electrical/instrument-lights/switch-power-W[3]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/engine-speed-power-W[1]</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/switch-power-W[4]">
+   <function>
+    <product>
+     <property>electrical/instrument-lights/switch-current-A[4]</property>
+     <difference>
+      <property>electrical/main-switchbox/fuse-voltage-V[1]</property>
+      <product>
+       <property>electrical/instrument-lights/switch-current-A[4]</property>
+       <property>electrical/instrument-lights/switch-resistance-ohm[4]</property>
+      </product>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/oil-pressure-power-W[0]">
+   <function>
+    <product>
+     <value>0.5</value>
+     <property>electrical/instrument-lights/switch-power-W[4]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/oil-pressure-power-W</output>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/asi-power-W[1]">
+   <function>
+    <product>
+     <value>0.5</value>
+     <property>electrical/instrument-lights/switch-power-W[4]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/asi-power-W[1]</output>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/turn-power-W[1]">
+   <function>
+    <product>
+     <value>0.5</value>
+     <property>electrical/instrument-lights/switch-power-W[4]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/turn-power-W[1]</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/switch-power-W[5]">
+   <function>
+    <product>
+     <property>electrical/instrument-lights/switch-current-A[5]</property>
+     <difference>
+      <property>electrical/main-switchbox/fuse-voltage-V[1]</property>
+      <product>
+       <property>electrical/instrument-lights/switch-current-A[5]</property>
+       <property>electrical/instrument-lights/switch-resistance-ohm[5]</property>
+      </product>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/boost-power-W">
+   <function>
+    <product>
+     <value>0.5</value>
+     <property>electrical/instrument-lights/switch-power-W[5]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/boost-power-W</output>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/altimeter-power-W[1]">
+   <function>
+    <product>
+     <value>0.5</value>
+     <property>electrical/instrument-lights/switch-power-W[5]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/instruments/altimeter-power-W[1]</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/switch-power-W[6]">
+   <function>
+    <product>
+     <property>electrical/instrument-lights/switch-current-A[6]</property>
+     <difference>
+      <property>electrical/main-switchbox/fuse-voltage-V[0]</property>
+      <product>
+       <property>electrical/instrument-lights/switch-current-A[6]</property>
+       <property>electrical/instrument-lights/switch-resistance-ohm[6]</property>
+      </product>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/compass-power-W[1]">
+   <function>
+    <property>electrical/instrument-lights/switch-power-W[6]</property>
+   </function>
+   <output>/systems/electrical/lamps/instruments/compass-power-W[1]</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/switch-power-W[7]">
+   <function>
+    <product>
+     <property>electrical/instrument-lights/switch-current-A[7]</property>
+     <difference>
+      <property>electrical/main-switchbox/fuse-voltage-V[1]</property>
+      <product>
+       <property>electrical/instrument-lights/switch-current-A[7]</property>
+       <property>electrical/instrument-lights/switch-resistance-ohm[7]</property>
+      </product>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/compass-power-W[0]">
+   <function>
+    <property>electrical/instrument-lights/switch-power-W[7]</property>
+   </function>
+   <output>/systems/electrical/lamps/instruments/compass-power-W[0]</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/instrument-lights/switch-power-W[8]">
+   <function>
+    <product>
+     <property>electrical/instrument-lights/switch-current-A[8]</property>
+     <difference>
+      <property>electrical/main-switchbox/fuse-voltage-V[0]</property>
+      <product>
+       <property>electrical/instrument-lights/switch-current-A[8]</property>
+       <property>electrical/instrument-lights/switch-resistance-ohm[8]</property>
+      </product>
+     </difference>
+    </product>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/instrument-lights/autopilot-power-W">
+   <function>
+    <property>electrical/instrument-lights/switch-power-W[8]</property>
+   </function>
+   <output>/systems/electrical/lamps/instruments/autopilot-power-W</output>
+  </fcs_function>
+
+  <summer name="electrical/main-switchbox/fuse-current-A[0]">
+   <input>electrical/instrument-lights/switch-current-A[0]</input>
+   <input>electrical/instrument-lights/switch-current-A[1]</input>
+   <input>electrical/instrument-lights/switch-current-A[2]</input>
+   <input>electrical/instrument-lights/switch-current-A[6]</input>
+   <input>electrical/instrument-lights/switch-current-A[8]</input>
+  </summer>
+
+  <summer name="electrical/main-switchbox/fuse-current-A[1]">
+   <input>electrical/instrument-lights/switch-current-A[3]</input>
+   <input>electrical/instrument-lights/switch-current-A[4]</input>
+   <input>electrical/instrument-lights/switch-current-A[5]</input>
+   <input>electrical/instrument-lights/switch-current-A[7]</input>
+  </summer>
 
  </channel>
 
@@ -275,7 +834,7 @@
   <switch name="electrical/main-switchbox/switch-voltage-V[5]">
    <default value="0.0"/>
    <test logic="AND" value="electrical/bus[0]/voltage-V">
-     electrical/main-switchbox/switch-cmd[5] GT 0.5
+     electrical/main-switchbox/switch-cmd-norm[5] GT 0.5
    </test>
   </switch>
 
@@ -501,6 +1060,8 @@
    <input>propulsion/engine[1]/starter-current-A</input>
    <input>propulsion/engine[2]/starter-current-A</input>
    <input>propulsion/engine[3]/starter-current-A</input>
+   <input>electrical/main-switchbox/fuse-current-A[0]</input>
+   <input>electrical/main-switchbox/fuse-current-A[1]</input>
    <output>electrical/battery/current-A[1]</output>
   </summer>
 

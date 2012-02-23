@@ -11,6 +11,9 @@
  <params>
   <indicated-inclination-deg>orientation/pitch-deg</indicated-inclination-deg>
   <serviceable>instrumentation/fore-aft-level[0]/serviceable</serviceable>
+
+  <!-- Lighting. 4W bulb. -->
+  <light-power-W type="string"/>
  </params>
 
  <path>smith_fore_aft_level.ac</path>
@@ -54,10 +57,10 @@
   <type>material</type>
   <object-name>base_plate</object-name>
   <emission> 
-   <factor-prop>controls/lighting/panel-norm</factor-prop>
-   <red>0.75</red>
-   <green>0.25</green>
-   <blue>0.25</blue>
+   <factor-prop alias="../../../params/light-power-W"/>
+   <red>0.19</red>
+   <green>0.063</green>
+   <blue>0.063</blue>
   </emission>
  </animation>
 

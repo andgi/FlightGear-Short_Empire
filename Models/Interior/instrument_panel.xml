@@ -126,6 +126,7 @@
    <params>
     <indicated-altitude-ft>instrumentation/altimeter[0]/indicated-altitude-ft</indicated-altitude-ft>
     <setting-inhg>instrumentation/altimeter[0]/setting-inhg</setting-inhg>
+    <light-power-W>systems/electrical/lamps/instruments/altimeter-power-W[0]</light-power-W>
    </params>
   </overlay>
  </model>
@@ -138,6 +139,11 @@
    <y-m>-0.470</y-m>
    <z-m> 0.330</z-m>
   </offsets>
+  <overlay>
+   <params>
+    <light-power-W>systems/electrical/lamps/instruments/directional-power-W</light-power-W>
+   </params>
+  </overlay>
  </model>
 
  <model>
@@ -148,6 +154,11 @@
    <y-m>-0.340</y-m>
    <z-m> 0.310</z-m>
   </offsets>
+  <overlay>
+   <params>
+    <light-power-W>systems/electrical/lamps/instruments/attitude-power-W</light-power-W>
+   </params>
+  </overlay>
  </model>
 
  <model>
@@ -158,6 +169,11 @@
    <y-m>-0.250</y-m>
    <z-m> 0.310</z-m>
   </offsets>
+  <overlay>
+   <params>
+    <light-power-W>systems/electrical/lamps/instruments/fore-aft-level-power-W</light-power-W>
+   </params>
+  </overlay>
  </model>
 
  <!-- Second row according to drawing.
@@ -175,6 +191,7 @@
   <overlay>
    <params>
     <indicated-speed-kt>instrumentation/airspeed-indicator[0]/indicated-speed-kt</indicated-speed-kt>
+    <light-power-W>systems/electrical/lamps/instruments/asi-power-W[0]</light-power-W>
    </params>
   </overlay>
  </model>
@@ -191,6 +208,7 @@
    <params>
     <indicated-turn-rate>instrumentation/turn-indicator[0]/indicated-turn-rate</indicated-turn-rate>
     <indicated-slip-skid>instrumentation/slip-skid-ball[0]/indicated-slip-skid</indicated-slip-skid>
+    <light-power-W>systems/electrical/lamps/instruments/turn-power-W[0]</light-power-W>
    </params>
   </overlay>
  </model>
@@ -203,6 +221,11 @@
    <y-m>-0.390</y-m>
    <z-m> 0.180</z-m>
   </offsets>
+  <overlay>
+   <params>
+    <light-power-W>systems/electrical/lamps/instruments/vsi-power-W</light-power-W>
+   </params>
+  </overlay>  
  </model>
 
  <model>
@@ -213,6 +236,11 @@
    <y-m>-0.270</y-m>
    <z-m> 0.180</z-m>
   </offsets>
+  <overlay>
+   <params>
+    <light-power-W>systems/electrical/lamps/instruments/clock-power-W</light-power-W>
+   </params>
+  </overlay>  
  </model>
 
 <!-- Unknown instrument on drawing. Canopus had a clock here.
@@ -301,6 +329,7 @@
   </offsets>
   <overlay>
    <params>
+    <light-power-W>systems/electrical/lamps/instruments/autopilot-power-W</light-power-W>
    </params>
   </overlay>
  </model>
@@ -336,6 +365,7 @@
    <params>
     <pressure-psi>engines/engine[0]/oil-pressure-psi</pressure-psi>
     <serviceable>instrumentation/oil-pressure-gauge[0]/serviceable</serviceable>
+    <light-power-W>systems/electrical/lamps/instruments/oil-pressure-power-W</light-power-W>
    </params>
   </overlay>
  </model>
@@ -352,6 +382,7 @@
    <params>
     <pressure-psi>engines/engine[1]/oil-pressure-psi</pressure-psi>
     <serviceable>instrumentation/oil-pressure-gauge[1]/serviceable</serviceable>
+    <light-power-W>systems/electrical/lamps/instruments/oil-pressure-power-W</light-power-W>
    </params>
   </overlay>
  </model>
@@ -368,6 +399,7 @@
    <params>
     <pressure-psi>engines/engine[2]/oil-pressure-psi</pressure-psi>
     <serviceable>instrumentation/oil-pressure-gauge[2]/serviceable</serviceable>
+    <light-power-W>systems/electrical/lamps/instruments/oil-pressure-power-W</light-power-W>
    </params>
   </overlay>
  </model>
@@ -384,6 +416,7 @@
    <params>
     <pressure-psi>engines/engine[3]/oil-pressure-psi</pressure-psi>
     <serviceable>instrumentation/oil-pressure-gauge[3]/serviceable</serviceable>
+    <light-power-W>systems/electrical/lamps/instruments/oil-pressure-power-W</light-power-W>
    </params>
   </overlay>
  </model>
@@ -401,6 +434,7 @@
     <rpm-left>engines/engine[0]/rpm</rpm-left>
     <rpm-right>engines/engine[1]/rpm</rpm-right>
     <serviceable>instrumentation/engine-rpm-indicator[0]/serviceable</serviceable>
+    <light-power-W>systems/electrical/lamps/instruments/engine-speed-power-W[0]</light-power-W>
    </params>
   </overlay>
  </model>
@@ -418,6 +452,7 @@
     <rpm-left>engines/engine[2]/rpm</rpm-left>
     <rpm-right>engines/engine[3]/rpm</rpm-right>
     <serviceable>instrumentation/engine-rpm-indicator[1]/serviceable</serviceable>
+    <light-power-W>systems/electrical/lamps/instruments/engine-speed-power-W[1]</light-power-W>
    </params>
   </overlay>
  </model>
@@ -434,6 +469,7 @@
    <params>
     <indicated-turn-rate>instrumentation/turn-indicator[1]/indicated-turn-rate</indicated-turn-rate>
     <indicated-slip-skid>instrumentation/slip-skid-ball[1]/indicated-slip-skid</indicated-slip-skid>
+    <light-power-W>systems/electrical/lamps/instruments/turn-power-W[1]</light-power-W>
    </params>
   </overlay>
  </model>
@@ -449,6 +485,7 @@
   <overlay>
    <params>
     <indicated-speed-kt>instrumentation/airspeed-indicator[1]/indicated-speed-kt</indicated-speed-kt>
+    <light-power-W>systems/electrical/lamps/instruments/asi-power-W[1]</light-power-W>
    </params>
   </overlay>
  </model>
@@ -465,6 +502,7 @@
    <params>
     <indicated-altitude-ft>instrumentation/altimeter[1]/indicated-altitude-ft</indicated-altitude-ft>
     <setting-inhg>instrumentation/altimeter[1]/setting-inhg</setting-inhg>
+    <light-power-W>systems/electrical/lamps/instruments/altimeter-power-W[1]</light-power-W>
    </params>
   </overlay>
  </model>
@@ -481,6 +519,7 @@
    <params>
     <boost-psi>fdm/jsbsim/propulsion/engine[0]/boost-psi</boost-psi>
     <serviceable>instrumentation/boost-gauge[0]/serviceable</serviceable>
+    <light-power-W>systems/electrical/lamps/instruments/boost-power-W</light-power-W>
    </params>
   </overlay>
  </model>
@@ -497,6 +536,7 @@
    <params>
     <boost-psi>fdm/jsbsim/propulsion/engine[1]/boost-psi</boost-psi>
     <serviceable>instrumentation/boost-gauge[1]/serviceable</serviceable>
+    <light-power-W>systems/electrical/lamps/instruments/boost-power-W</light-power-W>
    </params>
   </overlay>
  </model>
@@ -513,6 +553,7 @@
    <params>
     <boost-psi>fdm/jsbsim/propulsion/engine[2]/boost-psi</boost-psi>
     <serviceable>instrumentation/boost-gauge[2]/serviceable</serviceable>
+    <light-power-W>systems/electrical/lamps/instruments/boost-power-W</light-power-W>
    </params>
   </overlay>
  </model>
@@ -529,6 +570,7 @@
    <params>
     <boost-psi>fdm/jsbsim/propulsion/engine[3]/boost-psi</boost-psi>
     <serviceable>instrumentation/boost-gauge[3]/serviceable</serviceable>
+    <light-power-W>systems/electrical/lamps/instruments/boost-power-W</light-power-W>
    </params>
   </overlay>
  </model>

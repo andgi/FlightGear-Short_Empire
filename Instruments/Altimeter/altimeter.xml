@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- altimeter
   Copyright (C) 2008  AJ MacLeod.
-  Copyright (C) 2010  Anders Gidenstam.
+  Copyright (C) 2010 - 2012  Anders Gidenstam.
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList> 
@@ -10,6 +10,9 @@
  <params>
   <indicated-altitude-ft>instrumentation/altimeter/indicated-altitude-ft</indicated-altitude-ft>
   <setting-inhg>instrumentation/altimeter/setting-inhg</setting-inhg>
+
+  <!-- Lighting. 4W bulb. -->
+  <light-power-W type="string"/>
  </params>
 
  <path>Aircraft/spitfireIX/Models/Instruments/altimeter.ac</path>
@@ -101,10 +104,10 @@
  <animation> 
   <type>material</type>
   <emission> 
-   <factor-prop>/controls/lighting/panel-norm</factor-prop>
-   <red>0.75</red>
-   <green>0.25</green>
-   <blue>0.25</blue>
+   <factor-prop alias="../../../params/light-power-W"/>
+   <red>0.19</red>
+   <green>0.063</green>
+   <blue>0.063</blue>
   </emission>
  </animation>
 

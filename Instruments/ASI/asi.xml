@@ -10,6 +10,9 @@
  <!-- Overlay these for the second ASI etc. -->
  <params>
   <indicated-speed-kt>instrumentation/airspeed-indicator/indicated-speed-kt</indicated-speed-kt>
+
+  <!-- Lighting. 4W bulb. -->
+  <light-power-W type="string"/>
  </params>
 
  <path>asi.ac</path>
@@ -56,10 +59,10 @@
  <animation> 
   <type>material</type>
   <emission> 
-   <factor-prop>controls/lighting/panel-norm</factor-prop>
-   <red>0.75</red>
-   <green>0.25</green>
-   <blue>0.25</blue>
+   <factor-prop alias="../../../params/light-power-W"/>
+   <red>0.19</red>
+   <green>0.063</green>
+   <blue>0.063</blue>
   </emission>
  </animation>
 

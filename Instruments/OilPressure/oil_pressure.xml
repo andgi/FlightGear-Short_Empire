@@ -11,6 +11,9 @@
  <params>
   <pressure-psi>engines/engine[0]/oil-pressure-psi</pressure-psi>
   <serviceable>instrumentation/oil-pressure-gauge[0]/serviceable</serviceable>
+
+  <!-- Lighting. 4W bulb. -->
+  <light-power-W type="string"/>
  </params>
 
  <path>oil_pressure.ac</path>
@@ -50,10 +53,10 @@
   <object-name>Face</object-name>
   <object-name>Needle</object-name>
   <emission> 
-   <factor-prop>controls/lighting/panel-norm</factor-prop>
-   <red>0.75</red>
-   <green>0.25</green>
-   <blue>0.25</blue>
+   <factor-prop alias="../../../params/light-power-W"/>
+   <red>0.19</red>
+   <green>0.063</green>
+   <blue>0.063</blue>
   </emission>
  </animation>
 

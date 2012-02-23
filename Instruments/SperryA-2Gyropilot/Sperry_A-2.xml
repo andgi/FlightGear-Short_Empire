@@ -30,6 +30,9 @@
   <!-- Roll control -->
   <roll-bug-deg>instrumentation/sperry-autopilot[0]/settings/roll-bug-deg</roll-bug-deg>
   <indicated-roll-deg>instrumentation/sperry-autopilot[0]/attitude-indicator/indicated-roll-deg</indicated-roll-deg>
+
+  <!-- Lighting. 2x4W bulb. -->
+  <light-power-W type="string"/>
  </params>
 
  <path>Sperry_A-2.ac</path>
@@ -475,10 +478,10 @@
   <object-name>vacuum_gauge_scale</object-name>
   <object-name>vacuum_gauge_pointer</object-name>
   <emission> 
-   <factor-prop>controls/lighting/panel-norm</factor-prop>
-   <red>0.75</red>
-   <green>0.25</green>
-   <blue>0.25</blue>
+   <factor-prop alias="../../../params/light-power-W"/>
+   <red>0.094</red>
+   <green>0.031</green>
+   <blue>0.031</blue>
   </emission>
  </animation>
 

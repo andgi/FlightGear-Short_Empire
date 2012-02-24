@@ -607,8 +607,8 @@
      <value>0.5</value>
      <property>electrical/instrument-lights/switch-power-W[1]</property>
     </product>
-    <output>/systems/electrical/lamps/instruments/clock-power-W</output>
    </function>
+   <output>/systems/electrical/lamps/instruments/clock-power-W</output>
   </fcs_function>
 
   <fcs_function name="electrical/instrument-lights/switch-power-W[2]">

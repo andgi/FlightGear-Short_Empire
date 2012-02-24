@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!-- attitude indicator
+  Copyright (C) 2009  AJ MacLeod, Detlef Faber.
+  Copyright (C) 2012  Anders Gidenstam.
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList> 
+
+ <!-- Overlay these for the second attitude indicator etc. -->
+ <params>
+  <indicated-pitch-deg>instrumentation/attitude-indicator/indicated-pitch-deg</indicated-pitch-deg>
+  <indicated-roll-deg>instrumentation/attitude-indicator/indicated-roll-deg</indicated-roll-deg>
+
+  <!-- Lighting. 4W bulb. -->
+  <light-power-W type="string"/>
+ </params>
+
+ <path>Aircraft/spitfireIX/Models/Instruments/attitude.ac</path>
+ <texture-path>Aircraft/spitfireIX/Models/Instruments/</texture-path>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>face</object-name>
+  <!-- object-name>horizon-line</object-name -->
+  <property alias="../../params/indicated-roll-deg"/>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <!-- animation> 
+  <type>translate</type>
+  <object-name>horizon-line</object-name>
+  <property alias="../../params/indicated-pitch-deg"/>
+  <interpolation> 
+   <entry>
+    <ind>-180</ind>
+    <dep>0.03</dep>
+   </entry>
+   <entry>
+    <ind>-90</ind>
+    <dep>0.03</dep>
+   </entry>
+   <entry>
+    <ind>-40</ind>
+    <dep>0.020</dep>
+   </entry>
+   <entry>
+    <ind>-20</ind>
+    <dep>0.010</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>20</ind>
+    <dep>-0.010</dep>
+   </entry>
+   <entry>
+    <ind>40</ind>
+    <dep>-0.020</dep>
+   </entry>
+   <entry>
+    <ind>90</ind>
+    <dep>-0.03</dep>
+   </entry>
+   <entry>
+    <ind>180</ind>
+    <dep>-0.03</dep>
+   </entry>
+  </interpolation>
+  <axis> 
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation -->
+	
+ <animation> 
+  <type>material</type>
+  <object-name>face</object-name>
+  <object-name>bezelinside</object-name>
+  <emission> 
+   <factor-prop alias="../../../params/light-power-W"/>
+   <red>0.19</red>
+   <green>0.063</green>
+   <blue>0.063</blue>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

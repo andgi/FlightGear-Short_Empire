@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!-- clock
+  Copyright (C) 2004 - 2010 Vivian Meazza
+  Copyright (C) 2012  Anders Gidenstam.
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- Overlay these for the second clock etc. -->
+ <params>
+  <indicated-sec>instrumentation/clock/indicated-sec</indicated-sec>
+  <offset-sec>instrumentation/clock/offset-sec</offset-sec>
+
+  <!-- Lighting. 4W bulb. -->
+  <light-power-W type="string"/>
+ </params>
+
+ <path>Aircraft/Spitfire/Models/clock.ac</path>
+ <texture-path>Aircraft/Spitfire/Models/</texture-path>
+
+ <animation>
+  <type>pick</type>
+  <object-name>AdjustKnob</object-name>
+  <visible>true</visible>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/offset-sec"/>
+    <step>10</step>
+    <min>0</min>
+    <max>43200</max>
+    <wrap>true</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/offset-sec"/>
+    <step>-10</step>
+    <min>0</min>
+    <max>43200</max>
+    <wrap>true</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/offset-sec"/>
+    <step>-1</step>
+    <min>0</min>
+    <max>43200</max>
+    <wrap>true</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/offset-sec"/>
+    <step>1</step>
+    <min>0</min>
+    <max>43200</max>
+    <wrap>true</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>HourHand</object-name>
+  <property alias="../../params/indicated-sec"/>
+  <factor>0.00833333333333333</factor>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>MinuteHand</object-name>
+  <property alias="../../params/indicated-sec"/>
+  <factor>0.1</factor>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>SecondHand</object-name>
+  <property alias="../../params/indicated-sec"/>
+  <factor>6</factor>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>pick-left</object-name>
+  <object-name>pick-right</object-name>
+  <condition>
+   <less-than>
+    <property alias="../../../../params/indicated-sec"/>
+    <value>-100000</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>Face</object-name>
+  <object-name>SecondHand</object-name>
+  <object-name>MinuteHand</object-name>
+  <object-name>HourHand</object-name>
+  <object-name>AdjustKnob</object-name>
+  <emission>
+   <factor-prop alias="../../../params/light-power-W"/>
+   <red>0.19</red>
+   <green>0.063</green>
+   <blue>0.063</blue>
+  </emission>
+ </animation>
+
+</PropertyList>

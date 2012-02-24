@@ -148,7 +148,7 @@
 
  <model>
   <name>Pilot Attitude Indicator</name>
-  <path>Aircraft/spitfireIX/Models/Instruments/attitude.xml</path>
+  <path>Aircraft/Short_Empire/Instruments/AttitudeIndicator/attitude.xml</path>
   <offsets>
    <x-m> 0.010</x-m>
    <y-m>-0.340</y-m>
@@ -215,7 +215,7 @@
 
  <model>
   <name>Pilot Vertical Speed Indicator</name>
-  <path>Aircraft/spitfireIX/Models/Instruments/vsi.xml</path>
+  <path>Aircraft/Short_Empire/Instruments/VerticalSpeedIndicator/vsi.xml</path>
   <offsets>
    <x-m> 0.010</x-m>
    <y-m>-0.390</y-m>
@@ -230,7 +230,7 @@
 
  <model>
   <name>Pilot Clock</name>
-  <path>Aircraft/Spitfire/Models/clock.xml</path>
+  <path>Aircraft/Short_Empire/Instruments/Clock/clock.xml</path>
   <offsets>
    <x-m> 0.010</x-m>
    <y-m>-0.270</y-m>

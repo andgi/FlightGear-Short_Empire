@@ -93,6 +93,10 @@
 
  <animation> 
   <type>material</type>
+  <object-name>Needle1</object-name>
+  <object-name>Needle2</object-name>
+  <object-name>face</object-name>
+  <object-name>disk</object-name>
   <emission> 
    <factor-prop alias="../../../params/light-power-W"/>
    <red>0.19</red>

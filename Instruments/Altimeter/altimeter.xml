@@ -73,7 +73,7 @@
  
  <animation> 
   <type>rotate</type>
-  <object-name>PressureDial</object-name>
+  <object-name>knob</object-name>
   <property alias="../../params/setting-inhg"/>
   <interpolation> 
    <entry>
@@ -103,6 +103,10 @@
  
  <animation> 
   <type>material</type>
+  <object-name>alt-Needle1</object-name>
+  <object-name>alt-Needle2</object-name>
+  <object-name>alt-Needle3</object-name>
+  <object-name>face</object-name>
   <emission> 
    <factor-prop alias="../../../params/light-power-W"/>
    <red>0.19</red>

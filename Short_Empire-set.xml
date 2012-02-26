@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.56 2012/02/18 20:01:52 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.57 2012/02/26 13:46:58 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -376,6 +376,25 @@
   <lighting>
    <nav-lights
        alias="/fdm/jsbsim/electrical/main-switchbox/switch-cmd-norm[5]"/>
+   <!-- Instrument dimmer switches -->
+   <panel-dimmer n="0"
+       alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[0]"/>
+   <panel-dimmer n="1"
+       alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[1]"/>
+   <panel-dimmer n="2"
+       alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[2]"/>
+   <panel-dimmer n="3"
+       alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[3]"/>
+   <panel-dimmer n="4"
+       alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[4]"/>
+   <panel-dimmer n="5"
+       alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[5]"/>
+   <panel-dimmer n="6"
+       alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[6]"/>
+   <panel-dimmer n="7"
+       alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[7]"/>
+   <panel-dimmer n="8"
+       alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[8]"/>
   </lighting>
  </controls>
 
@@ -522,8 +541,20 @@
    </sperry-autopilot>
    <electrical>
     <main-switchbox>
+     <switch-cmd-norm n="1" type="double">1.0</switch-cmd-norm>
      <switch-cmd-norm n="5" type="double">1.0</switch-cmd-norm>
     </main-switchbox>
+    <instrument-lights>
+     <switch-cmd-norm n="0" type="double">0.0</switch-cmd-norm>
+     <switch-cmd-norm n="1" type="double">0.0</switch-cmd-norm>
+     <switch-cmd-norm n="2" type="double">0.0</switch-cmd-norm>
+     <switch-cmd-norm n="3" type="double">0.0</switch-cmd-norm>
+     <switch-cmd-norm n="4" type="double">0.0</switch-cmd-norm>
+     <switch-cmd-norm n="5" type="double">0.0</switch-cmd-norm>
+     <switch-cmd-norm n="6" type="double">0.0</switch-cmd-norm>
+     <switch-cmd-norm n="7" type="double">0.0</switch-cmd-norm>
+     <switch-cmd-norm n="8" type="double">0.0</switch-cmd-norm>
+    </instrument-lights>
    </electrical>
   </jsbsim>
  </fdm>

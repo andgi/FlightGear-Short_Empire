@@ -168,17 +168,15 @@
 
   <fcs_function name="electrical/battery/open-circuit-voltage-V">
    <function>
-    <product>
-     <table>
-      <independentVar lookup="row">electrical/battery/capacity-Ah</independentVar>
-      <tableData> <!-- Guessed. -->
+    <table>
+     <independentVar lookup="row">electrical/battery/capacity-Ah</independentVar>
+     <tableData> <!-- Guessed. -->
         0.0  0.0
         2.0 12.0
        20.0 20.0
        55.0 24.0
-      </tableData>
-     </table>
-    </product>
+     </tableData>
+    </table>
    </function>
   </fcs_function>
 
@@ -278,7 +276,7 @@
  </channel>
 
  <!-- ======================================================================
-      Main switchbox switch 2 circuits - Instrument lights
+      Main switchbox switch 2, fuse 1 and 2 circuits - Instrument lights
  -->
  <documentation>
   Instrument lighting circuits from [Short:RN-3-1-37] page 124:
@@ -296,7 +294,6 @@
   Assumptions:
     The "typical" light bulb is a 4W 12V one (internal resistance 36 ohm).
     All light bulbs are connected in parallel.
-    The rheostats are linear.
  </documentation>
  <channel name="Instrument lights">
 
@@ -326,101 +323,182 @@
 
   <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[0]">
    <function>
-    <product>
-     <value>300.0</value>
-     <difference>
-      <value>1.0</value>
-      <property>electrical/instrument-lights/switch-cmd-norm[0]</property>
-     </difference>
-    </product>
+    <table>
+     <independentVar lookup="row">electrical/instrument-lights/switch-cmd-norm[0]</independentVar>
+     <tableData> <!-- Guessed: 300*(1-cmd.^0.25) -->
+       0.00000   300.00000
+       0.10000   131.29760
+       0.20000    99.37791
+       0.30000    77.97516
+       0.40000    61.41878
+       0.50000    47.73108
+       0.60000    35.96648
+       0.70000    25.59263
+       0.80000    16.27752
+       0.90000     7.79888
+       1.00000     0.00000
+     </tableData>
+    </table>
    </function>
   </fcs_function>
   <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[1]">
    <function>
-    <product>
-     <value>300.0</value>
-     <difference>
-      <value>1.0</value>
-      <property>electrical/instrument-lights/switch-cmd-norm[1]</property>
-     </difference>
-    </product>
+    <table>
+     <independentVar lookup="row">electrical/instrument-lights/switch-cmd-norm[1]</independentVar>
+     <tableData> <!-- Guessed: 300*(1-cmd.^0.25) -->
+       0.00000   300.00000
+       0.10000   131.29760
+       0.20000    99.37791
+       0.30000    77.97516
+       0.40000    61.41878
+       0.50000    47.73108
+       0.60000    35.96648
+       0.70000    25.59263
+       0.80000    16.27752
+       0.90000     7.79888
+       1.00000     0.00000
+     </tableData>
+    </table>
    </function>
   </fcs_function>
   <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[2]">
    <function>
-    <product>
-     <value>300.0</value>
-     <difference>
-      <value>1.0</value>
-      <property>electrical/instrument-lights/switch-cmd-norm[2]</property>
-     </difference>
-    </product>
+    <table>
+     <independentVar lookup="row">electrical/instrument-lights/switch-cmd-norm[2]</independentVar>
+     <tableData> <!-- Guessed: 300*(1-cmd.^0.25) -->
+       0.00000   300.00000
+       0.10000   131.29760
+       0.20000    99.37791
+       0.30000    77.97516
+       0.40000    61.41878
+       0.50000    47.73108
+       0.60000    35.96648
+       0.70000    25.59263
+       0.80000    16.27752
+       0.90000     7.79888
+       1.00000     0.00000
+     </tableData>
+    </table>
    </function>
   </fcs_function>
   <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[3]">
    <function>
-    <product>
-     <value>300.0</value>
-     <difference>
-      <value>1.0</value>
-      <property>electrical/instrument-lights/switch-cmd-norm[3]</property>
-     </difference>
-    </product>
+    <table>
+     <independentVar lookup="row">electrical/instrument-lights/switch-cmd-norm[3]</independentVar>
+     <tableData> <!-- Guessed: 300*(1-cmd.^0.25) -->
+       0.00000   300.00000
+       0.10000   131.29760
+       0.20000    99.37791
+       0.30000    77.97516
+       0.40000    61.41878
+       0.50000    47.73108
+       0.60000    35.96648
+       0.70000    25.59263
+       0.80000    16.27752
+       0.90000     7.79888
+       1.00000     0.00000
+     </tableData>
+    </table>
    </function>
   </fcs_function>
   <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[4]">
    <function>
-    <product>
-     <value>300.0</value>
-     <difference>
-      <value>1.0</value>
-      <property>electrical/instrument-lights/switch-cmd-norm[4]</property>
-     </difference>
-    </product>
+    <table>
+     <independentVar lookup="row">electrical/instrument-lights/switch-cmd-norm[4]</independentVar>
+     <tableData> <!-- Guessed: 300*(1-cmd.^0.25) -->
+       0.00000   300.00000
+       0.10000   131.29760
+       0.20000    99.37791
+       0.30000    77.97516
+       0.40000    61.41878
+       0.50000    47.73108
+       0.60000    35.96648
+       0.70000    25.59263
+       0.80000    16.27752
+       0.90000     7.79888
+       1.00000     0.00000
+     </tableData>
+    </table>
    </function>
   </fcs_function>
   <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[5]">
    <function>
-    <product>
-     <value>300.0</value>
-     <difference>
-      <value>1.0</value>
-      <property>electrical/instrument-lights/switch-cmd-norm[5]</property>
-     </difference>
-    </product>
+    <table>
+     <independentVar lookup="row">electrical/instrument-lights/switch-cmd-norm[5]</independentVar>
+     <tableData> <!-- Guessed: 300*(1-cmd.^0.25) -->
+       0.00000   300.00000
+       0.10000   131.29760
+       0.20000    99.37791
+       0.30000    77.97516
+       0.40000    61.41878
+       0.50000    47.73108
+       0.60000    35.96648
+       0.70000    25.59263
+       0.80000    16.27752
+       0.90000     7.79888
+       1.00000     0.00000
+     </tableData>
+    </table>
    </function>
   </fcs_function>
   <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[6]">
    <function>
-    <product>
-     <value>300.0</value>
-     <difference>
-      <value>1.0</value>
-      <property>electrical/instrument-lights/switch-cmd-norm[6]</property>
-     </difference>
-    </product>
+    <table>
+     <independentVar lookup="row">electrical/instrument-lights/switch-cmd-norm[6]</independentVar>
+     <tableData> <!-- Guessed: 300*(1-cmd.^0.25) -->
+       0.00000   300.00000
+       0.10000   131.29760
+       0.20000    99.37791
+       0.30000    77.97516
+       0.40000    61.41878
+       0.50000    47.73108
+       0.60000    35.96648
+       0.70000    25.59263
+       0.80000    16.27752
+       0.90000     7.79888
+       1.00000     0.00000
+     </tableData>
+    </table>
    </function>
   </fcs_function>
   <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[7]">
    <function>
-    <product>
-     <value>300.0</value>
-     <difference>
-      <value>1.0</value>
-      <property>electrical/instrument-lights/switch-cmd-norm[7]</property>
-     </difference>
-    </product>
+    <table>
+     <independentVar lookup="row">electrical/instrument-lights/switch-cmd-norm[7]</independentVar>
+     <tableData> <!-- Guessed: 300*(1-cmd.^0.25) -->
+       0.00000   300.00000
+       0.10000   131.29760
+       0.20000    99.37791
+       0.30000    77.97516
+       0.40000    61.41878
+       0.50000    47.73108
+       0.60000    35.96648
+       0.70000    25.59263
+       0.80000    16.27752
+       0.90000     7.79888
+       1.00000     0.00000
+     </tableData>
+    </table>
    </function>
   </fcs_function>
   <fcs_function name="electrical/instrument-lights/switch-resistance-ohm[8]">
    <function>
-    <product>
-     <value>300.0</value>
-     <difference>
-      <value>1.0</value>
-      <property>electrical/instrument-lights/switch-cmd-norm[8]</property>
-     </difference>
-    </product>
+    <table>
+     <independentVar lookup="row">electrical/instrument-lights/switch-cmd-norm[8]</independentVar>
+     <tableData> <!-- Guessed: 300*(1-cmd.^0.25) -->
+       0.00000   300.00000
+       0.10000   131.29760
+       0.20000    99.37791
+       0.30000    77.97516
+       0.40000    61.41878
+       0.50000    47.73108
+       0.60000    35.96648
+       0.70000    25.59263
+       0.80000    16.27752
+       0.90000     7.79888
+       1.00000     0.00000
+     </tableData>
+    </table>
    </function>
   </fcs_function>
 
@@ -825,6 +903,11 @@
   </summer>
 
  </channel>
+
+ <!-- ======================================================================
+      Main switchbox fuse 3 circuit - anchor and steaming lights 
+ -->
+
 
  <!-- ======================================================================
       Main switchbox switch 6 circuits - Navigation lights

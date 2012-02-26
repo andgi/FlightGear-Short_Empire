@@ -44,10 +44,23 @@
   </offsets>
  </model>
 
+ <model>
+  <name>Dimmer switch panel</name>
+  <path>Aircraft/Short_Empire/Models/Interior/dimmer_switch_panel.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -2.050 </x-m>
+   <y-m>  0.880 </y-m>
+   <z-m>  1.200 </z-m>
+   <heading-deg>-108.0</heading-deg>
+   <pitch-deg>0.0</pitch-deg>
+  </offsets>
+ </model>
+
  <!-- Captain's compass -->
  <model>
   <name>Captain's compass</name>
-  <path>Aircraft/Spitfire/Models/compass-p11.xml</path>
+  <path>Aircraft/Short_Empire/Instruments/CompassP11/compass-p11.xml</path>
   <offsets>
    <heading-deg>180</heading-deg>
    <!-- x/y/z == forward/left/up -->
@@ -59,13 +72,8 @@
   <overlay>
    <params>
     <heading-bug-deg>instrumentation/magnetic-compass[0]/heading-bug-deg</heading-bug-deg>
+    <light-power-W>systems/electrical/lamps/instruments/compass-power-W[0]</light-power-W>
    </params>
-   <animation n="7">
-    <type>material</type>
-    <object-name>bracket-support</object-name>
-    <condition/>
-    <texture>Aircraft/Short_Empire/Models/aluminium.png</texture>
-   </animation>
    <animation n="10">
     <type>rotate</type>
     <object-name>bracket-support</object-name>
@@ -90,7 +98,7 @@
  <!-- First Officer's compass -->
  <model>
   <name>First Officer's compass</name>
-  <path>Aircraft/Spitfire/Models/compass-p11.xml</path>
+  <path>Aircraft/Short_Empire/Instruments/CompassP11/compass-p11.xml</path>
   <offsets>
    <heading-deg>180</heading-deg>
    <!-- x/y/z == forward/left/up -->
@@ -104,13 +112,8 @@
     <indicated-heading-deg>instrumentation/magnetic-compass[1]/indicated-heading-deg</indicated-heading-deg>
     <heading-bug-deg>instrumentation/magnetic-compass[1]/heading-bug-deg</heading-bug-deg>
     <serviceable>instrumentation/magnetic-compass[1]/serviceable</serviceable>
+    <light-power-W>systems/electrical/lamps/instruments/compass-power-W[1]</light-power-W>
    </params>
-   <animation n="7">
-    <type>material</type>
-    <object-name>bracket-support</object-name>
-    <condition/>
-    <texture>Aircraft/Short_Empire/Models/aluminium.png</texture>
-   </animation>
    <animation n="10">
     <type>rotate</type>
     <object-name>bracket-support</object-name>

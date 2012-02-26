@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<!--
+  Copyright (C) 2010  Vivian Meazza
+  Copyright (C) 2010 - 2012  Anders Gidenstam
+  This file is licensed under the GPL license version 2 or later.
+	
+	Amendment to alter into standard RAF compass type P 11
+        Taken from the FG Spitfire II and adapted for the Short Empire.
+	
+-->
+<PropertyList>
+
+ <!-- Overlay these to set the compass indication and heading bug source
+      properties.
+ -->
+ <params>
+  <indicated-heading-deg>instrumentation/magnetic-compass[0]/indicated-heading-deg</indicated-heading-deg>
+  <heading-bug-deg>autopilot/settings/heading-bug-deg</heading-bug-deg>
+  <serviceable>instrumentation/magnetic-compass[0]/serviceable</serviceable>
+
+  <!-- Lighting. 4*4W bulb. -->
+  <light-power-W type="string"/>
+ </params>
+
+ <path>Aircraft/Spitfire/Models/compass-p11.ac</path>
+ <texture-path>Aircraft/Spitfire/Models/</texture-path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.000 </x-m>
+  <y-m> 0.000 </y-m>
+  <z-m> 0.000 </z-m>
+ </offsets>
+
+ <animation>
+  <type>select</type>
+  <object-name>button-left</object-name>
+  <object-name>button-left-fast</object-name>
+  <object-name>button-right</object-name>
+  <object-name>button-right-fast</object-name>
+  <condition>
+   <less-than>
+    <property>/sim/time/elapsed-sec</property>
+    <value>-100000</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>bezel</object-name>
+  <object-name>glass</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-bug-deg"/>
+    <step>1.0</step>
+    <min>0.0</min>
+    <max>359.0</max>
+    <wrap>true</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-bug-deg"/>
+    <step>-1.0</step>
+    <min>0.0</min>
+    <max>359.0</max>
+    <wrap>true</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>3</button>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-bug-deg"/>
+    <step>-1.0</step>
+    <min>0.0</min>
+    <max>359.0</max>
+    <wrap>true</wrap>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/heading-bug-deg"/>
+    <step>1.0</step>
+    <min>0.0</min>
+    <max>359.0</max>
+    <wrap>true</wrap>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>card</object-name>
+  <property alias="../../params/indicated-heading-deg"/>
+  <factor>1.0</factor>
+  <center>
+   <x-m>  0.00 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.00 </z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>bezel</object-name>
+  <object-name>heading_bug</object-name>
+  <object-name>heading_bug_knob</object-name>
+  <property alias="../../params/heading-bug-deg"/>
+  <factor>1.0</factor>
+  <center>
+   <x-m>  0.00 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.00 </z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>bracket-support</object-name>
+  <texture>Aircraft/Short_Empire/Models/aluminium.png</texture>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>bezel</object-name>
+  <object-name>card</object-name>
+  <object-name>heading_bug</object-name>
+  <object-name>lubbers-line</object-name>
+  <emission>
+   <factor-prop alias="../../../params/light-power-W"/>
+   <red>0.063</red>
+   <green>0.016</green>
+   <blue>0.016</blue>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

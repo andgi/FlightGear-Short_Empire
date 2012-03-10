@@ -6,7 +6,11 @@
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
- 
+
+ <parameters>
+  <lighting-norm>controls/lighting/dome-norm</lighting-norm>
+ </parameters>
+
  <path>fuel_pump_test_cocks.ac</path>
  <offsets>
   <!-- x/y/z == forward/left/up -->
@@ -20,7 +24,7 @@
   <object-name>back_plate</object-name>
   <texture>carburettor_air.png</texture>
   <emission> 
-   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <factor-prop alias="../../../parameters/lighting-norm"/>
    <red>0.75</red>
    <green>0.25</green>
    <blue>0.25</blue>

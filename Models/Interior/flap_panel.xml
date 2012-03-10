@@ -12,6 +12,7 @@
   <operating-switch-cmd>controls/flight/flap-motor</operating-switch-cmd>
   <flap-position-norm>surface-positions/flap-pos-norm</flap-position-norm>
   <serviceable>instrumentation/flap-position-indicator[0]/serviceable</serviceable>
+  <lighting-norm>controls/lighting/dome-norm</lighting-norm>
  </params>
 
  <path>flap_panel.ac</path>
@@ -173,7 +174,7 @@
   <object-name>indicator.1</object-name>
   <object-name>OS_base</object-name>
   <emission> 
-   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <factor-prop alias="../../../params/lighting-norm"/>
    <red>0.75</red>
    <green>0.25</green>
    <blue>0.25</blue>

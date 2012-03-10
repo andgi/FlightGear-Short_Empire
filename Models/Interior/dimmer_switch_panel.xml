@@ -18,6 +18,7 @@
   <dimmer-cmd-norm n="6">controls/lighting/panel-dimmer[6]</dimmer-cmd-norm>
   <dimmer-cmd-norm n="7">controls/lighting/panel-dimmer[7]</dimmer-cmd-norm>
   <dimmer-cmd-norm n="8">controls/lighting/panel-dimmer[8]</dimmer-cmd-norm>
+  <lighting-norm>controls/lighting/dome-norm</lighting-norm>
  </params>
 
  <path>dimmer_switch_panel.ac</path>
@@ -798,12 +799,13 @@
   <object-name>knob.8</object-name>
   <object-name>knob.9</object-name>
   <emission> 
-   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <factor-prop alias="../../../params/lighting-norm"/>
    <red>0.75</red>
    <green>0.25</green>
    <blue>0.25</blue>
   </emission>
  </animation>
+
  <animation>
   <type>noshadow</type>
  </animation>

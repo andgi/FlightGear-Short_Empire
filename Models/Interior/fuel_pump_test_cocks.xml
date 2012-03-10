@@ -27,6 +27,7 @@
     setprop("/controls/fuel/right-test-cock",
             math.max(getprop("/controls/fuel/right-test-cock") - 0.1, 0.0));
   </right-dec-action-script>
+  <lighting-norm>controls/lighting/dome-norm</lighting-norm>
  </params>
 
  <path>fuel_pump_test_cocks.ac</path>
@@ -159,7 +160,7 @@
   <type>material</type>
   <object-name>back_plate</object-name>
   <emission> 
-   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <factor-prop alias="../../../params/lighting-norm"/>
    <red>0.75</red>
    <green>0.25</green>
    <blue>0.25</blue>

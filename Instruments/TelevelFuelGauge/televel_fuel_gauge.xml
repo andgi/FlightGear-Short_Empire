@@ -12,6 +12,7 @@
   <tank-content-lbs>consumables/fuel/tank[0]/level-lbs</tank-content-lbs>
   <indicated-content-lbs>instrumentation/fuel-gauge[0]/indicated-content-lbs</indicated-content-lbs>
   <serviceable>instrumentation/fuel-gauge[0]/serviceable</serviceable>
+  <lighting-norm>controls/lighting/panel-norm</lighting-norm>
  </params>
 
  <path>televel_fuel_gauge.ac</path>
@@ -148,7 +149,7 @@
   <object-name>scale</object-name>
   <object-name>face_plate</object-name>
   <emission> 
-   <factor-prop>controls/lighting/panel-norm</factor-prop>
+   <factor-prop alias="../../../params/lighting-norm"/>
    <red>0.75</red>
    <green>0.25</green>
    <blue>0.25</blue>

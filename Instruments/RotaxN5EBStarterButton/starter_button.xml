@@ -16,6 +16,7 @@
   <release-action-script n="1" type="string"/>
   <pick-action-script    n="2" type="string"/>
   <release-action-script n="2" type="string"/>
+  <lighting-norm>controls/lighting/dome-norm</lighting-norm>
  </params>
 
  <path>starter_button.ac</path>
@@ -105,15 +106,16 @@
   </action>
  </animation>
 
- <!-- animation> 
+ <animation> 
   <type>material</type>
+  <object-name>button</object-name>
   <emission> 
-   <factor-prop>controls/lighting/panel-norm</factor-prop>
-   <red>0.75</red>
-   <green>0.25</green>
-   <blue>0.25</blue>
+   <factor-prop alias="../../../params/lighting-norm"/>
+   <red>0.2</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
   </emission>
- </animation -->
+ </animation>
 
  <animation>
   <type>noshadow</type>

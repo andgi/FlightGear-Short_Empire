@@ -24,6 +24,7 @@
   <overlay>
    <params>
     <button-pressed-norm type="string">controls/engines/engine[0]/starter-cmd</button-pressed-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -39,6 +40,7 @@
   <overlay>
    <params>
     <button-pressed-norm type="string">controls/engines/engine[1]/starter-cmd</button-pressed-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -54,6 +56,7 @@
   <overlay>
    <params>
     <button-pressed-norm type="string">controls/engines/engine[2]/starter-cmd</button-pressed-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -69,6 +72,7 @@
   <overlay>
    <params>
     <button-pressed-norm type="string">controls/engines/engine[3]/starter-cmd</button-pressed-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -248,6 +252,12 @@
    <y-m>-0.114</y-m>
    <z-m> 0.417</z-m>
   </offsets>
+  <overlay>
+   <params>
+    <magnetos>controls/engines/engine[0]/magnetos</magnetos>
+    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[0]</lighting-norm>
+   </params>
+  </overlay>
  </model>
 
  <model>
@@ -261,6 +271,7 @@
   <overlay>
    <params>
     <magnetos>controls/engines/engine[1]/magnetos</magnetos>
+    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -276,6 +287,7 @@
   <overlay>
    <params>
     <magnetos>controls/engines/engine[2]/magnetos</magnetos>
+    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -291,6 +303,7 @@
   <overlay>
    <params>
     <magnetos>controls/engines/engine[3]/magnetos</magnetos>
+    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>

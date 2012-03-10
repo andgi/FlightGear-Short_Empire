@@ -60,6 +60,7 @@
                   5  4A   24V    24W   Steward's call signals
  One or 3         6  4A   24V    18W   Cockpit and wireless lights(wiring diag.)
   both? 3         6 12A   24V     ?W   Instrument heater (Fig 54, page 169)
+                                       -> Later modification?
         4         7  8A   24V   108W   Corridor fwd and centre cabin
         4         8  8A   24V    72W   Promenade and aft cabin
         4         9  4A   24V    48W   Chart table, mail room, ...
@@ -105,6 +106,18 @@
  <property value="0.0">electrical/instrument-lights/switch-cmd-norm[6]</property>
  <property value="0.0">electrical/instrument-lights/switch-cmd-norm[7]</property>
  <property value="0.0">electrical/instrument-lights/switch-cmd-norm[8]</property>
+
+ <!-- Switches on the light switch panel. -->
+ <!-- Range: 0 and 1. -->
+ <property value="0.0">electrical/light-switch-panel/steaming-cmd-norm</property>
+ <property value="0.0">electrical/light-switch-panel/identification-cmd-norm</property>
+ <!-- Range: 0, 0.5 and 1. -->
+ <property value="0.0">electrical/light-switch-panel/landing-cmd-norm</property>
+ <!-- Range: 0 to 1. -->
+ <property value="0.0">electrical/light-switch-panel/roof-cmd-norm[0]</property>
+ <property value="0.0">electrical/light-switch-panel/roof-cmd-norm[1]</property>
+ <!-- Range: 0 and 1. Actually located at the bow. -->
+ <property value="0.0">electrical/light-switch-panel/anchor-cmd-norm</property>
 
  <!-- ======================================================================
       Fuses
@@ -907,7 +920,232 @@
  <!-- ======================================================================
       Main switchbox fuse 3 circuit - anchor and steaming lights 
  -->
+ <channel name="Anchor and steaming lights">
 
+  <switch name="electrical/light-switch-panel/anchor-voltage-V">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[0]/voltage-V">
+     electrical/light-switch-panel/anchor-cmd-norm GT 0.5
+     electrical/main-switchbox/fuse-serviceable[2] GT 0.5
+   </test>
+  </switch>
+
+  <switch name="electrical/light-switch-panel/steaming-voltage-V">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[0]/voltage-V">
+     electrical/light-switch-panel/steaming-cmd-norm GT 0.5
+     electrical/main-switchbox/fuse-serviceable[2] GT 0.5
+   </test>
+  </switch>
+
+  <fcs_function name="electrical/lamps/navigation/anchor-current-A">
+   <function>
+    <quotient>
+     <property>electrical/light-switch-panel/anchor-voltage-V</property>
+     <value>57.6</value>
+    </quotient>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/navigation/steaming-current-A">
+   <function>
+    <quotient>
+     <property>electrical/light-switch-panel/steaming-voltage-V</property>
+     <value>57.6</value>
+    </quotient>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/navigation/anchor-power-W">
+   <function>
+    <product>
+     <property>electrical/light-switch-panel/anchor-voltage-V</property>
+     <property>electrical/lamps/navigation/anchor-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/navigation/anchor-power-W</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/navigation/steaming-power-W">
+   <function>
+    <product>
+     <property>electrical/light-switch-panel/steaming-voltage-V</property>
+     <property>electrical/lamps/navigation/steaming-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/navigation/steaming-power-W</output>
+  </fcs_function>
+
+  <summer name="electrical/main-switchbox/fuse-current-A[2]">
+   <input>electrical/lamps/navigation/anchor-current-A</input>
+   <input>electrical/lamps/navigation/steaming-current-A</input>
+  </summer>
+
+ </channel>
+
+ <!-- ======================================================================
+      Main switchbox fuse 4 circuit - identification light
+ -->
+ <channel name="Identification light">
+
+  <switch name="electrical/light-switch-panel/identification-voltage-V">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[0]/voltage-V">
+     electrical/light-switch-panel/identification-cmd-norm GT 0.5
+     electrical/main-switchbox/fuse-serviceable[3] GT 0.5
+   </test>
+  </switch>
+
+  <fcs_function name="electrical/lamps/navigation/identification-current-A">
+   <function>
+    <quotient>
+     <property>electrical/light-switch-panel/identification-voltage-V</property>
+     <value>48.0</value>
+    </quotient>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/navigation/identification-power-W">
+   <function>
+    <product>
+     <property>electrical/light-switch-panel/identification-voltage-V</property>
+     <property>electrical/lamps/navigation/identification-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/navigation/identification-power-W</output>
+  </fcs_function>
+
+  <summer name="electrical/main-switchbox/fuse-current-A[3]">
+   <input>electrical/lamps/navigation/identification-current-A</input>
+  </summer>
+
+ </channel>
+
+ <!-- ======================================================================
+      Main switchbox switch 3 fuse 6 circuit - flight-deck roof lights
+ -->
+ <channel name="Flight-deck roof lights">
+
+  <switch name="electrical/main-switchbox/switch-voltage-V[2]">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[0]/voltage-V">
+     electrical/main-switchbox/switch-cmd-norm[2] GT 0.5
+     electrical/main-switchbox/fuse-serviceable[5] GT 0.5
+   </test>
+  </switch>
+
+  <fcs_function name="electrical/light-switch-panel/dimmer-resistance-ohm[0]">
+   <function>
+    <table>
+     <independentVar lookup="row">electrical/light-switch-panel/roof-cmd-norm[0]</independentVar>
+     <tableData> <!-- Guessed: 1000*(1-cmd.^0.25) -->
+       0.0000e+00   1.0000e+03
+       1.0000e-01   4.3766e+02
+       2.0000e-01   3.3126e+02
+       3.0000e-01   2.5992e+02
+       4.0000e-01   2.0473e+02
+       5.0000e-01   1.5910e+02
+       6.0000e-01   1.1989e+02
+       7.0000e-01   8.5309e+01
+       8.0000e-01   5.4258e+01
+       9.0000e-01   2.5996e+01
+       1.0000e+00   0.0000e+00
+     </tableData>
+    </table>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/light-switch-panel/dimmer-resistance-ohm[1]">
+   <function>
+    <table>
+     <independentVar lookup="row">electrical/light-switch-panel/roof-cmd-norm[1]</independentVar>
+     <tableData> <!-- Guessed: 1000*(1-cmd.^0.25) -->
+       0.0000e+00   1.0000e+03
+       1.0000e-01   4.3766e+02
+       2.0000e-01   3.3126e+02
+       3.0000e-01   2.5992e+02
+       4.0000e-01   2.0473e+02
+       5.0000e-01   1.5910e+02
+       6.0000e-01   1.1989e+02
+       7.0000e-01   8.5309e+01
+       8.0000e-01   5.4258e+01
+       9.0000e-01   2.5996e+01
+       1.0000e+00   0.0000e+00
+     </tableData>
+    </table>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/flight-deck/roof-current-A[0]">
+   <function>
+    <quotient>
+     <property>electrical/main-switchbox/switch-voltage-V[2]</property>
+     <sum>
+      <property>electrical/light-switch-panel/dimmer-resistance-ohm[0]</property>
+      <value>96.0</value>
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/flight-deck/roof-current-A[1]">
+   <function>
+    <quotient>
+     <property>electrical/main-switchbox/switch-voltage-V[2]</property>
+     <sum>
+      <property>electrical/light-switch-panel/dimmer-resistance-ohm[1]</property>
+      <value>96.0</value>
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/flight-deck/roof-power-W[0]">
+   <function>
+    <product>
+     <value>96.0</value>
+     <property>electrical/lamps/flight-deck/roof-current-A[0]</property>
+     <property>electrical/lamps/flight-deck/roof-current-A[0]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/roof-power-W[0]</output>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/roof-power-norm[0]">
+   <function>
+    <quotient>
+     <property>electrical/lamps/flight-deck/roof-power-W[0]</property>
+     <value>6.0</value>
+    </quotient>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/roof-power-norm[0]</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/flight-deck/roof-power-W[1]">
+   <function>
+    <product>
+     <value>96.0</value>
+     <property>electrical/lamps/flight-deck/roof-current-A[1]</property>
+     <property>electrical/lamps/flight-deck/roof-current-A[1]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/roof-power-W[1]</output>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/roof-power-norm[1]">
+   <function>
+    <quotient>
+     <property>electrical/lamps/flight-deck/roof-power-W[1]</property>
+     <value>6.0</value>
+    </quotient>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/roof-power-norm[1]</output>
+  </fcs_function>
+
+  <summer name="electrical/main-switchbox/fuse-current-A[5]">
+   <input>electrical/lamps/flight-deck/roof-current-A[0]</input>
+   <input>electrical/lamps/flight-deck/roof-current-A[1]</input>
+  </summer>
+
+ </channel>
 
  <!-- ======================================================================
       Main switchbox switch 6 circuits - Navigation lights
@@ -992,6 +1230,70 @@
    <input>electrical/lamps/navigation/starboard-current-A</input>
    <input>electrical/lamps/navigation/tail-current-A</input>
   </summer>
+
+ </channel>
+
+ <!-- ======================================================================
+      Landing search lights
+ -->
+ <channel name="Landing lights">
+
+  <switch name="electrical/light-switch-panel/landing-voltage-V[0]">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[0]/voltage-V">
+     electrical/light-switch-panel/landing-cmd-norm GT 0.25
+     electrical/light-switch-panel/landing-cmd-norm LT 0.75
+   </test>
+  </switch>
+
+  <switch name="electrical/light-switch-panel/landing-voltage-V[1]">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[0]/voltage-V">
+     electrical/light-switch-panel/landing-cmd-norm GT 0.75
+   </test>
+  </switch>
+
+  <fcs_function name="electrical/lamps/landing/bow-current-A">
+   <function>
+    <product>
+     <quotient>
+      <property>electrical/light-switch-panel/landing-voltage-V[0]</property>
+      <value>2.4</value>
+     </quotient>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/landing/wing-current-A">
+   <function>
+    <product>
+     <quotient>
+      <property>electrical/light-switch-panel/landing-voltage-V[1]</property>
+      <value>1.152</value>
+     </quotient>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/landing/bow-power-W">
+   <function>
+    <product>
+     <property>electrical/light-switch-panel/landing-voltage-V[0]</property>
+     <property>electrical/lamps/landing/bow-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/landing/bow-power-W</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/landing/wing-power-W">
+   <function>
+    <product>
+     <property>electrical/light-switch-panel/landing-voltage-V[1]</property>
+     <property>electrical/lamps/landing/wing-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/landing/wing-power-W</output>
+  </fcs_function>
 
  </channel>
 
@@ -1133,9 +1435,14 @@
  <channel name="Bus currents">
 
   <summer name="electrical/bus[0]/current-A">
+   <input>electrical/main-switchbox/fuse-current-A[2]</input>
+   <input>electrical/main-switchbox/fuse-current-A[3]</input>
+   <input>electrical/main-switchbox/fuse-current-A[5]</input>
    <input>electrical/main-switchbox/fuse-current-A[11]</input>
    <input>electrical/main-switchbox/fuse-current-A[12]</input>
    <input>electrical/flap-motor/current-A</input>
+   <input>electrical/lamps/landing/bow-current-A</input>
+   <input>electrical/lamps/landing/wing-current-A</input>
   </summer>
 
   <summer name="electrical/bus[1]/current-A">

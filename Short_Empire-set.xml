@@ -2,7 +2,7 @@
 <!--
   Short Empire flying boat for FlightGear.
 
-  Copyright (C) 2007 - 2012 Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.57 2012/02/26 13:46:58 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.58 2012/03/10 21:41:23 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -376,6 +376,14 @@
   <lighting>
    <nav-lights
        alias="/fdm/jsbsim/electrical/main-switchbox/switch-cmd-norm[5]"/>
+   <steaming-light
+       alias="/fdm/jsbsim/electrical/light-switch-panel/steaming-cmd-norm"/>
+   <landing-light
+       alias="/fdm/jsbsim/electrical/light-switch-panel/landing-cmd-norm"/>
+   <identification-light
+       alias="/fdm/jsbsim/electrical/light-switch-panel/identification-cmd-norm"/>
+   <anchor-light
+       alias="/fdm/jsbsim/electrical/light-switch-panel/anchor-cmd-norm"/>
    <!-- Instrument dimmer switches -->
    <panel-dimmer n="0"
        alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[0]"/>
@@ -395,6 +403,11 @@
        alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[7]"/>
    <panel-dimmer n="8"
        alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[8]"/>
+   <!-- Flight deck ceiling lights -->
+   <dome-norm n="0"
+       alias="/fdm/jsbsim/electrical/light-switch-panel/roof-cmd-norm[0]"/>
+   <dome-norm n="1"
+       alias="/fdm/jsbsim/electrical/light-switch-panel/roof-cmd-norm[1]"/>
   </lighting>
  </controls>
 
@@ -542,6 +555,7 @@
    <electrical>
     <main-switchbox>
      <switch-cmd-norm n="1" type="double">1.0</switch-cmd-norm>
+     <switch-cmd-norm n="2" type="double">1.0</switch-cmd-norm>
      <switch-cmd-norm n="5" type="double">1.0</switch-cmd-norm>
     </main-switchbox>
     <instrument-lights>
@@ -555,6 +569,13 @@
      <switch-cmd-norm n="7" type="double">0.0</switch-cmd-norm>
      <switch-cmd-norm n="8" type="double">0.0</switch-cmd-norm>
     </instrument-lights>
+    <light-switch-panel>
+     <steaming-cmd-norm       type="double">0.0</steaming-cmd-norm>
+     <landing-cmd-norm        type="double">0.0</landing-cmd-norm>
+     <identification-cmd-norm type="double">0.0</identification-cmd-norm>
+     <roof-cmd-norm n="0" type="double">0.0</roof-cmd-norm>
+     <roof-cmd-norm n="1" type="double">0.0</roof-cmd-norm>
+    </light-switch-panel>
    </electrical>
   </jsbsim>
  </fdm>

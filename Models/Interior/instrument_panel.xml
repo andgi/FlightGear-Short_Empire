@@ -24,12 +24,6 @@
   <overlay>
    <params>
     <button-pressed-norm type="string">controls/engines/engine[0]/starter-cmd</button-pressed-norm>
-    <pick-action-script    n="0" type="string">
-      setprop("controls/engines/engine[0]/starter-cmd", 1);
-    </pick-action-script>
-    <release-action-script n="0" type="string">
-      setprop("controls/engines/engine[0]/starter-cmd", 0);
-    </release-action-script>
    </params>
   </overlay>
  </model>
@@ -45,12 +39,6 @@
   <overlay>
    <params>
     <button-pressed-norm type="string">controls/engines/engine[1]/starter-cmd</button-pressed-norm>
-    <pick-action-script    n="0" type="string">
-      setprop("controls/engines/engine[1]/starter-cmd", 1);
-    </pick-action-script>
-    <release-action-script n="0" type="string">
-      setprop("controls/engines/engine[1]/starter-cmd", 0);
-    </release-action-script>
    </params>
   </overlay>
  </model>
@@ -66,12 +54,6 @@
   <overlay>
    <params>
     <button-pressed-norm type="string">controls/engines/engine[2]/starter-cmd</button-pressed-norm>
-    <pick-action-script    n="0" type="string">
-      setprop("controls/engines/engine[2]/starter-cmd", 1);
-    </pick-action-script>
-    <release-action-script n="0" type="string">
-      setprop("controls/engines/engine[2]/starter-cmd", 0);
-    </release-action-script>
    </params>
   </overlay>
  </model>
@@ -87,12 +69,6 @@
   <overlay>
    <params>
     <button-pressed-norm type="string">controls/engines/engine[3]/starter-cmd</button-pressed-norm>
-    <pick-action-script    n="0" type="string">
-      setprop("controls/engines/engine[3]/starter-cmd", 1);
-    </pick-action-script>
-    <release-action-script n="0" type="string">
-      setprop("controls/engines/engine[3]/starter-cmd", 0);
-    </release-action-script>
    </params>
   </overlay>
  </model>

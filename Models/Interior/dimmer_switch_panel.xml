@@ -9,15 +9,15 @@
 
  <!-- Overlay these to set the sources. -->
  <params>
-  <switch-cmd-norm n="0">controls/lighting/panel-dimmer[0]</switch-cmd-norm>
-  <switch-cmd-norm n="1">controls/lighting/panel-dimmer[1]</switch-cmd-norm>
-  <switch-cmd-norm n="2">controls/lighting/panel-dimmer[2]</switch-cmd-norm>
-  <switch-cmd-norm n="3">controls/lighting/panel-dimmer[3]</switch-cmd-norm>
-  <switch-cmd-norm n="4">controls/lighting/panel-dimmer[4]</switch-cmd-norm>
-  <switch-cmd-norm n="5">controls/lighting/panel-dimmer[5]</switch-cmd-norm>
-  <switch-cmd-norm n="6">controls/lighting/panel-dimmer[6]</switch-cmd-norm>
-  <switch-cmd-norm n="7">controls/lighting/panel-dimmer[7]</switch-cmd-norm>
-  <switch-cmd-norm n="8">controls/lighting/panel-dimmer[8]</switch-cmd-norm>
+  <dimmer-cmd-norm n="0">controls/lighting/panel-dimmer[0]</dimmer-cmd-norm>
+  <dimmer-cmd-norm n="1">controls/lighting/panel-dimmer[1]</dimmer-cmd-norm>
+  <dimmer-cmd-norm n="2">controls/lighting/panel-dimmer[2]</dimmer-cmd-norm>
+  <dimmer-cmd-norm n="3">controls/lighting/panel-dimmer[3]</dimmer-cmd-norm>
+  <dimmer-cmd-norm n="4">controls/lighting/panel-dimmer[4]</dimmer-cmd-norm>
+  <dimmer-cmd-norm n="5">controls/lighting/panel-dimmer[5]</dimmer-cmd-norm>
+  <dimmer-cmd-norm n="6">controls/lighting/panel-dimmer[6]</dimmer-cmd-norm>
+  <dimmer-cmd-norm n="7">controls/lighting/panel-dimmer[7]</dimmer-cmd-norm>
+  <dimmer-cmd-norm n="8">controls/lighting/panel-dimmer[8]</dimmer-cmd-norm>
  </params>
 
  <path>dimmer_switch_panel.ac</path>
@@ -32,7 +32,7 @@
  <animation> 
   <type>rotate</type>
   <object-name>knob.1</object-name>
-  <property alias="../../params/switch-cmd-norm[0]"/>
+  <property alias="../../params/dimmer-cmd-norm[0]"/>
   <interpolation> 
    <entry><ind>0.0</ind><dep>0</dep></entry>
    <entry><ind>1.0</ind><dep>-150</dep></entry>
@@ -58,11 +58,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[0]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[0]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[0]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[0]"/>
     <step type="double">0.1</step>
    </binding>
   </action>
@@ -73,11 +73,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[0]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[0]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[0]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[0]"/>
     <step type="double">-0.1</step>
    </binding>
   </action>
@@ -88,11 +88,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[0]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[0]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[0]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[0]"/>
     <step type="double">0.02</step>
    </binding>
   </action>
@@ -103,11 +103,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[0]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[0]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[0]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[0]"/>
     <step type="double">-0.02</step>
    </binding>
   </action>
@@ -116,7 +116,7 @@
  <animation> 
   <type>rotate</type>
   <object-name>knob.2</object-name>
-  <property alias="../../params/switch-cmd-norm[1]"/>
+  <property alias="../../params/dimmer-cmd-norm[1]"/>
   <interpolation> 
    <entry><ind>0.0</ind><dep>0</dep></entry>
    <entry><ind>1.0</ind><dep>-150</dep></entry>
@@ -142,11 +142,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[1]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[1]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[1]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[1]"/>
     <step type="double">0.1</step>
    </binding>
   </action>
@@ -157,11 +157,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[1]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[1]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[1]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[1]"/>
     <step type="double">-0.1</step>
    </binding>
   </action>
@@ -172,11 +172,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[1]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[1]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[1]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[1]"/>
     <step type="double">0.02</step>
    </binding>
   </action>
@@ -187,11 +187,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[1]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[1]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[1]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[1]"/>
     <step type="double">-0.02</step>
    </binding>
   </action>
@@ -200,7 +200,7 @@
  <animation> 
   <type>rotate</type>
   <object-name>knob.3</object-name>
-  <property alias="../../params/switch-cmd-norm[2]"/>
+  <property alias="../../params/dimmer-cmd-norm[2]"/>
   <interpolation> 
    <entry><ind>0.0</ind><dep>0</dep></entry>
    <entry><ind>1.0</ind><dep>-150</dep></entry>
@@ -226,11 +226,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[2]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[2]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[2]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[2]"/>
     <step type="double">0.1</step>
    </binding>
   </action>
@@ -241,11 +241,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[2]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[2]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[2]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[2]"/>
     <step type="double">-0.1</step>
    </binding>
   </action>
@@ -256,11 +256,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[2]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[2]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[2]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[2]"/>
     <step type="double">0.02</step>
    </binding>
   </action>
@@ -271,11 +271,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[2]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[2]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[2]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[2]"/>
     <step type="double">-0.02</step>
    </binding>
   </action>
@@ -284,7 +284,7 @@
  <animation> 
   <type>rotate</type>
   <object-name>knob.4</object-name>
-  <property alias="../../params/switch-cmd-norm[3]"/>
+  <property alias="../../params/dimmer-cmd-norm[3]"/>
   <interpolation> 
    <entry><ind>0.0</ind><dep>0</dep></entry>
    <entry><ind>1.0</ind><dep>-150</dep></entry>
@@ -310,11 +310,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[3]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[3]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[3]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[3]"/>
     <step type="double">0.1</step>
    </binding>
   </action>
@@ -325,11 +325,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[3]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[3]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[3]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[3]"/>
     <step type="double">-0.1</step>
    </binding>
   </action>
@@ -340,11 +340,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[3]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[3]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[3]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[3]"/>
     <step type="double">0.02</step>
    </binding>
   </action>
@@ -355,11 +355,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[3]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[3]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[3]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[3]"/>
     <step type="double">-0.02</step>
    </binding>
   </action>
@@ -368,7 +368,7 @@
  <animation> 
   <type>rotate</type>
   <object-name>knob.5</object-name>
-  <property alias="../../params/switch-cmd-norm[4]"/>
+  <property alias="../../params/dimmer-cmd-norm[4]"/>
   <interpolation> 
    <entry><ind>0.0</ind><dep>0</dep></entry>
    <entry><ind>1.0</ind><dep>-150</dep></entry>
@@ -394,11 +394,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[4]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[4]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[4]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[4]"/>
     <step type="double">0.1</step>
    </binding>
   </action>
@@ -409,11 +409,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[4]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[4]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[4]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[4]"/>
     <step type="double">-0.1</step>
    </binding>
   </action>
@@ -424,11 +424,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[4]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[4]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[4]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[4]"/>
     <step type="double">0.02</step>
    </binding>
   </action>
@@ -439,11 +439,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[4]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[4]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[4]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[4]"/>
     <step type="double">-0.02</step>
    </binding>
   </action>
@@ -452,7 +452,7 @@
  <animation> 
   <type>rotate</type>
   <object-name>knob.6</object-name>
-  <property alias="../../params/switch-cmd-norm[5]"/>
+  <property alias="../../params/dimmer-cmd-norm[5]"/>
   <interpolation> 
    <entry><ind>0.0</ind><dep>0</dep></entry>
    <entry><ind>1.0</ind><dep>-150</dep></entry>
@@ -478,11 +478,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[5]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[5]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[5]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[5]"/>
     <step type="double">0.1</step>
    </binding>
   </action>
@@ -493,11 +493,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[5]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[5]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[5]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[5]"/>
     <step type="double">-0.1</step>
    </binding>
   </action>
@@ -508,11 +508,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[5]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[5]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[5]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[5]"/>
     <step type="double">0.02</step>
    </binding>
   </action>
@@ -523,11 +523,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[5]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[5]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[5]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[5]"/>
     <step type="double">-0.02</step>
    </binding>
   </action>
@@ -536,7 +536,7 @@
  <animation> 
   <type>rotate</type>
   <object-name>knob.7</object-name>
-  <property alias="../../params/switch-cmd-norm[6]"/>
+  <property alias="../../params/dimmer-cmd-norm[6]"/>
   <interpolation> 
    <entry><ind>0.0</ind><dep>0</dep></entry>
    <entry><ind>1.0</ind><dep>-150</dep></entry>
@@ -562,11 +562,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[6]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[6]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[6]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[6]"/>
     <step type="double">0.1</step>
    </binding>
   </action>
@@ -577,11 +577,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[6]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[6]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[6]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[6]"/>
     <step type="double">-0.1</step>
    </binding>
   </action>
@@ -592,11 +592,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[6]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[6]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[6]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[6]"/>
     <step type="double">0.02</step>
    </binding>
   </action>
@@ -607,11 +607,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[6]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[6]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[6]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[6]"/>
     <step type="double">-0.02</step>
    </binding>
   </action>
@@ -620,7 +620,7 @@
  <animation> 
   <type>rotate</type>
   <object-name>knob.8</object-name>
-  <property alias="../../params/switch-cmd-norm[7]"/>
+  <property alias="../../params/dimmer-cmd-norm[7]"/>
   <interpolation> 
    <entry><ind>0.0</ind><dep>0</dep></entry>
    <entry><ind>1.0</ind><dep>-150</dep></entry>
@@ -646,11 +646,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[7]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[7]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[7]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[7]"/>
     <step type="double">0.1</step>
    </binding>
   </action>
@@ -661,11 +661,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[7]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[7]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[7]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[7]"/>
     <step type="double">-0.1</step>
    </binding>
   </action>
@@ -676,11 +676,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[7]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[7]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[7]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[7]"/>
     <step type="double">0.02</step>
    </binding>
   </action>
@@ -691,11 +691,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[7]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[7]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[7]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[7]"/>
     <step type="double">-0.02</step>
    </binding>
   </action>
@@ -704,7 +704,7 @@
  <animation> 
   <type>rotate</type>
   <object-name>knob.9</object-name>
-  <property alias="../../params/switch-cmd-norm[8]"/>
+  <property alias="../../params/dimmer-cmd-norm[8]"/>
   <interpolation> 
    <entry><ind>0.0</ind><dep>0</dep></entry>
    <entry><ind>1.0</ind><dep>-150</dep></entry>
@@ -730,11 +730,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[8]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[8]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[8]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[8]"/>
     <step type="double">0.1</step>
    </binding>
   </action>
@@ -745,11 +745,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[8]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[8]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[8]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[8]"/>
     <step type="double">-0.1</step>
    </binding>
   </action>
@@ -760,11 +760,11 @@
     <command>property-adjust</command>
     <condition>
      <less-than>
-      <property alias="../../../../../../params/switch-cmd-norm[8]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[8]"/>
       <value>1.0</value>
      </less-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[8]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[8]"/>
     <step type="double">0.02</step>
    </binding>
   </action>
@@ -775,11 +775,11 @@
     <command>property-adjust</command>
     <condition>
      <greater-than>
-      <property alias="../../../../../../params/switch-cmd-norm[8]"/>
+      <property alias="../../../../../../params/dimmer-cmd-norm[8]"/>
       <value>0.0</value>
      </greater-than>
     </condition>
-    <property alias="../../../../params/switch-cmd-norm[8]"/>
+    <property alias="../../../../params/dimmer-cmd-norm[8]"/>
     <step type="double">-0.02</step>
    </binding>
   </action>
@@ -798,7 +798,7 @@
   <object-name>knob.8</object-name>
   <object-name>knob.9</object-name>
   <emission> 
-   <factor-prop>controls/lighting/dome-norm</factor-prop>
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
    <red>0.75</red>
    <green>0.25</green>
    <blue>0.25</blue>

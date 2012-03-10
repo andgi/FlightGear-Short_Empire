@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<!--
+  Short S.23 Empire flying boat for FlightGear.
+
+  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- Overlay these to set the sources. -->
+ <params>
+  <steaming-cmd-norm>controls/lighting/steaming-light</steaming-cmd-norm>
+  <landing-cmd-norm>controls/lighting/landing-light</landing-cmd-norm>
+  <identification-cmd-norm>controls/lighting/identification-light</identification-cmd-norm>
+  <dimmer-cmd-norm n="0">controls/lighting/dome-norm[0]</dimmer-cmd-norm>
+  <dimmer-cmd-norm n="1">controls/lighting/dome-norm[1]</dimmer-cmd-norm>
+  <lighting-norm>controls/lighting/dome-norm</lighting-norm>
+ </params>
+
+ <path>light_switch_panel.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.000 </x-m>
+  <y-m> 0.000 </y-m>
+  <z-m> 0.000 </z-m>
+ </offsets>
+
+ <model>
+  <name>Identification light switch</name>
+  <path>Aircraft/Short_Empire/Instruments/RotaxN5EBStarterButton/starter_button.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> 0.000 </x-m>
+   <y-m> 0.035 </y-m>
+   <z-m> 0.120 </z-m>
+  </offsets>
+  <overlay>
+   <params>
+    <button-pressed-norm alias="../../../../params/identification-cmd-norm"/>
+   </params>
+  </overlay>
+ </model>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>switch.SL</object-name>
+  <property alias="../../params/steaming-cmd-norm"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>-15.0</dep></entry>
+   <entry><ind>1.0</ind><dep>15.0</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.002 </x-m>
+   <y-m>-0.035 </y-m>
+   <z-m> 0.190 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>pick</type>
+  <object-name>switch.SL</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property alias="../../../../params/steaming-cmd-norm"/>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>landinglight_handle</object-name>
+  <property alias="../../params/landing-cmd-norm"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>-30.0</dep></entry>
+   <entry><ind>0.5</ind><dep>0.0</dep></entry>
+   <entry><ind>1.0</ind><dep>30.0</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.000 </x-m>
+   <y-m> 0.035 </y-m>
+   <z-m> 0.190 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>pick</type>
+  <object-name>landinglight_handle</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <less-than>
+      <property alias="../../../../../../params/landing-cmd-norm"/>
+      <value>1.0</value>
+     </less-than>
+    </condition>
+    <property alias="../../../../params/landing-cmd-norm"/>
+    <step type="double">0.5</step>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <greater-than>
+      <property alias="../../../../../../params/landing-cmd-norm"/>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <property alias="../../../../params/landing-cmd-norm"/>
+    <step type="double">-0.5</step>
+   </binding>
+  </action>
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <greater-than>
+      <property alias="../../../../../../params/landing-cmd-norm"/>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <property alias="../../../../params/landing-cmd-norm"/>
+    <step type="double">-0.5</step>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <less-than>
+      <property alias="../../../../../../params/landing-cmd-norm"/>
+      <value>1.0</value>
+     </less-than>
+    </condition>
+    <property alias="../../../../params/landing-cmd-norm"/>
+    <step type="double">0.5</step>
+   </binding>
+  </action>
+ </animation>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>knob.PR</object-name>
+  <property alias="../../params/dimmer-cmd-norm[0]"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>0</dep></entry>
+   <entry><ind>1.0</ind><dep>-150</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.000 </x-m>
+   <y-m> 0.035 </y-m>
+   <z-m> 0.060 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>pick</type>
+  <object-name>knob.PR</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <less-than>
+      <property alias="../../../../../../params/dimmer-cmd-norm[0]"/>
+      <value>1.0</value>
+     </less-than>
+    </condition>
+    <property alias="../../../../params/dimmer-cmd-norm[0]"/>
+    <step type="double">0.1</step>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <greater-than>
+      <property alias="../../../../../../params/dimmer-cmd-norm[0]"/>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <property alias="../../../../params/dimmer-cmd-norm[0]"/>
+    <step type="double">-0.1</step>
+   </binding>
+  </action>
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <less-than>
+      <property alias="../../../../../../params/dimmer-cmd-norm[0]"/>
+      <value>1.0</value>
+     </less-than>
+    </condition>
+    <property alias="../../../../params/dimmer-cmd-norm[0]"/>
+    <step type="double">0.02</step>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <greater-than>
+      <property alias="../../../../../../params/dimmer-cmd-norm[0]"/>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <property alias="../../../../params/dimmer-cmd-norm[0]"/>
+    <step type="double">-0.02</step>
+   </binding>
+  </action>
+ </animation>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>knob.WTR</object-name>
+  <property alias="../../params/dimmer-cmd-norm[1]"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>0</dep></entry>
+   <entry><ind>1.0</ind><dep>-150</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.000 </x-m>
+   <y-m>-0.035 </y-m>
+   <z-m> 0.060 </z-m>
+  </center>
+  <axis> 
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>pick</type>
+  <object-name>knob.WTR</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <less-than>
+      <property alias="../../../../../../params/dimmer-cmd-norm[1]"/>
+      <value>1.0</value>
+     </less-than>
+    </condition>
+    <property alias="../../../../params/dimmer-cmd-norm[1]"/>
+    <step type="double">0.1</step>
+   </binding>
+  </action>
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <greater-than>
+      <property alias="../../../../../../params/dimmer-cmd-norm[1]"/>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <property alias="../../../../params/dimmer-cmd-norm[1]"/>
+    <step type="double">-0.1</step>
+   </binding>
+  </action>
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <less-than>
+      <property alias="../../../../../../params/dimmer-cmd-norm[1]"/>
+      <value>1.0</value>
+     </less-than>
+    </condition>
+    <property alias="../../../../params/dimmer-cmd-norm[1]"/>
+    <step type="double">0.02</step>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <condition>
+     <greater-than>
+      <property alias="../../../../../../params/dimmer-cmd-norm[1]"/>
+      <value>0.0</value>
+     </greater-than>
+    </condition>
+    <property alias="../../../../params/dimmer-cmd-norm[1]"/>
+    <step type="double">-0.02</step>
+   </binding>
+  </action>
+ </animation>
+
+ <animation> 
+  <type>material</type>
+  <object-name>labels</object-name>
+  <object-name>switch.SL</object-name>
+  <object-name>knob.WTR</object-name>
+  <object-name>knob.PR</object-name>
+  <emission> 
+   <factor-prop alias="../../../params/lighting-norm"/>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

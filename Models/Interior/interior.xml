@@ -57,6 +57,19 @@
   </offsets>
  </model>
 
+ <model>
+  <name>Light switch panel</name>
+  <path>Aircraft/Short_Empire/Models/Interior/light_switch_panel.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -2.300 </x-m>
+   <y-m>  0.920 </y-m>
+   <z-m>  1.190 </z-m>
+   <heading-deg>-100.0</heading-deg>
+   <pitch-deg>0.0</pitch-deg>
+  </offsets>
+ </model>
+
  <!-- Captain's compass -->
  <model>
   <name>Captain's compass</name>

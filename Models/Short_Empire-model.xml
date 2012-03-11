@@ -20,6 +20,7 @@
   <inherits-from>Effects/reflect</inherits-from>
   <object-name>Fuselage</object-name>
   <object-name>astro_hatch</object-name>
+  <object-name>aerial_mast</object-name>
   <object-name>wing</object-name>
   <object-name>hstab</object-name>
   <object-name>vstab</object-name>
@@ -302,6 +303,42 @@
    </parameters>
   </overlay>
  </model>
+ <model>
+  <name>Anchor light</name>
+  <!-- Horizontal arc of visiblity 360 deg. -->
+  <path>Aircraft/Short_Empire/Models/Lights/WhiteLight.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -4.86 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  3.94 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <rated-power type="double">10.0</rated-power> <!-- Watts -->
+    <min-power   type="double">5.0</min-power>    <!-- Watts -->
+    <current-power-property>systems/electrical/lamps/navigation/anchor-power-W</current-power-property>
+   </parameters>
+  </overlay>
+ </model>
+ <model>
+  <name>Steaming light</name>
+  <!-- Horizontal arc of visiblity 225 deg. -->
+  <path>Aircraft/Short_Empire/Models/Lights/WhiteLight.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -4.79 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  3.89 </z-m>
+  </offsets>
+  <overlay>
+   <parameters>
+    <rated-power type="double">10.0</rated-power> <!-- Watts -->
+    <min-power   type="double">5.0</min-power>    <!-- Watts -->
+    <current-power-property>systems/electrical/lamps/navigation/steaming-power-W</current-power-property>
+   </parameters>
+  </overlay>
+ </model>
 
 
  <!-- Doors and hatches animations =========================================-->
@@ -343,6 +380,33 @@
   </axis>
  </animation>
 
+ <!-- Aerial mast animations ===============================================-->
+ <animation>
+  <type>translate</type>
+  <object-name>aerial_mast_extension</object-name>
+  <object-name>aerial_mast_head</object-name>
+  <object-name>aerial_mast_headL</object-name>
+  <object-name>aerial_mast_glass.A</object-name>
+  <object-name>aerial_mast_glass.S</object-name>
+  <object-name>Anchor light</object-name>
+  <object-name>Steaming light</object-name>
+  <property>controls/lighting/anchor-light</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>0.9</dep>
+   </entry>
+  </interpolation>
+  <axis>
+   <x> 0.0 </x>
+   <y> 0.0 </y>
+   <z> 1.0 </z>
+  </axis>
+ </animation>
 
  <!-- Flight control surface animations ====================================-->
 

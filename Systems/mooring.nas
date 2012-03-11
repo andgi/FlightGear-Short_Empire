@@ -2,7 +2,7 @@
 ##
 ## Short S.23 'C'-class Empire flying boat
 ##
-##  Copyright (C) 2010 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2010 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
@@ -151,6 +151,7 @@ var mooring = {
             me.active_mooring.getNode("rope-length-ft").getValue();
         if (dist < rope_length/FT2M) {
             me.active_mooring.getNode("mooring-connected").setValue(1.0);
+            setprop("controls/lighting/anchor-light", 1.0);
             copilot.announce("We picked up the mooring.");
             return 1;
         } else {
@@ -162,6 +163,7 @@ var mooring = {
     release_mooring : func {
         if (me.active_mooring.getNode("mooring-connected").getValue() >= 1.0) {
             me.active_mooring.getNode("mooring-connected").setValue(0.0);
+            setprop("controls/lighting/anchor-light", 0.0);
             copilot.announce("Mooring slipped.");
         }
     },

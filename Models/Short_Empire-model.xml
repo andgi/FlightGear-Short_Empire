@@ -813,6 +813,7 @@ var rplayer = cmdarg();
 print("LOAD Short_Empire", rplayer.getPath());
 
 # Set up property aliases for animations.
+#  Wakes.
 rplayer.getNode("fdm/jsbsim/hydro/coefficients/C_Delta", 1).
   alias(rplayer.getNode("sim/multiplay/generic/float[0]"));
 rplayer.getNode("fdm/jsbsim/hydro/height-agl-ft", 1).
@@ -823,6 +824,17 @@ rplayer.getNode("fdm/jsbsim/hydro/right-float-submersion-ft", 1).
   alias(rplayer.getNode("sim/multiplay/generic/float[3]"));
 rplayer.getNode("velocities/groundspeed-kt", 1).
   alias(rplayer.getNode("velocities/true-airspeed-kt"));
+# Exterior lights.
+rplayer.getNode("systems/electrical/lamps/navigation/port-power-W", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[4]"));
+rplayer.getNode("systems/electrical/lamps/navigation/starboard-power-W", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[5]"));
+rplayer.getNode("systems/electrical/lamps/navigation/tail-power-W", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[6]"));
+rplayer.getNode("systems/electrical/lamps/navigation/anchor-power-W", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[7]"));
+rplayer.getNode("systems/electrical/lamps/navigation/steaming-power-W", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[8]"));
 
 # Set up livery support.
 var livery_update =

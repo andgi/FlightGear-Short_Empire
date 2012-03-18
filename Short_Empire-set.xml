@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.58 2012/03/10 21:41:23 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.59 2012/03/18 19:11:59 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -113,10 +113,17 @@
 
   <multiplay>
    <generic>
+    <!-- Wakes. -->
     <float n="0" alias="/fdm/jsbsim/hydro/coefficients/C_Delta"/>
     <float n="1" alias="/fdm/jsbsim/hydro/height-agl-ft"/>
     <float n="2" alias="/fdm/jsbsim/hydro/left-float-submersion-ft"/>
     <float n="3" alias="/fdm/jsbsim/hydro/right-float-submersion-ft"/>
+    <!-- Exterior lights. -->
+    <float n="4" alias="/systems/electrical/lamps/navigation/port-power-W"/>
+    <float n="5" alias="/systems/electrical/lamps/navigation/starboard-power-W"/>
+    <float n="6" alias="/systems/electrical/lamps/navigation/tail-power-W"/>
+    <float n="7" alias="/systems/electrical/lamps/navigation/anchor-power-W"/>
+    <float n="8" alias="/systems/electrical/lamps/navigation/steaming-power-W"/>
    </generic>
   </multiplay>
 

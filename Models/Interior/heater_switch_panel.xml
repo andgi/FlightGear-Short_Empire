@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<!--
+  Short S.23 Empire flying boat for FlightGear.
+
+  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- Overlay these to set the sources. -->
+ <params>
+  <panel-cmd-norm>controls/heating/panel</panel-cmd-norm>
+  <pitot-cmd-norm n="0">controls/heating/pitot[0]</pitot-cmd-norm>
+  <pitot-cmd-norm n="1">controls/heating/pitot[1]</pitot-cmd-norm>
+  <panel-light-norm>controls/heating/panel</panel-light-norm>
+  <pitot-light-norm n="0">controls/heating/pitot[0]</pitot-light-norm>
+  <pitot-light-norm n="1">controls/heating/pitot[1]</pitot-light-norm>
+  <lighting-norm>controls/lighting/dome-norm</lighting-norm>
+ </params>
+
+ <path>heater_switch_panel.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.000 </x-m>
+  <y-m> 0.000 </y-m>
+  <z-m> 0.000 </z-m>
+ </offsets>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>switch.PHL</object-name>
+  <property alias="../../params/pitot-cmd-norm[0]"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>-15.0</dep></entry>
+   <entry><ind>1.0</ind><dep>15.0</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.055 </x-m>
+   <y-m> 0.020 </y-m>
+   <z-m> 0.167 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>pick</type>
+  <object-name>switch.PHL</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property alias="../../../../params/pitot-cmd-norm[0]"/>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>switch.PHR</object-name>
+  <property alias="../../params/pitot-cmd-norm[1]"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>-15.0</dep></entry>
+   <entry><ind>1.0</ind><dep>15.0</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.055 </x-m>
+   <y-m> 0.020 </y-m>
+   <z-m> 0.100 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>pick</type>
+  <object-name>switch.PHR</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property alias="../../../../params/pitot-cmd-norm[1]"/>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>switch.IH</object-name>
+  <property alias="../../params/panel-cmd-norm"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>-15.0</dep></entry>
+   <entry><ind>1.0</ind><dep>15.0</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.055 </x-m>
+   <y-m>-0.020 </y-m>
+   <z-m> 0.033 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>pick</type>
+  <object-name>switch.IH</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property alias="../../../../params/panel-cmd-norm"/>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation> 
+  <type>material</type>
+  <object-name>pilot_light_glass.PHL</object-name>
+  <emission> 
+   <factor-prop alias="../../../params/pitot-light-norm[0]"/>
+   <red>0.75</red>
+   <green>0.0</green>
+   <blue>0.0</blue>
+  </emission>
+ </animation>
+ <animation> 
+  <type>material</type>
+  <object-name>pilot_light_glass.PHR</object-name>
+  <emission> 
+   <factor-prop alias="../../../params/pitot-light-norm[1]"/>
+   <red>0.75</red>
+   <green>0.0</green>
+   <blue>0.0</blue>
+  </emission>
+ </animation>
+ <animation> 
+  <type>material</type>
+  <object-name>pilot_light_glass.IH</object-name>
+  <emission> 
+   <factor-prop alias="../../../params/panel-light-norm"/>
+   <red>0.75</red>
+   <green>0.0</green>
+   <blue>0.0</blue>
+  </emission>
+ </animation>
+
+ <animation> 
+  <type>material</type>
+  <object-name>heater_panel</object-name>
+  <object-name>switch.PHL</object-name>
+  <object-name>switch.PHR</object-name>
+  <object-name>switch.IH</object-name>
+  <emission> 
+   <factor-prop alias="../../../params/lighting-norm"/>
+   <red>0.75</red>
+   <green>0.25</green>
+   <blue>0.25</blue>
+  </emission>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

@@ -85,6 +85,24 @@
   </overlay>
  </model>
 
+ <model>
+  <name>Heater switch panel</name>
+  <path>Aircraft/Short_Empire/Models/Interior/heater_switch_panel.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -2.430 </x-m>
+   <y-m>  0.960 </y-m>
+   <z-m>  1.420 </z-m>
+   <heading-deg>-100.0</heading-deg>
+   <pitch-deg>0.0</pitch-deg>
+  </offsets>
+  <overlay>
+   <params>
+    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[0]</lighting-norm>
+   </params>
+  </overlay>
+ </model>
+
  <!-- Captain's compass -->
  <model>
   <name>Captain's compass</name>

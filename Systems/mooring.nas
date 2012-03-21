@@ -25,19 +25,19 @@ var init = func(reinit=0) {
         }, 0.4);
     }
 
-    # Add the predefined moorings.
-    foreach (var m; EAMS_MOORINGS_EUROPE ~
-             EAMS_MOORINGS_EAST ~
-             EAMS_MOORINGS_SOUTH ~
-             BERMUDA_NEWYORK ~
-             TEAL) {
-        var pos = geo.Coord.new().set_latlon(m[1], m[2]);
-        mooring.add_fixed_mooring(pos, 0.0, m[0]);
-    }
-
-
-    # Enable Alt+Click to place the mooring
     if (!reinit) {
+        # Add the predefined moorings.
+        foreach (var m; EAMS_MOORINGS_EUROPE ~
+                 EAMS_MOORINGS_EAST ~
+                 EAMS_MOORINGS_SOUTH ~
+                 BERMUDA_NEWYORK ~
+                 TEAL) {
+            var pos = geo.Coord.new().set_latlon(m[1], m[2]);
+            mooring.add_fixed_mooring(pos, 0.0, m[0]);
+        }
+
+
+        # Enable Alt+Click to place the mooring
         setlistener("/sim/signals/click", func {
             var click_pos = geo.click_position();
             if (__kbd.alt.getBoolValue()) {
@@ -47,13 +47,10 @@ var init = func(reinit=0) {
     }
 }
 
+var _mooring_initialized = 0;
 setlistener("/sim/signals/fdm-initialized", func {
-    init();
-    setlistener("/sim/signals/reinit", func(reinit) {
-        if (!reinit.getValue()) {
-            init(reinit=1);
-        }
-    });
+    init(_mooring_initialized);
+    _mooring_initialized = 1;
 });
 
 ###########################################################################
@@ -69,10 +66,12 @@ var mooring = {
         ## Format:
         ##   Fixed {position : <coord>, alt_offset : <m>}
         ##   AI    {base : <node>, alt_offset : <m>}
-        me.moorings = {};
+        if (!reinit) {
+            me.moorings = {};
+            me.mooring_model  = {local : nil};
+            me.fairway_model  = {local : nil};
+        }
         me.active_mooring = props.globals.getNode("/fdm/jsbsim/mooring");
-        me.mooring_model  = {local : nil};
-        me.fairway_model  = {local : nil};
         me.selected = "";
         me.reset();
         print("Short Empire Mooring ... Standing by.");

@@ -30,12 +30,14 @@ var ground = func {
 }
 
 
-
+var _short_empire_initialized = 0;
 setlistener("/sim/signals/fdm-initialized", func {
+    if (_short_empire_initialized) return;
     aircraft.livery.init("Aircraft/Short_Empire/Models/Liveries");
     settimer(ground, 0.0);
     print("Hydrodynamics initialized.");
     copilot.init();
+    _short_empire_initialized = 1;
 });
 
 
@@ -86,10 +88,10 @@ var debug_display_view_handler = {
         me.right = screen.display.new(-200, 10);
         me.left.add("/orientation/pitch-deg");
         me.left.add("/fdm/jsbsim/hydro/beta-deg");
-        me.left.add("/fdm/jsbsim/hydro/coefficients/C_V");
-        me.left.add("/fdm/jsbsim/hydro/coefficients/C_Delta");
-        me.left.add("/fdm/jsbsim/hydro/coefficients/C_R");
-        me.left.add("/fdm/jsbsim/hydro/coefficients/C_M");
+        #me.left.add("/fdm/jsbsim/hydro/coefficients/C_V");
+        #me.left.add("/fdm/jsbsim/hydro/coefficients/C_Delta");
+        #me.left.add("/fdm/jsbsim/hydro/coefficients/C_R");
+        #me.left.add("/fdm/jsbsim/hydro/coefficients/C_M");
         me.left.add("/fdm/jsbsim/inertia/cg-x-in");
 
         me.left.add("/fdm/jsbsim/electrical/bus[0]/voltage-V");

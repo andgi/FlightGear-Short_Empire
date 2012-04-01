@@ -25,6 +25,12 @@
   <z-m> 0.000 </z-m>
  </offsets>
 
+ <!-- Rembrandt transparency markup. -->
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>glas_tube</object-name>
+ </effect>
+
  <animation> 
   <type>scale</type>
   <object-name>spirit_column</object-name>

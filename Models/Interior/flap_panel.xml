@@ -24,6 +24,14 @@
   <z-m> 0.000 </z-m>
  </offsets>
 
+ <!-- Rembrandt transparency markup. -->
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>FPL_glass</object-name>
+  <object-name>FWL_glass</object-name>
+  <object-name>indicator_glass</object-name>
+ </effect>
+
  <animation> 
   <type>rotate</type>
   <object-name>indicator.1</object-name>

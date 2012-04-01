@@ -26,6 +26,12 @@
   <z-m> 0.000 </z-m>
  </offsets>
 
+ <!-- Rembrandt transparency markup. -->
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>glass</object-name>
+ </effect>
+
  <!-- Range according to [Cassidy:2004:FE] 500 - 3 000 rpm.   -->
  <!-- Range according to "Cockpit J180.tif" 1400 - 2800 rpm.  -->
  <animation> 

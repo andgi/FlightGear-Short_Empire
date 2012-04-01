@@ -44,6 +44,15 @@
   <z-m> 0.000 </z-m>
  </offsets>
 
+ <!-- Rembrandt transparency markup. -->
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>AI_glass</object-name>
+  <object-name>DG_glass</object-name>
+  <object-name>DG_slip_tube_glass</object-name>
+  <object-name>vaccum_gauge_glass</object-name>
+ </effect>
+
  <!-- Vacuum gauge. -->
  <animation>
   <type>rotate</type>

@@ -44,6 +44,14 @@
   <object-name>SO_engine_nacelle</object-name>
  </effect>
 
+ <!-- Rembrandt transparency markup. -->
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>windscreen</object-name>
+  <object-name>aerial_mast_glass.A</object-name>
+  <object-name>aerial_mast_glass.S</object-name>
+ </effect>
+
  <!-- Livery selection =====================================================-->
  <animation>
   <type>material</type>

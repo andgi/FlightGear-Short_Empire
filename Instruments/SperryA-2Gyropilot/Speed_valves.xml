@@ -29,6 +29,12 @@
   <z-m> 0.000 </z-m>
  </offsets>
 
+ <!-- Rembrandt transparency markup. -->
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>speed_valve_glass</object-name>
+ </effect>
+
  <!-- Oil pressure gauge. -->
  <animation>
   <type>rotate</type>

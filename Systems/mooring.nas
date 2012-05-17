@@ -30,7 +30,7 @@ var init = func(reinit=0) {
         foreach (var m; EAMS_MOORINGS_EUROPE ~
                  EAMS_MOORINGS_EAST ~
                  EAMS_MOORINGS_SOUTH ~
-                 BERMUDA_NEWYORK ~
+                 NORTH_ATLANTIC ~
                  TEAL) {
             var pos = geo.Coord.new().set_latlon(m[1], m[2]);
             mooring.add_fixed_mooring(pos, 0.0, m[0]);
@@ -281,24 +281,25 @@ var EAMS_MOORINGS_EUROPE =
     ];
 var EAMS_MOORINGS_EAST =
     [
-     ["Tiberias",              32.804203,   35.545287],
+     ["Tiberias",              32.804,      35.547],
      ["Lake Habbaniyeh",       33.34625,    43.547359],
      ["Basra/Margil",          30.5203,     47.8455],
      ["Kuwait",                29.354583,   47.934932],
-     ["Bahrein",               26.201731,   50.695789],
-     ["Sharjah",               25.376378,   55.388442],
-     ["Jiwani",                25.053374,   61.73589],
-     ["Karachi",               24.836513,   67.003797],
-     ["Raj Samand",            25.062578,   73.896269],
-     ["Gwalior",               26.213821,   77.99263],
+     ["Bahrein",               26.240,      50.623],
+     ["Dubai",                 25.237,      55.325],
+     ["Jiwani",                25.053,      61.723],
+     ["Karachi",               24.780,      67.138],
+     ["Raj Samand",            25.071,      73.888],
+     ["Lake Udaipur",          24.574,      73.680],
+     ["Gwalior",               26.214,      77.994],
      ["Jhansi/Parichha Reservoir", 25.505293,78.755804],
-     ["Allahabad",             25.427375,   81.86501],
-     ["Calcutta",              22.588625,   88.347534],
-     ["Akyab (Sittwe)",        20.138218,   92.902762],
+     ["Allahabad",             25.425375,   81.86501],
+     ["Calcutta",              22.588625,   88.353534],
+     ["Akyab (Sittwe)",        20.139,      92.908],
      ["Rangoon (Yangon)",      16.733619,   96.209164],
      ["Bangkok",               13.657976,  100.550448],
      ["Ko Samu (Ko Samui)",     9.5633,    100.054464],
-     ["Penang (Pinang)",        5.418251,  100.347887],
+     ["Penang (Pinang)",        5.415,     100.350],
      ["Sinagpore/Kallang",      1.302283,  103.870003],
      ["Batavia (Jakarta)",     -6.118777,  106.835255],
      ["Sourabaya (Surabaya)",  -7.18759,   112.733803],
@@ -314,31 +315,34 @@ var EAMS_MOORINGS_EAST =
     ];
 var EAMS_MOORINGS_SOUTH =
     [
+     ["Cairo",                 30.0327,     31.222],
      ["Luxor",                 25.7011,     32.6365],
-     ["Wadi Halfa",            21.970768,   31.305134],
-     ["Khartoum",              15.615081,   32.537642],
-     ["Kosti",                 13.185674,   32.665529],
-     ["Malakal",                9.5281,     31.6483],
-     ["Bor",                    6.225406,   31.539752],
-     ["Juba",                   4.834845,   31.617494],
+     ["Wadi Halfa",            21.805,      31.300],
+     ["Khartoum",              15.606,      32.537],
+     ["Kosti",                 13.169,      32.665],
+     ["Malakal",                9.528,      31.652],
+     ["Bor",                    6.220,      31.543],
+     ["Juba",                   4.834,      31.614],
      ["Laropi",                 3.54863,    31.812716],
      ["Butabia",                1.829127,   31.329403],
      ["Kampala/Port Bell",      0.287703,   32.652279],
-     ["Kisumu",                -0.0901,     34.7481],
+     ["Kisumu",                -0.090,      34.744],
      ["Nairobi/Lake Naivasha", -0.7806,     36.4002],
      ["Mombasa",               -4.0524,     39.6799],
-     ["Dar-es-Salaam",         -6.8222,     39.2922],
+     ["Dar-es-Salaam",         -6.820,      39.292],
      ["Lindi",                -10.001025,   39.721466],
      ["Mozambique",           -15.038182,   40.704099],
-     ["Beira",                -19.8265,     34.8316],
+     ["Beira",                -19.826,      34.829],
      ["Inhambane",            -23.8687,     35.3722],
-     # - Lourenco Morques, ?
-     ["Durban",               -29.8727,     31.0325]
+     ["Lourenco Morques",     -25.9689,     32.5376],
+     ["Durban",               -29.870,      31.033]
     ];
-var BERMUDA_NEWYORK =
+var NORTH_ATLANTIC =
     [
      ["New York/Port Washington", 40.832081, -73.719479],
-     ["Bermuda/Darrel's Island",  32.273495, -64.81824]
+     ["Bermuda/Darrel's Island",  32.273,    -64.825],
+     ["Foynes",                   52.618,     -9.130],
+     ["Botwood",                  49.133,    -55.334]
     ];
 var TEAL =
     [
@@ -351,6 +355,7 @@ var TEAL =
 ## Format:
 ##   {"mooring : [name, lat, lon, heading]}
 var FAIRWAY = {
+    # Europe
     "Hythe 1":                 ["Netley",        50.873,   -1.365, 0.0],
     "Hythe 2":                 ["Netley",        50.873,   -1.365, 0.0],
     "Saint-Nazaire":           ["",              47.289,   -2.152, 0.0],
@@ -361,5 +366,70 @@ var FAIRWAY = {
     "Brindisi":                ["",              40.651,   17.962, 0.0],
     "Athens/Phaleron Bay":     ["",              37.930,   23.673, 0.0],
     "Mirabella Bay":           ["",              35.210,   25.740, 0.0],
-    "Alexandria/East Harbour": ["",              31.193,   29.874, 0.0],
+    # Africa
+    "Alexandria/East Harbour": ["",              31.193,   29.874,   0.0],
+    "Cairo":                   ["",              30.036,   31.225,  10.0],
+    "Luxor":                   ["",              25.710,   32.642,  30.0],
+    "Wadi Halfa":              ["",              21.810,   31.292,   0.0],
+    "Khartoum":                ["",              15.610,   32.537,  90.0],
+    "Kosti":                   ["",              13.172,   32.665, 315.0],
+    "Malakal":                 ["",               9.528,   31.650, 340.0],
+    "Bor":                     ["",               6.225,   31.537, 315.0],
+    "Juba":                    ["",               4.834,   31.617,  30.0],
+    #"Laropi":                  ["",               3.548,   31.812,  90.0],
+    "Butabia":                 ["",               1.837,   31.329,   0.0],
+    "Kampala/Port Bell":       ["",               0.280,   32.652,   0.0],
+    "Kisumu":                  ["",              -0.094,   34.740,   0.0],
+    "Nairobi/Lake Naivasha":   ["",              -0.780,   36.392,   0.0],
+    "Mombasa":                 ["",              -4.050,   39.682, 335.0],
+    "Dar-es-Salaam":           ["",              -6.823,   39.294,   0.0],
+    "Lindi":                   ["",             -10.006,   39.720,   0.0],
+    "Mozambique":              ["",             -15.038,   40.710,   0.0],
+    "Beira":                   ["",             -19.820,   34.825,   0.0],
+    "Inhambane":               ["",             -23.864,   35.363,   0.0],
+    "Lourenco Morques":        ["",             -25.965,   32.535,   0.0],
+    "Durban":                  ["Congella Bay", -29.873,   31.028,   0.0],
+    # Middle East
+    "Tiberias":                ["",              32.804,   35.560,   0.0],
+    "Lake Habbaniyeh":         ["",              33.338,   43.546,   0.0],
+    "Basra/Margil":            ["",              30.530,   47.839, 330.0],
+    "Kuwait":                  ["",              29.363,   47.938,   0.0],
+    "Bahrein":                 ["",              26.233,   50.624,   0.0],
+    "Dubai":                   ["Dubai Creek",   25.230,   55.330, 130.0],
+    # India
+    "Jiwani":                  ["",              25.057,   61.717,   0.0],
+    "Karachi":                 ["Karangi Creek", 24.775,   67.144,   0.0],
+    "Raj Samand":              ["",              25.075,   73.882,   0.0],
+    "Lake Udaipur":            ["",              24.575,   73.676,   0.0],
+    "Gwalior":                 ["",              26.217,   77.989,   0.0],
+    "Jhansi/Parichha Reservoir":["",             25.508,   78.768,  75.0],
+    "Allahabad":               ["",              25.423,   81.872, 100.0],
+    "Calcutta":                ["River Hooghly", 22.593,   88.356,  30.0],
+    # Far East
+    "Akyab (Sittwe)":          ["",              20.138,   92.913,   0.0],
+    "Rangoon (Yangon)":        ["",              16.756,   96.203,   0.0],
+    "Bangkok":                 ["",              13.657,  100.550,  95.0],
+    "Ko Samu (Ko Samui)":      ["",               9.566,  100.051,   0.0],
+    "Penang (Pinang)":         ["",               5.412,  100.353,   0.0],
+    "Sinagpore/Kallang":       ["",               1.289,  103.867, 165.0],
+    "Batavia (Jakarta)":       ["",              -6.108,  106.835,   0.0],
+    "Sourabaya (Surabaya)":    ["",              -7.184,  112.743,   0.0],
+    "Bima":                    ["",              -8.444,  118.705,   0.0],
+    "Koepang (Kupang)":        ["",             -10.150,  123.579,   0.0],
+    # Australia
+    "Darwin":                  ["",             -12.471,  130.856,   0.0],
+    "Groote":                  ["",             -13.946,  136.407,   0.0],
+    "Karumba":                 ["",             -17.469,  140.829, 135.0],
+    "Townsville":              ["",             -19.243,  146.822,   0.0],
+    "Gladstone":               ["",             -23.816,  151.260,   0.0],
+    "Brisbane":                ["",             -27.430,  153.128,  65.0],
+    "Sydney/Rose Bay":         ["Rose Bay",     -33.863,  151.260,   0.0],
+    # North Atlantic
+    "Bermuda/Darrel's Island": ["",              32.271,  -64.840,   0.0],
+    "New York/Port Washington":["",              40.828,  -73.719,   0.0],
+    "Foynes":                  ["",              52.618,   -9.140,   0.0],
+    "Botwood":                 ["",              49.140,  -55.324,   0.0],
+    # Teal
+    "Auckland/Mechanics Bay":  ["Mechanics Bay",-36.840,  174.805,   0.0],
+    "Wellington/Evans Bay":    ["Evans Bay",    -41.309,  174.808,   0.0]
 };

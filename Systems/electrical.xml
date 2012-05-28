@@ -96,6 +96,17 @@
  <property value="0.0">electrical/main-switchbox/switch-cmd-norm[4]</property>
  <property value="0.0">electrical/main-switchbox/switch-cmd-norm[5]</property>
 
+ <!-- The four brass switches on the main switchboard rack. Range: 0 and 1.
+      Assumed order: left top and bottom; right top and bottom.
+      The upper right one is a double switch.
+      The chart table light switch is at the chart table. -->
+ <property value="0.0">electrical/control-panel/loading-cmd-norm[0]</property>
+ <property value="0.0">electrical/control-panel/receiving-cmd-norm[0]</property>
+ <property value="0.0">electrical/control-panel/mail-cmd-norm[0]</property>
+ <property value="0.0">electrical/control-panel/mail-cmd-norm[1]</property>
+ <property value="0.0">electrical/control-panel/stowage-cmd-norm[0]</property>
+ <property value="0.0">electrical/control-panel/chart-cmd-norm[0]</property>
+
  <!-- Rheostats on the instrument lighting panel. Range: 0 to 1. -->
  <property value="0.0">electrical/instrument-lights/switch-cmd-norm[0]</property>
  <property value="0.0">electrical/instrument-lights/switch-cmd-norm[1]</property>
@@ -138,7 +149,7 @@
  <property value="1.0">electrical/main-switchbox/fuse-serviceable[13]</property>
  <property value="1.0">electrical/main-switchbox/fuse-serviceable[14]</property>
 
- <channel name="Fuses">
+ <channel name="Flaps">
 
   <fcs_function name="electrical/fuses/flap-motor-voltage-V">
    <function>
@@ -1148,6 +1159,237 @@
  </channel>
 
  <!-- ======================================================================
+      Main switchbox switch 4, fuse 7 circuits - Fore, Corridor, Centre cabins. 
+ -->
+ <channel name="Main switchbox switch 4 fuse 7">
+
+  <switch name="electrical/main-switchbox/switch-voltage-V[3]">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[0]/voltage-V">
+     electrical/main-switchbox/switch-cmd-norm[3] GT 0.5
+   </test>
+  </switch>
+
+  <fcs_function name="electrical/main-switchbox/fuse-voltage-V[6]">
+   <function>
+    <product>
+     <property>electrical/main-switchbox/fuse-serviceable[6]</property>
+     <property>electrical/main-switchbox/switch-voltage-V[3]</property>
+    </product>
+   </function>
+  </fcs_function>
+
+  <!-- summer name="electrical/main-switchbox/fuse-current-A[6]">
+  </summer -->
+
+ </channel>
+
+ <!-- ======================================================================
+      Main switchbox switch 4, fuse 8 circuits - Promenade and Aft cabins
+ -->
+ <channel name="Main switchbox switch 4 fuse 8">
+
+  <fcs_function name="electrical/main-switchbox/fuse-voltage-V[7]">
+   <function>
+    <product>
+     <property>electrical/main-switchbox/fuse-serviceable[7]</property>
+     <property>electrical/main-switchbox/switch-voltage-V[3]</property>
+    </product>
+   </function>
+  </fcs_function>
+
+  <!-- summer name="electrical/main-switchbox/fuse-current-A[7]">
+  </summer -->
+
+ </channel>
+
+ <!-- ======================================================================
+      Main switchbox switch 4, fuse 9 circuits - Flight deck aft lights 
+ -->
+ <documentation>
+  Fuse 9 lighting circuits from [Short:RN-3-1-37] page 175:
+    Power  Switches       Description      Remark
+     6W     at lamp        Chart table
+     6W     ctrl panel #1  Loading          On the mail hatch?
+     6W     ctrl panel #2  Receiving        Over the main switchboard?
+     6+6W   ctrl panel #3  Mail room        2-in-1 switch
+     6W     ctrl panel #3  Mail room
+     6+6W   ctrl panel #4  Stowage room     In the spar compartment?
+
+  The fuse load is noted as 48W.
+ </documentation>
+ <channel name="Main switchbox switch 4 fuse 9">
+
+  <fcs_function name="electrical/main-switchbox/fuse-voltage-V[8]">
+   <function>
+    <product>
+     <property>electrical/main-switchbox/fuse-serviceable[8]</property>
+     <property>electrical/main-switchbox/switch-voltage-V[3]</property>
+    </product>
+   </function>
+  </fcs_function>
+
+  <switch name="electrical/control-panel/chart-voltage-V">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/main-switchbox/fuse-voltage-V[8]">
+     electrical/control-panel/chart-cmd-norm GT 0.5
+   </test>
+  </switch>
+
+  <switch name="electrical/control-panel/loading-voltage-V">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/main-switchbox/fuse-voltage-V[8]">
+     electrical/control-panel/loading-cmd-norm GT 0.5
+   </test>
+  </switch>
+
+  <switch name="electrical/control-panel/receiving-voltage-V">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/main-switchbox/fuse-voltage-V[8]">
+     electrical/control-panel/receiving-cmd-norm GT 0.5
+   </test>
+  </switch>
+
+  <switch name="electrical/control-panel/mail-voltage-V[0]">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/main-switchbox/fuse-voltage-V[8]">
+     electrical/control-panel/mail-cmd-norm[0] GT 0.5
+   </test>
+  </switch>
+  <switch name="electrical/control-panel/mail-voltage-V[1]">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/main-switchbox/fuse-voltage-V[8]">
+     electrical/control-panel/mail-cmd-norm[1] GT 0.5
+   </test>
+  </switch>
+
+  <switch name="electrical/control-panel/stowage-voltage-V[0]">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/main-switchbox/fuse-voltage-V[8]">
+     electrical/control-panel/stowage-cmd-norm[0] GT 0.5
+   </test>
+  </switch>
+
+  <fcs_function name="electrical/lamps/flight-deck/chart-current-A">
+   <function>
+    <quotient>
+     <property>electrical/control-panel/chart-voltage-V</property>
+     <value>96.0</value>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/chart-power-W">
+   <function>
+    <product>
+     <property>electrical/control-panel/chart-voltage-V</property>
+     <property>electrical/lamps/flight-deck/chart-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/chart-power-W</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/flight-deck/loading-current-A">
+   <function>
+    <quotient>
+     <property>electrical/control-panel/loading-voltage-V</property>
+     <value>96.0</value>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/loading-power-W">
+   <function>
+    <product>
+     <property>electrical/control-panel/loading-voltage-V</property>
+     <property>electrical/lamps/flight-deck/loading-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/loading-power-W</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/flight-deck/receiving-current-A">
+   <function>
+    <quotient>
+     <property>electrical/control-panel/receiving-voltage-V</property>
+     <value>96.0</value>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/receiving-power-W">
+   <function>
+    <product>
+     <property>electrical/control-panel/receiving-voltage-V</property>
+     <property>electrical/lamps/flight-deck/receiving-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/receiving-power-W</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/flight-deck/mail-current-A[0]">
+   <function>
+    <quotient>
+     <property>electrical/control-panel/mail-voltage-V[0]</property>
+     <value>48.0</value>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/mail-power-W[0]">
+   <function>
+    <product>
+     <property>electrical/control-panel/mail-voltage-V[0]</property>
+     <property>electrical/lamps/flight-deck/mail-current-A[0]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/mail-power-W[0]</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/flight-deck/mail-current-A[1]">
+   <function>
+    <quotient>
+     <property>electrical/control-panel/mail-voltage-V[1]</property>
+     <value>96.0</value>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/mail-power-W[1]">
+   <function>
+    <product>
+     <property>electrical/control-panel/mail-voltage-V[1]</property>
+     <property>electrical/lamps/flight-deck/mail-current-A[1]</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/mail-power-W[1]</output>
+  </fcs_function>
+
+  <fcs_function name="electrical/lamps/flight-deck/stowage-current-A">
+   <function>
+    <quotient>
+     <property>electrical/control-panel/stowage-voltage-V</property>
+     <value>48.0</value>
+    </quotient>
+   </function>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/stowage-power-W">
+   <function>
+    <product>
+     <property>electrical/control-panel/stowage-voltage-V</property>
+     <property>electrical/lamps/flight-deck/stowage-current-A</property>
+    </product>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/stowage-power-W</output>
+  </fcs_function>
+
+  <summer name="electrical/main-switchbox/fuse-current-A[8]">
+   <input>electrical/lamps/flight-deck/chart-current-A</input>
+   <input>electrical/lamps/flight-deck/loading-current-A</input>
+   <input>electrical/lamps/flight-deck/receiving-current-A</input>
+   <input>electrical/lamps/flight-deck/mail-current-A[0]</input>
+   <input>electrical/lamps/flight-deck/mail-current-A[1]</input>
+   <input>electrical/lamps/flight-deck/stowage-current-A</input>
+  </summer>
+
+ </channel>
+
+ <!-- ======================================================================
       Main switchbox switch 6 circuits - Navigation lights
  -->
  <channel name="Navigation lights">
@@ -1434,10 +1676,12 @@
 
  <channel name="Bus currents">
 
+  <!-- The 24V bus. -->
   <summer name="electrical/bus[0]/current-A">
    <input>electrical/main-switchbox/fuse-current-A[2]</input>
    <input>electrical/main-switchbox/fuse-current-A[3]</input>
    <input>electrical/main-switchbox/fuse-current-A[5]</input>
+   <input>electrical/main-switchbox/fuse-current-A[8]</input>
    <input>electrical/main-switchbox/fuse-current-A[11]</input>
    <input>electrical/main-switchbox/fuse-current-A[12]</input>
    <input>electrical/flap-motor/current-A</input>
@@ -1445,6 +1689,7 @@
    <input>electrical/lamps/landing/wing-current-A</input>
   </summer>
 
+  <!-- The 12V bus. -->
   <summer name="electrical/bus[1]/current-A">
    <input>propulsion/engine[0]/starter-current-A</input>
    <input>propulsion/engine[1]/starter-current-A</input>

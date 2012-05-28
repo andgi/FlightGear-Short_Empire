@@ -24,6 +24,12 @@
   <z-m> 0.000 </z-m>
  </offsets>
 
+ <!-- Rembrandt transparency markup. -->
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>glass</object-name>
+ </effect>
+
  <animation> 
   <type>rotate</type>
   <object-name>scale</object-name>

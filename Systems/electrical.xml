@@ -1287,6 +1287,15 @@
    </function>
    <output>/systems/electrical/lamps/flight-deck/chart-power-W</output>
   </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/chart-power-norm[0]">
+   <function>
+    <quotient>
+     <property>electrical/lamps/flight-deck/chart-power-W[0]</property>
+     <value>6.0</value>
+    </quotient>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/chart-power-norm[0]</output>
+  </fcs_function>
 
   <fcs_function name="electrical/lamps/flight-deck/loading-current-A">
    <function>
@@ -1304,6 +1313,15 @@
     </product>
    </function>
    <output>/systems/electrical/lamps/flight-deck/loading-power-W</output>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/loading-power-norm[0]">
+   <function>
+    <quotient>
+     <property>electrical/lamps/flight-deck/loading-power-W[0]</property>
+     <value>6.0</value>
+    </quotient>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/loading-power-norm[0]</output>
   </fcs_function>
 
   <fcs_function name="electrical/lamps/flight-deck/receiving-current-A">
@@ -1323,6 +1341,15 @@
    </function>
    <output>/systems/electrical/lamps/flight-deck/receiving-power-W</output>
   </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/receiving-power-norm[0]">
+   <function>
+    <quotient>
+     <property>electrical/lamps/flight-deck/receiving-power-W[0]</property>
+     <value>6.0</value>
+    </quotient>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/receiving-power-norm[0]</output>
+  </fcs_function>
 
   <fcs_function name="electrical/lamps/flight-deck/mail-current-A[0]">
    <function>
@@ -1340,6 +1367,15 @@
     </product>
    </function>
    <output>/systems/electrical/lamps/flight-deck/mail-power-W[0]</output>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/mail-power-norm[0]">
+   <function>
+    <quotient>
+     <property>electrical/lamps/flight-deck/mail-power-W[0]</property>
+     <value>6.0</value>
+    </quotient>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/mail-power-norm[0]</output>
   </fcs_function>
 
   <fcs_function name="electrical/lamps/flight-deck/mail-current-A[1]">
@@ -1359,6 +1395,15 @@
    </function>
    <output>/systems/electrical/lamps/flight-deck/mail-power-W[1]</output>
   </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/mail-power-norm[1]">
+   <function>
+    <quotient>
+     <property>electrical/lamps/flight-deck/mail-power-W[1]</property>
+     <value>6.0</value>
+    </quotient>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/mail-power-norm[1]</output>
+  </fcs_function>
 
   <fcs_function name="electrical/lamps/flight-deck/stowage-current-A">
    <function>
@@ -1376,6 +1421,15 @@
     </product>
    </function>
    <output>/systems/electrical/lamps/flight-deck/stowage-power-W</output>
+  </fcs_function>
+  <fcs_function name="electrical/lamps/flight-deck/stowage-power-norm[0]">
+   <function>
+    <quotient>
+     <property>electrical/lamps/flight-deck/stowage-power-W[0]</property>
+     <value>6.0</value>
+    </quotient>
+   </function>
+   <output>/systems/electrical/lamps/flight-deck/stowage-power-norm[0]</output>
   </fcs_function>
 
   <summer name="electrical/main-switchbox/fuse-current-A[8]">

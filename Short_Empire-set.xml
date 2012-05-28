@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.59 2012/03/18 19:11:59 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.60 2012/05/28 19:43:44 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -411,10 +411,25 @@
    <panel-dimmer n="8"
        alias="/fdm/jsbsim/electrical/instrument-lights/switch-cmd-norm[8]"/>
    <!-- Flight deck ceiling lights -->
+   <!--  Dimmers on the light switch panel -->
    <dome-norm n="0"
        alias="/fdm/jsbsim/electrical/light-switch-panel/roof-cmd-norm[0]"/>
    <dome-norm n="1"
        alias="/fdm/jsbsim/electrical/light-switch-panel/roof-cmd-norm[1]"/>
+   <!--  Switch on the chart table -->
+   <dome-norm n="2"
+       alias="/fdm/jsbsim/electrical/control-panel/chart-cmd-norm[0]"/>
+   <!--  Switches on the main switchboard -->
+   <dome-norm n="3"
+       alias="/fdm/jsbsim/electrical/control-panel/loading-cmd-norm[0]"/>
+   <dome-norm n="4"
+       alias="/fdm/jsbsim/electrical/control-panel/receiving-cmd-norm[0]"/>
+   <dome-norm n="5"
+       alias="/fdm/jsbsim/electrical/control-panel/mail-cmd-norm[0]"/>
+   <dome-norm n="6"
+       alias="/fdm/jsbsim/electrical/control-panel/mail-cmd-norm[1]"/>
+   <dome-norm n="7"
+       alias="/fdm/jsbsim/electrical/control-panel/stowage-cmd-norm[0]"/>
   </lighting>
  </controls>
 
@@ -563,6 +578,7 @@
     <main-switchbox>
      <switch-cmd-norm n="1" type="double">1.0</switch-cmd-norm>
      <switch-cmd-norm n="2" type="double">1.0</switch-cmd-norm>
+     <switch-cmd-norm n="3" type="double">1.0</switch-cmd-norm>
      <switch-cmd-norm n="5" type="double">1.0</switch-cmd-norm>
     </main-switchbox>
     <instrument-lights>
@@ -583,6 +599,14 @@
      <roof-cmd-norm n="0" type="double">0.0</roof-cmd-norm>
      <roof-cmd-norm n="1" type="double">0.0</roof-cmd-norm>
     </light-switch-panel>
+    <control-panel>
+     <chart-cmd-norm      type="double">0.0</chart-cmd-norm>
+     <loading-cmd-norm    type="double">0.0</loading-cmd-norm>
+     <receiving-cmd-norm  type="double">0.0</receiving-cmd-norm>
+     <mail-cmd-norm n="0" type="double">0.0</mail-cmd-norm>
+     <mail-cmd-norm n="1" type="double">0.0</mail-cmd-norm>
+     <stowage-cmd-norm    type="double">0.0</stowage-cmd-norm>
+    </control-panel>
    </electrical>
   </jsbsim>
  </fdm>

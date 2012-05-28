@@ -25,7 +25,7 @@
     <tank-content-lbs>consumables/fuel/tank[0]/level-lbs</tank-content-lbs>
     <indicated-content-lbs>instrumentation/fuel-gauge[0]/indicated-content-lbs</indicated-content-lbs>
     <serviceable>instrumentation/fuel-gauge[0]/serviceable</serviceable>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -42,7 +42,7 @@
     <tank-content-lbs>consumables/fuel/tank[1]/level-lbs</tank-content-lbs>
     <indicated-content-lbs>instrumentation/fuel-gauge[1]/indicated-content-lbs</indicated-content-lbs>
     <serviceable>instrumentation/fuel-gauge[1]/serviceable</serviceable>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -61,7 +61,7 @@
     <tank-content-lbs>consumables/fuel/tank[2]/level-lbs</tank-content-lbs>
     <indicated-content-lbs>instrumentation/fuel-gauge[2]/indicated-content-lbs</indicated-content-lbs>
     <serviceable>instrumentation/fuel-gauge[2]/serviceable</serviceable>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -78,7 +78,7 @@
     <tank-content-lbs>consumables/fuel/tank[3]/level-lbs</tank-content-lbs>
     <indicated-content-lbs>instrumentation/fuel-gauge[3]/indicated-content-lbs</indicated-content-lbs>
     <serviceable>instrumentation/fuel-gauge[3]/serviceable</serviceable>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -97,7 +97,7 @@
     <tank-content-lbs>consumables/fuel/tank[4]/level-lbs</tank-content-lbs>
     <indicated-content-lbs>instrumentation/fuel-gauge[4]/indicated-content-lbs</indicated-content-lbs>
     <serviceable>instrumentation/fuel-gauge[4]/serviceable</serviceable>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -114,7 +114,7 @@
     <tank-content-lbs>consumables/fuel/tank[5]/level-lbs</tank-content-lbs>
     <indicated-content-lbs>instrumentation/fuel-gauge[5]/indicated-content-lbs</indicated-content-lbs>
     <serviceable>instrumentation/fuel-gauge[5]/serviceable</serviceable>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -133,7 +133,7 @@
     <tank-content-lbs>consumables/fuel/tank[6]/level-lbs</tank-content-lbs>
     <indicated-content-lbs>instrumentation/fuel-gauge[6]/indicated-content-lbs</indicated-content-lbs>
     <serviceable>instrumentation/fuel-gauge[6]/serviceable</serviceable>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -150,7 +150,7 @@
     <tank-content-lbs>consumables/fuel/tank[7]/level-lbs</tank-content-lbs>
     <indicated-content-lbs>instrumentation/fuel-gauge[7]/indicated-content-lbs</indicated-content-lbs>
     <serviceable>instrumentation/fuel-gauge[7]/serviceable</serviceable>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -244,7 +244,7 @@
   </offsets>
   <overlay>
    <parameters>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </parameters>
   </overlay>
  </model>
@@ -260,7 +260,7 @@
   </offsets>
   <overlay>
    <params>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -277,7 +277,7 @@
   </offsets>
   <overlay>
    <params>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </params>
   </overlay>
  </model>
@@ -312,7 +312,7 @@
       setprop("/controls/engines/engine[0]/cowl-flaps-norm", v);
       setprop("/controls/engines/engine[1]/cowl-flaps-norm", v);
     </dec-action-script>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/mail-power-norm[1]</lighting-norm>
    </parameters>
   </overlay>
  </model>
@@ -347,7 +347,7 @@
       setprop("/controls/engines/engine[2]/cowl-flaps-norm", v);
       setprop("/controls/engines/engine[3]/cowl-flaps-norm", v);
     </dec-action-script>
-    <lighting-norm>systems/electrical/lamps/flight-deck/roof-power-norm[1]</lighting-norm>
+    <lighting-norm>systems/electrical/lamps/flight-deck/receiving-power-norm[0]</lighting-norm>
    </parameters>
   </overlay>
  </model>

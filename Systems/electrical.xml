@@ -68,7 +68,7 @@
         5        11 12A   24V   204W   Prom. and aft cabin and freight room roof
         6        12  4A   24V    20W   Port navigation light 
         6        13  4A   24V    30W   Tail and Starboard navigation light
-                 14  4A   24V    30W   Signalling lamp
+                 14  4A   12V    30W   Signalling lamp
                  F   4A                Dynamo field
                  F   4A                Dynamo field
 
@@ -147,7 +147,6 @@
  <property value="1.0">electrical/main-switchbox/fuse-serviceable[11]</property>
  <property value="1.0">electrical/main-switchbox/fuse-serviceable[12]</property>
  <property value="1.0">electrical/main-switchbox/fuse-serviceable[13]</property>
- <property value="1.0">electrical/main-switchbox/fuse-serviceable[14]</property>
 
  <channel name="Flaps">
 
@@ -296,6 +295,20 @@
      electrical/main-switchbox/switch-cmd-norm[0] GT 0.5
    </test>
   </switch>
+
+  <lag_filter name="electrical/main-switchbox/voltmeter-voltage-V">
+   <input>electrical/main-switchbox/switch-voltage-V[0]</input>
+   <c1>4.0</c1>
+  </lag_filter>
+
+ </channel>
+ <channel name="Ammeter">
+
+  <!-- FIXME: This isn't really the right current to display. -->
+  <lag_filter name="electrical/main-switchbox/ammeter-current-A">
+   <input>electrical/voltage-regulators/battery-current-A</input>
+   <c1>4.0</c1>
+  </lag_filter>
 
  </channel>
 
@@ -1372,7 +1385,7 @@
    <function>
     <quotient>
      <property>electrical/lamps/flight-deck/mail-power-W[0]</property>
-     <value>6.0</value>
+     <value>12.0</value>
     </quotient>
    </function>
    <output>/systems/electrical/lamps/flight-deck/mail-power-norm[0]</output>
@@ -1426,7 +1439,7 @@
    <function>
     <quotient>
      <property>electrical/lamps/flight-deck/stowage-power-W[0]</property>
-     <value>6.0</value>
+     <value>12.0</value>
     </quotient>
    </function>
    <output>/systems/electrical/lamps/flight-deck/stowage-power-norm[0]</output>
@@ -1444,7 +1457,7 @@
  </channel>
 
  <!-- ======================================================================
-      Main switchbox switch 6 circuits - Navigation lights
+      Main switchbox switch 6 fuse 12 and 13 circuits - Navigation lights
  -->
  <channel name="Navigation lights">
 
@@ -1528,6 +1541,26 @@
   </summer>
 
  </channel>
+
+ <!-- ======================================================================
+      Main switchbox fuse 14 circuit - Signalling light
+ -->
+ <channel name="Main switchbox fuse 14">
+
+  <fcs_function name="electrical/main-switchbox/fuse-voltage-V[13]">
+   <function>
+    <product>
+     <property>electrical/main-switchbox/fuse-serviceable[13]</property>
+     <property>electrical/bus[1]/voltage-V</property>
+    </product>
+   </function>
+  </fcs_function>
+
+  <!-- summer name="electrical/main-switchbox/fuse-current-A[13]">
+  </summer -->
+
+ </channel>
+
 
  <!-- ======================================================================
       Landing search lights
@@ -1751,6 +1784,7 @@
    <input>propulsion/engine[3]/starter-current-A</input>
    <input>electrical/main-switchbox/fuse-current-A[0]</input>
    <input>electrical/main-switchbox/fuse-current-A[1]</input>
+   <!-- input>electrical/main-switchbox/fuse-current-A[13]</input -->
    <output>electrical/battery/current-A[1]</output>
   </summer>
 

@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.60 2012/05/28 19:43:44 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.61 2012/06/03 18:52:17 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -283,6 +283,16 @@
   <flap-position-indicator n="0">
    <serviceable type="bool">1</serviceable>
   </flap-position-indicator>
+  <voltmeter>
+   <serviceable type="bool">1</serviceable>
+   <indicated-voltage-V
+       alias="/fdm/jsbsim/electrical/main-switchbox/voltmeter-voltage-V"/>
+  </voltmeter>
+  <ammeter>
+   <serviceable type="bool">1</serviceable>
+   <indicated-current-A
+       alias="/fdm/jsbsim/electrical/main-switchbox/ammeter-current-A"/>
+  </ammeter>
  </instrumentation>
 
  <!-- Map FlightGear control properties to JSBSim control properties. -->
@@ -380,7 +390,19 @@
    <center-test-cock
        alias="/fdm/jsbsim/fcs/fuel-system/center-test-cock-cmd-norm"/>
   </fuel>
+  <electrical>
+   <voltmeter
+       alias="/fdm/jsbsim/electrical/main-switchbox/switch-cmd-norm[0]"/>
+  </electrical>
   <lighting>
+   <master n="0"
+       alias="/fdm/jsbsim/electrical/main-switchbox/switch-cmd-norm[1]"/>
+   <master n="1"
+       alias="/fdm/jsbsim/electrical/main-switchbox/switch-cmd-norm[2]"/>
+   <master n="2"
+       alias="/fdm/jsbsim/electrical/main-switchbox/switch-cmd-norm[3]"/>
+   <master n="3"
+       alias="/fdm/jsbsim/electrical/main-switchbox/switch-cmd-norm[4]"/>
    <nav-lights
        alias="/fdm/jsbsim/electrical/main-switchbox/switch-cmd-norm[5]"/>
    <steaming-light

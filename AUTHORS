@@ -24,10 +24,10 @@ Emmanuel BARANGER
   - The base model for the propellers. (From FlightGear/Aircraft/B-25)
 
 Vivian Meazza
-  - Instruments from the Spitfire IIa.
+  - Instruments from the Spitfire IIa and Sopwith Camel.
 
 
-Dependencies:
+Dependencies (i.e. install these aircraft):
 
 Aircraft/Boeing314      (Sounds/engine_running.wav,Sounds/engine_idle.wav)
 
@@ -37,5 +37,7 @@ Aircraft/spitfireIX     (Models/Instruments/magneto.ac,
                          Models/Instruments/turn.ac,
                          Models/Instruments/vsi.xm)
 
-Aircraft/Spitfire       (Models/clock.xml
-                         Models/compass-p11.xml)
+Aircraft/Spitfire       (Models/clock.ac
+                         Models/compass-p11.ac)
+
+Aircraft/sopwithCamel   (Models/mag_switch.ac)

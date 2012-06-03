@@ -229,6 +229,20 @@
   </offsets>
  </model>
 
+ <!-- Main electrical switchboard ==========================================-->
+ <model>
+  <name>Main electrical switchboard</name>
+  <path>Aircraft/Short_Empire/Models/Interior/main_switchboard.xml</path>
+  <offsets>
+   <!-- x/y/z == forward/left/up -->
+   <x-m> -7.400 </x-m>
+   <y-m> -1.350 </y-m>
+   <z-m>  1.900 </z-m>
+   <heading-deg>95.0</heading-deg>
+   <pitch-deg>0.0</pitch-deg>
+  </offsets>
+ </model>
+
  <!-- Spar panel ===========================================================-->
  <model>
   <name>Instruments at the spar bulkhead</name>

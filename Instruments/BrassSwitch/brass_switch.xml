@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Short S.23 Empire flying boat for FlightGear.
+
+  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license.
+
+  The 3d model is taken from the FG Sopwith Camel and is
+  Copyright (C) 2006 - 2009  Vivian Meazza
+-->
+<PropertyList>
+
+ <!-- Overlay these to set the controlling properties. -->
+ <params>
+  <position-norm type="string"/>
+  <lighting-norm type="string">controls/lighting/dome-norm</lighting-norm>
+ </params>
+
+ <path>Aircraft/sopwithCamel/Models/mag_switch.ac</path>
+ <!-- The 3d model was made by Vivian Meazza for the Sopwith Camel. -->
+ <texture-path>Aircraft/sopwithCamel/Models/Textures</texture-path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.000 </x-m>
+  <y-m> 0.000 </y-m>
+  <z-m> 0.000 </z-m>
+ </offsets>
+
+ <animation> 
+  <type>rotate</type>
+  <object-name>switch</object-name>
+  <property alias="../../params/position-norm"/>
+  <interpolation> 
+   <entry><ind>0</ind><dep>-60</dep></entry>
+   <entry><ind>1</ind><dep>0</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.0212 </x-m>
+   <y-m> 0.0000 </y-m>
+   <z-m> 0.0000 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation> 
+  <type>material</type>
+  <emission> 
+   <factor-prop alias="../../../params/lighting-norm"/>
+   <red>0.3</red>
+   <green>0.1</green>
+   <blue>0.1</blue>
+  </emission>
+ </animation>
+
+ <animation> 
+  <type>pick</type>
+  <object-name>switch</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-cycle</command>
+    <property alias="../../../../params/position-norm"/>
+    <value type="double">0</value>
+    <value type="double">1</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>noshadow</type>
+ </animation>
+
+</PropertyList>

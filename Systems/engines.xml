@@ -58,10 +58,7 @@
  <property value="0.0">fcs/inner-engines-cutoff-cmd-norm</property>
  <property value="0.0">fcs/outer-engines-cutoff-cmd-norm</property>
 
- <!-- Note: It seems JSBSim currently doesn't allow me to customize
-            the starter function so these properties will only
-            affect the electrical system.
- -->
+ <!-- Starter commands -->
  <property value="0.0">fcs/starter-cmd-norm[0]</property>
  <property value="0.0">fcs/starter-cmd-norm[1]</property>
  <property value="0.0">fcs/starter-cmd-norm[2]</property>
@@ -275,6 +272,44 @@
    </test>
    <output>propulsion/engine[3]/blade-angle</output>
   </switch>
+
+ </channel>
+
+ <documentation>
+  The definition inside the engine file cannot write to the starter-norm
+  property. Hence it has to be done here.
+  See also Engines/eng_PegasusXc.xml and Systems/electrical.xml.
+ </documentation>
+ <channel name="Engine starters">
+
+  <fcs_function name="tmp/sn[0]">
+   <function>
+    <property>propulsion/engine[0]/starter-running-norm</property>
+   </function>
+   <output>propulsion/engine[0]/starter-norm</output>
+   <output>/engines/engine[0]/starter-norm</output>
+  </fcs_function>
+  <fcs_function name="tmp/sn[1]">
+   <function>
+    <property>propulsion/engine[1]/starter-running-norm</property>
+   </function>
+   <output>propulsion/engine[1]/starter-norm</output>
+   <output>/engines/engine[1]/starter-norm</output>
+  </fcs_function>
+  <fcs_function name="tmp/sn[2]">
+   <function>
+    <property>propulsion/engine[2]/starter-running-norm</property>
+   </function>
+   <output>propulsion/engine[2]/starter-norm</output>
+   <output>/engines/engine[2]/starter-norm</output>
+  </fcs_function>
+  <fcs_function name="tmp/sn[3]">
+   <function>
+    <property>propulsion/engine[3]/starter-running-norm</property>
+   </function>
+   <output>propulsion/engine[3]/starter-norm</output>
+   <output>/engines/engine[3]/starter-norm</output>
+  </fcs_function>
 
  </channel>
 

@@ -1628,136 +1628,42 @@
 
  <!-- ======================================================================
       Engine starters.
+
+      See also the engine file, Engines/eng_PegasusXc.xml, and
+      Systems/engines.xml
+
+      Input to the engine starter
+        propulsion/engine[#]/starter-voltage-V
+      Output from the engine starter:
+        propulsion/engine[#]/starter-current-A
+
  -->
  <channel name="Engine starters">
 
-  <fcs_function name="propulsion/engine[0]/starter-current-A">
-   <function>
-    <product>
-     <gt>
-      <property>fcs/starter-cmd-norm[0]</property>
-      <value>0.5</value>
-     </gt>
-     <quotient>
-      <property>electrical/bus[1]/voltage-V</property>
-      <value>0.040</value> <!-- Guess: makes the starter draw 300A. -->
-     </quotient>
-    </product>
-   </function>
-  </fcs_function>
-
-  <fcs_function name="propulsion/engine[1]/starter-current-A">
-   <function>
-    <product>
-     <gt>
-      <property>fcs/starter-cmd-norm[1]</property>
-      <value>0.5</value>
-     </gt>
-     <quotient>
-      <property>electrical/bus[1]/voltage-V</property>
-      <value>0.040</value> <!-- Guess: makes the starter draw 300A. -->
-     </quotient>
-    </product>
-   </function>
-  </fcs_function>
-
-  <fcs_function name="propulsion/engine[2]/starter-current-A">
-   <function>
-    <product>
-     <gt>
-      <property>fcs/starter-cmd-norm[2]</property>
-      <value>0.5</value>
-     </gt>
-     <quotient>
-      <property>electrical/bus[1]/voltage-V</property>
-      <value>0.040</value> <!-- Guess: makes the starter draw 300A. -->
-     </quotient>
-    </product>
-   </function>
-  </fcs_function>
-
-  <fcs_function name="propulsion/engine[3]/starter-current-A">
-   <function>
-    <product>
-     <gt>
-      <property>fcs/starter-cmd-norm[3]</property>
-      <value>0.5</value>
-     </gt>
-     <quotient>
-      <property>electrical/bus[1]/voltage-V</property>
-      <value>0.040</value> <!-- Guess: makes the starter draw 300A. -->
-     </quotient>
-    </product>
-   </function>
-  </fcs_function>
-
-  <fcs_function name="propulsion/engine[0]/starter-norm">
-   <function>
-    <product>
-     <property>propulsion/engine[0]/starter-serviceable</property>
-     <value>0.01</value>
-     <max>
-      <value>0.0</value>
-      <difference>
-       <property>propulsion/engine[0]/starter-current-A</property>
-       <value>200.0</value>
-      </difference>
-     </max>
-    </product>
-   </function>
-   <output>/engines/engine[0]/starter-norm</output>
-  </fcs_function>
-
-  <fcs_function name="propulsion/engine[1]/starter-norm">
-   <function>
-    <product>
-     <property>propulsion/engine[1]/starter-serviceable</property>
-     <value>0.01</value>
-     <max>
-      <value>0.0</value>
-      <difference>
-       <property>propulsion/engine[1]/starter-current-A</property>
-       <value>200.0</value>
-      </difference>
-     </max>
-    </product>
-   </function>
-   <output>/engines/engine[1]/starter-norm</output>
-  </fcs_function>
-
-  <fcs_function name="propulsion/engine[2]/starter-norm">
-   <function>
-    <product>
-     <property>propulsion/engine[2]/starter-serviceable</property>
-     <value>0.01</value>
-     <max>
-      <value>0.0</value>
-      <difference>
-       <property>propulsion/engine[2]/starter-current-A</property>
-       <value>200.0</value>
-      </difference>
-     </max>
-    </product>
-   </function>
-   <output>/engines/engine[2]/starter-norm</output>
-  </fcs_function>
-
-  <fcs_function name="propulsion/engine[3]/starter-norm">
-   <function>
-    <product>
-     <property>propulsion/engine[3]/starter-serviceable</property>
-     <value>0.01</value>
-     <max>
-      <value>0.0</value>
-      <difference>
-       <property>propulsion/engine[3]/starter-current-A</property>
-       <value>200.0</value>
-      </difference>
-     </max>
-    </product>
-   </function>
-   <output>/engines/engine[3]/starter-norm</output>
-  </fcs_function>
+  <switch name="propulsion/engine[0]/starter-voltage-V">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[1]/voltage-V">
+     fcs/starter-cmd-norm[0] GT 0.5
+   </test>
+  </switch>
+  <switch name="propulsion/engine[1]/starter-voltage-V">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[1]/voltage-V">
+     fcs/starter-cmd-norm[1] GT 0.5
+   </test>
+  </switch>
+  <switch name="propulsion/engine[2]/starter-voltage-V">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[1]/voltage-V">
+     fcs/starter-cmd-norm[2] GT 0.5
+   </test>
+  </switch>
+  <switch name="propulsion/engine[3]/starter-voltage-V">
+   <default value="0.0"/>
+   <test logic="AND" value="electrical/bus[1]/voltage-V">
+     fcs/starter-cmd-norm[3] GT 0.5
+   </test>
+  </switch>
 
  </channel>
 

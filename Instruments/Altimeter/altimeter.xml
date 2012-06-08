@@ -92,7 +92,7 @@
   <center> 
    <x-m>0</x-m>
    <y-m>0</y-m>
-   <z-m>0</z-m>
+   <z-m>-0.048</z-m>
   </center>
   <axis> 
    <x>1</x>
@@ -100,7 +100,49 @@
    <z>0</z>
   </axis>
  </animation>
- 
+ <animation>
+  <type>pick</type>
+  <object-name>knob</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/setting-inhg"/>
+    <step>0.01</step>
+   </binding>
+  </action>  
+  <action>
+   <button>1</button>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/setting-inhg"/>
+    <step>-0.01</step>
+   </binding>
+  </action>  
+  <action>
+   <button>3</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/setting-inhg"/>
+    <step>-0.01</step>
+   </binding>
+  </action>
+  <action>
+   <button>4</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property alias="../../../../params/setting-inhg"/>
+    <step>0.01</step>
+   </binding>
+  </action>
+ </animation>
+
  <animation> 
   <type>material</type>
   <object-name>alt-Needle1</object-name>

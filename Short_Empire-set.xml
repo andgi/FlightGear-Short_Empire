@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.61 2012/06/03 18:52:17 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.62 2012/06/08 20:16:50 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -356,6 +356,7 @@
    <cowling-gills type="float">0.0</cowling-gills>
   </engines>
   <flight>
+   <flap-power alias="/fdm/jsbsim/fcs/flap-power-cmd-norm"/>
    <flap-motor alias="/fdm/jsbsim/fcs/flap-motor-cmd-norm"/>
   </flight>
   <fuel>
@@ -531,10 +532,13 @@
    exist even though they are of undefined type, as e.g. when created by
    aliases. Setting the default values here allow them to be overriden from
    the command line.
+
+   Currently the aircraft starts with most of the electrical system switched on.
  -->
  <fdm>
   <jsbsim>
    <fcs>
+    <flap-power-cmd-norm type="double">1.0</flap-power-cmd-norm>
     <flap-motor-cmd-norm type="double">0.0</flap-motor-cmd-norm>
     <starter-cmd-norm n="0" type="double">0.0</starter-cmd-norm>
     <starter-cmd-norm n="1" type="double">0.0</starter-cmd-norm>
@@ -560,23 +564,19 @@
    </fcs>
    <propulsion>
     <engine n="0">
-     <!-- starter-norm alias="/controls/engines/engine[0]/starter"/ -->
      <starter-serviceable type="double">1.0</starter-serviceable>
      <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
     </engine>
     <engine n="1">
-     <!-- starter-norm alias="/controls/engines/engine[1]/starter"/ -->
      <starter-serviceable type="double">1.0</starter-serviceable>
      <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
     </engine>
     <engine n="2">
-     <!-- starter-norm alias="/controls/engines/engine[2]/starter"/ -->
      <starter-serviceable type="double">1.0</starter-serviceable>
      <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
      <generator-serviceable type="double">1.0</generator-serviceable>
     </engine>
     <engine n="3">
-     <!-- starter-norm alias="/controls/engines/engine[3]/starter"/ -->
      <starter-serviceable type="double">1.0</starter-serviceable>
      <fuel-pump-serviceable type="double">1.0</fuel-pump-serviceable>
      <generator-serviceable type="double">1.0</generator-serviceable>
@@ -598,9 +598,11 @@
    </sperry-autopilot>
    <electrical>
     <main-switchbox>
+     <switch-cmd-norm n="0" type="double">1.0</switch-cmd-norm>
      <switch-cmd-norm n="1" type="double">1.0</switch-cmd-norm>
      <switch-cmd-norm n="2" type="double">1.0</switch-cmd-norm>
      <switch-cmd-norm n="3" type="double">1.0</switch-cmd-norm>
+     <switch-cmd-norm n="4" type="double">1.0</switch-cmd-norm>
      <switch-cmd-norm n="5" type="double">1.0</switch-cmd-norm>
     </main-switchbox>
     <instrument-lights>

@@ -148,16 +148,6 @@
  <property value="1.0">electrical/main-switchbox/fuse-serviceable[12]</property>
  <property value="1.0">electrical/main-switchbox/fuse-serviceable[13]</property>
 
- <channel name="Flaps">
-
-  <fcs_function name="electrical/fuses/flap-motor-voltage-V">
-   <function>
-    <property>electrical/bus[0]/voltage-V</property>
-   </function>
-  </fcs_function>
-
- </channel>
-
  <!-- ======================================================================
       Battery
  -->
@@ -1667,17 +1657,38 @@
 
  </channel>
 
+ <!-- ======================================================================
+      Flap motor system.
+      See also System/flaps.xml
+ -->
+ <channel name="Flaps">
+
+  <fcs_function name="electrical/fuses/flap-motor-voltage-V">
+   <function>
+    <property>electrical/bus[0]/voltage-V</property>
+   </function>
+  </fcs_function>
+
+ </channel>
+
  <channel name="Bus currents">
 
   <!-- The 24V bus. -->
   <summer name="electrical/bus[0]/current-A">
    <input>electrical/main-switchbox/fuse-current-A[2]</input>
    <input>electrical/main-switchbox/fuse-current-A[3]</input>
+   <!-- input>electrical/main-switchbox/fuse-current-A[4]</input -->
    <input>electrical/main-switchbox/fuse-current-A[5]</input>
+   <!-- input>electrical/main-switchbox/fuse-current-A[6]</input -->
+   <!-- input>electrical/main-switchbox/fuse-current-A[7]</input -->
    <input>electrical/main-switchbox/fuse-current-A[8]</input>
+   <!-- input>electrical/main-switchbox/fuse-current-A[9]</input -->
+   <!-- input>electrical/main-switchbox/fuse-current-A[10]</input -->
    <input>electrical/main-switchbox/fuse-current-A[11]</input>
    <input>electrical/main-switchbox/fuse-current-A[12]</input>
    <input>electrical/flap-motor/current-A</input>
+   <input>electrical/lamps/flaps/pilot-current-A</input>
+   <input>electrical/lamps/flaps/warning-current-A</input>
    <input>electrical/lamps/landing/bow-current-A</input>
    <input>electrical/lamps/landing/wing-current-A</input>
   </summer>

@@ -10,7 +10,10 @@
  <!-- Overlay these to set the sources. -->
  <params>
   <operating-switch-cmd>controls/flight/flap-motor</operating-switch-cmd>
+  <power-switch-cmd>controls/flight/flap-power</power-switch-cmd>
   <flap-position-norm>surface-positions/flap-pos-norm</flap-position-norm>
+  <pilot-light-norm>systems/electrical/lamps/flaps/pilot-power-norm[0]</pilot-light-norm>
+  <warning-light-norm>systems/electrical/lamps/flaps/warning-power-norm[0]</warning-light-norm>
   <serviceable>instrumentation/flap-position-indicator[0]/serviceable</serviceable>
   <lighting-norm>controls/lighting/dome-norm</lighting-norm>
  </params>
@@ -145,12 +148,44 @@
  </animation>
 
  <animation> 
+  <type>rotate</type>
+  <object-name>FM_switch_knob</object-name>
+  <property alias="../../params/power-switch-cmd"/>
+  <interpolation> 
+   <entry><ind>0.0</ind><dep>-35.0</dep></entry>
+   <entry><ind>1.0</ind><dep>35.0</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.000 </x-m>
+   <y-m>-0.040 </y-m>
+   <z-m>-0.080 </z-m>
+  </center>
+  <axis> 
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>pick</type>
+  <object-name>FM_switch_knob</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-toggle</command>
+    <property alias="../../../../params/power-switch-cmd"/>
+    <value type="double">0.0</value>
+    <value type="double">1.0</value>
+   </binding>
+  </action>
+ </animation>
+
+ <animation> 
   <type>material</type>
   <object-name>FPL_glass</object-name>
-  <condition>
-   <property alias="../../../params/serviceable"/>
-  </condition>
   <emission> 
+   <factor-prop alias="../../../params/pilot-light-norm"/>
    <red>0.0</red>
    <green>0.0</green>
    <blue>0.60</blue>
@@ -160,16 +195,8 @@
  <animation> 
   <type>material</type>
   <object-name>FWL_glass</object-name>
-  <condition>
-   <and>
-    <property alias="../../../../params/serviceable"/>
-    <greater-than>
-     <property alias="../../../../../params/flap-position-norm"/>
-     <value>0.334</value>
-    </greater-than>
-   </and>
-  </condition>
   <emission> 
+   <factor-prop alias="../../../params/warning-light-norm"/>
    <red>0.60</red>
    <green>0.0</green>
    <blue>0.00</blue>
@@ -186,6 +213,19 @@
    <red>0.75</red>
    <green>0.25</green>
    <blue>0.25</blue>
+  </emission>
+ </animation>
+ <animation> 
+  <type>material</type>
+  <object-name>FM_switch_knob</object-name>
+  <object-name>FM_switch_base</object-name>
+  <object-name>FPL_base</object-name>
+  <object-name>FWL_base</object-name>
+  <emission> 
+   <factor-prop alias="../../../params/lighting-norm"/>
+   <red>0.09</red>
+   <green>0.03</green>
+   <blue>0.03</blue>
   </emission>
  </animation>
 

@@ -83,9 +83,11 @@ Flight Magazine November 12, 1936:
  <cycles>                     4.0  </cycles>
 
  <maxhp unit="HP">          920.0 </maxhp> <!-- At take-off boost. -->
- <!-- bsfc unit="LBS/HP/HR"> 0.504 </bsfc -->
+ <!-- bsfc unit="LBS/HP*HR"> 0.40 </bsfc -->
  <!--
-     [Cassidy:2004:FE]: 0.504 LBS/HP/HR for Pegasus Xc (manufacturer's figure)
+     [Cassidy:2004:FE]: For Pegasus Xc:
+                        0.500 LBS/HP/HR (max cruise + acceptable consumption)
+                        0.605 LBS/HP/HR (manufacturer's figure)
      Wikipedia:         0.52  LBS/HP/HR for Pegasus XVIII.
  -->
  <volumetric-efficiency> 0.65 </volumetric-efficiency> <!-- Default 0.85 -->
@@ -94,6 +96,7 @@ Flight Magazine November 12, 1936:
 
  <numboostspeeds> 1.0 </numboostspeeds>
  <boostoverride>  0 </boostoverride>
+ <boost-loss-factor> 1.20 </boost-loss-factor>
 
  <ratedboost1 unit="PSI">      2.50 </ratedboost1>
  <ratedpower1 unit="HP">     815.00 </ratedpower1>
@@ -110,7 +113,7 @@ Flight Magazine November 12, 1936:
  <minthrottle>                0.05 </minthrottle>
 
  <!--
-      Engine starter.
+      Engine starter system.
       Inputs:
         propulsion/engine[#]/starter-serviceable
         propulsion/engine[#]/starter-voltage-V
@@ -118,6 +121,8 @@ Flight Magazine November 12, 1936:
         propulsion/engine[#]/starter-current-A
         propulsion/engine[#]/starter-running-norm
  -->
+ <starter-torque unit="LB*FT">368</starter-torque>
+ <starter-rpm>800</starter-rpm>            
  
  <function name="propulsion/engine[#]/starter-max-power-W">
   <product> 
@@ -127,7 +132,7 @@ Flight Magazine November 12, 1936:
      <value>1.0</value>
      <quotient>
       <property>propulsion/engine[#]/engine-rpm</property>
-      <value>368</value>   <!-- Starter max RPM. -->
+      <value>400</value>   <!-- Starter max RPM. -->
      </quotient>
     </difference>
    </max>
@@ -140,9 +145,10 @@ Flight Magazine November 12, 1936:
  </function>
 
  <function name="propulsion/engine[#]/starter-current-A">
-  <!-- Guess: Set the max current to 300A and let it decrease with rpm. -->
+  <!-- Guess: Set the max current to 120A and let it decrease with rpm. -->
+  <!-- The C-46 POH states that a starter on that aircraft draws 120A.  -->
   <product>
-   <value>300.0</value>
+   <value>120.0</value>
    <quotient>
     <property>propulsion/engine[#]/starter-voltage-V</property>
     <value>12.0</value>
@@ -153,7 +159,7 @@ Flight Magazine November 12, 1936:
      <value>1.0</value>
      <quotient>
       <property>propulsion/engine[#]/engine-rpm</property>
-      <value>600</value>
+      <value>1000</value>
      </quotient>
     </difference>
    </max>

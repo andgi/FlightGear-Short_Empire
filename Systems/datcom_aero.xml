@@ -345,6 +345,15 @@
                         .3491         .1026    
                   </tableData>
                </table>
+               <table> <!-- Decrease elevator authority at and beyond stall. -->
+                  <independentVar lookup="row">systems/alpha_buffet/strength</independentVar>
+                  <tableData>
+                       0.0           1.0
+                       0.3           1.0
+                       1.0           0.2
+                       2.0           0.1
+                  </tableData>
+               </table>
             </product>
          </function>
 
@@ -368,7 +377,7 @@
                <property>aero/function/ground-effect-factor-drag</property>
                <property>aero/qbar-psf</property>
                <property>metrics/Sw-sqft</property>
-               <value>1.35</value> <!-- Adjusted for climb time. -->
+               <value>1.30</value> <!-- Adjusted for climb time. -->
                <table>
                   <independentVar lookup="row">aero/alpha-rad</independentVar>
                   <tableData>
@@ -531,7 +540,7 @@
             <product>
                <property>aero/qbar-psf</property>
                <property>metrics/Sw-sqft</property>
-               <property>aero/beta-rad</property>
+               <sin><property>aero/beta-rad</property></sin>
                <table>
                   <independentVar lookup="row">aero/alpha-rad</independentVar>
                   <tableData>
@@ -675,7 +684,7 @@
                <property>aero/qbar-psf</property>
                <property>metrics/Sw-sqft</property>
                <property>metrics/bw-ft</property>
-               <property>aero/beta-rad</property>
+               <sin><property>aero/beta-rad</property></sin>
                <table>
                   <independentVar lookup="row">aero/alpha-rad</independentVar>
                   <tableData>
@@ -993,6 +1002,15 @@
                         .3491        -.2880    
                   </tableData>
                </table>
+               <table> <!-- Decrease elevator authority at and beyond stall. -->
+                  <independentVar lookup="row">systems/alpha_buffet/strength</independentVar>
+                  <tableData>
+                       0.0           1.0
+                       0.5           1.0
+                       1.0           0.2
+                       2.0           0.1
+                  </tableData>
+               </table>
             </product>
          </function>
 
@@ -1078,7 +1096,7 @@
                <property>aero/qbar-psf</property>
                <property>metrics/Sw-sqft</property>
                <property>metrics/bw-ft</property>
-               <property>aero/beta-rad</property>
+               <sin><property>aero/beta-rad</property></sin>
                <table>
                   <independentVar lookup="row">aero/alpha-rad</independentVar>
                   <tableData>

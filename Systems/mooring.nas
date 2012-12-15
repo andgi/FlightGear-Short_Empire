@@ -70,6 +70,11 @@ var mooring = {
             me.moorings = {};
             me.mooring_model  = {local : nil};
             me.fairway_model  = {local : nil};
+
+            me.mooring_model_path =
+                me.find_model_path("Short_Empire/Models/Moorings/buoy.xml");
+            me.fairway_model_path =
+                me.find_model_path("Short_Empire/Models/Moorings/flare_path.xml");
         }
         me.active_mooring = props.globals.getNode("/fdm/jsbsim/mooring");
         me.selected = "";
@@ -95,7 +100,7 @@ var mooring = {
         # Put a mooring buoy model here.
         if (me.mooring_model[name] != nil) me.mooring_model[name].remove();
         me.mooring_model[name] =
-            geo.put_model("Aircraft/Short_Empire/Models/Moorings/buoy.xml",
+            geo.put_model(me.mooring_model_path,
                           me.moorings[name].position);
         # Display the associated fairway, if any.
         if (FAIRWAY[name] != nil) {
@@ -103,14 +108,14 @@ var mooring = {
             if (FAIRWAY[name][3] == 0.0) {
                 me.fairway_model[name] =
                     geo.put_model
-                    ("Aircraft/Short_Empire/Models/Moorings/flare_path.xml",
+                    (me.fairway_model_path,
                      FAIRWAY[name][1], FAIRWAY[name][2],
                      nil,
                      -getprop("/environment/wind-from-heading-deg"));
             } else {
                 me.fairway_model[name] =
                     geo.put_model
-                    ("Aircraft/Short_Empire/Models/Moorings/flare_path.xml",
+                    (me.fairway_model_path,
                      FAIRWAY[name][1], FAIRWAY[name][2],
                      nil,
                      FAIRWAY[name][3]);                
@@ -164,6 +169,24 @@ var mooring = {
             me.active_mooring.getNode("mooring-connected").setValue(0.0);
             setprop("controls/lighting/anchor-light", 0.0);
             copilot.announce("Mooring slipped.");
+        }
+    },
+    ##################################################
+    # filename should include the aircraft's directory.
+    find_model_path : func (filename) {
+        # FIXME WORKAROUND: Search for the model in all aircraft dirs.
+        var base = "/" ~ filename;
+        var file = props.globals.getNode("/sim/fg-root").getValue() ~
+            "/Aircraft" ~ base;
+        if (io.stat(file) != nil) {
+            return file;
+        }
+        foreach (var d;
+                 props.globals.getNode("/sim").getChildren("fg-aircraft")) {
+            file = d.getValue() ~ base;
+            if (io.stat(file) != nil) {
+                return file;
+            }
         }
     },
     ##################################################

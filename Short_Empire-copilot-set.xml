@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<!--
+  Short S.23 Empire multiplayer copilot view and control.
+
+  Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<!--
+  Usage: fgfs - -prop:/sim/remote/pilot-callsign="remote pilot callsign" - -aircraft=Short_Empire-copilot
+-->
+<PropertyList>
+
+ <sim>
+
+  <description>Short S.23 'C'-class Empire flying boat multiplayer copilot.</description>
+  <author>Anders Gidenstam</author>
+  <aircraft-version>$Id: Short_Empire-copilot-set.xml,v 1.7 2012/12/23 19:43:08 anders Exp $</aircraft-version>
+  
+  <status type="string">aplha</status>
+  <!-- rating>
+   <FDM type="int">3</FDM>
+   <systems type="int">2</systems>
+   <cockpit type="int">3</cockpit>
+   <model type="int">3</model>
+  </rating -->
+
+  <flight-model>null</flight-model>
+
+  <presets>
+   <onground type="bool">false</onground>
+   <altitude-agl-ft type="double">0.0</altitude-agl-ft>
+  </presets>
+  <startup>
+   <splash-texture>Aircraft/Short_Empire/splash.png</splash-texture>
+  </startup>
+
+  <!-- 3d model -->
+  <model>
+   <path>Aircraft/Short_Empire/Models/Short_Empire-copilot-model.xml</path>
+  </model>
+
+  <!-- Views -->
+  <view n="0">
+   <!-- Copilot's position. -->
+   <name>Copilot View</name>
+   <type>lookfrom</type>
+   <config>
+    <internal type="bool">true</internal>
+    <from-model type="bool">false</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <eye-lat-deg-path>/position/latitude-deg</eye-lat-deg-path>
+    <eye-lon-deg-path>/position/longitude-deg</eye-lon-deg-path>
+    <eye-alt-ft-path>/position/altitude-ft</eye-alt-ft-path>
+    <eye-heading-deg-path>/orientation/heading-deg</eye-heading-deg-path>
+    <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
+    <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>
+
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m type="double" archive="y">  0.5 </x-offset-m>
+    <y-offset-m type="double" archive="y">  2.0 </y-offset-m>
+    <z-offset-m type="double" archive="y">  2.5 </z-offset-m>
+    <pitch-offset-deg type="double" archive="y"> -10.0 </pitch-offset-deg>
+   </config>
+  </view>
+
+  <!-- Move the center of the external views. -->
+  <view n="1">
+   <config>
+    <target-z-offset-m type="double" archive="y"> 10.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="2">
+   <config>
+    <target-z-offset-m type="double" archive="y"> 10.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="3">
+   <config>
+    <target-z-offset-m type="double" archive="y"> 10.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="5">
+   <config>
+    <target-z-offset-m type="double" archive="y"> 10.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="6">
+   <config>
+    <target-z-offset-m type="double" archive="y"> 10.0 </target-z-offset-m>
+   </config>
+  </view>
+
+  <chase-distance-m type="double" archive="y">-45.0</chase-distance-m>
+
+  <sound>
+   <audible>false</audible>
+   <path/>
+  </sound>
+
+  <!-- Aircraft specific help. -->
+  <!-- help include="help.xml"/ -->
+
+  <systems>
+   <electrical>
+    <path/>
+   </electrical>
+  </systems>
+  <instrumentation>
+   <path>Aircraft/Short_Empire/Systems/instrumentation.xml</path>
+  </instrumentation>
+
+  <checklists include="Checklists/checklists.xml"/>
+
+ </sim>
+
+ <nasal>
+  <dual_control_tools>
+   <file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
+  </dual_control_tools>
+  <aircraft_dual_control> <!-- User supplied. -->
+   <file>Aircraft/Short_Empire/Systems/Short_Empire-dual-control.nas</file>
+  </aircraft_dual_control>
+  <dual_control_copilot>
+   <file>Aircraft/Generic/DualControl/copilot-dual-control.nas</file>
+  </dual_control_copilot>
+ </nasal>
+
+ <!--
+   Define some MP enabled properties.
+   NOTE: since the copilot isn't an aircraft many properties are free
+         for use.
+ -->
+ <!-- See the existing dual control copilot aircraft for examples -->
+
+ <!-- Local input properties. -->
+ <controls>
+  <flight>
+   <!-- slats type="double"> 0.0 </slats -->
+   <!-- speedbrake type="double"> 0.0 </speedbrake -->
+   <!-- spoilers type="double"> 0.0 </spoilers -->
+   <engines>
+    <engine n="0">
+     <throttle        type="double"/>   <!-- local cmd input -->
+     <mixture         type="double"/>   <!-- local cmd input -->
+     <propeller-pitch type="double"/>   <!-- local cmd input -->
+    </engine>
+    <engine n="1">
+     <throttle        type="double"/>   <!-- local cmd input -->
+     <mixture         type="double"/>   <!-- local cmd input -->
+     <propeller-pitch type="double"/>   <!-- local cmd input -->
+    </engine>
+    <engine n="2">
+     <throttle        type="double"/>   <!-- local cmd input -->
+     <mixture         type="double"/>   <!-- local cmd input -->
+     <propeller-pitch type="double"/>   <!-- local cmd input -->
+    </engine>
+    <engine n="3">
+     <throttle        type="double"/>   <!-- local cmd input -->
+     <mixture         type="double"/>   <!-- local cmd input -->
+     <propeller-pitch type="double"/>   <!-- local cmd input -->
+    </engine>
+   </engines>
+  </flight>
+ </controls>
+
+</PropertyList>

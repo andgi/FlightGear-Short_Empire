@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!--
+  Short Empire flying boat for FlightGear.
+
+  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+ <!-- Disclaimer: These instructions are derived only from common
+      sense together with certain data from the available records and
+      have no connection whatsoever to any instructions for the real
+      aircraft.
+ -->
+ <title>Before Engine Start List</title>
+ <item>
+  <name>Anchor light</name>
+  <value>ON</value>
+ </item>
+ <item>
+  <name>Navigation lights</name>
+  <value>ON</value>
+ </item>
+ <item>
+  <name>Interior lights master switches</name>
+  <value>ON</value>
+ </item>
+ <item>
+  <name>Flight deck lights</name>
+  <value>As needed</value>
+ </item>
+ <item>
+  <name>Pitot head covers</name>
+  <value>REMOVED</value>
+ </item>
+ <item>
+  <name>Oil quantity</name>
+  <value>CHECK</value>
+ </item>
+ <item>
+  <name>Fuel quantity</name>
+  <value>CHECK</value>
+ </item>
+ <item>
+  <name>Carburettor air intakes</name>
+  <value>TEST</value>
+ </item>
+ <item>
+  <name>Cowling gills</name>
+  <value>TEST</value>
+ </item>
+ <item>
+  <name>Fuel cocks</name>
+  <value>CHECK: All CLOSED</value>
+ </item>
+ <item>
+  <name>Main switchboard voltage switch</name>
+  <value>ON</value>
+ </item>
+ <item>
+  <name>Instrument lights master switch</name>
+  <value>ON</value>
+ </item>
+ <item>
+  <name>First Officer's Altimeter</name>
+  <value>SET</value>
+ </item>
+ <item>
+  <name>First Officer's Compass</name>
+  <value>Set initial course</value>
+ </item>
+ <item>
+  <name>Signalling lamp</name>
+  <value>TEST</value>
+ </item>
+ <item>
+  <name>Instrument lights</name>
+  <value>ON</value>
+ </item>
+ <item>
+  <name>Instrument heaters</name>
+  <value>ON</value>
+ </item>
+ <item>
+  <name>Search light</name>
+  <value>TEST</value>
+ </item>
+ <item>
+  <name>Captain's Altimeter</name>
+  <value>SET</value>
+ </item>
+ <item>
+  <name>Captain's Compass</name>
+  <value>Set initial course</value>
+ </item>
+</PropertyList>

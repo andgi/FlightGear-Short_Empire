@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+  Short Empire flying boat for FlightGear.
+
+  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+ <!-- Disclaimer: These instructions are derived only from common
+      sense together with certain data from the available records and
+      have no connection whatsoever to any instructions for the real
+      aircraft.
+ -->
+ <title>Engine Start List</title>
+ <item>
+  <name>Carburettor cocks</name>
+  <value>OPEN</value>
+ </item>
+ <item>
+  <name>Cowling gills</name>
+  <value>FULL OPEN</value>
+ </item>
+ <item>
+  <name>Carburettor air intakes</name>
+  <value>HOT AIR</value>
+ </item>
+ <item>
+  <name>Fuel cocks</name>
+  <value>All OPEN, common supply</value>
+ </item>
+ <item>
+  <name>Primer</name>
+  <value>Outboard: 6 strokes, Inboard: 4 strokes</value>
+ </item>
+ <item>
+  <name>Mixture</name>
+  <value>NORMAL</value>
+ </item>
+ <item>
+  <name>Airscrew pitch</name>
+  <value>FINE</value>
+ </item>
+ <item>
+  <name>Throttle</name>
+  <value>Open 1 in.</value>
+ </item>
+ <item>
+  <name>Magnetos</name>
+  <value>Both ON</value>
+ </item>
+ <item>
+  <name>Engine Starter</name>
+  <value>Max 10 seconds. Wait 30 seconds before retry.</value>
+ </item>
+ <item>
+  <name>Throttle</name>
+  <value>400-600 RPM</value>
+ </item>
+</PropertyList>

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+  Short Empire flying boat for FlightGear.
+
+  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+ <!-- Disclaimer: These instructions are derived only from common
+      sense together with certain data from the available records and
+      have no connection whatsoever to any instructions for the real
+      aircraft.
+ -->
+ <title>After Take Off List</title>
+ <item>
+  <name>Mixture</name>
+  <value>NORMAL</value>
+ </item>
+ <item>
+  <name>Flaps</name>
+  <value>RETRACT</value>
+ </item>
+ <item>
+  <name>Oil temperature</name>
+  <value>CHECK</value>
+ </item>
+ <item>
+  <name>Oil pressure</name>
+  <value>CHECK</value>
+ </item>
+ <item>
+  <name>Throttle</name>
+  <value>2200 RPM</value>
+ </item>
+ <item>
+  <name>Airscrew pitch</name>
+  <value>COARSE</value>
+ </item>
+ <item>
+  <name>Steaming light</name>
+  <value>OFF</value>
+ </item>
+ <item>
+  <name>Bow searchlight light</name>
+  <value>OFF and RETRACTED</value>
+ </item>
+ <item>
+  <name>Cylinder head temperature</name>
+  <value>CHECK: 170 - 210 degC</value>
+ </item>
+ <item>
+  <name>Throttle</name>
+  <value>2100 RPM, BOOST +1.25 PSI</value>
+ </item>
+</PropertyList>

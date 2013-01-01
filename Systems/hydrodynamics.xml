@@ -197,8 +197,10 @@
 
  <!-- Environment -->
  <property value="0.0">hydro/water-level-ft</property>
- <property value="63.5">hydro/rho-lbs_ft3</property>
  <property value="1.9736403">hydro/rho-slug_ft3</property>
+
+ <property value="0.0">hydro/current-from-north-fps</property>
+ <property value="0.0">hydro/current-from-east-fps</property>
 
  <!-- Model parameters -->
  <!--   HRP location. Must be defined.
@@ -225,6 +227,19 @@
         - hydro/pitch-moment-lbsft
         - hydro/roll-moment-lbsft
  -->
+
+ <channel name="Environment">
+
+  <fcs_function name="hydro/rho-lbs_ft3">
+   <function>
+    <product>
+     <value>32.174049</value>
+     <property>hydro/rho-slug_ft3</property>
+    </product>
+   </function>
+  </fcs_function>
+
+ </channel>
 
  <channel name ="Hull position">
 
@@ -267,6 +282,32 @@
 
  <channel name ="Hull orientation">
 
+  <fcs_function name="hydro/true-course-rad">
+   <!-- The course made good by the hull. -->
+   <function>
+    <atan2>
+     <sum>
+      <property>velocities/v-east-fps</property>
+      <property>hydro/current-from-east-fps</property>
+     </sum>
+     <sum>
+      <property>velocities/v-north-fps</property>
+      <property>hydro/current-from-north-fps</property>
+     </sum>
+    </atan2>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="hydro/true-course-deg">
+   <!-- The course made good by the hull. -->
+   <function>
+    <product>
+     <value> 57.29578 </value>
+     <property> hydro/true-course-rad </property>
+    </product>
+   </function>
+  </fcs_function>
+
   <fcs_function name="hydro/pitch-deg">
    <function>
     <product>
@@ -289,7 +330,7 @@
    <function>
     <!-- mod -->
      <difference>
-      <property> flight-path/psi-gt-rad </property>
+      <property> hydro/true-course-rad </property>
       <property> attitude/psi-rad </property>
      </difference>
      <!-- value> 3.1415927 </value>
@@ -305,16 +346,6 @@
     </product>
    </function>
   </fcs_function>
-  
-  <fcs_function name="hydro/true-course-deg">
-   <!-- (Currently) the course made good by the hull. -->
-   <function>
-    <product>
-     <value> 57.29578 </value>
-     <property> flight-path/psi-gt-rad </property>
-    </product>
-   </function>
-  </fcs_function>
 
  </channel>
 
@@ -325,11 +356,17 @@
     <pow>
      <sum>
       <pow>
-       <property> velocities/v-north-fps </property>
+       <sum>
+        <property> velocities/v-north-fps </property>
+        <property> hydro/current-from-north-fps </property>
+       </sum>
        <value> 2.0 </value>
       </pow>
       <pow>
-       <property> velocities/v-east-fps </property>
+       <sum>
+        <property> velocities/v-east-fps </property>
+        <property> hydro/current-from-east-fps </property>
+       </sum>
        <value> 2.0 </value>
       </pow>
      </sum>
@@ -425,14 +462,14 @@
      <product>
       <value> -1.0 </value>
       <cos>
-       <property> flight-path/psi-gt-rad </property>
+       <property> hydro/true-course-rad </property>
       </cos>
       <property> hydro/fdrag-lbs </property>
      </product>
      <product>
       <value> -1.0 </value>
       <sin>
-       <property> flight-path/psi-gt-rad </property>
+       <property> hydro/true-course-rad </property>
       </sin>
       <property> hydro/fside-lbs </property>
      </product>
@@ -463,13 +500,13 @@
      <product>
       <value> -1.0 </value>
       <sin>
-       <property> flight-path/psi-gt-rad </property>
+       <property> hydro/true-course-rad </property>
       </sin>
       <property> hydro/fdrag-lbs </property>
      </product>
      <product>
       <cos>
-       <property> flight-path/psi-gt-rad </property>
+       <property> hydro/true-course-rad </property>
       </cos>
       <property> hydro/fside-lbs </property>
      </product>

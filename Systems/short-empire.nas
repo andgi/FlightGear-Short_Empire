@@ -2,7 +2,7 @@
 ##
 ## Short S.23 'C'-class Empire flying boat
 ##
-##  Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2008 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
@@ -86,6 +86,8 @@ var debug_display_view_handler = {
 
         me.left  = screen.display.new(20, 10);
         me.right = screen.display.new(-200, 10);
+        me.left.format  = "%.5g";
+        me.right.format = "%.5g";
         me.left.add("/orientation/pitch-deg");
         me.left.add("/fdm/jsbsim/hydro/beta-deg");
         #me.left.add("/fdm/jsbsim/hydro/coefficients/C_V");
@@ -271,9 +273,9 @@ var dialog = {
         content.set("default-padding", 5);
         props.globals.initNode("sim/about/text",
              "Short S.23 'C'-class Empire flying boat for FlightGear\n" ~
-             "Copyright (C) 2008 - 2012  Anders Gidenstam, Ron Jensen, AJ MacLeod\n\n" ~
+             "Copyright (C) 2008 - 2013  Anders Gidenstam, Ron Jensen, AJ MacLeod\n\n" ~
              "FlightGear flight simulator\n" ~
-             "Copyright (C) 1996 - 2012  http://www.flightgear.org\n\n" ~
+             "Copyright (C) 1996 - 2013  http://www.flightgear.org\n\n" ~
              "This is free software, and you are welcome to\n" ~
              "redistribute it under certain conditions.\n" ~
              "See the GNU GENERAL PUBLIC LICENSE Version 2 for the details.",

@@ -3,7 +3,7 @@
 
   Short S.23 flying boat flight model for JSBSim.
 
-    Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2008 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -53,6 +53,7 @@
   reference length and to define both reference area and volume.
  </documentation>
  <property value="10.0">hydro/hull-beam-ft</property>
+ <property value="100.0">hydro/hull-beam-ft2</property>
  <property value="1000.0">hydro/hull-beam-ft3</property>
  <property value="10000.0">hydro/hull-beam-ft4</property>
 
@@ -258,7 +259,6 @@
  <!-- Unused inputs to the hydrodynamics system. -->
  <property value="0.0">hydro/fbx-lbs</property>
  <property value="0.0">hydro/fby-lbs</property>
- <property value="0.0">hydro/fside-lbs</property>
 
  <channel name="Force Z (up)">
 
@@ -487,20 +487,13 @@
      <property>hydro/drag-tweak-factor</property>
      <property>hydro/coefficients/C_R</property>
      <!-- Drag should increase dramatically with beta. -->
-     <table>
-      <independentVar lookup="row">hydro/beta-deg</independentVar>
-      <tableData>
-       -360.0  1.0
-       -270.0  10.0
-       -180.0  1.0
-       -90.0   10.0
-       0.0     1.0
-       90.0    10.0
-       180.0   1.0
-       270.0   10.0
-       360.0   1.0
-      </tableData>
-     </table>
+     <sum>
+      <value>1.0</value>
+      <product>  <!-- Increase drag with beta. -->
+       <value>20.0</value>
+       <abs><sin><property>hydro/beta-rad</property></sin></abs>
+      </product>
+     </sum>
     </product>
    </function>
   </fcs_function>
@@ -543,20 +536,13 @@
       </tableData>
      </table>
      <!-- Drag should increase dramatically with beta. -->
-     <table>
-      <independentVar lookup="row">hydro/beta-deg</independentVar>
-      <tableData>
-       -360.0  1.0
-       -270.0  10.0
-       -180.0  1.0
-       -90.0   10.0
-       0.0     1.0
-       90.0    10.0
-       180.0   1.0
-       270.0   10.0
-       360.0   1.0
-      </tableData>
-     </table>
+     <sum>
+      <value>1.0</value>
+      <product>  <!-- Increase drag with beta. -->
+       <value>20.0</value>
+       <abs><sin><property>hydro/beta-rad</property></sin></abs>
+      </product>
+     </sum>
     </product>
    </function>
   </fcs_function>
@@ -599,20 +585,13 @@
       </tableData>
      </table>
      <!-- Drag should increase dramatically with beta. -->
-     <table>
-      <independentVar lookup="row">hydro/beta-deg</independentVar>
-      <tableData>
-       -360.0  1.0
-       -270.0  10.0
-       -180.0  1.0
-       -90.0   10.0
-       0.0     1.0
-       90.0    10.0
-       180.0   1.0
-       270.0   10.0
-       360.0   1.0
-      </tableData>
-     </table>
+     <sum>
+      <value>1.0</value>
+      <product>  <!-- Increase drag with beta. -->
+       <value>20.0</value>
+       <abs><sin><property>hydro/beta-rad</property></sin></abs>
+      </product>
+     </sum>
     </product>
    </function>
   </fcs_function>
@@ -627,8 +606,22 @@
 
  <channel name="Side">
 
-  <summer name="hydro/side-lbs">
-   <!-- input> hydro/test-side-lbs </input -->
+  <fcs_function name="hydro/hull-side-lbs">
+   <function>
+    <description>Side force due to hull. Guessed.</description>
+    <product>
+     <value>-1.0</value>
+     <property>hydro/coefficients/C_Delta</property>
+     <property>hydro/qbar-u-psf</property>
+     <property>hydro/hull-beam-ft2</property>
+     <sin><property>hydro/beta-rad</property></sin>
+     <value>0.20</value>
+    </product>
+   </function>
+  </fcs_function>
+
+  <summer name="hydro/fside-lbs">
+   <input>hydro/hull-side-lbs</input>
   </summer>
 
  </channel>
@@ -1057,84 +1050,6 @@
    <input> hydro/buoyancy-roll-moment-lbsft </input>
    <input> hydro/damping-roll-moment-lbsft </input>
   </summer>
-
- </channel>
-
- <!-- Implementation of float forces . -->
-
- <channel name="Implementation Force X (north)">
-
-  <fcs_function name="hydro/X/left-float-lbs">
-   <function>
-    <product>
-     <value> -1.0 </value>
-     <sum>
-      <product>
-       <cos>
-        <property> flight-path/psi-gt-rad </property>
-       </cos>
-       <property> hydro/left-float-drag-lbs </property>
-      </product>
-     </sum>
-    </product>
-   </function>
-   <output> external_reactions/left-float-X/magnitude </output>
-  </fcs_function>
-
-  <fcs_function name="hydro/X/right-float-lbs">
-   <function>
-    <product>
-     <value> -1.0 </value>
-     <sum>
-      <product>
-       <cos>
-        <property> flight-path/psi-gt-rad </property>
-       </cos>
-       <property> hydro/right-float-drag-lbs </property>
-      </product>
-     </sum>
-    </product>
-   </function>
-   <output> external_reactions/right-float-X/magnitude </output>
-  </fcs_function>
- 
- </channel>
-
- <channel name="Implementation Force Y (east)">
-
-  <fcs_function name="hydro/Y/left-float-lbs">
-   <function>
-    <sum>
-     <product>
-      <value> -1.0 </value>
-      <product>
-       <sin>
-        <property> flight-path/psi-gt-rad </property>
-       </sin>
-       <property> hydro/left-float-drag-lbs </property>
-      </product>
-     </product>
-    </sum>
-   </function>
-   <output> external_reactions/left-float-Y/magnitude </output>
-  </fcs_function>
-
-  <fcs_function name="hydro/Y/right-float-lbs">
-   <function>
-    <sum>
-     <product>
-      <value> -1.0 </value>
-      <product>
-       <sin>
-        <property> flight-path/psi-gt-rad </property>
-       </sin>
-       <property> hydro/right-float-drag-lbs </property>
-      </product>
-     </product>
-    </sum>
-   </function>
-   <output> external_reactions/right-float-Y/magnitude </output>
-  </fcs_function>
 
  </channel>
 

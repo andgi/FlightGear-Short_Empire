@@ -3,7 +3,7 @@
 
   Short S.23 flying boat flight model for JSBSim.
 
-    Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2008 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate>2008-11-05</filecreationdate>
-  <version>$Id: Short_S23.xml,v 1.42 2012/07/28 21:45:09 anders Exp $</version>
+  <version>$Id: Short_S23.xml,v 1.43 2013/01/02 22:59:58 anders Exp $</version>
 
   <description>Models a Short S.23 flying boat.</description>
 
@@ -1017,57 +1017,6 @@
     <x> 0.0 </x>
     <y> 0.0 </y>
     <z>-1.0 </z>
-   </direction>
-  </force>
-
-  <!--Forces from the floats. -->
-  <force name="left-float-X" frame="LOCAL">
-   <location unit="M">
-    <x>  9.00 </x>
-    <y> -9.75 </y>
-    <z> -0.50 </z>
-   </location>
-   <direction>
-    <x> 1.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </direction>
-  </force>
-  <force name="left-float-Y" frame="LOCAL">
-   <location unit="M">
-    <x>  9.00 </x>
-    <y> -9.75 </y>
-    <z> -0.50 </z>
-   </location>
-   <direction>
-    <x> 0.0 </x>
-    <y> 1.0 </y>
-    <z> 0.0 </z>
-   </direction>
-  </force>
-
-  <force name="right-float-X" frame="LOCAL">
-   <location unit="M">
-    <x>  9.00 </x>
-    <y>  9.75 </y>
-    <z> -0.50 </z>
-   </location>
-   <direction>
-    <x> 1.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </direction>
-  </force>
-  <force name="right-float-Y" frame="LOCAL">
-   <location unit="M">
-    <x>  9.00 </x>
-    <y>  9.75 </y>
-    <z> -0.50 </z>
-   </location>
-   <direction>
-    <x> 0.0 </x>
-    <y> 1.0 </y>
-    <z> 0.0 </z>
    </direction>
   </force>
 

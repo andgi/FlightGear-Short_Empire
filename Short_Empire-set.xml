@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.63 2012/12/23 19:43:08 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.64 2013/03/13 21:03:19 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -507,22 +507,38 @@
   <mice n="0">
    <mouse n="0">
     <mode n="0">
-     <x-axis>
+     <x-axis-shift>
       <binding>
        <command>nasal</command>
        <script>
-         RAFmk9sextant.mouseX();
+         RAFmk9sextant.mouseXmove();
        </script>
       </binding>
-     </x-axis>
-     <y-axis>
+     </x-axis-shift>
+     <x-axis-ctrl-shift>
       <binding>
        <command>nasal</command>
        <script>
-         RAFmk9sextant.mouseY();
+         RAFmk9sextant.mouseXtilt();
        </script>
       </binding>
-     </y-axis>
+     </x-axis-ctrl-shift>
+     <y-axis-shift>
+      <binding>
+       <command>nasal</command>
+       <script>
+         RAFmk9sextant.mouseYmove();
+       </script>
+      </binding>
+     </y-axis-shift>
+     <y-axis-ctrl-shift>
+      <binding>
+       <command>nasal</command>
+       <script>
+         RAFmk9sextant.mouseYaltitude();
+       </script>
+      </binding>
+     </y-axis-ctrl-shift>
     </mode>
    </mouse>
   </mice>

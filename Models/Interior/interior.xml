@@ -2,7 +2,7 @@
 <!--
   Short S.23 Empire flying boat for FlightGear.
 
-  Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2008 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -314,185 +314,11 @@
   </axis>
  </animation>
 
+ <!-- Throttle box =========================================================-->
+
  <!-- Animations for the throttle levers. -->
  <animation>
-  <type>pick</type>
-  <object-name>throttle_handle.1</object-name>
-  <object-name>throttle_arm.1</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/throttle</property>
-    <step type="double">0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/throttle</property>
-    <step type="double">-0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/throttle</property>
-    <step type="double">0.01</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/throttle</property>
-    <step type="double">-0.01</step>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>throttle_handle.2</object-name>
-  <object-name>throttle_arm.2</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/throttle</property>
-    <step type="double">0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/throttle</property>
-    <step type="double">-0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/throttle</property>
-    <step type="double">0.01</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/throttle</property>
-    <step type="double">-0.01</step>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>throttle_handle.3</object-name>
-  <object-name>throttle_arm.3</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/throttle</property>
-    <step type="double">0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/throttle</property>
-    <step type="double">-0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/throttle</property>
-    <step type="double">0.01</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/throttle</property>
-    <step type="double">-0.01</step>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>throttle_handle.4</object-name>
-  <object-name>throttle_arm.4</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/throttle</property>
-    <step type="double">0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/throttle</property>
-    <step type="double">-0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/throttle</property>
-    <step type="double">0.01</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/throttle</property>
-    <step type="double">-0.01</step>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>rotate</type>
+  <type>knob</type>
   <object-name>throttle_handle.1</object-name>
   <object-name>throttle_arm.1</object-name>
   <property>controls/engines/engine[0]/throttle</property>
@@ -508,9 +334,21 @@
    <y> 1.0 </y>
    <z> 0.0 </z>
   </axis>
+  <action>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/throttle</property>
+    <factor type="double">0.02</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
+   </binding>
+  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
  <animation>
-  <type>rotate</type>
+  <type>knob</type>
   <object-name>throttle_handle.2</object-name>
   <object-name>throttle_arm.2</object-name>
   <property>controls/engines/engine[1]/throttle</property>
@@ -526,9 +364,21 @@
    <y> 1.0 </y>
    <z> 0.0 </z>
   </axis>
+  <action>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/throttle</property>
+    <factor type="double">0.02</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
+   </binding>
+  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
  <animation>
-  <type>rotate</type>
+  <type>knob</type>
   <object-name>throttle_handle.3</object-name>
   <object-name>throttle_arm.3</object-name>
   <property>controls/engines/engine[2]/throttle</property>
@@ -544,9 +394,21 @@
    <y> 1.0 </y>
    <z> 0.0 </z>
   </axis>
+  <action>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/throttle</property>
+    <factor type="double">0.02</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
+   </binding>
+  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
  <animation>
-  <type>rotate</type>
+  <type>knob</type>
   <object-name>throttle_handle.4</object-name>
   <object-name>throttle_arm.4</object-name>
   <property>controls/engines/engine[3]/throttle</property>
@@ -562,187 +424,23 @@
    <y> 1.0 </y>
    <z> 0.0 </z>
   </axis>
+  <action>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/throttle</property>
+    <factor type="double">0.02</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
+   </binding>
+  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
 
  <!-- Animations for the mixture levers. -->
  <animation>
-  <type>pick</type>
-  <object-name>mixture_handle.1</object-name>
-  <object-name>mixture_arm.1</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/mixture</property>
-    <step type="double">-0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/mixture</property>
-    <step type="double">0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/mixture</property>
-    <step type="double">-0.01</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/mixture</property>
-    <step type="double">0.01</step>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>mixture_handle.2</object-name>
-  <object-name>mixture_arm.2</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/mixture</property>
-    <step type="double">-0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/mixture</property>
-    <step type="double">0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/mixture</property>
-    <step type="double">-0.01</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/mixture</property>
-    <step type="double">0.01</step>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>mixture_handle.3</object-name>
-  <object-name>mixture_arm.3</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/mixture</property>
-    <step type="double">-0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/mixture</property>
-    <step type="double">0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/mixture</property>
-    <step type="double">-0.01</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/mixture</property>
-    <step type="double">0.01</step>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>pick</type>
-  <object-name>mixture_handle.4</object-name>
-  <object-name>mixture_arm.4</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/mixture</property>
-    <step type="double">-0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/mixture</property>
-    <step type="double">0.1</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/mixture</property>
-    <step type="double">-0.01</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/mixture</property>
-    <step type="double">0.01</step>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>rotate</type>
+  <type>knob</type>
   <object-name>mixture_handle.1</object-name>
   <object-name>mixture_arm.1</object-name>
   <property>controls/engines/engine[0]/mixture</property>
@@ -758,9 +456,21 @@
    <y> 1.0 </y>
    <z> 0.0 </z>
   </axis>
+  <action>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[0]/mixture</property>
+    <factor type="double">-0.02</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
+   </binding>
+  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
  <animation>
-  <type>rotate</type>
+  <type>knob</type>
   <object-name>mixture_handle.2</object-name>
   <object-name>mixture_arm.2</object-name>
   <property>controls/engines/engine[1]/mixture</property>
@@ -776,9 +486,21 @@
    <y> 1.0 </y>
    <z> 0.0 </z>
   </axis>
+  <action>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[1]/mixture</property>
+    <factor type="double">-0.02</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
+   </binding>
+  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
  <animation>
-  <type>rotate</type>
+  <type>knob</type>
   <object-name>mixture_handle.3</object-name>
   <object-name>mixture_arm.3</object-name>
   <property>controls/engines/engine[2]/mixture</property>
@@ -794,9 +516,21 @@
    <y> 1.0 </y>
    <z> 0.0 </z>
   </axis>
+  <action>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[2]/mixture</property>
+    <factor type="double">-0.02</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
+   </binding>
+  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
  <animation>
-  <type>rotate</type>
+  <type>knob</type>
   <object-name>mixture_handle.4</object-name>
   <object-name>mixture_arm.4</object-name>
   <property>controls/engines/engine[3]/mixture</property>
@@ -812,290 +546,145 @@
    <y> 1.0 </y>
    <z> 0.0 </z>
   </axis>
+  <action>
+   <repeatable>true</repeatable>
+   <interval-sec>0.2</interval-sec>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/engine[3]/mixture</property>
+    <factor type="double">-0.02</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
+   </binding>
+  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
 
  <!-- Animations for the propeller pitch levers. -->
  <animation>
-  <type>pick</type>
+  <type>knob</type>
   <object-name>propeller_handle.1</object-name>
   <object-name>propeller_arm.1</object-name>
+  <property>controls/engines/engine[0]/propeller-pitch</property>
+  <factor>-30.0</factor>
+  <offset-deg>30.0</offset-deg>
+  <center>
+   <x-m> -1.94 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.96 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
   <action>
-   <button>0</button>
    <repeatable>true</repeatable>
    <interval-sec>0.2</interval-sec>
    <binding>
     <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/propeller-pitch</property>
-    <step type="double">-1.0</step>
+    <property>controls/engines/engine[0]/propeller-pitch</property>
+    <factor type="double">-1.0</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
    </binding>
   </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/propeller-pitch</property>
-    <step type="double">1.0</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/propeller-pitch</property>
-    <step type="double">-0.5</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[0]/propeller-pitch</property>
-    <step type="double">0.5</step>
-   </binding>
-  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
-
  <animation>
-  <type>pick</type>
+  <type>knob</type>
   <object-name>propeller_handle.2</object-name>
   <object-name>propeller_arm.2</object-name>
+  <property>controls/engines/engine[1]/propeller-pitch</property>
+  <factor>-30.0</factor>
+  <offset-deg>30.0</offset-deg>
+  <center>
+   <x-m> -1.94 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.96 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
   <action>
-   <button>0</button>
    <repeatable>true</repeatable>
    <interval-sec>0.2</interval-sec>
    <binding>
     <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/propeller-pitch</property>
-    <step type="double">-1.0</step>
+    <property>controls/engines/engine[1]/propeller-pitch</property>
+    <factor type="double">-1.0</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
    </binding>
   </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/propeller-pitch</property>
-    <step type="double">1.0</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/propeller-pitch</property>
-    <step type="double">-0.5</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[1]/propeller-pitch</property>
-    <step type="double">0.5</step>
-   </binding>
-  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
-
  <animation>
-  <type>pick</type>
+  <type>knob</type>
   <object-name>propeller_handle.3</object-name>
   <object-name>propeller_arm.3</object-name>
+  <property>controls/engines/engine[2]/propeller-pitch</property>
+  <factor>-30.0</factor>
+  <offset-deg>30.0</offset-deg>
+  <center>
+   <x-m> -1.94 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.96 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
   <action>
-   <button>0</button>
    <repeatable>true</repeatable>
    <interval-sec>0.2</interval-sec>
    <binding>
     <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/propeller-pitch</property>
-    <step type="double">-1.0</step>
+    <property>controls/engines/engine[2]/propeller-pitch</property>
+    <factor type="double">-1.0</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
    </binding>
   </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/propeller-pitch</property>
-    <step type="double">1.0</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/propeller-pitch</property>
-    <step type="double">-0.5</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[2]/propeller-pitch</property>
-    <step type="double">0.5</step>
-   </binding>
-  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
-
  <animation>
-  <type>pick</type>
+  <type>knob</type>
   <object-name>propeller_handle.4</object-name>
   <object-name>propeller_arm.4</object-name>
+  <property>controls/engines/engine[3]/propeller-pitch</property>
+  <factor>-30.0</factor>
+  <offset-deg>30.0</offset-deg>
+  <center>
+   <x-m> -1.94 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.96 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
   <action>
-   <button>0</button>
    <repeatable>true</repeatable>
    <interval-sec>0.2</interval-sec>
    <binding>
     <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/propeller-pitch</property>
-    <step type="double">-1.0</step>
+    <property>controls/engines/engine[3]/propeller-pitch</property>
+    <factor type="double">-1.0</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
    </binding>
   </action>
-  <action>
-   <button>1</button>
-   <repeatable>true</repeatable>
-   <interval-sec>0.2</interval-sec>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/propeller-pitch</property>
-    <step type="double">1.0</step>
-   </binding>
-  </action>
-  <action>
-   <button>3</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/propeller-pitch</property>
-    <step type="double">-0.5</step>
-   </binding>
-  </action>
-  <action>
-   <button>4</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-adjust</command>
-    <property>/controls/engines/engine[3]/propeller-pitch</property>
-    <step type="double">0.5</step>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>rotate</type>
-  <object-name>propeller_handle.1</object-name>
-  <object-name>propeller_arm.1</object-name>
-  <property>fdm/jsbsim/fcs/advance-pos-norm[0]</property>
-  <factor>-30.0</factor>
-  <offset-deg>30.0</offset-deg>
-  <center>
-   <x-m> -1.94 </x-m>
-   <y-m>  0.00 </y-m>
-   <z-m>  0.96 </z-m>
-  </center>
-  <axis>
-   <x> 0.0 </x>
-   <y> 1.0 </y>
-   <z> 0.0 </z>
-  </axis>
- </animation>
- <animation>
-  <type>rotate</type>
-  <object-name>propeller_handle.2</object-name>
-  <object-name>propeller_arm.2</object-name>
-  <property>fdm/jsbsim/fcs/advance-pos-norm[1]</property>
-  <factor>-30.0</factor>
-  <offset-deg>30.0</offset-deg>
-  <center>
-   <x-m> -1.94 </x-m>
-   <y-m>  0.00 </y-m>
-   <z-m>  0.96 </z-m>
-  </center>
-  <axis>
-   <x> 0.0 </x>
-   <y> 1.0 </y>
-   <z> 0.0 </z>
-  </axis>
- </animation>
- <animation>
-  <type>rotate</type>
-  <object-name>propeller_handle.3</object-name>
-  <object-name>propeller_arm.3</object-name>
-  <property>fdm/jsbsim/fcs/advance-pos-norm[2]</property>
-  <factor>-30.0</factor>
-  <offset-deg>30.0</offset-deg>
-  <center>
-   <x-m> -1.94 </x-m>
-   <y-m>  0.00 </y-m>
-   <z-m>  0.96 </z-m>
-  </center>
-  <axis>
-   <x> 0.0 </x>
-   <y> 1.0 </y>
-   <z> 0.0 </z>
-  </axis>
- </animation>
- <animation>
-  <type>rotate</type>
-  <object-name>propeller_handle.4</object-name>
-  <object-name>propeller_arm.4</object-name>
-  <property>fdm/jsbsim/fcs/advance-pos-norm[3]</property>
-  <factor>-30.0</factor>
-  <offset-deg>30.0</offset-deg>
-  <center>
-   <x-m> -1.94 </x-m>
-   <y-m>  0.00 </y-m>
-   <z-m>  0.96 </z-m>
-  </center>
-  <axis>
-   <x> 0.0 </x>
-   <y> 1.0 </y>
-   <z> 0.0 </z>
-  </axis>
+  <drag-direction>vertical</drag-direction>
  </animation>
 
  <!-- Animations for the cut-off levers. -->
  <animation> 
-  <type>pick</type>
-  <object-name>cutoff_lever_L</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-cycle</command>
-    <property>controls/engines/inner-cutoff</property>
-    <value type="double">0.0</value>
-    <value type="double">1.0</value>
-   </binding>
-  </action>
- </animation>
- <animation> 
-  <type>pick</type>
-  <object-name>cutoff_lever_R</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-cycle</command>
-    <property>controls/engines/outer-cutoff</property>
-    <value type="double">0.0</value>
-    <value type="double">1.0</value>
-   </binding>
-  </action>
- </animation>
-
- <animation>
-  <type>rotate</type>
+  <type>knob</type>
   <object-name>cutoff_lever_L</object-name>
   <property>controls/engines/inner-cutoff</property>
   <factor>90.0</factor>
@@ -1110,9 +699,20 @@
    <y> 1.0 </y>
    <z> 0.0 </z>
   </axis>
+  <action>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/inner-cutoff</property>
+    <factor type="double">1.0</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
+   </binding>
+  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
- <animation>
-  <type>rotate</type>
+ <animation> 
+  <type>knob</type>
   <object-name>cutoff_lever_R</object-name>
   <property>controls/engines/outer-cutoff</property>
   <factor>90.0</factor>
@@ -1127,27 +727,24 @@
    <y> 1.0 </y>
    <z> 0.0 </z>
   </axis>
+  <action>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>controls/engines/outer-cutoff</property>
+    <factor type="double">1.0</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
+   </binding>
+  </action>
+  <drag-direction>vertical</drag-direction>
  </animation>
 
  <!-- Animation for the autopilot lever. -->
  <animation> 
-  <type>pick</type>
+  <type>knob</type>
   <object-name>AP_engage_lever</object-name>
-  <action>
-   <button>0</button>
-   <repeatable>false</repeatable>
-   <binding>
-    <command>property-cycle</command>
-    <property>instrumentation/sperry-autopilot[0]/settings/engaged-norm</property>
-    <value type="double">0.0</value>
-    <value type="double">1.0</value>
-   </binding>
-  </action>
- </animation>
- <animation>
-  <type>rotate</type>
-  <object-name>AP_engage_lever</object-name>
-    <property>instrumentation/sperry-autopilot[0]/settings/engaged-norm</property>
+  <property>instrumentation/sperry-autopilot[0]/settings/engaged-norm</property>
   <factor>120.0</factor>
   <offset-deg>-60.0</offset-deg>
   <axis>
@@ -1158,10 +755,79 @@
    <y2-m>  0.000 </y2-m>
    <z2-m>  1.103 </z2-m>
   </axis>
+  <action>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>property-adjust</command>
+    <property>instrumentation/sperry-autopilot[0]/settings/engaged-norm</property>
+    <factor type="double">1.0</factor>
+    <min type="double">0.0</min>
+    <max type="double">1.0</max>
+   </binding>
+  </action>
+ </animation>
+
+ <!-- Fuel system cocks ====================================================-->
+
+ <!-- Select animations for fuel system dependent items. -->
+ <animation>
+  <type>select</type>
+  <object-name>fuel_selector_box_mk1</object-name>
+  <condition>
+   <less-than>
+    <property>sim/model/mark</property>
+    <value type="int">2</value>
+   </less-than>     
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>fuel_selector_box_mk2</object-name>
+  <object-name>fuel_lever_knob_PO</object-name>
+  <object-name>fuel_lever_knob_SO</object-name>
+  <object-name>fuel_lever_arm_PO</object-name>
+  <object-name>fuel_lever_arm_SO</object-name>
+  <condition>
+   <greater-than>
+    <property>sim/model/mark</property>
+    <value type="int">1</value>
+   </greater-than>     
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>fuel_lever_knob_B</object-name>
+  <object-name>fuel_lever_arm_B</object-name>
+  <condition>
+   <less-than>
+    <property>sim/model/mark</property>
+    <value type="int">3</value>
+   </less-than>     
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>fuel_selector_box_mk3</object-name>
+  <object-name>fuel_lever_knob_PI</object-name>
+  <object-name>fuel_lever_knob_PF</object-name>
+  <object-name>fuel_lever_knob_SI</object-name>
+  <object-name>fuel_lever_knob_SF</object-name>
+  <object-name>fuel_lever_arm_PI</object-name>
+  <object-name>fuel_lever_arm_PF</object-name>
+  <object-name>fuel_lever_arm_SI</object-name>
+  <object-name>fuel_lever_arm_SF</object-name>
+  <object-name>fuel_lever_knob_B2</object-name>
+  <object-name>fuel_lever_arm_B2</object-name>
+  <condition>
+   <greater-than>
+    <property>sim/model/mark</property>
+    <value type="int">2</value>
+   </greater-than>     
+  </condition>
  </animation>
 
  <!-- Animations for the fuel cock levers present in all fuel systems. -->
- <animation> 
+ <animation>
   <type>pick</type>
   <object-name>fuel_lever_knob_PC</object-name>
   <object-name>fuel_lever_arm_PC</object-name>
@@ -1209,7 +875,7 @@
   </action>
  </animation>
 
- <animation>
+ <animation> 
   <type>rotate</type>
   <object-name>fuel_lever_knob_PC</object-name>
   <object-name>fuel_lever_arm_PC</object-name>
@@ -1491,63 +1157,6 @@
   </axis>
  </animation>
 
-
- <!-- Select animations for fuel system dependent items. -->
- <animation>
-  <type>select</type>
-  <object-name>fuel_selector_box_mk1</object-name>
-  <condition>
-   <less-than>
-    <property>sim/model/mark</property>
-    <value type="int">2</value>
-   </less-than>     
-  </condition>
- </animation>
- <animation>
-  <type>select</type>
-  <object-name>fuel_selector_box_mk2</object-name>
-  <object-name>fuel_lever_knob_PO</object-name>
-  <object-name>fuel_lever_knob_SO</object-name>
-  <object-name>fuel_lever_arm_PO</object-name>
-  <object-name>fuel_lever_arm_SO</object-name>
-  <condition>
-   <greater-than>
-    <property>sim/model/mark</property>
-    <value type="int">1</value>
-   </greater-than>     
-  </condition>
- </animation>
- <animation>
-  <type>select</type>
-  <object-name>fuel_lever_knob_B</object-name>
-  <object-name>fuel_lever_arm_B</object-name>
-  <condition>
-   <less-than>
-    <property>sim/model/mark</property>
-    <value type="int">3</value>
-   </less-than>     
-  </condition>
- </animation>
- <animation>
-  <type>select</type>
-  <object-name>fuel_selector_box_mk3</object-name>
-  <object-name>fuel_lever_knob_PI</object-name>
-  <object-name>fuel_lever_knob_PF</object-name>
-  <object-name>fuel_lever_knob_SI</object-name>
-  <object-name>fuel_lever_knob_SF</object-name>
-  <object-name>fuel_lever_arm_PI</object-name>
-  <object-name>fuel_lever_arm_PF</object-name>
-  <object-name>fuel_lever_arm_SI</object-name>
-  <object-name>fuel_lever_arm_SF</object-name>
-  <object-name>fuel_lever_knob_B2</object-name>
-  <object-name>fuel_lever_arm_B2</object-name>
-  <condition>
-   <greater-than>
-    <property>sim/model/mark</property>
-    <value type="int">2</value>
-   </greater-than>     
-  </condition>
- </animation>
 
  <!-- LOD -->
  <animation> 

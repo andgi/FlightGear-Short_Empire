@@ -2,7 +2,7 @@
 <!--
   Short Empire flying boat flight model for JSBSim.
 
-  Copyright (C) 2009 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2009 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <propeller name="deHavilland5000">
@@ -52,8 +52,8 @@
  <diameter unit="IN">153.0 </diameter>
  <numblades> 3 </numblades>
  <gearratio>2.0 </gearratio>
- <minpitch> 0.0 </minpitch>
- <maxpitch> 1.0 </maxpitch>
+ <minpitch> 20.0 </minpitch>
+ <maxpitch> 28.0 </maxpitch>
 
  <ct_factor> 1.0 </ct_factor>
  <cp_factor> 1.0 </cp_factor>

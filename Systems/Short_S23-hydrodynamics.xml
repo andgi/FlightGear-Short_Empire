@@ -46,6 +46,9 @@
  <property value="0.0">metrics/hydro-rp-y-in</property>
  <property value="0.0">metrics/hydro-rp-z-in</property>
 
+ <property value="10.0">metrics/hydro-beam-ft</property>
+ <property value="56.0">metrics/hydro-length-ft</property>
+
  <!-- Model parameters -->
  <documentation>
   The hydrodynamic coefficients are assumed to be defined as in

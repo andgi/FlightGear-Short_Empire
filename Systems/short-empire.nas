@@ -13,7 +13,7 @@ var astro_hatch = aircraft.door.new("sim/model/doors/astro-hatch", 10.0);
 
 ###############################################################################
 var ground = func {
-    setprop("/fdm/jsbsim/hydro/water-level-ft",
+    setprop("/fdm/jsbsim/hydro/environment/water-level-ft",
             getprop("/position/ground-elev-ft"));
 
     # Temporary and ugly starter handling.

@@ -3,7 +3,7 @@
 
   Hydrodynamics section for JSBSim.
 
-    Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2008 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -196,17 +196,20 @@
  <!-- Inputs -->
 
  <!-- Environment -->
- <property value="0.0">hydro/water-level-ft</property>
- <property value="1.9736403">hydro/rho-slug_ft3</property>
+ <property value="0.0">hydro/environment/water-level-ft</property>
+ <property value="1.9736403">hydro/environment/rho-slug_ft3</property>
 
- <property value="0.0">hydro/current-from-north-fps</property>
- <property value="0.0">hydro/current-from-east-fps</property>
+ <property value="0.0">hydro/environment/current-from-north-fps</property>
+ <property value="0.0">hydro/environment/current-from-east-fps</property>
 
  <!-- Model parameters -->
  <!--   HRP location. Must be defined.
         - metrics/hydro-rp-x-in
         - metrics/hydro-rp-y-in
         - metrics/hydro-rp-z-in
+
+        - metrics/hydro-beam-ft
+        - metrics/hydro-length-ft
  -->
 
  <!-- Input forces in the hydrodynamic body frame.
@@ -230,12 +233,21 @@
 
  <channel name="Environment">
 
-  <fcs_function name="hydro/rho-lbs_ft3">
+  <fcs_function name="hydro/environment/rho-lbs_ft3">
    <function>
     <product>
      <value>32.174049</value>
-     <property>hydro/rho-slug_ft3</property>
+     <property>hydro/environment/rho-slug_ft3</property>
     </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="hydro/environment/gravity-ft_sec2">
+   <function>
+    <quotient>
+     <property>inertia/weight-lbs</property>
+     <property>inertia/mass-slugs</property>
+    </quotient>
    </function>
   </fcs_function>
 
@@ -273,7 +285,7 @@
        </cos>
       </product>
      </sum>
-     <property> hydro/water-level-ft </property>
+     <property> hydro/environment/water-level-ft </property>
     </difference>
    </function>
   </fcs_function>
@@ -288,11 +300,11 @@
     <atan2>
      <sum>
       <property>velocities/v-east-fps</property>
-      <property>hydro/current-from-east-fps</property>
+      <property>hydro/environment/current-from-east-fps</property>
      </sum>
      <sum>
       <property>velocities/v-north-fps</property>
-      <property>hydro/current-from-north-fps</property>
+      <property>hydro/environment/current-from-north-fps</property>
      </sum>
     </atan2>
    </function>
@@ -358,14 +370,14 @@
       <pow>
        <sum>
         <property> velocities/v-north-fps </property>
-        <property> hydro/current-from-north-fps </property>
+        <property> hydro/environment/current-from-north-fps </property>
        </sum>
        <value> 2.0 </value>
       </pow>
       <pow>
        <sum>
         <property> velocities/v-east-fps </property>
-        <property> hydro/current-from-east-fps </property>
+        <property> hydro/environment/current-from-east-fps </property>
        </sum>
        <value> 2.0 </value>
       </pow>
@@ -409,9 +421,9 @@
    <function>
     <product>
      <value> 0.50 </value>
-     <property>hydro/rho-slug_ft3</property>
-     <property> hydro/v-fps </property>
-     <property> hydro/v-fps </property>
+     <property>hydro/environment/rho-slug_ft3</property>
+     <property>hydro/v-fps</property>
+     <property>hydro/v-fps</property>
     </product>
    </function>
   </fcs_function>
@@ -420,9 +432,9 @@
    <function>
     <product>
      <value> 0.50 </value>
-     <property>hydro/rho-slug_ft3</property>
-     <property> hydro/vbx-fps </property>
-     <abs><property> hydro/vbx-fps </property></abs>
+     <property>hydro/environment/rho-slug_ft3</property>
+     <property>hydro/vbx-fps</property>
+     <abs><property>hydro/vbx-fps</property></abs>
     </product>
    </function>
   </fcs_function>
@@ -431,9 +443,9 @@
    <function>
     <product>
      <value> 0.50 </value>
-     <property>hydro/rho-slug_ft3</property>
-     <property> hydro/vby-fps </property>
-     <abs><property> hydro/vby-fps </property></abs>
+     <property>hydro/environment/rho-slug_ft3</property>
+     <property>hydro/vby-fps</property>
+     <abs><property>hydro/vby-fps</property></abs>
     </product>
    </function>
   </fcs_function>

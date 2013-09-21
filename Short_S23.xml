@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate>2008-11-05</filecreationdate>
-  <version>$Id: Short_S23.xml,v 1.44 2013/01/06 22:29:42 anders Exp $</version>
+  <version>$Id: Short_S23.xml,v 1.45 2013/09/21 21:09:35 anders Exp $</version>
 
   <description>Models a Short S.23 flying boat.</description>
 
@@ -71,6 +71,14 @@
              author="John R. Dawson"
              title="A complete tank test of the hull of the Sikorsky S-40 flying boat - American Clipper Class;  NACA Thechnical Notes #512"
              date="1934"/>
+  <reference refID="CAB:1943"
+             author="http://www.enginehistory.org/Accessories/Carburetion/Carburetion.shtml"
+             title="Carburetion as Applied to Bristol Aero Engines"
+             date="1943"/>
+  <reference refID="Cassidy:OWM:2013"
+             author="Brian Cassidy"
+             title="Empire Flying Boat  Owner's Workshop Manual"
+             date="2013"/>
 
  </fileheader>
 

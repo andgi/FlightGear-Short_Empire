@@ -2,7 +2,7 @@
 <!--
   Short Empire flying boat for FlightGear.
 
-  Copyright (C) 2007 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2014  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.64 2013/03/13 21:03:19 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.66 2014/01/13 20:28:19 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -467,6 +467,23 @@
    <maximum-takeoff-mass-lbs type="double">40500</maximum-takeoff-mass-lbs>
    <maximum-landing-mass-lbs type="double">40500</maximum-landing-mass-lbs>
   </mass-and-balance>
+
+  <max-flap-extension-speed>
+   <flaps>0.25</flaps>
+   <speed>150.0</speed>
+  </max-flap-extension-speed>
+  <max-flap-extension-speed>
+   <flaps>1.000</flaps>
+   <speed>102.0</speed>
+  </max-flap-extension-speed>
+
+  <!-- Utility Category limits -1.76 - +4.4 G.
+       The actual design load limit for the S.23 is unknown.
+       It is reported that +6 G bumps occured occasionally in
+       extreme monsoon conditions.
+  -->
+  <max-positive-g>4.4</max-positive-g>
+  <max-negative-g>-1.76</max-negative-g>
  </limits>
 
  <nasal>

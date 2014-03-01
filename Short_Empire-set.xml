@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.66 2014/01/13 20:28:19 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.67 2014/03/01 23:11:29 anders Exp $</aircraft-version>
 
   <status type="string">beta</status>
   <rating>
@@ -23,6 +23,8 @@
 
   <flight-model>jsb</flight-model>
   <aero>Short_S23</aero>
+  <!-- The higher rate seems to aide stability in the hydrodynamics system. -->
+  <model-hz type="double">480.0</model-hz>
 
   <presets>
    <onground type="bool">true</onground>

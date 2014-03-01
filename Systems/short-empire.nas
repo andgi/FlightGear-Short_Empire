@@ -13,8 +13,35 @@ var astro_hatch = aircraft.door.new("sim/model/doors/astro-hatch", 10.0);
 
 ###############################################################################
 var ground = func {
+    # Send the current ground level to the JSBSim hydrodynamics model.
     setprop("/fdm/jsbsim/hydro/environment/water-level-ft",
-            getprop("/position/ground-elev-ft"));
+            getprop("/position/ground-elev-ft") +
+            getprop("/fdm/jsbsim/hydro/environment/wave-amplitude-ft"));
+
+    # Connect the FlightGear wave model to the JSBSim hydrodynamics wave model.
+    #setprop("/fdm/jsbsim/hydro/environment/waves-from-deg",
+    #        getprop("/environment/wave/angle") - 90.0);
+    #setprop("/fdm/jsbsim/hydro/environment/wave-amplitude-ft",
+    #        getprop("/environment/wave/amp"));
+    # Additional properties:
+    #   /environment/wave/dangle
+    #   /environment/wave/factor
+    #   /environment/wave/freq
+    #   /environment/wave/sharp
+
+    # Connect the JSBSim hydrodynamics wave model with the custom water shader.
+    setprop("environment/waves/time-sec",
+            getprop("/fdm/jsbsim/simulation/sim-time-sec"));
+    setprop("environment/waves/from-deg",
+            getprop("/fdm/jsbsim/hydro/environment/waves-from-deg"));
+    setprop("environment/waves/length-ft",
+            getprop("/fdm/jsbsim/hydro/environment/wave-length-ft"));
+    setprop("environment/waves/amplitude-ft",
+            getprop("/fdm/jsbsim/hydro/environment/wave-amplitude-ft"));
+    setprop("environment/waves/angular-frequency-rad_sec",
+            getprop("/fdm/jsbsim/hydro/environment/wave/angular-frequency-rad_sec"));
+    setprop("environment/waves/wave-number-rad_ft",
+            getprop("/fdm/jsbsim/hydro/environment/wave/wave-number-rad_ft"));
 
     # Temporary and ugly starter handling.
     setprop("/controls/engines/engine[0]/starter",
@@ -29,11 +56,14 @@ var ground = func {
     settimer(ground, 0.0);
 }
 
+# Do terrain modelling ourselves.
+setprop("sim/fdm/surface/override-level", 1);
 
 var _short_empire_initialized = 0;
 setlistener("/sim/signals/fdm-initialized", func {
     if (_short_empire_initialized) return;
     aircraft.livery.init("Aircraft/Short_Empire/Models/Liveries");
+
     settimer(ground, 0.0);
     print("Hydrodynamics initialized.");
     copilot.init();
@@ -90,6 +120,8 @@ var debug_display_view_handler = {
         me.right.format = "%.5g";
         me.left.add("/orientation/pitch-deg");
         me.left.add("/fdm/jsbsim/hydro/beta-deg");
+        #me.left.add("/fdm/jsbsim/hydro/left-float-submersion-ft");
+        #me.left.add("/fdm/jsbsim/hydro/right-float-submersion-ft");
         #me.left.add("/fdm/jsbsim/hydro/coefficients/C_V");
         #me.left.add("/fdm/jsbsim/hydro/coefficients/C_Delta");
         #me.left.add("/fdm/jsbsim/hydro/coefficients/C_R");

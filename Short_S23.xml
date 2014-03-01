@@ -3,7 +3,7 @@
 
   Short S.23 flying boat flight model for JSBSim.
 
-    Copyright (C) 2008 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2008 - 2014  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate>2008-11-05</filecreationdate>
-  <version>$Id: Short_S23.xml,v 1.45 2013/09/21 21:09:35 anders Exp $</version>
+  <version>$Id: Short_S23.xml,v 1.46 2014/03/01 23:11:29 anders Exp $</version>
 
   <description>Models a Short S.23 flying boat.</description>
 
@@ -358,42 +358,8 @@
 
  <ground_reactions>
   <documentation>
-   The hydrostatic interactions of the hull are modelled by external forces.
-
-   Total bouyancy of Type 2 float is 5000lb.
+   The hydrodynamic interactions of the hull are modelled by external forces.
   </documentation>
-
-  <contact type="BOGEY" name="LEFT_FLOAT">
-   <location unit="M">
-    <x>  8.50 </x>
-    <y> -9.75 </y>
-    <z> -0.50 </z>
-   </location>
-   <static_friction>  0.0 </static_friction>
-   <dynamic_friction> 0.8 </dynamic_friction>
-   <rolling_friction> 0.0 </rolling_friction>
-   <spring_coeff unit="LBS/FT">      1200.0 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC"> 1000.0 </damping_coeff>
-   <max_steer unit="DEG">0</max_steer>
-   <brake_group>NONE</brake_group>
-   <retractable>0</retractable>
-  </contact>
-
-  <contact type="BOGEY" name="RIGHT_FLOAT">
-   <location unit="M">
-    <x>  8.50 </x>
-    <y>  9.75 </y>
-    <z> -0.50 </z>
-   </location>
-   <static_friction>  0.0 </static_friction>
-   <dynamic_friction> 0.8 </dynamic_friction>
-   <rolling_friction> 0.0 </rolling_friction>
-   <spring_coeff unit="LBS/FT">      1200.0 </spring_coeff>
-   <damping_coeff unit="LBS/FT/SEC"> 1000.0 </damping_coeff>
-   <max_steer unit="DEG">0</max_steer>
-   <brake_group>NONE</brake_group>
-   <retractable>0</retractable>
-  </contact>
 
   <contact type="STRUCTURE" name="NOSE">
    <location unit="M">

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- vertical speed indicator
   Copyright (C) 2009  AJ MacLeod, Detlef Faber.
-  Copyright (C) 2012  Anders Gidenstam.
+  Copyright (C) 2012, 2015  Anders Gidenstam.
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -14,8 +14,7 @@
   <light-power-W type="string"/>
  </params>
 
- <path>Aircraft/spitfireIX/Models/Instruments/vsi.ac</path>
- <texture-path>Aircraft/spitfireIX/Models/Instruments/</texture-path>
+ <path>vsi.ac</path>
 
  <animation>
   <type>rotate</type>

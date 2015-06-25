@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- altimeter
   Copyright (C) 2008  AJ MacLeod.
-  Copyright (C) 2010 - 2012  Anders Gidenstam.
+  Copyright (C) 2010 - 2015  Anders Gidenstam.
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList> 
@@ -15,8 +15,7 @@
   <light-power-W type="string"/>
  </params>
 
- <path>Aircraft/spitfireIX/Models/Instruments/altimeter.ac</path>
- <texture-path>Aircraft/spitfireIX/Models/Instruments/</texture-path>
+ <path>altimeter.ac</path>
   
  <!-- altimeter -->
    

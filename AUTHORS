@@ -12,8 +12,11 @@ Ron Jensen
 The model borrows content from the following authors' contributions
 to FlightGear:
 
-AJ MacLeod
-  - British WWII era photo textured instruments. (From spitfireIX)
+AJ MacLeod, permission to use photos generously given by
+http://www.spitfirespares.co.uk
+  - British WWII era photo textured instruments. (From Aircraft/spitfireIX)
+    Altimeter, AI, DI, magneto switch, turn indicator, VSI and the
+    bezel of the boost, CHT and oil pressure and temperature gauges.
 
 Anonymous
   - Propeller 3d models. (From Boeing 314)
@@ -30,12 +33,6 @@ Vivian Meazza
 Dependencies (i.e. install these aircraft):
 
 Aircraft/Boeing314      (Sounds/engine_running.wav,Sounds/engine_idle.wav)
-
-Aircraft/spitfireIX     (Models/Instruments/magneto.ac,
-                         Models/Instruments/altimeter.ac,
-                         Models/Instruments/attitude.xml,
-                         Models/Instruments/turn.ac,
-                         Models/Instruments/vsi.xm)
 
 Aircraft/Spitfire       (Models/clock.ac
                          Models/compass-p11.ac)

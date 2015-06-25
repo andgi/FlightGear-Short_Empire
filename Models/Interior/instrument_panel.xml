@@ -2,7 +2,7 @@
 <!--
   Short S.23 Empire flying boat for FlightGear.
 
-  Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2008 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -246,7 +246,7 @@
 
  <model>
   <name>Magneto switches engine 1</name>
-  <path>Aircraft/Short_Empire/Instruments/magneto_switch.xml</path>
+  <path>Aircraft/Short_Empire/Instruments/MagnetoSwitch/magneto_switch.xml</path>
   <offsets>
    <x-m>-0.019</x-m>
    <y-m>-0.114</y-m>
@@ -262,7 +262,7 @@
 
  <model>
   <name>Magneto switches engine 2</name>
-  <path>Aircraft/Short_Empire/Instruments/magneto_switch.xml</path>
+  <path>Aircraft/Short_Empire/Instruments/MagnetoSwitch/magneto_switch.xml</path>
   <offsets>
    <x-m>-0.019</x-m>
    <y-m>-0.038</y-m>
@@ -278,7 +278,7 @@
 
  <model>
   <name>Magneto switches engine 3</name>
-  <path>Aircraft/Short_Empire/Instruments/magneto_switch.xml</path>
+  <path>Aircraft/Short_Empire/Instruments/MagnetoSwitch/magneto_switch.xml</path>
   <offsets>
    <x-m>-0.019</x-m>
    <y-m> 0.038</y-m>
@@ -294,7 +294,7 @@
 
  <model>
   <name>Magneto switches engine 4</name>
-  <path>Aircraft/Short_Empire/Instruments/magneto_switch.xml</path>
+  <path>Aircraft/Short_Empire/Instruments/MagnetoSwitch/magneto_switch.xml</path>
   <offsets>
    <x-m>-0.019</x-m>
    <y-m> 0.114</y-m>

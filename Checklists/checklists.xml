@@ -11,14 +11,14 @@
       have no connection whatsoever to any instructions for the real
       aircraft.
  -->
- <checklist include="Aircraft/Short_Empire/Checklists/before-engine-start.xml"/>
- <checklist include="Aircraft/Short_Empire/Checklists/engine-start.xml"/>
- <checklist include="Aircraft/Short_Empire/Checklists/after-engine-start.xml"/>
- <checklist include="Aircraft/Short_Empire/Checklists/engine-run-up.xml"/>
- <checklist include="Aircraft/Short_Empire/Checklists/before-take-off.xml"/>
- <checklist include="Aircraft/Short_Empire/Checklists/after-take-off.xml"/>
- <checklist include="Aircraft/Short_Empire/Checklists/cruise.xml"/>
- <checklist include="Aircraft/Short_Empire/Checklists/approach.xml"/>
+ <checklist include="before-engine-start.xml"/>
+ <checklist include="engine-start.xml"/>
+ <checklist include="after-engine-start.xml"/>
+ <checklist include="engine-run-up.xml"/>
+ <checklist include="before-take-off.xml"/>
+ <checklist include="after-take-off.xml"/>
+ <checklist include="cruise.xml"/>
+ <checklist include="approach.xml"/>
  <!-- checklist include="Aircraft/Short_Empire/Checklists/final.xml"/ -->
 
 </PropertyList>

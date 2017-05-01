@@ -11,18 +11,25 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.68 2017/03/23 21:21:23 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Short_Empire-set.xml,v 1.69 2017/05/01 22:08:55 anders Exp $</aircraft-version>
 
   <long-description>
-The Short S.23 'C'-class Empire flying boats were designed and built by Short Brothers in 1935 to a specification and order placed by Imperial Airways. A total of 31 Short S.23 flying boats were built, 25 for Imperial Airways and 6 for QANTAS Empire Airways. The first S.23 to fly was Canopus on July 3 1936 and the last was Caledonia, scrapped 23 March 1947. Between those years the S.23 Empire flying boats served a route network stretching (at times) from Foynes (Ireland) in the north-west, Durban (South Africa) in the south to Sydney (Australia) in the south-east.
+The Short S.23 'C'-class Empire flying boats were designed and built by Short Brothers in 1935 to a specification and order placed by Imperial Airways. The Empire flying boat was a four engined flying boat intended for Imperial Airways long distance routes to South Africa, India, the Far East and Australia. I could carry up to 24 passengers or 2 tons of mail for the short sectors (less than 400 nm) of the routes. A total of 31 Short S.23 flying boats were built, 25 for Imperial Airways and 6 for QANTAS Empire Airways. The first S.23 to fly was Canopus on July 3 1936 and the last was Caledonia, scrapped 23 March 1947. Between those years the S.23 Empire flying boats served a route network stretching (at times) from Foynes (Ireland) in the north-west, Durban (South Africa) in the south to Sydney (Australia) in the south-east.
   </long-description>
 
   <tags>
-   <tag>passenger</tag>
+   <tag>transport</tag>
+   <tag>short</tag>
+   <tag>propeller</tag>
+   <tag>piston</tag>
    <tag>radial</tag>
+   <tag>supercharged</tag>
    <tag>4-engine</tag>
+   <tag>variable-pitch</tag>
    <tag>seaplane</tag>
+   <tag>high-wing</tag>
    <tag>1930s</tag>
+   <tag>1940s</tag>
    <tag>golden-age</tag>
    <tag>ww2</tag>
   </tags>

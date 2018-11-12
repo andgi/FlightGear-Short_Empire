@@ -3,7 +3,7 @@
 
   Short S.23 flying boat flight model for JSBSim.
 
-    Copyright (C) 2008 - 2014  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2008 - 2018  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -64,8 +64,10 @@
  <property value="44.74">hydro/float-beam-ft3</property>
  <property value="158.8">hydro/float-beam-ft4</property>
 
- <property value="31.99">hydro/float-arm-y-ft</property>
- <property value="1.64">hydro/float-arm-z-ft</property>
+ <property value="-31.99">hydro/float-arm-y-ft[0]</property>
+ <property value="31.99">hydro/float-arm-y-ft[1]</property>
+ <property value="-1.71">hydro/float-arm-z-ft[0]</property>
+ <property value="-1.71">hydro/float-arm-z-ft[1]</property>
 
  <property value="56.0">hydro/hull-length-ft</property>
 
@@ -74,6 +76,48 @@
  <property value="20.0">hydro/lift-tweak-factor</property>
  <property value="1.5">hydro/pitch-tweak-factor</property>
  <property value="4.0">hydro/yaw-tweak-factor</property>
+
+  <channel name="Enable/disable">
+
+  <fcs_function name="hydro/active-norm">
+   <description>
+    A property that is 0 when no part of the hull is in the water.
+    The maximum value is 1.
+   </description>
+   <function>
+    <product>
+     <value>0.01</value>
+     <lt>
+      <value>-100.0</value>
+      <property>hydro/hull/roll-deg</property>
+     </lt>
+     <lt>
+      <property>hydro/hull/roll-deg</property>
+      <value>100.0</value>
+     </lt>
+     <sum>
+      <property>hydro/buoyancy-lbs</property>
+      <property>hydro/float-buoyancy-lbs[0]</property>
+      <property>hydro/float-buoyancy-lbs[1]</property>
+      <property>hydro/hull-lift-lbs</property>
+      <property>hydro/float-planing-lift-lbs[0]</property>
+      <property>hydro/float-planing-lift-lbs[1]</property>
+     </sum>
+     <!-- not>
+      <and>
+       <property>gear/unit[0]/solid</property>
+       <property>gear/unit[4]/solid</property>
+      </and>
+     </not -->
+    </product>
+   </function>
+    <clipto>
+     <min>0.0</min>
+     <max>1.0</max>
+    </clipto>
+  </fcs_function>
+
+ </channel>
 
  <channel name="Effective hull position and orientation">
 
@@ -316,85 +360,283 @@
 
  </channel>
 
- <channel name="Float positions">
+ <channel name="Effective float position and orientation">
 
-  <fcs_function name="hydro/left-float-submersion-ft">
+  <fcs_function name="hydro/floats/height-agl-ft[0]">
+   <description>
+    The float height with waves applied.
+   </description>
+   <function>
+    <sum>
+     <property>hydro/height-agl-ft</property>
+     <product>
+      <value>-1.0</value>
+      <property>hydro/float-arm-y-ft[0]</property>
+      <sin><property>attitude/phi-rad</property></sin>
+     </product>
+     <product>
+      <value>-1.0</value>
+      <table>
+       <independentVar lookup="row">hydro/environment/wave-length-ft</independentVar>
+       <tableData>
+           0.0  0.0
+         100.0  1.0
+       </tableData>
+      </table>
+      <max>
+       <value>-100.0</value>
+       <min>
+        <!-- Water level change at the float position. -->
+        <product>
+         <property>hydro/environment/wave-amplitude-ft</property>
+         <cos>
+          <difference>
+           <product>
+            <property>hydro/float-arm-y-ft[0]</property>
+            <property>hydro/environment/wave/hull-y-factor</property>
+            <property>hydro/environment/wave/wave-number-rad_ft</property>
+           </product>
+           <product>
+            <property>hydro/environment/wave/angular-frequency-rad_sec</property>
+            <property>simulation/sim-time-sec</property>
+           </product>
+          </difference>
+         </cos>
+        </product>
+        <value>100.0</value>
+       </min>
+      </max>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+  <fcs_function name="hydro/floats/height-agl-ft[1]">
+   <description>
+    The float height with waves applied.
+   </description>
+   <function>
+    <sum>
+     <property>hydro/height-agl-ft</property>
+     <product>
+      <value>-1.0</value>
+      <property>hydro/float-arm-y-ft[1]</property>
+      <sin><property>attitude/phi-rad</property></sin>
+     </product>
+     <product>
+      <value>-1.0</value>
+      <table>
+       <independentVar lookup="row">hydro/environment/wave-length-ft</independentVar>
+       <tableData>
+           0.0  0.0
+         100.0  1.0
+       </tableData>
+      </table>
+      <max>
+       <value>-100.0</value>
+       <min>
+        <!-- Water level change at the float position. -->
+        <product>
+         <property>hydro/environment/wave-amplitude-ft</property>
+         <cos>
+          <difference>
+           <product>
+            <property>hydro/float-arm-y-ft[1]</property>
+            <property>hydro/environment/wave/hull-y-factor</property>
+            <property>hydro/environment/wave/wave-number-rad_ft</property>
+           </product>
+           <product>
+            <property>hydro/environment/wave/angular-frequency-rad_sec</property>
+            <property>simulation/sim-time-sec</property>
+           </product>
+          </difference>
+         </cos>
+        </product>
+        <value>100.0</value>
+       </min>
+      </max>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="hydro/float-submersion-ft[0]">
    <description>
     The submersion of the left float.
    </description>
    <function>
     <max>
      <value>0.0</value>
-     <difference>
+     <product>
+      <value>-1.0</value>
       <sum>
-       <!-- Water level change at the float position. -->
-       <product>
-        <property>hydro/environment/wave-amplitude-ft</property>
-        <cos>
-         <difference>
-          <product>
-           <property>hydro/float-arm-y-ft</property>
-           <property>hydro/environment/wave/hull-y-factor</property>
-           <property>hydro/environment/wave/wave-number-rad_ft</property>
-          </product>
-          <product>
-           <property>hydro/environment/wave/angular-frequency-rad_sec</property>
-           <property>simulation/sim-time-sec</property>
-          </product>
-         </difference>
-        </cos>
-       </product>
+       <!-- Float HRP height over water level at the float. -->
+       <property>hydro/floats/height-agl-ft[0]</property>
        <!-- Level of the bottom of the float w.r.t. the HRP. -->
-       <property>hydro/float-arm-z-ft</property>
        <product>
-        <value>-1.0</value>
-        <property>hydro/float-arm-y-ft</property>
-        <sin><property>attitude/roll-rad</property></sin>
+        <property>hydro/float-arm-z-ft[0]</property>
+        <cos><property>attitude/roll-rad</property></cos>
        </product>
       </sum>
       <property>hydro/height-agl-ft</property>
-     </difference>
+     </product>
     </max>
    </function>
   </fcs_function>
 
-  <fcs_function name="hydro/right-float-submersion-ft">
+  <fcs_function name="hydro/float-submersion-ft[1]">
    <description>
     The submersion of the right float.
    </description>
    <function>
     <max>
      <value>0.0</value>
-     <difference>
+     <product>
+      <value>-1.0</value>
       <sum>
-       <!-- Water level change at the float position. -->
-       <product>
-        <property>hydro/environment/wave-amplitude-ft</property>
-        <cos>
-         <difference>
-          <product>
-           <value>-1.0</value>
-           <property>hydro/float-arm-y-ft</property>
-           <property>hydro/environment/wave/hull-y-factor</property>
-           <property>hydro/environment/wave/wave-number-rad_ft</property>
-          </product>
-          <product>
-           <property>hydro/environment/wave/angular-frequency-rad_sec</property>
-           <property>simulation/sim-time-sec</property>
-          </product>
-         </difference>
-        </cos>
-       </product>
+       <!-- Float HRP height over water level at the float. -->
+       <property>hydro/floats/height-agl-ft[1]</property>
        <!-- Level of the bottom of the float w.r.t. the HRP. -->
-       <property>hydro/float-arm-z-ft</property>
        <product>
-        <property>hydro/float-arm-y-ft</property>
-        <sin><property>attitude/roll-rad</property></sin>
+        <property>hydro/float-arm-z-ft[1]</property>
+        <cos><property>attitude/roll-rad</property></cos>
        </product>
       </sum>
       <property>hydro/height-agl-ft</property>
-     </difference>
+     </product>
     </max>
+   </function>
+  </fcs_function>
+
+  <!-- FIXME: Account for the waves at the float's position. -->
+  <fcs_function name="hydro/floats/pitch-deg[0]">
+   <description>
+    The float pitch with the trim change due to waves and
+    the displacement wave applied.
+   </description>
+   <function>
+    <sum>
+     <property>hydro/pitch-deg</property>
+     <product>
+      <value>1.0</value>
+      <max>
+       <value>-30.0</value>
+       <min>
+        <property>hydro/orientation/wave-pitch-trim-change-deg</property>
+        <value>30.0</value>
+       </min>
+      </max>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+  <fcs_function name="hydro/floats/pitch-rad[0]">
+   <description>
+    The float pitch with the trim change due to waves and
+    the displacement wave applied.
+   </description>
+   <function>
+    <product>
+     <value>0.017453293</value>
+     <property>hydro/floats/pitch-deg[0]</property>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="hydro/floats/pitch-deg[1]">
+   <description>
+    The float pitch with the trim change due to waves and
+    the displacement wave applied.
+   </description>
+   <function>
+    <sum>
+     <property>hydro/pitch-deg</property>
+     <product>
+      <value>1.0</value>
+      <max>
+       <value>-30.0</value>
+       <min>
+        <property>hydro/orientation/wave-pitch-trim-change-deg</property>
+        <value>30.0</value>
+       </min>
+      </max>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+  <fcs_function name="hydro/floats/pitch-rad[1]">
+   <description>
+    The float pitch with the trim change due to waves and
+    the displacement wave applied.
+   </description>
+   <function>
+    <product>
+     <value>0.017453293</value>
+     <property>hydro/floats/pitch-deg[1]</property>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="hydro/floats/roll-deg[0]">
+   <description>
+    The float roll with the trim change due to waves applied.
+   </description>
+   <function>
+    <sum>
+     <property>hydro/roll-deg</property>
+     <product>
+      <value>1.0</value>
+      <max>
+       <value>-50.0</value>
+       <min>
+        <property>hydro/orientation/wave-roll-trim-change-deg</property>
+        <value>50.0</value>
+       </min>
+      </max>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+  <fcs_function name="hydro/floats/roll-rad[0]">
+   <description>
+    The float roll with the trim change due to waves applied.
+   </description>
+   <function>
+    <product>
+     <value>0.017453293</value>
+     <property>hydro/floats/roll-deg[0]</property>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="hydro/floats/roll-deg[1]">
+   <description>
+    The float roll with the trim change due to waves applied.
+   </description>
+   <function>
+    <sum>
+     <property>hydro/roll-deg</property>
+     <product>
+      <value>1.0</value>
+      <max>
+       <value>-50.0</value>
+       <min>
+        <property>hydro/orientation/wave-roll-trim-change-deg</property>
+        <value>50.0</value>
+       </min>
+      </max>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+  <fcs_function name="hydro/floats/roll-rad[1]">
+   <description>
+    The float roll with the trim change due to waves applied.
+   </description>
+   <function>
+    <product>
+     <value>0.017453293</value>
+     <property>hydro/floats/roll-deg[1]</property>
+    </product>
    </function>
   </fcs_function>
 
@@ -594,15 +836,14 @@
    </function>
   </fcs_function>
 
-  <fcs_function name="hydro/left-float-lift-lbs">
+  <fcs_function name="hydro/float-buoyancy-lbs[0]">
    <description>
     Lift due to buoyancy from the left float.
     Total bouyancy of a Type 2 float is 5000lb.
-    FIXME: Add planing lift.
    </description>
    <function>
     <table>
-     <independentVar lookup="row">hydro/left-float-submersion-ft</independentVar>
+     <independentVar lookup="row">hydro/float-submersion-ft</independentVar>
      <tableData>
        0.0      0.0
        1.0   2500.0
@@ -612,21 +853,39 @@
    </function>
   </fcs_function>
 
-  <fcs_function name="hydro/right-float-lift-lbs">
+  <fcs_function name="hydro/float-buoyancy-lbs[1]">
    <description>
     Lift due to buoyancy from the right float.
     Total bouyancy of a Type 2 float is 5000lb.
-    FIXME: Add planing lift.
    </description>
    <function>
     <table>
-     <independentVar lookup="row">hydro/right-float-submersion-ft</independentVar>
+     <independentVar lookup="row">hydro/float-submersion-ft[1]</independentVar>
      <tableData>
        0.0      0.0
        1.0   2500.0
        3.3   5000.0
      </tableData>
     </table>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="hydro/float-planing-lift-lbs[0]">
+   <function>
+    <description>Float lift due to planing.</description>
+    <sum>
+     <property>hydro/planing-floats/forebody-lift-force-lbs[0]</property>
+     <property>hydro/planing-floats/afterbody-lift-force-lbs[0]</property>
+    </sum>
+   </function>
+  </fcs_function>
+  <fcs_function name="hydro/float-planing-lift-lbs[1]">
+   <function>
+    <description>Float lift due to planing.</description>
+    <sum>
+     <property>hydro/planing-floats/forebody-lift-force-lbs[1]</property>
+     <property>hydro/planing-floats/afterbody-lift-force-lbs[1]</property>
+    </sum>
    </function>
   </fcs_function>
 
@@ -634,7 +893,7 @@
    <function>
     <product>
      <property>velocities/v-down-fps</property>
-     <value> -1.0 </value>
+     <value> -0.25 </value>
      <table>
       <independentVar lookup="row">hydro/coefficients/C_Delta</independentVar>
       <tableData>
@@ -648,13 +907,23 @@
    </function>
   </fcs_function>
 
-  <summer name="hydro/fbz-lbs">
-   <input> hydro/buoyancy-lbs </input>
-   <input> hydro/hull-lift-lbs </input>
-   <input> hydro/left-float-lift-lbs </input>
-   <input> hydro/right-float-lift-lbs </input>
-   <input> hydro/damping-lift-lbs </input>
-  </summer>
+  <fcs_function name="hydro/fbz-lbs">
+   <function>
+    <product>
+     <value>1.0</value>
+     <property>hydro/active-norm</property>
+     <sum>
+      <property>hydro/buoyancy-lbs</property>
+      <property>hydro/hull-lift-lbs</property>
+      <property>hydro/float-buoyancy-lbs[0]</property>
+      <property>hydro/float-buoyancy-lbs[1]</property>
+      <property>hydro/float-planing-lift-lbs[0]</property>
+      <property>hydro/float-planing-lift-lbs[1]</property>
+      <property>hydro/damping-lift-lbs</property>
+     </sum>
+    </product>
+   </function>
+  </fcs_function>
 
  </channel>
 
@@ -690,7 +959,7 @@
      <!-- From Boeing314A: Hull_resistance (beta=0) -->
      <table>
       <independentVar lookup="row">hydro/v-kt</independentVar>
-      <independentVar lookup="column">hydro/left-float-submersion-ft</independentVar>
+      <independentVar lookup="column">hydro/float-submersion-ft</independentVar>
       <tableData>
                                         0.0     1.0
                           0.0000        0.0     0.0000
@@ -739,7 +1008,7 @@
      <!-- From Boeing314A: Hull_resistance (beta=0) -->
      <table>
       <independentVar lookup="row">hydro/v-kt</independentVar>
-      <independentVar lookup="column">hydro/right-float-submersion-ft</independentVar>
+      <independentVar lookup="column">hydro/float-submersion-ft[1]</independentVar>
       <tableData>
                                         0.0     1.0
                           0.0000        0.0     0.0000
@@ -1072,7 +1341,7 @@
    </documentation>
    <function>
     <product>
-     <property>hydro/float-arm-y-ft</property>
+     <property>hydro/float-arm-y-ft[1]</property>
      <cos>
       <property>hydro/beta-rad</property>
      </cos>
@@ -1218,10 +1487,16 @@
    </documentation>
    <function>
     <product>
-     <property>hydro/float-arm-y-ft</property>
+     <property>hydro/float-arm-y-ft[1]</property>
      <difference>
-      <property>hydro/left-float-lift-lbs</property>
-      <property>hydro/right-float-lift-lbs</property>
+      <sum>
+       <property>hydro/float-buoyancy-lbs[0]</property>
+       <property>hydro/float-planing-lift-lbs[0]</property>
+      </sum>
+      <sum>
+       <property>hydro/float-buoyancy-lbs[1]</property>
+       <property>hydro/float-planing-lift-lbs[1]</property>
+      </sum>
      </difference>
     </product>
    </function>

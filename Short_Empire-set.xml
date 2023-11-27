@@ -2,7 +2,7 @@
 <!--
   Short Empire flying boat for FlightGear.
 
-  Copyright (C) 2007 - 2018  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2023  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -45,7 +45,7 @@ The Short S.23 'C'-class Empire flying boats were designed and built by Short Br
   <flight-model>jsb</flight-model>
   <aero>Short_S23</aero>
   <!-- The higher rate seems to aide stability in the hydrodynamics system. -->
-  <model-hz type="double">480.0</model-hz>
+  <model-hz type="double">960.0</model-hz>
 
   <presets>
    <onground type="bool">true</onground>

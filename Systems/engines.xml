@@ -130,17 +130,15 @@
    <function>
     <description>Standard mixture position from airpressure.</description>
     <!-- Needs to be tuned. -->
-    <product>
-     <table>
-      <independentVar lookup="row">atmosphere/P-psf</independentVar>
-      <tableData>
+    <table>
+     <independentVar lookup="row">atmosphere/P-psf</independentVar>
+     <tableData>
           50  0.075
          990  0.45
         1300  0.6
         2100  1.0
-      </tableData>
-     </table>
-    </product>
+     </tableData>
+    </table>
    </function>
   </fcs_function>
 

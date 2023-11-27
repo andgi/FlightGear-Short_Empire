@@ -3,7 +3,7 @@
 
   Short S.23 flying boat flight model for JSBSim.
 
-    Copyright (C) 2008 - 2018  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2008 - 2023  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -421,16 +421,6 @@
   </documentation>
 
   <engine file="eng_PegasusXc">
-   <location unit="M">
-    <x>  6.80 </x>
-    <y> -7.50 </y>
-    <z>  2.90 </z>
-   </location>
-   <orient unit="DEG">
-    <pitch> 1.13 </pitch>
-    <roll>  0.00 </roll>
-    <yaw>   0.00 </yaw>
-   </orient>
    <feed>8</feed>
    <thruster file="prop_deHavilland5000">
     <sense>-1</sense>
@@ -448,16 +438,6 @@
   </engine>
 
   <engine file="eng_PegasusXc">
-   <location unit="M">
-    <x>  6.50 </x>
-    <y> -3.98 </y>
-    <z>  2.69 </z>
-   </location>
-   <orient unit="DEG">
-    <pitch> 1.13 </pitch>
-    <roll>  0.00 </roll>
-    <yaw>   0.00 </yaw>
-   </orient>
    <feed>9</feed>
    <thruster file="prop_deHavilland5000">
     <sense>-1</sense>
@@ -475,16 +455,6 @@
   </engine>
 
   <engine file="eng_PegasusXc">
-   <location unit="M">
-    <x>  6.50 </x>
-    <y>  3.98 </y>
-    <z>  2.69 </z>
-   </location>
-   <orient unit="DEG">
-    <pitch> 1.13 </pitch>
-    <roll>  0.00 </roll>
-    <yaw>   0.00 </yaw>
-   </orient>
    <feed>10</feed>
    <thruster file="prop_deHavilland5000">
     <sense>-1</sense>
@@ -502,16 +472,6 @@
   </engine>
 
   <engine file="eng_PegasusXc">
-   <location unit="M">
-    <x>  6.80 </x>
-    <y>  7.50 </y>
-    <z>  2.90 </z>
-   </location>
-   <orient unit="DEG">
-    <pitch> 1.13 </pitch>
-    <roll>  0.00 </roll>
-    <yaw>   0.00 </yaw>
-   </orient>
    <feed>11</feed>
    <thruster file="prop_deHavilland5000">
     <sense>-1</sense>

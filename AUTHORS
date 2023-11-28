@@ -28,13 +28,3 @@ Emmanuel BARANGER
 
 Vivian Meazza
   - Instruments from the Spitfire IIa and Sopwith Camel.
-
-
-Dependencies (i.e. install these aircraft):
-
-Aircraft/Boeing314      (Sounds/engine_running.wav,Sounds/engine_idle.wav)
-
-Aircraft/Spitfire       (Models/clock.ac
-                         Models/compass-p11.ac)
-
-Aircraft/sopwithCamel   (Models/mag_switch.ac)

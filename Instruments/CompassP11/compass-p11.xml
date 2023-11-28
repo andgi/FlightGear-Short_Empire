@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
   Copyright (C) 2010  Vivian Meazza
-  Copyright (C) 2010 - 2012  Anders Gidenstam
+  Copyright (C) 2010 - 2023  Anders Gidenstam
   This file is licensed under the GPL license version 2 or later.
 	
 	Amendment to alter into standard RAF compass type P 11
@@ -22,8 +22,7 @@
   <light-power-W type="string"/>
  </params>
 
- <path>Aircraft/Spitfire/Models/compass-p11.ac</path>
- <texture-path>Aircraft/Spitfire/Models/</texture-path>
+ <path>compass-p11.ac</path>
 
  <offsets>
   <!-- x/y/z == back/right/up -->

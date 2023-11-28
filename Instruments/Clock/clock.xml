@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- clock
   Copyright (C) 2004 - 2010 Vivian Meazza
-  Copyright (C) 2012  Anders Gidenstam.
+  Copyright (C) 2012 - 2023 Anders Gidenstam.
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -15,8 +15,7 @@
   <light-power-W type="string"/>
  </params>
 
- <path>Aircraft/Spitfire/Models/clock.ac</path>
- <texture-path>Aircraft/Spitfire/Models/</texture-path>
+ <path>clock.ac</path>
 
  <animation>
   <type>pick</type>

@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <version type="int">2</version>
+  <flight-rules type="string">V</flight-rules>
+  <flight-type type="string">X</flight-type>
+  <estimated-duration-minutes type="int">0</estimated-duration-minutes>
+  <route>
+    <wp n="1">
+      <type type="string">basic</type>
+      <ident type="string">Sydney/Rose Bay</ident>
+      <lat type="double">-33.86838699999999</lat>
+      <lon type="double">151.263121</lon>
+    </wp>
+    <wp n="2">
+      <type type="string">basic</type>
+      <ident type="string">Brisbane</ident>
+      <lat type="double">-27.42754699999999</lat>
+      <lon type="double">153.1282249999999</lon>
+    </wp>
+    <wp n="3">
+      <type type="string">basic</type>
+      <ident type="string">Gladstone</ident>
+      <lat type="double">-23.82888799999999</lat>
+      <lon type="double">151.2520839999999</lon>
+    </wp>
+    <wp n="4">
+      <type type="string">basic</type>
+      <ident type="string">Townsville</ident>
+      <lat type="double">-19.248107</lat>
+      <lon type="double">146.8267449999999</lon>
+    </wp>
+    <wp n="5">
+      <type type="string">basic</type>
+      <ident type="string">Karumba</ident>
+      <lat type="double">-17.47243099999999</lat>
+      <lon type="double">140.8346739999999</lon>
+    </wp>
+    <wp n="6">
+      <type type="string">basic</type>
+      <ident type="string">Groote</ident>
+      <lat type="double">-13.95358099999999</lat>
+      <lon type="double">136.411035</lon>
+    </wp>
+    <wp n="7">
+      <type type="string">basic</type>
+      <ident type="string">Darwin</ident>
+      <lat type="double">-12.473265</lat>
+      <lon type="double">130.846809</lon>
+    </wp>
+    <wp n="8">
+      <type type="string">basic</type>
+      <ident type="string">Koepang (Kupang)</ident>
+      <lat type="double">-10.15262499999999</lat>
+      <lon type="double">123.587474</lon>
+    </wp>
+    <wp n="9">
+      <type type="string">basic</type>
+      <ident type="string">Bima</ident>
+      <lat type="double">-8.450367999999999</lat>
+      <lon type="double">118.7130259999999</lon>
+    </wp>
+    <wp n="10">
+      <type type="string">basic</type>
+      <ident type="string">Sourabaya (Surabaya)</ident>
+      <lat type="double">-7.18759</lat>
+      <lon type="double">112.7338029999999</lon>
+    </wp>
+    <wp n="11">
+      <type type="string">basic</type>
+      <ident type="string">Batavia (Jakarta)</ident>
+      <lat type="double">-6.118776999999999</lat>
+      <lon type="double">106.8352549999999</lon>
+    </wp>
+    <wp n="12">
+      <type type="string">basic</type>
+      <ident type="string">Sinagpore/Kallang</ident>
+      <lat type="double">1.302283</lat>
+      <lon type="double">103.8700029999999</lon>
+    </wp>
+    <wp n="13">
+      <type type="string">basic</type>
+      <ident type="string">Penang (Pinang)</ident>
+      <lat type="double">5.415</lat>
+      <lon type="double">100.3499999999999</lon>
+    </wp>
+    <wp n="14">
+      <type type="string">basic</type>
+      <ident type="string">Ko Samu (Ko Samui)</ident>
+      <lat type="double">9.563299999999999</lat>
+      <lon type="double">100.0544639999999</lon>
+    </wp>
+    <wp n="15">
+      <type type="string">basic</type>
+      <ident type="string">Bangkok</ident>
+      <lat type="double">13.657976</lat>
+      <lon type="double">100.5504479999999</lon>
+    </wp>
+    <wp n="16">
+      <type type="string">basic</type>
+      <ident type="string">Rangoon (Yangon)</ident>
+      <lat type="double">16.733619</lat>
+      <lon type="double">96.209164</lon>
+    </wp>
+    <wp n="17">
+      <type type="string">basic</type>
+      <ident type="string">Akyab (Sittwe)</ident>
+      <lat type="double">20.139</lat>
+      <lon type="double">92.90800000000001</lon>
+    </wp>
+    <wp n="18">
+      <type type="string">basic</type>
+      <ident type="string">Calcutta</ident>
+      <lat type="double">22.588625</lat>
+      <lon type="double">88.35353399999999</lon>
+    </wp>
+    <wp n="19">
+      <type type="string">basic</type>
+      <ident type="string">Allahabad</ident>
+      <lat type="double">25.42537499999999</lat>
+      <lon type="double">81.86500999999999</lon>
+    </wp>
+    <wp n="20">
+      <type type="string">basic</type>
+      <ident type="string">Jhansi/Parichha Reservoir</ident>
+      <lat type="double">25.50529299999999</lat>
+      <lon type="double">78.75580399999999</lon>
+    </wp>
+    <wp n="21">
+      <type type="string">basic</type>
+      <ident type="string">Gwalior</ident>
+      <lat type="double">26.21399999999999</lat>
+      <lon type="double">77.994</lon>
+    </wp>
+    <wp n="22">
+      <type type="string">basic</type>
+      <ident type="string">Lake Udaipur</ident>
+      <lat type="double">24.574</lat>
+      <lon type="double">73.68</lon>
+    </wp>
+    <wp n="23">
+      <type type="string">basic</type>
+      <ident type="string">Raj Samand</ident>
+      <lat type="double">25.071</lat>
+      <lon type="double">73.88800000000001</lon>
+    </wp>
+    <wp n="24">
+      <type type="string">basic</type>
+      <ident type="string">Karachi</ident>
+      <lat type="double">24.78</lat>
+      <lon type="double">67.13800000000001</lon>
+    </wp>
+    <wp n="25">
+      <type type="string">basic</type>
+      <ident type="string">Jiwani</ident>
+      <lat type="double">25.053</lat>
+      <lon type="double">61.72299999999999</lon>
+    </wp>
+    <wp n="26">
+      <type type="string">basic</type>
+      <ident type="string">Dubai</ident>
+      <lat type="double">25.23699999999999</lat>
+      <lon type="double">55.32500000000001</lon>
+    </wp>
+    <wp n="27">
+      <type type="string">basic</type>
+      <ident type="string">Bahrein</ident>
+      <lat type="double">26.23999999999999</lat>
+      <lon type="double">50.62299999999999</lon>
+    </wp>
+    <wp n="28">
+      <type type="string">basic</type>
+      <ident type="string">Kuwait</ident>
+      <lat type="double">29.354583</lat>
+      <lon type="double">47.934932</lon>
+    </wp>
+    <wp n="29">
+      <type type="string">basic</type>
+      <ident type="string">Basra/Margil</ident>
+      <lat type="double">30.52029999999999</lat>
+      <lon type="double">47.8455</lon>
+    </wp>
+    <wp n="30">
+      <type type="string">basic</type>
+      <ident type="string">Lake Habbaniyeh</ident>
+      <lat type="double">33.34624999999999</lat>
+      <lon type="double">43.54735899999999</lon>
+    </wp>
+    <wp n="31">
+      <type type="string">basic</type>
+      <ident type="string">Tiberias</ident>
+      <lat type="double">32.804</lat>
+      <lon type="double">35.54699999999999</lon>
+    </wp>
+  </route>
+</PropertyList>

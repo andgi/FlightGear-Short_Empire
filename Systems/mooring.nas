@@ -2,290 +2,207 @@
 ##
 ## Short S.23 'C'-class Empire flying boat
 ##
-##  Copyright (C) 2010 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2010 - 2012, 2025  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2024 - 2025        Ludovic Brenta
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
 
-###########################################################################
-## Initialization and reset.
+# Do terrain modelling ourselves.
+setprop("sim/fdm/surface/override-level", 1);
 
-var init = func(reinit=0) {
-    mooring.init(reinit);
-    if (getprop("/sim/presets/onground")) {
-        settimer(func {
-            if (!mooring.pick_up_mooring()) {
-                # No mooring available, set up a local mooring.
-                mooring.add_fixed_mooring(geo.aircraft_position(), 0.0);
-            }
-            # We need the FDM to run in between.
-            settimer(func {
-                mooring.pick_up_mooring();
-            }, 0.5);
-        }, 0.4);
-    }
-
-    if (!reinit) {
-        # Add the predefined moorings.
-        foreach (var m; EAMS_MOORINGS_EUROPE ~
-                 EAMS_MOORINGS_EAST ~
-                 EAMS_MOORINGS_SOUTH ~
-                 NORTH_ATLANTIC ~
-                 TEAL) {
-            var pos = geo.Coord.new().set_latlon(m[1], m[2]);
-            mooring.add_fixed_mooring(pos, 0.0, m[0]);
-        }
-
-
-        # Enable Alt+Click to place the mooring
-        setlistener("/sim/signals/click", func {
-            var click_pos = geo.click_position();
-            if (__kbd.alt.getBoolValue()) {
-                mooring.add_fixed_mooring(click_pos, 0.0);
-            }
-        });
-    }
-}
-
-var _mooring_initialized = 0;
-setlistener("/sim/signals/fdm-initialized", func {
-    init(_mooring_initialized);
-    _mooring_initialized = 1;
-});
-
-###########################################################################
-## Mooring location support.
 var mooring = {
-    ##################################################
-    init : func(reinit) {
-        me.UPDATE_INTERVAL = 0.0;
-        me.MP_ANNOUNCE_INTERVAL = 60.0;
-        me.loopid = 0;
-        me.last_mp_announce = systime(); 
-        ## Hash containing all supported mooring locations.
-        ## Format:
-        ##   Fixed {position : <coord>, alt_offset : <m>}
-        ##   AI    {base : <node>, alt_offset : <m>}
-        if (!reinit) {
-            me.moorings = {};
-            me.mooring_model  = {local : nil};
-            me.fairway_model  = {local : nil};
+    moorings : { },
+    # Hash of { Coord, model } objects, indexed by name, containing all supported mooring locations.  The models are added on demand
+    # only.
 
-            me.mooring_model_path =
-                me.find_model_path("Short_Empire/Models/Moorings/buoy.xml");
-            me.fairway_model_path =
-                me.find_model_path("Short_Empire/Models/Moorings/flare_path.xml");
+    fairway_model : {},   # Optional model showing where to take off. Indexed by name.
+    selected : "",        # The name of the selected mooring; indexes into the "moorings" and "fairway_model" above.
+    listener : nil,       # When not nil, listens for /sim/signals/fdm-initialized.
+
+    active_mooring : nil,
+    mooring_connected : nil,
+    # Two property nodes used to communicate with jsbsim and initialized after the FDM is initialized for the second time.
+
+    select_nearest_as_we_fly : nil
+    # A timer started after the second FDM initialization.  Periodically updates me.selected so it always designates the mooring point
+    # nearest to the aicraft.
+};
+
+mooring.init = func() {
+    # This runs exactly once, immediately on startup.  Initializes static data.
+    me.mooring_model_path =
+        me.find_model_path("Short_Empire/Models/Moorings/buoy.xml");
+    me.fairway_model_path =
+        me.find_model_path("Short_Empire/Models/Moorings/flare_path.xml");
+
+    # Add the predefined moorings.
+    foreach (var m; EAMS_MOORINGS_EUROPE ~
+             EAMS_MOORINGS_EAST ~
+             EAMS_MOORINGS_SOUTH ~
+             NORTH_ATLANTIC ~
+             TEAL ~
+             FICTIONAL) {
+        var pos = geo.Coord.new();
+        if (size (m) == 4) { # has altitude in m
+            pos.set_latlon(m[1], m[2], m[3]);
         }
-        me.active_mooring = props.globals.getNode("/fdm/jsbsim/mooring");
-        me.selected = "";
-        me.reset();
-        print("Short Empire Mooring ... Standing by.");
-    },
-    ##################################################
-    add_fixed_mooring : func(pos, alt_offset, name="local") {
-        me.moorings[name] = { position   : pos,
-                              alt_offset : alt_offset };
-        me.display_mooring(name);
-        if (name == "local") {
-            #announce_fixed_mooring(pos, alt_offset);
+        else {
+            pos.set_latlon(m[1], m[2]);
         }
-    },
-    ##################################################
-    display_mooring : func(name) {
-        if (!contains(me.moorings[name], "position")) return;
-        var geo_info = geodinfo(me.moorings[name].position.lat(),
-                                me.moorings[name].position.lon());
-        if (geo_info == nil) return;
-        me.moorings[name].position.set_alt(geo_info[0]);
-        # Put a mooring buoy model here.
-        if (me.mooring_model[name] != nil) me.mooring_model[name].remove();
-        me.mooring_model[name] =
-            geo.put_model(me.mooring_model_path,
-                          me.moorings[name].position);
-        # Display the associated fairway, if any.
-        if (FAIRWAY[name] != nil) {
-            if (me.fairway_model[name] != nil) me.fairway_model[name].remove();
-            if (FAIRWAY[name][3] == 0.0) {
-                me.fairway_model[name] =
-                    geo.put_model
-                    (me.fairway_model_path,
-                     FAIRWAY[name][1], FAIRWAY[name][2],
-                     nil,
-                     -getprop("/environment/wind-from-heading-deg"));
-            } else {
-                me.fairway_model[name] =
-                    geo.put_model
-                    (me.fairway_model_path,
-                     FAIRWAY[name][1], FAIRWAY[name][2],
-                     nil,
-                     FAIRWAY[name][3]);                
+        me.moorings[m[0]] = { position : pos, model : nil };
+    }
+
+    # Enable Alt+Click to place the mooring and select it immediately.
+    setlistener("/sim/signals/click", func () {
+        if (__kbd.alt.getBoolValue()) {
+            var pos = geo.click_position();
+            me.selected = "alt+click";
+            # Remove any existing buoy model.
+            if (contains (me.moorings, me.selected) and me.moorings[me.selected].model != nil) {
+                me.moorings[me.selected].model.remove();
             }
+            me.moorings[me.selected] = { position : pos, model : nil };
+            me.display_selected_mooring();
         }
-    },
-    ##################################################
-    remove_fixed_mooring : func(name) {
-        if (me.mooring_model[name] != nil) me.mooring_model[name].remove();
-        delete(me.moorings, name);
-    },
-    ##################################################
-    add_ai_mooring : func(ai, alt_offset) {
-        if (ai == nil) return;
-        var name = ai.getNode("callsign").getValue();
-        if (name == "") { name = ai.getNode("name").getValue(); }
-        me.moorings[name] = { base       : ai,
-                              alt_offset : alt_offset };
-    },
-    ##################################################
-    remove_ai_mooring : func(ai) {
-        if (ai == nil) return;
-        foreach (var name; keys(me.moorings)) {
-            if (contains(me.moorings[name], "base") and
-                me.moorings[name].base == ai) {
-                delete(me.moorings, name);
-                return;
-            }
+    });
+
+    print("Short Empire Mooring ... Standing by.");
+    me.listener = setlistener ("/sim/signals/fdm-initialized", func () {
+            removelistener (me.listener); me.listener = nil; # Run this just once.
+            me.choose_and_teleport();
+        });
+};
+
+mooring.display_selected_mooring = func() {
+    var geo_info = geodinfo(me.moorings[me.selected].position.lat(),
+                            me.moorings[me.selected].position.lon());
+    if (geo_info != nil) {
+        me.moorings[me.selected].position.set_alt(geo_info[0]);
+    }
+    # Put a mooring buoy model here.
+    me.moorings[me.selected].model = geo.put_model(me.mooring_model_path, me.moorings[me.selected].position);
+    # Display the associated fairway, if any.
+    if (FAIRWAY[me.selected] != nil) {
+        if (me.fairway_model[me.selected] != nil) me.fairway_model[me.selected].remove();
+        var heading = FAIRWAY[me.selected][3];
+        if (heading == 0.0) {
+            heading = -getprop("/environment/wind-from-heading-deg");
         }
-    },
-    ##################################################
-    pick_up_mooring : func {
-        if (me.active_mooring.getNode("mooring-connected").getBoolValue())
-            return;
-        var dist = me.active_mooring.getNode("total-distance-ft").getValue();
-        var rope_length =
-            me.active_mooring.getNode("rope-length-ft").getValue();
-        if (dist < rope_length/FT2M) {
-            me.active_mooring.getNode("mooring-connected").setValue(1.0);
-            setprop("controls/lighting/anchor-light", 1.0);
-            copilot.announce("We picked up the mooring.");
-            return 1;
-        } else {
-            copilot.announce("We are too far from the buoy.");
-            return 0;
-        }
-    },
-    ##################################################
-    release_mooring : func {
-        if (me.active_mooring.getNode("mooring-connected").getValue() >= 1.0) {
-            me.active_mooring.getNode("mooring-connected").setValue(0.0);
-            setprop("controls/lighting/anchor-light", 0.0);
-            copilot.announce("Mooring slipped.");
-        }
-    },
-    ##################################################
+        me.fairway_model[me.selected] = geo.put_model (me.fairway_model_path,
+                                                       FAIRWAY[me.selected][1],
+                                                       FAIRWAY[me.selected][2],
+                                                       me.moorings[me.selected].position.alt() or 0,
+                                                       heading);
+    }
+    # Tell the FDM about our new mooring position.
+    me.active_mooring.getNode("latitude-deg").setValue(me.moorings[me.selected].position.lat());
+    me.active_mooring.getNode("longitude-deg").setValue(me.moorings[me.selected].position.lon());
+    me.active_mooring.getNode("altitude-ft").setValue(M2FT * me.moorings[me.selected].position.alt());
+};
+
+mooring.pick_up_mooring = func {
+    if (me.mooring_connected.getBoolValue())
+        return;
+    var dist = me.active_mooring.getNode("total-distance-ft").getValue();
+    var rope_length =
+        me.active_mooring.getNode("rope-length-ft").getValue();
+    if (dist < rope_length/FT2M) {
+        me.mooring_connected.toggleBoolValue();
+        setprop("controls/lighting/anchor-light", 1.0);
+        copilot.announce("We picked up the mooring.");
+        return 1;
+    } else {
+        copilot.announce("We are too far from the buoy.");
+        return 0;
+    }
+};
+
+mooring.release_mooring = func {
+    if (! me.mooring_connected.getBoolValue())
+        return;
+    me.mooring_connected.toggleBoolValue();
+    setprop("controls/lighting/anchor-light", 0.0);
+    copilot.announce("Mooring slipped.");
+};
+
+mooring.find_model_path = func (filename) {
     # filename should include the aircraft's directory.
-    find_model_path : func (filename) {
-        # FIXME WORKAROUND: Search for the model in all aircraft dirs.
-        var base = "/" ~ filename;
-        var file = props.globals.getNode("/sim/fg-root").getValue() ~
-            "/Aircraft" ~ base;
+    # FIXME WORKAROUND: Search for the model in all aircraft dirs.
+    var base = "/" ~ filename;
+    var file = props.globals.getNode("/sim/fg-root").getValue() ~
+        "/Aircraft" ~ base;
+    if (io.stat(file) != nil) {
+        return file;
+    }
+    foreach (var d;
+             props.globals.getNode("/sim").getChildren("fg-aircraft")) {
+        file = d.getValue() ~ base;
         if (io.stat(file) != nil) {
             return file;
         }
-        foreach (var d;
-                 props.globals.getNode("/sim").getChildren("fg-aircraft")) {
-            file = d.getValue() ~ base;
-            if (io.stat(file) != nil) {
-                return file;
-            }
-        }
-    },
-    ##################################################
-    update : func {
-        var ac_pos = geo.aircraft_position();
-        
-        # Compute distance to the current mooring.
-        var distance = 1000000;
-        var cur_pos  = geo.Coord.new();
-        var cur_name = me.selected;
-        if (contains(me.moorings, me.selected)) {
-            if (contains(me.moorings[me.selected], "position")) {
-                cur_pos = geo.Coord.new(me.moorings[me.selected].position);
-            } else {
-                var ai = me.moorings[me.selected].base;
-                cur_pos = geo.Coord.new().set_latlon
-                    (ai.getNode("position/latitude-deg").getValue(),
-                     ai.getNode("position/longitude-deg").getValue(),
-                     FT2M * ai.getNode("position/altitude-ft").getValue());
-            }
-            distance = cur_pos.distance_to(ac_pos);
-        }
-
-        # Break connection if too far way.
-        var rope_length =
-            me.active_mooring.getNode("rope-length-ft").getValue();
-        if (distance > 2.0 * rope_length and
-            me.active_mooring.getNode("mooring-connected").getBoolValue()) {
-            me.release_mooring();
-        }
-
-        # Find the closest mooring position.
-        foreach (var name; keys(me.moorings)) {
-            var pos = {};
-            if (contains(me.moorings[name], "position")) {
-                pos = me.moorings[name].position;
-            } else {
-                var ai = me.moorings[name].base;
-                pos = geo.Coord.new().set_latlon
-                    (ai.getNode("position/latitude-deg").getValue(),
-                     ai.getNode("position/longitude-deg").getValue(),
-                     FT2M * ai.getNode("position/altitude-ft").getValue());
-            }
-            if (pos.direct_distance_to(ac_pos) < distance) {
-                cur_name  = name;
-                cur_pos   = geo.Coord.new(pos);
-                distance  = pos.distance_to(ac_pos);
-            }
-        }
-
-        if (cur_pos.is_defined()) {
-            if (cur_name != me.selected) {
-                print("Short Empire Mooring: Switched mooring to " ~
-                      cur_name ~ ".");
-                me.selected = cur_name;
-                me.display_mooring(cur_name);
-            }
-
-            # The position might be new, so update active mooring.
-            me.active_mooring.getNode("latitude-deg").setValue(cur_pos.lat());
-            me.active_mooring.getNode("longitude-deg").setValue(cur_pos.lon());
-            # First check if the offset is fixed or a AI/MP property.
-            var offset = 0;
-            if (dual_control_tools.is_num(me.moorings[name].alt_offset)) {
-                offset = me.moorings[name].alt_offset;
-            } else {
-                offset =
-                    me.moorings[name].base.
-                    getNode(me.moorings[name].alt_offset).getValue();
-            }
-            me.active_mooring.getNode("altitude-ft").
-                setValue(M2FT * (cur_pos.alt() + offset));
-        }
-
-        # Announce local mooring.
-        var now = systime();
-        if (now > me.last_mp_announce + me.MP_ANNOUNCE_INTERVAL) {
-            #announce_fixed_mooring(me.moorings["local"].position,
-            #                       me.moorings["local"].alt_offset);
-            me.last_mp_announce = now;
-        }
-    },
-    ##################################################
-    reset : func {
-        me.loopid += 1;
-        me._loop_(me.loopid);
-    },
-    ##################################################
-    _loop_ : func(id) {
-        id == me.loopid or return;
-        me.update();
-        settimer(func { me._loop_(id); }, me.UPDATE_INTERVAL);
     }
+};
+
+mooring.select_nearest = func (in_flight=0) {
+    # Find the nearest mooring position, write its name in me.selected.
+    var ac_pos = geo.aircraft_position();
+    var previously_selected = me.selected;
+
+    distance = 20000000; # metres
+    foreach (var name; keys(me.moorings)) {
+        var m = me.moorings[name];
+        var d = m.position.direct_distance_to (ac_pos);
+        if (d < distance) {
+            distance = d;
+            me.selected = name;
+        }
+    }
+    if (me.selected == "") {
+        copilot.announce ("BUG: could not find any mooring on the earth!");
+    }
+    else if (me.selected != previously_selected) {
+        copilot.announce ("Nearest mooring at " ~ me.selected);
+        if (in_flight) {
+            me.display_selected_mooring();
+        }
+    }
+};
+
+mooring.choose_and_teleport = func {
+    # This runs exactly once, after the FDM is initialized for the first time.
+    me.select_nearest();
+
+    me.active_mooring = props.globals.getNode("/fdm/jsbsim/mooring");
+    me.mooring_connected = me.active_mooring.initNode ("mooring-connected", 0, "BOOL", 1);
+
+    # Reposition to the selected mooring. No, don't do this unless very near!
+    #var presets = props.globals.getNode("/sim/presets");
+    #presets.getChild("latitude-deg").setValue(me.moorings[me.selected].position.lat());
+    #presets.getChild("longitude-deg").setValue(me.moorings[me.selected].position.lon());
+    #presets.getChild("altitude-ft").setValue(me.moorings[me.selected].position.alt());
+    #presets.getChild("heading-deg").setValue(0);
+    #presets.getChild("airport-id").setValue("");
+    #presets.getChild("airspeed-kt").setValue(0);
+    #fgcommand("reposition");
+    # The repositioning re-initializes the FDM; shedule the final adjustments to happen after that:
+    me.listener = setlistener ("/sim/signals/fdm-initialized", func () {
+        removelistener (me.listener); me.listener = nil; # We want to run just once.
+        me.after_teleport();
+    });
+};
+
+mooring.after_teleport = func () {
+    me.display_selected_mooring();
+    me.pick_up_mooring();
+    me.select_nearest_as_we_fly = maketimer (5.0, me, func { me.select_nearest(1); });
+    me.select_nearest_as_we_fly.start();
 };
 
 ###############################################################################
 ## Lists containing EAMS mooring locations. See also ROUTES.txt.
 ## Format:
-##   [[name, lat, lon]]
+##   [[name, lat, lon, optional_alt_in_m ]]
 var EAMS_MOORINGS_EUROPE =
     [
      ["Hythe 1",                 50.872210,   -1.390830],
@@ -293,7 +210,7 @@ var EAMS_MOORINGS_EUROPE =
      ["Saint-Nazaire",           47.297423,   -2.134309],
      ["Bordeaux/Biscarosse",     44.383172,   -1.184227],
      ["Macon",                   46.290932,    4.830000],
-     ["Marseille/Marignane",     43.446937,    5.185410],
+     ["Marseille/Marignane",     43.447937,    5.185410],
      ["Rome/Lake Bracciano",     42.113768,   12.187239],
      ["Brindisi",                40.652277,   17.959625],
      ["Corfu",                   39.614731,   19.929714],
@@ -304,7 +221,7 @@ var EAMS_MOORINGS_EUROPE =
     ];
 var EAMS_MOORINGS_EAST =
     [
-     ["Tiberias",              32.804,      35.547],
+     ["Tiberias",              32.804,      35.547, -222],
      ["Lake Habbaniyeh",       33.34625,    43.547359],
      ["Basra/Margil",          30.5203,     47.8455],
      ["Kuwait",                29.354583,   47.934932],
@@ -358,6 +275,7 @@ var EAMS_MOORINGS_SOUTH =
      ["Beira",                -19.826,      34.829],
      ["Inhambane",            -23.8687,     35.3722],
      ["Lourenco Morques",     -25.9689,     32.5376],
+     ["Vaal Dam",             -26.89472,    28.1200, 1486], # altitude in m
      ["Durban",               -29.870,      31.033]
     ];
 var NORTH_ATLANTIC =
@@ -372,11 +290,30 @@ var TEAL =
      ["Auckland/Mechanics Bay",  -36.8440,   174.7942],
      ["Wellington/Evans Bay",    -41.3142,   174.8065]
     ];
+var FICTIONAL =
+    [
+     ["Bastia etang de Bigulia",  42.5841, 9.4987,   0 ], # near LFKB
+     ["Friedrichshafen",          47.6500, 9.4900, 391 ], # near EDNY on lake Constance, altitude in m
+     # Canadian West Coast
+     ["Victoria Inner Harbour",   48.4260, -123.3900, 0], # Near CYYJ
+     ["Vancouver Harbour",        49.2920, -123.1180, 0], # Near CYVR
+     # Alaska and Aleutian Islands, east to west:
+     ["Juneau Harbor",            58.2950, -134.4075, 0], # Near PAJN
+     ["Anchorage/Lake Hood",      61.1835, -149.8755, 0], # Near PANC, PALH
+     ["Kodiak Station",           57.7290, -152.5228, 0], # Near PADQ
+     ["Nelson Lagoon",            55.9800, -161.1800, 0], # Near PAOU
+     ["Cold Bay/Blinn Lake Seabase", 55.2516272, -162.7534044, 0 ], # Near PACD
+     ["Akutan Seaplane Base",     54.1313, -165.7794, 0], # KQA, visible in the launcher but not in the map
+     ["Unalaska Dutch Harbor",    53.8787, -166.5471, 0], # Near PADU
+     ["Nikolski Air Station",     52.9410, -168.8620, 0], # PAKO
+     ["Adak Sweeper Cove",        51.8565, -176.6405, 0], # Near PADK
+     ["Attu Casco Cove",          52.8103,  173.1720, 0]  # PATU, west of the date line
+    ];
 
 ###############################################################################
 ## Hash containing fairway locations. See also ROUTES.txt.
 ## Format:
-##   {"mooring : [name, lat, lon, heading]}
+##   {"mooring" : [name, lat, lon, heading]}
 var FAIRWAY = {
     # Europe
     "Hythe 1":                 ["Netley",        50.873,   -1.365, 0.0],
@@ -455,4 +392,42 @@ var FAIRWAY = {
     # Teal
     "Auckland/Mechanics Bay":  ["Mechanics Bay",-36.840,  174.805,   0.0],
     "Wellington/Evans Bay":    ["Evans Bay",    -41.309,  174.808,   0.0]
+};
+
+mooring.init (); # even before the FDM is initialized: all of this is static henceforth.
+
+mooring.dump_one = func (i, arr) {
+    print("    <wp n=\"" ~ i ~ "\">");
+    print("      <type type=\"string\">basic</type>");
+    print("      <ident type=\"string\">" ~ arr[0] ~ "</ident>");
+    print("      <lat type=\"double\">" ~ arr[1] ~ "</lat>");
+    print("      <lon type=\"double\">" ~ arr[2] ~ "</lon>");
+    print("    </wp>");
+};
+
+mooring.dump_forward = func (arr) {
+    for (var i=0; i < size(arr); i += 1) {
+        me.dump_one (i, arr[i]);
+    }
+};
+
+mooring.dump_backward = func (arr) {
+    for (var i=size(arr); i > 0; i -= 1) {
+        me.dump_one (1 + size(arr) - i, arr[i-1]);
+    }
+};
+
+mooring.dump = func () {
+    print ("-------- southampton-alexandria -----------");
+    me.dump_forward (EAMS_MOORINGS_EUROPE);
+    print ("-------- alexandria-southampton -----------");
+    me.dump_backward (EAMS_MOORINGS_EUROPE);
+    print ("-------- alexandria-durban -----------");
+    me.dump_forward (EAMS_MOORINGS_SOUTH);
+    print ("-------- durban-alexandria -----------");
+    me.dump_backward (EAMS_MOORINGS_SOUTH);
+    print ("-------- alexandria-sydney -----------");
+    me.dump_forward (EAMS_MOORINGS_EAST);
+    print ("-------- sydney-alexandria -----------");
+    me.dump_backward (EAMS_MOORINGS_EAST);
 };

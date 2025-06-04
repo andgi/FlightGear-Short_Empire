@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <version type="int">2</version>
+  <flight-rules type="string">V</flight-rules>
+  <flight-type type="string">X</flight-type>
+  <estimated-duration-minutes type="int">0</estimated-duration-minutes>
+  <route>
+    <wp n="0">
+      <type type="string">basic</type>
+      <ident type="string">Attu Casco Cove</ident>
+      <lat type="double">52.81029999999999</lat>
+      <lon type="double">173.1719999999999</lon>
+    </wp>
+    <wp n="1">
+      <type type="string">basic</type>
+      <ident type="string">Adak Sweeper Cove</ident>
+      <lat type="double">51.85649999999999</lat>
+      <lon type="double">-176.6404999999999</lon>
+    </wp>
+    <wp n="2">
+      <type type="string">basic</type>
+      <ident type="string">Nikolski Air Station</ident>
+      <lat type="double">52.9410</lat>
+      <lon type="double">-168.8620</lon>
+    </wp>
+    <wp n="3">
+      <type type="string">basic</type>
+      <ident type="string">Unalaska Dutch Harbor</ident>
+      <lat type="double">53.8787</lat>
+      <lon type="double">-166.5470999999999</lon>
+    </wp>
+    <wp n="4">
+      <type type="string">basic</type>
+      <ident type="string">Akutan Seaplane Base</ident>
+      <lat type="double">54.13130000000001</lat>
+      <lon type="double">-165.7793999999999</lon>
+    </wp>
+    <wp n="5">
+      <type type="string">basic</type>
+      <ident type="string">Cold Bay/Blinn Lake Seabase</ident>
+      <lat type="double">55.25162719999999</lat>
+      <lon type="double">-162.7534043999999</lon>
+    </wp>
+    <wp n="6">
+      <type type="string">basic</type>
+      <ident type="string">Nelson Lagoon</ident>
+      <lat type="double">55.97999999999999</lat>
+      <lon type="double">-161.18</lon>
+    </wp>
+    <wp n="7">
+      <type type="string">basic</type>
+      <ident type="string">Kodiak Station</ident>
+      <lat type="double">57.72899999999999</lat>
+      <lon type="double">-152.5227999999999</lon>
+    </wp>
+    <wp n="8">
+      <type type="string">basic</type>
+      <ident type="string">Anchorage/Lake Hood</ident>
+      <lat type="double">61.1835</lat>
+      <lon type="double">-149.8754999999999</lon>
+    </wp>
+    <wp n="9">
+      <type type="string">basic</type>
+      <ident type="string">Juneau Harbor</ident>
+      <lat type="double">58.295</lat>
+      <lon type="double">-134.4074999999999</lon>
+    </wp>
+    <wp n="10">
+      <type type="string">basic</type>
+      <ident type="string">Vancouver Harbour</ident>
+      <lat type="double">49.29199999999999</lat>
+      <lon type="double">-123.1179999999999</lon>
+    </wp>
+    <wp n="11">
+      <type type="string">basic</type>
+      <ident type="string">Victoria Inner Harbour</ident>
+      <lat type="double">48.426</lat>
+      <lon type="double">-123.3899999999999</lon>
+    </wp>
+  </route>
+</PropertyList>

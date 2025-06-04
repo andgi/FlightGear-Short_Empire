@@ -2,7 +2,7 @@
 <!--
   Short Empire flying boat for FlightGear.
 
-  Copyright (C) 2007 - 2023  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2025  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -11,7 +11,7 @@
 
   <description>Short S.23 'C'-class Empire flying boat.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Short_Empire-set.xml,v 1.70 2018/11/12 19:51:36 anders Exp $</aircraft-version>
+  <aircraft-version>2025-05-31</aircraft-version>
 
   <long-description>
 The Short S.23 'C'-class Empire flying boats were designed and built by Short Brothers in 1935 to a specification and order placed by Imperial Airways. The Empire flying boat was a four engined flying boat intended for Imperial Airways long distance routes to South Africa, India, the Far East and Australia. I could carry up to 24 passengers or 2 tons of mail for the short sectors (less than 400 nm) of the routes. A total of 31 Short S.23 flying boats were built, 25 for Imperial Airways and 6 for QANTAS Empire Airways. The first S.23 to fly was Canopus on July 3 1936 and the last was Caledonia, scrapped 23 March 1947. Between those years the S.23 Empire flying boats served a route network stretching (at times) from Foynes (Ireland) in the north-west, Durban (South Africa) in the south to Sydney (Australia) in the south-east.
@@ -33,6 +33,11 @@ The Short S.23 'C'-class Empire flying boats were designed and built by Short Br
    <tag>golden-age</tag>
    <tag>ww2</tag>
   </tags>
+  <!-- This would trigger /usr/share/games/flightgear/Nasal/seaport.nas
+       whenever /sim/presets/latitude-deg changes.  We don't want that
+       as we have our own mooring code, see mooring.nas.
+  <type type="string">seaplane</type>
+  -->
 
   <status type="string">beta</status>
   <rating>
@@ -45,7 +50,7 @@ The Short S.23 'C'-class Empire flying boats were designed and built by Short Br
   <flight-model>jsb</flight-model>
   <aero>Short_S23</aero>
   <!-- The higher rate seems to aide stability in the hydrodynamics system. -->
-  <model-hz type="double">960.0</model-hz>
+  <model-hz type="double">480.0</model-hz>
 
   <presets>
    <onground type="bool">true</onground>
@@ -60,7 +65,7 @@ The Short S.23 'C'-class Empire flying boats were designed and built by Short Br
   </sound>
 
   <model>
-   <path>Aircraft/Short_Empire/Models/Short_Empire-model.xml</path>
+   <path>Aircraft/Short_Empire/Models/Short_Empire.xml</path>
    <livery>
     <file type="string">Canopus</file>
    </livery>
@@ -169,6 +174,20 @@ The Short S.23 'C'-class Empire flying boats were designed and built by Short Br
        <command>nasal</command>
        <script>aircraft.livery.dialog.toggle()</script>
       </binding>
+     </item>
+     <item>
+       <label>Show on-screen properties</label>
+       <binding>
+         <command>nasal</command>
+         <script>ShortEmpire.debug_display_view_handler.enable()</script>
+       </binding>
+     </item>
+     <item>
+       <label>Hide on-screen properties</label>
+       <binding>
+         <command>nasal</command>
+         <script>ShortEmpire.debug_display_view_handler.disable()</script>
+       </binding>
      </item>
     </menu>
    </default>

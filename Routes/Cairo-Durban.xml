@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <version type="int">2</version>
+  <flight-rules type="string">V</flight-rules>
+  <flight-type type="string">X</flight-type>
+  <estimated-duration-minutes type="int">0</estimated-duration-minutes>
+  <route>
+    <wp n="0">
+      <type type="string">basic</type>
+      <ident type="string">Cairo</ident>
+      <lat type="double">30.03269999999999</lat>
+      <lon type="double">31.222</lon>
+    </wp>
+    <wp n="1">
+      <type type="string">basic</type>
+      <ident type="string">Luxor</ident>
+      <lat type="double">25.7011</lat>
+      <lon type="double">32.63649999999999</lon>
+    </wp>
+    <wp n="2">
+      <type type="string">basic</type>
+      <ident type="string">Wadi Halfa</ident>
+      <lat type="double">21.80499999999999</lat>
+      <lon type="double">31.29999999999999</lon>
+    </wp>
+    <wp n="3">
+      <type type="string">basic</type>
+      <ident type="string">Khartoum</ident>
+      <lat type="double">15.60599999999999</lat>
+      <lon type="double">32.53699999999999</lon>
+    </wp>
+    <wp n="4">
+      <type type="string">basic</type>
+      <ident type="string">Kosti</ident>
+      <lat type="double">13.16899999999999</lat>
+      <lon type="double">32.66499999999999</lon>
+    </wp>
+    <wp n="5">
+      <type type="string">basic</type>
+      <ident type="string">Malakal</ident>
+      <lat type="double">9.528</lat>
+      <lon type="double">31.652</lon>
+    </wp>
+    <wp n="6">
+      <type type="string">basic</type>
+      <ident type="string">Bor</ident>
+      <lat type="double">6.219999999999999</lat>
+      <lon type="double">31.543</lon>
+    </wp>
+    <wp n="7">
+      <type type="string">basic</type>
+      <ident type="string">Juba</ident>
+      <lat type="double">4.833999999999999</lat>
+      <lon type="double">31.61399999999999</lon>
+    </wp>
+    <wp n="8">
+      <type type="string">basic</type>
+      <ident type="string">Laropi</ident>
+      <lat type="double">3.54863</lat>
+      <lon type="double">31.812716</lon>
+    </wp>
+    <wp n="9">
+      <type type="string">basic</type>
+      <ident type="string">Butabia</ident>
+      <lat type="double">1.829126999999999</lat>
+      <lon type="double">31.329403</lon>
+    </wp>
+    <wp n="10">
+      <type type="string">basic</type>
+      <ident type="string">Kampala/Port Bell</ident>
+      <lat type="double">0.2877029999999999</lat>
+      <lon type="double">32.652279</lon>
+    </wp>
+    <wp n="11">
+      <type type="string">basic</type>
+      <ident type="string">Kisumu</ident>
+      <lat type="double">-0.09</lat>
+      <lon type="double">34.744</lon>
+    </wp>
+    <wp n="12">
+      <type type="string">basic</type>
+      <ident type="string">Nairobi/Lake Naivasha</ident>
+      <lat type="double">-0.7806</lat>
+      <lon type="double">36.40019999999999</lon>
+    </wp>
+    <wp n="13">
+      <type type="string">basic</type>
+      <ident type="string">Mombasa</ident>
+      <lat type="double">-4.0524</lat>
+      <lon type="double">39.6799</lon>
+    </wp>
+    <wp n="14">
+      <type type="string">basic</type>
+      <ident type="string">Dar-es-Salaam</ident>
+      <lat type="double">-6.82</lat>
+      <lon type="double">39.292</lon>
+    </wp>
+    <wp n="15">
+      <type type="string">basic</type>
+      <ident type="string">Lindi</ident>
+      <lat type="double">-10.001025</lat>
+      <lon type="double">39.72146599999999</lon>
+    </wp>
+    <wp n="16">
+      <type type="string">basic</type>
+      <ident type="string">Mozambique</ident>
+      <lat type="double">-15.03818199999999</lat>
+      <lon type="double">40.70409899999999</lon>
+    </wp>
+    <wp n="17">
+      <type type="string">basic</type>
+      <ident type="string">Beira</ident>
+      <lat type="double">-19.826</lat>
+      <lon type="double">34.82899999999999</lon>
+    </wp>
+    <wp n="18">
+      <type type="string">basic</type>
+      <ident type="string">Inhambane</ident>
+      <lat type="double">-23.8687</lat>
+      <lon type="double">35.3722</lon>
+    </wp>
+    <wp n="19">
+      <type type="string">basic</type>
+      <ident type="string">Lourenco Morques</ident>
+      <lat type="double">-25.9689</lat>
+      <lon type="double">32.53759999999999</lon>
+    </wp>
+    <wp n="20">
+      <type type="string">basic</type>
+      <ident type="string">Vaal Dam</ident>
+      <lat type="double">-26.89471999999999</lat>
+      <lon type="double">28.12</lon>
+    </wp>
+    <wp n="21">
+      <type type="string">basic</type>
+      <ident type="string">Durban</ident>
+      <lat type="double">-29.87</lat>
+      <lon type="double">31.03299999999999</lon>
+    </wp>
+  </route>
+</PropertyList>

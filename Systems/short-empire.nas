@@ -2,7 +2,8 @@
 ##
 ## Short S.23 'C'-class Empire flying boat
 ##
-##  Copyright (C) 2008 - 2014  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2008 - 2014, 2025  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2024 - 2025        Ludovic Brenta
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
@@ -18,18 +19,8 @@ var ground = func {
             getprop("/position/ground-elev-ft") +
             getprop("/fdm/jsbsim/hydro/environment/wave-amplitude-ft"));
 
-    # Connect the FlightGear wave model to the JSBSim hydrodynamics wave model.
-    #setprop("/fdm/jsbsim/hydro/environment/waves-from-deg",
-    #        getprop("/environment/wave/angle") - 90.0);
-    #setprop("/fdm/jsbsim/hydro/environment/wave-amplitude-ft",
-    #        getprop("/environment/wave/amp"));
-    # Additional properties:
-    #   /environment/wave/dangle
-    #   /environment/wave/factor
-    #   /environment/wave/freq
-    #   /environment/wave/sharp
-
     # Connect the JSBSim hydrodynamics wave model with the custom water shader.
+    # This shader is not enabled by default and needs to be redone.
     setprop("environment/waves/time-sec",
             getprop("/fdm/jsbsim/simulation/sim-time-sec"));
     setprop("environment/waves/from-deg",
@@ -52,9 +43,8 @@ var ground = func {
             getprop("/fdm/jsbsim/propulsion/engine[2]/starter-norm"));
     setprop("/controls/engines/engine[3]/starter",
             getprop("/fdm/jsbsim/propulsion/engine[3]/starter-norm"));
-
-    settimer(ground, 0.0);
 }
+ground_timer = maketimer (0.1, ground);
 
 # Do terrain modelling ourselves.
 setprop("sim/fdm/surface/override-level", 1);
@@ -63,14 +53,11 @@ var _short_empire_initialized = 0;
 setlistener("/sim/signals/fdm-initialized", func {
     if (_short_empire_initialized) return;
     aircraft.livery.init("Aircraft/Short_Empire/Models/Liveries");
-
-    settimer(ground, 0.0);
-    print("Hydrodynamics initialized.");
     copilot.init();
+    ground_timer.start();
     _short_empire_initialized = 1;
+    print("Short Empire initialized.");
 });
-
-
 
 ###############################################################################
 # Control wrappers overrides.
@@ -82,7 +69,7 @@ controls.adjPropeller = func (d) {
 
 var flap_control_p = "controls/flight/flap-motor";
 
-# The flap control is moves the control switch towards in or out.
+# The flap control moves the control switch towards in or out.
 controls.flapsDown = func(step) {
     if (!step) return;
     var v = getprop(flap_control_p);
@@ -154,9 +141,11 @@ var debug_display_view_handler = {
         me.right.add("/fdm/jsbsim/propulsion/engine[3]/egt-degF");
         me.right.add("/fdm/jsbsim/fcs/fuel-system/debug/consumption-error-lbs");
         me.shown = 1;
+        me.enabled = 1;
         me.stop();
     },
     start  : func {
+        if (!me.enabled) { return; }
         if (!me.shown) {
             me.left.toggle();
             me.right.toggle();
@@ -169,7 +158,10 @@ var debug_display_view_handler = {
             me.right.toggle();
         }
         me.shown = 0;
-    }
+    },
+    # These two are called from menu items, not from the view manager:
+    enable : func { me.enabled = 1; me.start (); },
+    disable: func { me.enabled = 0; me.stop (); }
 };
 
 # Install the debug display for some views.
@@ -186,7 +178,6 @@ setlistener("/sim/signals/fdm-initialized", func {
 var copilot = {
     init : func {
         me.UPDATE_INTERVAL = 1.73;
-        me.loopid = 0;
         # Landing callouts        
         me.alt_agl_prop =
             props.globals.getNode("fdm/jsbsim/hydro/height-agl-ft");
@@ -240,14 +231,9 @@ var copilot = {
         setprop("/sim/messages/copilot", msg);
     },
     reset : func {
-        me.loopid += 1;
-        me._loop_(me.loopid);
+        me.timer = maketimer (me.UPDATE_INTERVAL, me, func () { me.update() });
+        me.timer.start();
     },
-    _loop_ : func(id) {
-        id == me.loopid or return;
-        me.update();
-        settimer(func { me._loop_(id); }, me.UPDATE_INTERVAL);
-    }
 };
 
 ###############################################################################
@@ -305,9 +291,11 @@ var dialog = {
         content.set("default-padding", 5);
         props.globals.initNode("sim/about/text",
              "Short S.23 'C'-class Empire flying boat for FlightGear\n" ~
-             "Copyright (C) 2008 - 2014  Anders Gidenstam, Ron Jensen, AJ MacLeod\n\n" ~
+             "Copyright (C) 2008 - 2025  Anders Gidenstam\n" ~
+             "Copyright (C) 2008         Ron Jensen, AJ MacLeod\n" ~
+             "Copyright (C) 2024 - 2025  Ludovic Brenta\n\n" ~
              "FlightGear flight simulator\n" ~
-             "Copyright (C) 1996 - 2014  http://www.flightgear.org\n\n" ~
+             "Copyright (C) 1996 -       http://www.flightgear.org\n\n" ~
              "This is free software, and you are welcome to\n" ~
              "redistribute it under certain conditions.\n" ~
              "See the GNU GENERAL PUBLIC LICENSE Version 2 for the details.",
@@ -350,3 +338,41 @@ var dialog = {
 var about = func {
     dialog.show();
 }
+
+var range_computer = { };
+range_computer.init = func () {
+    # Inputs:
+    me.fuel_total = props.globals.getNode ("/consumables/fuel/total-fuel-lbs");
+    me.odometer   = props.globals.getNode ("/instrumentation/gps/odometer");
+    me.ff         = [];
+    var e = props.globals.getNode ("/engines");
+    for (var k = 0; k < 4; k += 1) {
+        append (me.ff, e.getChild("engine", k).getChild ("fuel-flow_pph"));
+    }
+    me.vtrue_kts = props.globals.getNode("/fdm/jsbsim/velocities/vtrue-kts");
+
+    # Outputs:
+    me.endurance   = props.globals.initNode ("/consumables/fuel/endurance-remaining", "", "STRING");
+    me.range       = props.globals.initNode ("/consumables/fuel/range-remaining-nmi", 0.0, "DOUBLE");
+    me.range_total = props.globals.initNode ("/consumables/fuel/range-total-nmi", 0.0, "DOUBLE");
+    me.ff_timer = maketimer (1.0, me, me.update);
+};
+range_computer.update = func () {
+    var ff_pph = 0;
+    foreach (var f; me.ff) {
+       ff_pph += f.getValue();
+    }
+    var endurance_h = 0;
+    if (ff_pph > 0) { endurance_h = me.fuel_total.getValue () / ff_pph; }
+    me.endurance.setValue (sprintf ("%d:%02d:%02d",
+                                    int (endurance_h),
+                                    math.mod (endurance_h * 60, 60),
+                                    math.mod (endurance_h * 3600, 60)));
+    me.range.setValue (endurance_h * me.vtrue_kts.getValue());
+    me.range_total.setValue (me.range.getValue () + me.odometer.getValue ());
+};
+range_computer.ff_listener = setlistener ("/sim/signals/fdm-initialized", func () {
+   removelistener (range_computer.ff_listener);
+   range_computer.init ();
+   range_computer.ff_timer.start ();
+});

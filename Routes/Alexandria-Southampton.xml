@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <version type="int">2</version>
+  <flight-rules type="string">V</flight-rules>
+  <flight-type type="string">X</flight-type>
+  <estimated-duration-minutes type="int">0</estimated-duration-minutes>
+  <route>
+    <wp n="1">
+      <type type="string">basic</type>
+      <ident type="string">Alexandria/East Harbour</ident>
+      <lat type="double">31.19623299999999</lat>
+      <lon type="double">29.87278799999999</lon>
+    </wp>
+    <wp n="2">
+      <type type="string">basic</type>
+      <ident type="string">Mirabella Bay</ident>
+      <lat type="double">35.20042699999999</lat>
+      <lon type="double">25.72300299999999</lon>
+    </wp>
+    <wp n="3">
+      <type type="string">basic</type>
+      <ident type="string">Heraklion</ident>
+      <lat type="double">35.344386</lat>
+      <lon type="double">25.140345</lon>
+    </wp>
+    <wp n="4">
+      <type type="string">basic</type>
+      <ident type="string">Athens/Phaleron Bay</ident>
+      <lat type="double">37.93952699999999</lat>
+      <lon type="double">23.66622999999999</lon>
+    </wp>
+    <wp n="5">
+      <type type="string">basic</type>
+      <ident type="string">Corfu</ident>
+      <lat type="double">39.614731</lat>
+      <lon type="double">19.929714</lon>
+    </wp>
+    <wp n="6">
+      <type type="string">basic</type>
+      <ident type="string">Brindisi</ident>
+      <lat type="double">40.65227699999999</lat>
+      <lon type="double">17.95962499999999</lon>
+    </wp>
+    <wp n="7">
+      <type type="string">basic</type>
+      <ident type="string">Rome/Lake Bracciano</ident>
+      <lat type="double">42.113768</lat>
+      <lon type="double">12.187239</lon>
+    </wp>
+    <wp n="8">
+      <type type="string">basic</type>
+      <ident type="string">Marseille/Marignane</ident>
+      <lat type="double">43.447937</lat>
+      <lon type="double">5.18541</lon>
+    </wp>
+    <wp n="9">
+      <type type="string">basic</type>
+      <ident type="string">Macon</ident>
+      <lat type="double">46.29093199999999</lat>
+      <lon type="double">4.83</lon>
+    </wp>
+    <wp n="10">
+      <type type="string">basic</type>
+      <ident type="string">Bordeaux/Biscarosse</ident>
+      <lat type="double">44.383172</lat>
+      <lon type="double">-1.184226999999999</lon>
+    </wp>
+    <wp n="11">
+      <type type="string">basic</type>
+      <ident type="string">Saint-Nazaire</ident>
+      <lat type="double">47.29742299999999</lat>
+      <lon type="double">-2.134309</lon>
+    </wp>
+    <wp n="12">
+      <type type="string">basic</type>
+      <ident type="string">Hythe 2</ident>
+      <lat type="double">50.872349</lat>
+      <lon type="double">-1.387512</lon>
+    </wp>
+    <wp n="13">
+      <type type="string">basic</type>
+      <ident type="string">Hythe 1</ident>
+      <lat type="double">50.87221</lat>
+      <lon type="double">-1.39083</lon>
+    </wp>
+  </route>
+</PropertyList>

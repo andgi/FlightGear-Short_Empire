@@ -38,15 +38,19 @@
 
   <tank n="8">
    <name>Port outer carburettor</name>
+   <hidden type="bool">1</hidden>
   </tank>
   <tank n="9">
    <name>Port inner carburettor</name>
+   <hidden type="bool">1</hidden>
   </tank>
   <tank n="10">
    <name>Starboard inner carburettor</name>
+   <hidden type="bool">1</hidden>
   </tank>
   <tank n="11">
    <name>Starboard outer carburettor</name>
+   <hidden type="bool">1</hidden>
   </tank>
 
  </fuel>

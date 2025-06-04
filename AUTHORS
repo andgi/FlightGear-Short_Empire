@@ -9,6 +9,9 @@ Ron Jensen
   - Pegasus Xc engine config for JSBSim
   - Short S.23 DATCOM config
 
+Ludovic Brenta
+  - Added the Routes directory and worked in some of the Nasal and XML files.
+
 The model borrows content from the following authors' contributions
 to FlightGear:
 

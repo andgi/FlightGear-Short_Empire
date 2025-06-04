@@ -25,6 +25,22 @@
    </fcs>
   </jsbsim>
  </fdm>
+ <consumables>
+   <fuel>
+     <!-- Setting a capacity of zero in a tank hides it from the Fuel
+          and Payload dialog.  Unfortunately the Fuel and Payload
+          dialog looks only at this property and not at the property
+          defined in the FDM, so for tanks that are enabled we are
+          forced to duplicate the capacity from the FDM, converting
+          from pounds and pounds/gal into gallons on the way. -->
+     <tank n="2"><capacity-gal_us type="double">214.97</capacity-gal_us></tank>
+     <tank n="3"><capacity-gal_us type="double">214.97</capacity-gal_us></tank>
+     <tank n="4"><capacity-gal_us type="double">456.36</capacity-gal_us></tank>
+     <tank n="5"><capacity-gal_us type="double">456.36</capacity-gal_us></tank>
+     <tank n="6"><capacity-gal_us type="double">336.26</capacity-gal_us></tank>
+     <tank n="7"><capacity-gal_us type="double">336.26</capacity-gal_us></tank>
+   </fuel>
+ </consumables>
  <limits>
   <mass-and-balance>
    <maximum-takeoff-mass-lbs type="double">45000</maximum-takeoff-mass-lbs>
